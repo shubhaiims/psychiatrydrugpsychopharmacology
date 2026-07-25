@@ -19,14 +19,14 @@ No drug records are included by default. Add records only through the admin edit
 Each drug record is organized under these headings:
 
 - Classification
-- Pharmacokinetics
+- Mechanism of Action and Receptor Profile
 - Pharmacodynamics
-- Mechanism of Action
-- Dosage and Titration, including target dose and maximum dose
-- Indication
-- Side Effect
+- FDA Approved and Off-Label Uses
+- Pharmacokinetics and Half-Life
+- Clinical Dosing, Optimization, and Target Dose, including separate target dose and maximum dose fields
+- Side Effects
 - FDA Black Box Warning
-- Special Population Including Organ Impairment
+- Prescribing in Special Populations
 - Drug Interactions
 - Miscellaneous
 

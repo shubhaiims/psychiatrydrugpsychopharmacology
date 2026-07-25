@@ -5,14 +5,14 @@
   const today = new Date().toISOString().slice(0, 10);
   const sections = [
     { key: "classification", title: "Classification" },
-    { key: "pharmacokinetics", title: "Pharmacokinetics" },
+    { key: "mechanismOfActionAndReceptorProfile", title: "Mechanism of Action and Receptor Profile" },
     { key: "pharmacodynamics", title: "Pharmacodynamics" },
-    { key: "mechanismOfAction", title: "Mechanism of Action" },
-    { key: "dosageAndTitration", title: "Dosage and Titration" },
-    { key: "indication", title: "Indication" },
-    { key: "sideEffect", title: "Side Effect" },
+    { key: "fdaApprovedAndOffLabelUses", title: "FDA Approved and Off-Label Uses" },
+    { key: "pharmacokineticsAndHalfLife", title: "Pharmacokinetics and Half-Life" },
+    { key: "clinicalDosingOptimizationAndTargetDose", title: "Clinical Dosing, Optimization, and Target Dose" },
+    { key: "sideEffects", title: "Side Effects" },
     { key: "fdaBlackBoxWarning", title: "FDA Black Box Warning" },
-    { key: "specialPopulation", title: "Special Population Including Organ Impairment" },
+    { key: "prescribingInSpecialPopulations", title: "Prescribing in Special Populations" },
     { key: "drugInteractions", title: "Drug Interactions" },
     { key: "miscellaneous", title: "Miscellaneous" }
   ];
@@ -55,14 +55,14 @@
       targetDose: document.querySelector("#fieldTargetDose"),
       maximumDose: document.querySelector("#fieldMaximumDose"),
       lastReviewed: document.querySelector("#fieldReviewed"),
-      pharmacokinetics: document.querySelector("#fieldPharmacokinetics"),
+      mechanismOfActionAndReceptorProfile: document.querySelector("#fieldMechanismOfActionAndReceptorProfile"),
       pharmacodynamics: document.querySelector("#fieldPharmacodynamics"),
-      mechanismOfAction: document.querySelector("#fieldMechanismOfAction"),
-      dosageAndTitration: document.querySelector("#fieldDosageAndTitration"),
-      indication: document.querySelector("#fieldIndication"),
-      sideEffect: document.querySelector("#fieldSideEffect"),
+      fdaApprovedAndOffLabelUses: document.querySelector("#fieldFdaApprovedAndOffLabelUses"),
+      pharmacokineticsAndHalfLife: document.querySelector("#fieldPharmacokineticsAndHalfLife"),
+      clinicalDosingOptimizationAndTargetDose: document.querySelector("#fieldClinicalDosingOptimizationAndTargetDose"),
+      sideEffects: document.querySelector("#fieldSideEffects"),
       fdaBlackBoxWarning: document.querySelector("#fieldFdaBlackBoxWarning"),
-      specialPopulation: document.querySelector("#fieldSpecialPopulation"),
+      prescribingInSpecialPopulations: document.querySelector("#fieldPrescribingInSpecialPopulations"),
       drugInteractions: document.querySelector("#fieldDrugInteractions"),
       miscellaneous: document.querySelector("#fieldMiscellaneous")
     }
@@ -452,7 +452,7 @@
             ${riskPill(drug.riskLevel)}
           </span>
           <span class="drug-class">${escapeHtml(drug.classification || "No classification added")}</span>
-          <span class="drug-uses">${escapeHtml(previewText(drug.indication || drug.mechanismOfAction))}</span>
+          <span class="drug-uses">${escapeHtml(previewText(drug.fdaApprovedAndOffLabelUses || drug.mechanismOfActionAndReceptorProfile))}</span>
         </span>
       </button>
     `;
@@ -512,7 +512,7 @@
 
   function renderSection(section, drug) {
     const sectionId = `section-${section.key}`;
-    const doseRows = section.key === "dosageAndTitration"
+    const doseRows = section.key === "clinicalDosingOptimizationAndTargetDose"
       ? `
           <div class="dose-grid">
             <div><strong>Target dose</strong><span>${escapeHtml(drug.targetDose || "Not added")}</span></div>
@@ -593,14 +593,14 @@
     els.fields.targetDose.value = drug.targetDose || "";
     els.fields.maximumDose.value = drug.maximumDose || "";
     els.fields.lastReviewed.value = drug.lastReviewed || today;
-    els.fields.pharmacokinetics.value = drug.pharmacokinetics || "";
+    els.fields.mechanismOfActionAndReceptorProfile.value = drug.mechanismOfActionAndReceptorProfile || "";
     els.fields.pharmacodynamics.value = drug.pharmacodynamics || "";
-    els.fields.mechanismOfAction.value = drug.mechanismOfAction || "";
-    els.fields.dosageAndTitration.value = drug.dosageAndTitration || "";
-    els.fields.indication.value = drug.indication || "";
-    els.fields.sideEffect.value = drug.sideEffect || "";
+    els.fields.fdaApprovedAndOffLabelUses.value = drug.fdaApprovedAndOffLabelUses || "";
+    els.fields.pharmacokineticsAndHalfLife.value = drug.pharmacokineticsAndHalfLife || "";
+    els.fields.clinicalDosingOptimizationAndTargetDose.value = drug.clinicalDosingOptimizationAndTargetDose || "";
+    els.fields.sideEffects.value = drug.sideEffects || "";
     els.fields.fdaBlackBoxWarning.value = drug.fdaBlackBoxWarning || "";
-    els.fields.specialPopulation.value = drug.specialPopulation || "";
+    els.fields.prescribingInSpecialPopulations.value = drug.prescribingInSpecialPopulations || "";
     els.fields.drugInteractions.value = drug.drugInteractions || "";
     els.fields.miscellaneous.value = drug.miscellaneous || "";
   }
@@ -615,14 +615,14 @@
       targetDose: els.fields.targetDose.value.trim(),
       maximumDose: els.fields.maximumDose.value.trim(),
       lastReviewed: els.fields.lastReviewed.value || today,
-      pharmacokinetics: els.fields.pharmacokinetics.value.trim(),
+      mechanismOfActionAndReceptorProfile: els.fields.mechanismOfActionAndReceptorProfile.value.trim(),
       pharmacodynamics: els.fields.pharmacodynamics.value.trim(),
-      mechanismOfAction: els.fields.mechanismOfAction.value.trim(),
-      dosageAndTitration: els.fields.dosageAndTitration.value.trim(),
-      indication: els.fields.indication.value.trim(),
-      sideEffect: els.fields.sideEffect.value.trim(),
+      fdaApprovedAndOffLabelUses: els.fields.fdaApprovedAndOffLabelUses.value.trim(),
+      pharmacokineticsAndHalfLife: els.fields.pharmacokineticsAndHalfLife.value.trim(),
+      clinicalDosingOptimizationAndTargetDose: els.fields.clinicalDosingOptimizationAndTargetDose.value.trim(),
+      sideEffects: els.fields.sideEffects.value.trim(),
       fdaBlackBoxWarning: els.fields.fdaBlackBoxWarning.value.trim(),
-      specialPopulation: els.fields.specialPopulation.value.trim(),
+      prescribingInSpecialPopulations: els.fields.prescribingInSpecialPopulations.value.trim(),
       drugInteractions: els.fields.drugInteractions.value.trim(),
       miscellaneous: els.fields.miscellaneous.value.trim(),
       updatedAt: today
@@ -635,16 +635,16 @@
         drug.name,
         arrayFrom(drug.brands).join(" "),
         drug.classification,
-        drug.pharmacokinetics,
+        drug.mechanismOfActionAndReceptorProfile,
         drug.pharmacodynamics,
-        drug.mechanismOfAction,
-        drug.dosageAndTitration,
+        drug.fdaApprovedAndOffLabelUses,
+        drug.pharmacokineticsAndHalfLife,
+        drug.clinicalDosingOptimizationAndTargetDose,
         drug.targetDose,
         drug.maximumDose,
-        drug.indication,
-        drug.sideEffect,
+        drug.sideEffects,
         drug.fdaBlackBoxWarning,
-        drug.specialPopulation,
+        drug.prescribingInSpecialPopulations,
         drug.drugInteractions,
         drug.miscellaneous
       ].join(" ").toLowerCase();
@@ -669,14 +669,14 @@
       riskLevel: "standard",
       targetDose: "",
       maximumDose: "",
-      pharmacokinetics: "",
+      mechanismOfActionAndReceptorProfile: "",
       pharmacodynamics: "",
-      mechanismOfAction: "",
-      dosageAndTitration: "",
-      indication: "",
-      sideEffect: "",
+      fdaApprovedAndOffLabelUses: "",
+      pharmacokineticsAndHalfLife: "",
+      clinicalDosingOptimizationAndTargetDose: "",
+      sideEffects: "",
       fdaBlackBoxWarning: "",
-      specialPopulation: "",
+      prescribingInSpecialPopulations: "",
       drugInteractions: "",
       miscellaneous: "",
       updatedAt: today,
@@ -698,14 +698,14 @@
       riskLevel: ["standard", "watch", "high"].includes(drug.riskLevel) ? drug.riskLevel : "standard",
       targetDose: textField(drug.targetDose),
       maximumDose: textField(drug.maximumDose),
-      pharmacokinetics: textField(drug.pharmacokinetics),
+      mechanismOfActionAndReceptorProfile: textField(drug.mechanismOfActionAndReceptorProfile || drug.mechanismOfAction || drug.mechanism),
       pharmacodynamics: textField(drug.pharmacodynamics),
-      mechanismOfAction: textField(drug.mechanismOfAction || drug.mechanism),
-      dosageAndTitration: textField(drug.dosageAndTitration || joinLegacyDose(drug)),
-      indication: textField(drug.indication || drug.indications),
-      sideEffect: textField(drug.sideEffect || drug.sideEffects),
+      fdaApprovedAndOffLabelUses: textField(drug.fdaApprovedAndOffLabelUses || drug.indication || drug.indications),
+      pharmacokineticsAndHalfLife: textField(drug.pharmacokineticsAndHalfLife || drug.pharmacokinetics),
+      clinicalDosingOptimizationAndTargetDose: textField(drug.clinicalDosingOptimizationAndTargetDose || drug.dosageAndTitration || joinLegacyDose(drug)),
+      sideEffects: textField(drug.sideEffects || drug.sideEffect),
       fdaBlackBoxWarning: textField(drug.fdaBlackBoxWarning || drug.seriousWarnings),
-      specialPopulation: textField(drug.specialPopulation || drug.cautions),
+      prescribingInSpecialPopulations: textField(drug.prescribingInSpecialPopulations || drug.specialPopulation || drug.cautions),
       drugInteractions: textField(drug.drugInteractions || drug.interactions),
       miscellaneous: textField(drug.miscellaneous || drug.pearls),
       updatedAt: String(drug.updatedAt || today).slice(0, 10),
