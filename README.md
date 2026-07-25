@@ -86,7 +86,7 @@ Do not expose the secret/service-role key in browser JavaScript.
 
 ```text
 SUPABASE_URL
-SUPABASE_SERVICE_ROLE_KEY
+SUPABASE_SERVICE_ROLE_KEY or SUPABASE_SECRET_KEY
 ADMIN_PASSWORD
 SESSION_SECRET
 ```
@@ -105,7 +105,7 @@ To make GitHub push `server/data/drugs.json` into Supabase automatically:
 
 ```text
 SUPABASE_URL
-SUPABASE_SERVICE_ROLE_KEY
+SUPABASE_SERVICE_ROLE_KEY or SUPABASE_SECRET_KEY
 ```
 
 4. Edit `server/data/drugs.json` in GitHub or locally.
