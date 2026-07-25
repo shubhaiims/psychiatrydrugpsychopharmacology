@@ -32,6 +32,7 @@
       "Citalopram",
       "Clomipramine",
       "Desvenlafaxine",
+      "Dextromethorphan/Bupropion",
       "Duloxetine",
       "Escitalopram",
       "Esketamine",
