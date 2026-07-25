@@ -11,7 +11,7 @@ export function normalizeCollection(collection) {
 export function normalizeDrug(input = {}, options = {}) {
   const existingIds = options.existingIds || new Set();
   const name = cleanString(input.name);
-  const classification = cleanString(input.classification || input.className);
+  const classification = textField(input.classification || input.className);
 
   if (!name) {
     throw httpError(400, "Generic name is required.");
@@ -68,7 +68,7 @@ export function toArray(value) {
 
 export function textField(value) {
   if (Array.isArray(value)) {
-    return value.map((item) => cleanString(item)).filter(Boolean).join("\n");
+    return value.map((item) => String(item || "").trimEnd()).filter((item) => item.trim()).join("\n");
   }
   return cleanString(value);
 }
@@ -114,4 +114,3 @@ function uniqueId(base, existingIds) {
   }
   return candidate;
 }
-

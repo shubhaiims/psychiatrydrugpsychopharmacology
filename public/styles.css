@@ -419,6 +419,13 @@ textarea::placeholder {
   line-height: 1.55;
 }
 
+.section-subheading {
+  margin: 16px 0 8px;
+  color: var(--ink);
+  font-size: 0.98rem;
+  line-height: 1.25;
+}
+
 .info-section p {
   margin: 0;
 }
@@ -458,13 +465,22 @@ textarea::placeholder {
   line-height: 1.35;
 }
 
-.info-section ul {
-  margin: 0;
+.section-list {
+  margin: 0 0 10px;
   padding-left: 18px;
 }
 
-.info-section li + li {
+.section-list li + li {
   margin-top: 7px;
+}
+
+.section-list .indent-1 {
+  margin-left: 18px;
+}
+
+.section-list .indent-2,
+.section-list .indent-3 {
+  margin-left: 36px;
 }
 
 .empty-state {

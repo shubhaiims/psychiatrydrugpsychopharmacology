@@ -428,22 +428,66 @@
       <article class="info-section wide" id="${escapeAttr(sectionId)}">
         <h3>${escapeHtml(section.title)}</h3>
         ${doseRows}
-        ${renderParagraphs(drug[section.key])}
+        ${renderFormattedText(drug[section.key])}
       </article>
     `;
   }
 
-  function renderParagraphs(value) {
+  function renderFormattedText(value) {
     const lines = String(value || "")
-      .split(/\r?\n/)
-      .map((line) => line.trim())
-      .filter(Boolean);
+      .split(/\r?\n/);
 
-    if (!lines.length) {
+    if (!lines.some((line) => line.trim())) {
       return `<p>No information added yet.</p>`;
     }
 
-    return lines.map((line) => `<p>${escapeHtml(line)}</p>`).join("");
+    const html = [];
+    let listOpen = false;
+
+    for (const rawLine of lines) {
+      const trimmed = rawLine.trim();
+      if (!trimmed) {
+        if (listOpen) {
+          html.push("</ul>");
+          listOpen = false;
+        }
+        continue;
+      }
+
+      const heading = trimmed.match(/^(#{2,6})\s+(.+)$/);
+      if (heading) {
+        if (listOpen) {
+          html.push("</ul>");
+          listOpen = false;
+        }
+        const level = Math.min(heading[1].length + 2, 6);
+        html.push(`<h${level} class="section-subheading">${formatInline(heading[2])}</h${level}>`);
+        continue;
+      }
+
+      const bullet = rawLine.match(/^(\s*)\*\s+(.+)$/);
+      if (bullet) {
+        if (!listOpen) {
+          html.push(`<ul class="section-list">`);
+          listOpen = true;
+        }
+        const indent = Math.min(Math.floor(bullet[1].length / 2), 3);
+        html.push(`<li class="indent-${indent}">${formatInline(bullet[2])}</li>`);
+        continue;
+      }
+
+      if (listOpen) {
+        html.push("</ul>");
+        listOpen = false;
+      }
+      html.push(`<p>${formatInline(trimmed)}</p>`);
+    }
+
+    if (listOpen) {
+      html.push("</ul>");
+    }
+
+    return html.join("");
   }
 
   function renderEditorSelect() {
@@ -617,7 +661,7 @@
 
   function textField(value) {
     if (Array.isArray(value)) {
-      return value.map((item) => String(item).trim()).filter(Boolean).join("\n");
+      return value.map((item) => String(item || "").trimEnd()).filter((item) => item.trim()).join("\n");
     }
     return String(value || "").trim();
   }
@@ -640,6 +684,10 @@
 
   function tag(value) {
     return `<span class="tag">${escapeHtml(value)}</span>`;
+  }
+
+  function formatInline(value) {
+    return escapeHtml(value).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
   }
 
   function setStatus(message, danger = false) {
