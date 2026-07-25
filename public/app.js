@@ -24,8 +24,6 @@
     viewTabs: document.querySelectorAll(".view-tab"),
     drugNameSelect: document.querySelector("#drugNameSelect"),
     outlineSelect: document.querySelector("#outlineSelect"),
-    resultCount: document.querySelector("#resultCount"),
-    drugList: document.querySelector("#drugList"),
     drugDetail: document.querySelector("#drugDetail"),
     loginForm: document.querySelector("#loginForm"),
     adminPassword: document.querySelector("#adminPassword"),
@@ -85,7 +83,6 @@
 
     els.drugNameSelect.addEventListener("change", () => {
       selectedId = els.drugNameSelect.value;
-      renderLibrary();
       renderDetail();
       renderOutlineSelect();
       renderEditorSelect();
@@ -99,17 +96,6 @@
       if (section) {
         section.scrollIntoView({ behavior: "smooth", block: "start" });
       }
-    });
-
-    els.drugList.addEventListener("click", (event) => {
-      const card = event.target.closest("[data-drug-id]");
-      if (!card) return;
-      selectedId = card.dataset.drugId;
-      renderLibrary();
-      renderDetail();
-      renderOutlineSelect();
-      renderEditorSelect();
-      renderEditor();
     });
 
     els.loginForm.addEventListener("submit", async (event) => {
@@ -133,7 +119,6 @@
     els.editorDrugSelect.addEventListener("change", () => {
       selectedId = els.editorDrugSelect.value;
       renderEditor();
-      renderLibrary();
       renderDetail();
       renderOutlineSelect();
     });
@@ -336,7 +321,6 @@
     renderDrugNameSelect();
     renderOutlineSelect();
     renderSummary();
-    renderLibrary();
     renderDetail();
     renderEditorSelect();
     renderEditor();
@@ -389,47 +373,6 @@
       ...sections.map((section) => `<option value="${escapeAttr(section.key)}">${escapeHtml(section.title)}</option>`)
     ].join("");
     els.outlineSelect.value = "";
-  }
-
-  function renderLibrary() {
-    if (loading) {
-      els.resultCount.textContent = "Loading";
-      els.drugList.innerHTML = `<div class="empty-state">Loading drug records from the backend.</div>`;
-      return;
-    }
-
-    if (loadError) {
-      els.resultCount.textContent = "Unavailable";
-      els.drugList.innerHTML = `<div class="empty-state">Backend is not responding. Start the server and refresh this page.</div>`;
-      return;
-    }
-
-    els.resultCount.textContent = drugs.length === 1 ? "1 drug" : `${drugs.length} drugs`;
-
-    if (!drugs.length) {
-      els.drugList.innerHTML = `<div class="empty-state">No drug records yet. Send me the drug-wise information, or open Editor and add your first reviewed drug.</div>`;
-      return;
-    }
-
-    els.drugList.innerHTML = drugs.map(renderDrugCard).join("");
-  }
-
-  function renderDrugCard(drug) {
-    const active = drug.id === selectedId ? " is-active" : "";
-    return `
-      <button class="drug-card${active}" type="button" data-drug-id="${escapeAttr(drug.id)}">
-        <span class="drug-card-inner">
-          <span class="drug-title-row">
-            <span>
-              <strong>${escapeHtml(drug.name)}</strong>
-              <span class="brand-list">${escapeHtml(formatBrands(drug.brands))}</span>
-            </span>
-          </span>
-          <span class="drug-class">${escapeHtml(drug.classification || "No classification added")}</span>
-          <span class="drug-uses">${escapeHtml(previewText(drug.fdaApprovedAndOffLabelUses || drug.mechanismOfActionAndReceptorProfile))}</span>
-        </span>
-      </button>
-    `;
   }
 
   function renderDetail() {
@@ -677,11 +620,6 @@
       return value.map((item) => String(item).trim()).filter(Boolean).join("\n");
     }
     return String(value || "").trim();
-  }
-
-  function previewText(value) {
-    const text = textField(value);
-    return text.length > 130 ? `${text.slice(0, 127)}...` : text || "No section summary added yet";
   }
 
   function formatBrands(brands) {

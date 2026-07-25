@@ -264,7 +264,6 @@ h1 {
 
 .toolbar {
   padding: 16px;
-  border-bottom: 1px solid var(--line);
   background: #fbfcfc;
 }
 
@@ -307,18 +306,6 @@ textarea::placeholder {
   color: #8a9691;
 }
 
-.list-meta {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 10px 16px;
-  border-bottom: 1px solid var(--line);
-  color: var(--muted);
-  font-size: 0.9rem;
-  font-weight: 750;
-}
-
 .text-button {
   border: 0;
   background: transparent;
@@ -326,66 +313,11 @@ textarea::placeholder {
   font-weight: 800;
 }
 
-.drug-list {
-  display: grid;
-  gap: 10px;
-  padding: 14px;
-  overflow: auto;
-}
-
-.drug-card {
-  width: 100%;
-  min-height: 132px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: #ffffff;
-  color: inherit;
-  text-align: left;
-  transition:
-    border-color 160ms ease,
-    transform 160ms ease,
-    box-shadow 160ms ease;
-}
-
-.drug-card:hover {
-  border-color: var(--teal);
-  transform: translateY(-1px);
-}
-
-.drug-card.is-active {
-  border-color: var(--teal);
-  box-shadow: 0 0 0 2px rgba(15, 143, 131, 0.12);
-}
-
-.drug-card-inner {
-  display: grid;
-  gap: 10px;
-  padding: 14px;
-}
-
-.drug-title-row {
-  display: flex;
-  align-items: start;
-  justify-content: space-between;
-  gap: 10px;
-}
-
-.drug-title-row strong {
-  font-size: 1rem;
-  line-height: 1.2;
-}
-
 .brand-list,
-.drug-class,
-.drug-uses,
 .detail-subtitle {
   color: var(--muted);
   font-size: 0.9rem;
   line-height: 1.35;
-}
-
-.drug-class {
-  font-weight: 760;
 }
 
 .risk-pill,
@@ -699,9 +631,6 @@ button,
     max-height: none;
   }
 
-  .drug-list {
-    max-height: 470px;
-  }
 }
 
 @media (max-width: 760px) {
