@@ -23,10 +23,7 @@
     editorView: document.querySelector("#editorView"),
     viewTabs: document.querySelectorAll(".view-tab"),
     drugNameSelect: document.querySelector("#drugNameSelect"),
-    drugSearch: document.querySelector("#drugSearch"),
-    classFilter: document.querySelector("#classFilter"),
-    riskFilter: document.querySelector("#riskFilter"),
-    clearFilters: document.querySelector("#clearFilters"),
+    outlineSelect: document.querySelector("#outlineSelect"),
     resultCount: document.querySelector("#resultCount"),
     drugList: document.querySelector("#drugList"),
     drugDetail: document.querySelector("#drugDetail"),
@@ -74,11 +71,6 @@
   let loading = true;
   let loadError = "";
   let adminToken = sessionStorage.getItem(TOKEN_KEY) || "";
-  let filters = {
-    query: "",
-    classification: "all",
-    risk: "all"
-  };
 
   bindEvents();
   render();
@@ -95,29 +87,18 @@
       selectedId = els.drugNameSelect.value;
       renderLibrary();
       renderDetail();
+      renderOutlineSelect();
       renderEditorSelect();
       renderEditor();
     });
 
-    els.drugSearch.addEventListener("input", () => {
-      filters.query = els.drugSearch.value.trim().toLowerCase();
-      renderLibrary();
-    });
-
-    els.classFilter.addEventListener("change", () => {
-      filters.classification = els.classFilter.value;
-      renderLibrary();
-    });
-
-    els.riskFilter.addEventListener("change", () => {
-      filters.risk = els.riskFilter.value;
-      renderLibrary();
-    });
-
-    els.clearFilters.addEventListener("click", () => {
-      filters = { query: "", classification: "all", risk: "all" };
-      els.drugSearch.value = "";
-      render();
+    els.outlineSelect.addEventListener("change", () => {
+      const sectionKey = els.outlineSelect.value;
+      if (!sectionKey) return;
+      const section = document.getElementById(`section-${sectionKey}`);
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
     });
 
     els.drugList.addEventListener("click", (event) => {
@@ -126,6 +107,7 @@
       selectedId = card.dataset.drugId;
       renderLibrary();
       renderDetail();
+      renderOutlineSelect();
       renderEditorSelect();
       renderEditor();
     });
@@ -153,6 +135,7 @@
       renderEditor();
       renderLibrary();
       renderDetail();
+      renderOutlineSelect();
     });
 
     els.newDrugButton.addEventListener("click", () => {
@@ -350,8 +333,8 @@
   }
 
   function render() {
-    renderFilters();
     renderDrugNameSelect();
+    renderOutlineSelect();
     renderSummary();
     renderLibrary();
     renderDetail();
@@ -381,12 +364,6 @@
     return `<div class="metric"><strong>${escapeHtml(value)}</strong><span>${escapeHtml(label)}</span></div>`;
   }
 
-  function renderFilters() {
-    const classOptions = ["all", ...uniqueSorted(drugs.map((drug) => drug.classification))];
-    preserveSelect(els.classFilter, classOptions, filters.classification, "All classifications");
-    els.riskFilter.value = filters.risk;
-  }
-
   function renderDrugNameSelect() {
     if (!drugs.length) {
       els.drugNameSelect.innerHTML = `<option value="">No drugs added yet</option>`;
@@ -400,14 +377,18 @@
     els.drugNameSelect.value = selectedId || drugs[0].id;
   }
 
-  function preserveSelect(select, values, selected, allLabel) {
-    select.innerHTML = values
-      .map((value) => {
-        const label = value === "all" ? allLabel : value;
-        return `<option value="${escapeAttr(value)}">${escapeHtml(label)}</option>`;
-      })
-      .join("");
-    select.value = values.includes(selected) ? selected : "all";
+  function renderOutlineSelect() {
+    if (!drugs.length) {
+      els.outlineSelect.innerHTML = `<option value="">No outline available</option>`;
+      els.outlineSelect.value = "";
+      return;
+    }
+
+    els.outlineSelect.innerHTML = [
+      `<option value="">Jump to section</option>`,
+      ...sections.map((section) => `<option value="${escapeAttr(section.key)}">${escapeHtml(section.title)}</option>`)
+    ].join("");
+    els.outlineSelect.value = "";
   }
 
   function renderLibrary() {
@@ -423,20 +404,14 @@
       return;
     }
 
-    const results = getFilteredDrugs();
-    els.resultCount.textContent = results.length === 1 ? "1 drug" : `${results.length} drugs`;
+    els.resultCount.textContent = drugs.length === 1 ? "1 drug" : `${drugs.length} drugs`;
 
     if (!drugs.length) {
       els.drugList.innerHTML = `<div class="empty-state">No drug records yet. Send me the drug-wise information, or open Editor and add your first reviewed drug.</div>`;
       return;
     }
 
-    if (!results.length) {
-      els.drugList.innerHTML = `<div class="empty-state">No drug records match the current filters.</div>`;
-      return;
-    }
-
-    els.drugList.innerHTML = results.map(renderDrugCard).join("");
+    els.drugList.innerHTML = drugs.map(renderDrugCard).join("");
   }
 
   function renderDrugCard(drug) {
@@ -449,7 +424,6 @@
               <strong>${escapeHtml(drug.name)}</strong>
               <span class="brand-list">${escapeHtml(formatBrands(drug.brands))}</span>
             </span>
-            ${riskPill(drug.riskLevel)}
           </span>
           <span class="drug-class">${escapeHtml(drug.classification || "No classification added")}</span>
           <span class="drug-uses">${escapeHtml(previewText(drug.fdaApprovedAndOffLabelUses || drug.mechanismOfActionAndReceptorProfile))}</span>
@@ -483,7 +457,6 @@
             <h2 class="detail-title">${escapeHtml(drug.name)}</h2>
             <p class="detail-subtitle">${escapeHtml(formatBrands(drug.brands))}</p>
           </div>
-          ${riskPill(drug.riskLevel)}
         </div>
         <div class="tag-row">
           ${tag(`Target ${drug.targetDose || "not added"}`)}
@@ -492,21 +465,9 @@
           ${tag(`Updated ${formatDate(drug.updatedAt)}`)}
         </div>
       </div>
-      ${renderOutline()}
       <div class="detail-grid">
         ${sections.map((section) => renderSection(section, drug)).join("")}
       </div>
-    `;
-  }
-
-  function renderOutline() {
-    return `
-      <nav class="detail-outline" aria-label="Drug information outline">
-        <p>Outline</p>
-        <div>
-          ${sections.map((section) => `<a href="#section-${escapeAttr(section.key)}">${escapeHtml(section.title)}</a>`).join("")}
-        </div>
-      </nav>
     `;
   }
 
@@ -629,33 +590,6 @@
     });
   }
 
-  function getFilteredDrugs() {
-    return drugs.filter((drug) => {
-      const haystack = [
-        drug.name,
-        arrayFrom(drug.brands).join(" "),
-        drug.classification,
-        drug.mechanismOfActionAndReceptorProfile,
-        drug.pharmacodynamics,
-        drug.fdaApprovedAndOffLabelUses,
-        drug.pharmacokineticsAndHalfLife,
-        drug.clinicalDosingOptimizationAndTargetDose,
-        drug.targetDose,
-        drug.maximumDose,
-        drug.sideEffects,
-        drug.fdaBlackBoxWarning,
-        drug.prescribingInSpecialPopulations,
-        drug.drugInteractions,
-        drug.miscellaneous
-      ].join(" ").toLowerCase();
-
-      const queryMatch = !filters.query || haystack.includes(filters.query);
-      const classMatch = filters.classification === "all" || drug.classification === filters.classification;
-      const riskMatch = filters.risk === "all" || drug.riskLevel === filters.risk;
-      return queryMatch && classMatch && riskMatch;
-    });
-  }
-
   function getSelectedDrug() {
     return drugs.find((drug) => drug.id === selectedId) || drugs[0] || null;
   }
@@ -721,10 +655,6 @@
     return [...collection].sort((a, b) => a.name.localeCompare(b.name));
   }
 
-  function uniqueSorted(values) {
-    return [...new Set(values.filter(Boolean))].sort((a, b) => a.localeCompare(b));
-  }
-
   function arrayFrom(value) {
     if (Array.isArray(value)) {
       return value.map((item) => String(item).trim()).filter(Boolean);
@@ -768,12 +698,6 @@
       month: "short",
       day: "numeric"
     }).format(date);
-  }
-
-  function riskPill(level) {
-    const normalized = ["standard", "watch", "high"].includes(level) ? level : "standard";
-    const label = normalized === "high" ? "High" : normalized === "watch" ? "Watch" : "Standard";
-    return `<span class="risk-pill risk-${escapeAttr(normalized)}">${escapeHtml(label)}</span>`;
   }
 
   function tag(value) {

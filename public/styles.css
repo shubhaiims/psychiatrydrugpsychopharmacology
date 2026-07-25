@@ -269,7 +269,6 @@ h1 {
 }
 
 label span,
-.search-box span,
 .select-block span {
   display: block;
   margin-bottom: 7px;
@@ -306,13 +305,6 @@ textarea {
 input::placeholder,
 textarea::placeholder {
   color: #8a9691;
-}
-
-.filter-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
-  margin-top: 12px;
 }
 
 .list-meta {
@@ -468,42 +460,6 @@ textarea::placeholder {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
   padding: 16px;
-}
-
-.detail-outline {
-  padding: 14px 16px;
-  border-bottom: 1px solid var(--line);
-  background: #fbfcfc;
-}
-
-.detail-outline p {
-  margin: 0 0 10px;
-  color: var(--muted);
-  font-size: 0.78rem;
-  font-weight: 850;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.detail-outline div {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.detail-outline a {
-  min-height: 32px;
-  display: inline-flex;
-  align-items: center;
-  padding: 6px 10px;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  background: #ffffff;
-  color: var(--teal-dark);
-  font-size: 0.84rem;
-  font-weight: 800;
-  line-height: 1.15;
-  text-decoration: none;
 }
 
 .info-section {
@@ -768,7 +724,6 @@ button,
   .detail-grid,
   .form-grid,
   .form-grid.two-column,
-  .filter-grid,
   .dose-grid {
     grid-template-columns: 1fr;
   }
