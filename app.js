@@ -3,15 +3,28 @@
 
   const TOKEN_KEY = "psychrx.admin.token.v1";
   const today = new Date().toISOString().slice(0, 10);
+  const sections = [
+    { key: "classification", title: "Classification" },
+    { key: "pharmacokinetics", title: "Pharmacokinetics" },
+    { key: "pharmacodynamics", title: "Pharmacodynamics" },
+    { key: "mechanismOfAction", title: "Mechanism of Action" },
+    { key: "dosageAndTitration", title: "Dosage and Titration" },
+    { key: "indication", title: "Indication" },
+    { key: "sideEffect", title: "Side Effect" },
+    { key: "fdaBlackBoxWarning", title: "FDA Black Box Warning" },
+    { key: "specialPopulation", title: "Special Population Including Organ Impairment" },
+    { key: "drugInteractions", title: "Drug Interactions" },
+    { key: "miscellaneous", title: "Miscellaneous" }
+  ];
 
   const els = {
     summaryMetrics: document.querySelector("#summaryMetrics"),
     libraryView: document.querySelector("#libraryView"),
     editorView: document.querySelector("#editorView"),
     viewTabs: document.querySelectorAll(".view-tab"),
+    drugNameSelect: document.querySelector("#drugNameSelect"),
     drugSearch: document.querySelector("#drugSearch"),
     classFilter: document.querySelector("#classFilter"),
-    areaFilter: document.querySelector("#areaFilter"),
     riskFilter: document.querySelector("#riskFilter"),
     clearFilters: document.querySelector("#clearFilters"),
     resultCount: document.querySelector("#resultCount"),
@@ -37,22 +50,21 @@
     fields: {
       name: document.querySelector("#fieldName"),
       brands: document.querySelector("#fieldBrands"),
-      className: document.querySelector("#fieldClass"),
+      classification: document.querySelector("#fieldClassification"),
       riskLevel: document.querySelector("#fieldRisk"),
-      therapeuticAreas: document.querySelector("#fieldAreas"),
+      targetDose: document.querySelector("#fieldTargetDose"),
+      maximumDose: document.querySelector("#fieldMaximumDose"),
       lastReviewed: document.querySelector("#fieldReviewed"),
-      indications: document.querySelector("#fieldIndications"),
-      mechanism: document.querySelector("#fieldMechanism"),
-      adultDose: document.querySelector("#fieldDose"),
-      titration: document.querySelector("#fieldTitration"),
-      sideEffects: document.querySelector("#fieldSideEffects"),
-      seriousWarnings: document.querySelector("#fieldWarnings"),
-      monitoring: document.querySelector("#fieldMonitoring"),
-      interactions: document.querySelector("#fieldInteractions"),
-      cautions: document.querySelector("#fieldCautions"),
-      counseling: document.querySelector("#fieldCounseling"),
-      pearls: document.querySelector("#fieldPearls"),
-      updateNotes: document.querySelector("#fieldUpdates")
+      pharmacokinetics: document.querySelector("#fieldPharmacokinetics"),
+      pharmacodynamics: document.querySelector("#fieldPharmacodynamics"),
+      mechanismOfAction: document.querySelector("#fieldMechanismOfAction"),
+      dosageAndTitration: document.querySelector("#fieldDosageAndTitration"),
+      indication: document.querySelector("#fieldIndication"),
+      sideEffect: document.querySelector("#fieldSideEffect"),
+      fdaBlackBoxWarning: document.querySelector("#fieldFdaBlackBoxWarning"),
+      specialPopulation: document.querySelector("#fieldSpecialPopulation"),
+      drugInteractions: document.querySelector("#fieldDrugInteractions"),
+      miscellaneous: document.querySelector("#fieldMiscellaneous")
     }
   };
 
@@ -64,8 +76,7 @@
   let adminToken = sessionStorage.getItem(TOKEN_KEY) || "";
   let filters = {
     query: "",
-    className: "all",
-    area: "all",
+    classification: "all",
     risk: "all"
   };
 
@@ -80,18 +91,21 @@
       });
     });
 
+    els.drugNameSelect.addEventListener("change", () => {
+      selectedId = els.drugNameSelect.value;
+      renderLibrary();
+      renderDetail();
+      renderEditorSelect();
+      renderEditor();
+    });
+
     els.drugSearch.addEventListener("input", () => {
       filters.query = els.drugSearch.value.trim().toLowerCase();
       renderLibrary();
     });
 
     els.classFilter.addEventListener("change", () => {
-      filters.className = els.classFilter.value;
-      renderLibrary();
-    });
-
-    els.areaFilter.addEventListener("change", () => {
-      filters.area = els.areaFilter.value;
+      filters.classification = els.classFilter.value;
       renderLibrary();
     });
 
@@ -101,7 +115,7 @@
     });
 
     els.clearFilters.addEventListener("click", () => {
-      filters = { query: "", className: "all", area: "all", risk: "all" };
+      filters = { query: "", classification: "all", risk: "all" };
       els.drugSearch.value = "";
       render();
     });
@@ -160,7 +174,6 @@
       clone.name = `${clone.name} Copy`;
       clone.updatedAt = today;
       clone.lastReviewed = today;
-      clone.updateNotes = [`Duplicated from ${current.name} on ${today}.`];
       await saveDrug(clone, false);
     });
 
@@ -190,8 +203,8 @@
       event.preventDefault();
       if (!requireEditor()) return;
       const record = formToDrug();
-      if (!record.name || !record.className) {
-        setStatus("Generic name and class are required.", true);
+      if (!record.name || !record.classification) {
+        setStatus("Generic name and classification are required.", true);
         return;
       }
       await saveDrug(record, Boolean(record.id));
@@ -338,6 +351,7 @@
 
   function render() {
     renderFilters();
+    renderDrugNameSelect();
     renderSummary();
     renderLibrary();
     renderDetail();
@@ -348,8 +362,8 @@
   }
 
   function renderSummary() {
-    const classes = new Set(drugs.map((drug) => drug.className).filter(Boolean));
-    const highRisk = drugs.filter((drug) => drug.riskLevel === "high").length;
+    const classifications = new Set(drugs.map((drug) => drug.classification).filter(Boolean));
+    const blackBoxCount = drugs.filter((drug) => drug.fdaBlackBoxWarning.trim()).length;
     const lastUpdate = drugs.reduce((latest, drug) => {
       if (!drug.updatedAt) return latest;
       return !latest || drug.updatedAt > latest ? drug.updatedAt : latest;
@@ -357,8 +371,8 @@
 
     els.summaryMetrics.innerHTML = [
       metric(drugs.length, "Drug records"),
-      metric(classes.size, "Medication classes"),
-      metric(highRisk, "High monitoring drugs"),
+      metric(classifications.size, "Classifications"),
+      metric(blackBoxCount, "Black box entries"),
       metric(lastUpdate ? formatDate(lastUpdate) : "None", "Latest update")
     ].join("");
   }
@@ -368,12 +382,22 @@
   }
 
   function renderFilters() {
-    const classOptions = ["all", ...uniqueSorted(drugs.map((drug) => drug.className))];
-    const areaOptions = ["all", ...uniqueSorted(drugs.flatMap((drug) => drug.therapeuticAreas || []))];
-
-    preserveSelect(els.classFilter, classOptions, filters.className, "All classes");
-    preserveSelect(els.areaFilter, areaOptions, filters.area, "All areas");
+    const classOptions = ["all", ...uniqueSorted(drugs.map((drug) => drug.classification))];
+    preserveSelect(els.classFilter, classOptions, filters.classification, "All classifications");
     els.riskFilter.value = filters.risk;
+  }
+
+  function renderDrugNameSelect() {
+    if (!drugs.length) {
+      els.drugNameSelect.innerHTML = `<option value="">No drugs added yet</option>`;
+      els.drugNameSelect.value = "";
+      return;
+    }
+
+    els.drugNameSelect.innerHTML = drugs
+      .map((drug) => `<option value="${escapeAttr(drug.id)}">${escapeHtml(drug.name)}</option>`)
+      .join("");
+    els.drugNameSelect.value = selectedId || drugs[0].id;
   }
 
   function preserveSelect(select, values, selected, allLabel) {
@@ -400,21 +424,16 @@
     }
 
     const results = getFilteredDrugs();
-    const label = results.length === 1 ? "1 drug" : `${results.length} drugs`;
-    els.resultCount.textContent = label;
+    els.resultCount.textContent = results.length === 1 ? "1 drug" : `${results.length} drugs`;
 
     if (!drugs.length) {
-      els.drugList.innerHTML = `<div class="empty-state">No drug records yet. Open Editor, unlock it, and add your first reviewed drug.</div>`;
+      els.drugList.innerHTML = `<div class="empty-state">No drug records yet. Send me the drug-wise information, or open Editor and add your first reviewed drug.</div>`;
       return;
     }
 
     if (!results.length) {
       els.drugList.innerHTML = `<div class="empty-state">No drug records match the current filters.</div>`;
       return;
-    }
-
-    if (!results.some((drug) => drug.id === selectedId)) {
-      selectedId = results[0].id;
     }
 
     els.drugList.innerHTML = results.map(renderDrugCard).join("");
@@ -432,9 +451,8 @@
             </span>
             ${riskPill(drug.riskLevel)}
           </span>
-          <span class="drug-class">${escapeHtml(drug.className)}</span>
-          <span class="drug-uses">${escapeHtml((drug.therapeuticAreas || []).slice(0, 4).join(", "))}</span>
-          <span class="tag-row">${(drug.therapeuticAreas || []).slice(0, 3).map(tag).join("")}</span>
+          <span class="drug-class">${escapeHtml(drug.classification || "No classification added")}</span>
+          <span class="drug-uses">${escapeHtml(previewText(drug.indication || drug.mechanismOfAction))}</span>
         </span>
       </button>
     `;
@@ -453,7 +471,7 @@
     }
 
     if (!drug) {
-      els.drugDetail.innerHTML = `<div class="empty-state">No drug selected. Add your first drug from the editor.</div>`;
+      els.drugDetail.innerHTML = `<div class="empty-state">Choose a drug from the dropdown after records are added.</div>`;
       return;
     }
 
@@ -461,54 +479,67 @@
       <div class="detail-hero">
         <div class="detail-hero-top">
           <div>
-            <p class="eyebrow">${escapeHtml(drug.className)}</p>
+            <p class="eyebrow">${escapeHtml(drug.classification)}</p>
             <h2 class="detail-title">${escapeHtml(drug.name)}</h2>
             <p class="detail-subtitle">${escapeHtml(formatBrands(drug.brands))}</p>
           </div>
           ${riskPill(drug.riskLevel)}
         </div>
         <div class="tag-row">
-          ${(drug.therapeuticAreas || []).map(tag).join("")}
+          ${tag(`Target ${drug.targetDose || "not added"}`)}
+          ${tag(`Maximum ${drug.maximumDose || "not added"}`)}
           ${tag(`Reviewed ${formatDate(drug.lastReviewed)}`)}
           ${tag(`Updated ${formatDate(drug.updatedAt)}`)}
         </div>
       </div>
+      ${renderOutline()}
       <div class="detail-grid">
-        ${infoText("Indications", drug.indications)}
-        ${infoText("Mechanism", drug.mechanism)}
-        ${infoText("Adult Dosing Notes", drug.adultDose)}
-        ${infoText("Titration", drug.titration)}
-        ${infoList("Common Adverse Effects", drug.sideEffects)}
-        ${infoList("Serious Warnings", drug.seriousWarnings)}
-        ${infoList("Monitoring", drug.monitoring)}
-        ${infoList("Interactions", drug.interactions)}
-        ${infoList("Cautions", drug.cautions)}
-        ${infoList("Patient Counseling", drug.counseling)}
-        ${infoList("Clinical Pearls", drug.pearls, true)}
-        ${infoList("Update Notes", drug.updateNotes, true)}
+        ${sections.map((section) => renderSection(section, drug)).join("")}
       </div>
     `;
   }
 
-  function infoText(title, text) {
+  function renderOutline() {
     return `
-      <article class="info-section">
-        <h3>${escapeHtml(title)}</h3>
-        <p>${escapeHtml(text || "No information added yet.")}</p>
+      <nav class="detail-outline" aria-label="Drug information outline">
+        <p>Outline</p>
+        <div>
+          ${sections.map((section) => `<a href="#section-${escapeAttr(section.key)}">${escapeHtml(section.title)}</a>`).join("")}
+        </div>
+      </nav>
+    `;
+  }
+
+  function renderSection(section, drug) {
+    const sectionId = `section-${section.key}`;
+    const doseRows = section.key === "dosageAndTitration"
+      ? `
+          <div class="dose-grid">
+            <div><strong>Target dose</strong><span>${escapeHtml(drug.targetDose || "Not added")}</span></div>
+            <div><strong>Maximum dose</strong><span>${escapeHtml(drug.maximumDose || "Not added")}</span></div>
+          </div>
+        `
+      : "";
+    return `
+      <article class="info-section wide" id="${escapeAttr(sectionId)}">
+        <h3>${escapeHtml(section.title)}</h3>
+        ${doseRows}
+        ${renderParagraphs(drug[section.key])}
       </article>
     `;
   }
 
-  function infoList(title, items, wide = false) {
-    const content = arrayFrom(items).length
-      ? `<ul>${arrayFrom(items).map((item) => `<li>${escapeHtml(item)}</li>`).join("")}</ul>`
-      : `<p>No information added yet.</p>`;
-    return `
-      <article class="info-section${wide ? " wide" : ""}">
-        <h3>${escapeHtml(title)}</h3>
-        ${content}
-      </article>
-    `;
+  function renderParagraphs(value) {
+    const lines = String(value || "")
+      .split(/\r?\n/)
+      .map((line) => line.trim())
+      .filter(Boolean);
+
+    if (!lines.length) {
+      return `<p>No information added yet.</p>`;
+    }
+
+    return lines.map((line) => `<p>${escapeHtml(line)}</p>`).join("");
   }
 
   function renderEditorSelect() {
@@ -533,8 +564,7 @@
 
   function renderEditorLock() {
     const unlocked = Boolean(adminToken);
-    const formControls = Object.values(els.fields);
-    formControls.forEach((control) => {
+    Object.values(els.fields).forEach((control) => {
       control.disabled = !unlocked;
     });
     [
@@ -558,22 +588,21 @@
     els.editorHeading.textContent = drug.id ? `Edit ${drug.name}` : "Create drug";
     els.fields.name.value = drug.name || "";
     els.fields.brands.value = arrayFrom(drug.brands).join(", ");
-    els.fields.className.value = drug.className || "";
+    els.fields.classification.value = drug.classification || "";
     els.fields.riskLevel.value = drug.riskLevel || "standard";
-    els.fields.therapeuticAreas.value = arrayFrom(drug.therapeuticAreas).join(", ");
+    els.fields.targetDose.value = drug.targetDose || "";
+    els.fields.maximumDose.value = drug.maximumDose || "";
     els.fields.lastReviewed.value = drug.lastReviewed || today;
-    els.fields.indications.value = drug.indications || "";
-    els.fields.mechanism.value = drug.mechanism || "";
-    els.fields.adultDose.value = drug.adultDose || "";
-    els.fields.titration.value = drug.titration || "";
-    els.fields.sideEffects.value = arrayFrom(drug.sideEffects).join("\n");
-    els.fields.seriousWarnings.value = arrayFrom(drug.seriousWarnings).join("\n");
-    els.fields.monitoring.value = arrayFrom(drug.monitoring).join("\n");
-    els.fields.interactions.value = arrayFrom(drug.interactions).join("\n");
-    els.fields.cautions.value = arrayFrom(drug.cautions).join("\n");
-    els.fields.counseling.value = arrayFrom(drug.counseling).join("\n");
-    els.fields.pearls.value = arrayFrom(drug.pearls).join("\n");
-    els.fields.updateNotes.value = arrayFrom(drug.updateNotes).join("\n");
+    els.fields.pharmacokinetics.value = drug.pharmacokinetics || "";
+    els.fields.pharmacodynamics.value = drug.pharmacodynamics || "";
+    els.fields.mechanismOfAction.value = drug.mechanismOfAction || "";
+    els.fields.dosageAndTitration.value = drug.dosageAndTitration || "";
+    els.fields.indication.value = drug.indication || "";
+    els.fields.sideEffect.value = drug.sideEffect || "";
+    els.fields.fdaBlackBoxWarning.value = drug.fdaBlackBoxWarning || "";
+    els.fields.specialPopulation.value = drug.specialPopulation || "";
+    els.fields.drugInteractions.value = drug.drugInteractions || "";
+    els.fields.miscellaneous.value = drug.miscellaneous || "";
   }
 
   function formToDrug() {
@@ -581,23 +610,22 @@
       id: els.editDrugId.value,
       name: els.fields.name.value.trim(),
       brands: splitComma(els.fields.brands.value),
-      className: els.fields.className.value.trim(),
+      classification: els.fields.classification.value.trim(),
       riskLevel: els.fields.riskLevel.value,
-      therapeuticAreas: splitComma(els.fields.therapeuticAreas.value),
-      indications: els.fields.indications.value.trim(),
-      mechanism: els.fields.mechanism.value.trim(),
-      adultDose: els.fields.adultDose.value.trim(),
-      titration: els.fields.titration.value.trim(),
-      sideEffects: splitLines(els.fields.sideEffects.value),
-      seriousWarnings: splitLines(els.fields.seriousWarnings.value),
-      monitoring: splitLines(els.fields.monitoring.value),
-      interactions: splitLines(els.fields.interactions.value),
-      cautions: splitLines(els.fields.cautions.value),
-      counseling: splitLines(els.fields.counseling.value),
-      pearls: splitLines(els.fields.pearls.value),
-      updatedAt: today,
+      targetDose: els.fields.targetDose.value.trim(),
+      maximumDose: els.fields.maximumDose.value.trim(),
       lastReviewed: els.fields.lastReviewed.value || today,
-      updateNotes: splitLines(els.fields.updateNotes.value)
+      pharmacokinetics: els.fields.pharmacokinetics.value.trim(),
+      pharmacodynamics: els.fields.pharmacodynamics.value.trim(),
+      mechanismOfAction: els.fields.mechanismOfAction.value.trim(),
+      dosageAndTitration: els.fields.dosageAndTitration.value.trim(),
+      indication: els.fields.indication.value.trim(),
+      sideEffect: els.fields.sideEffect.value.trim(),
+      fdaBlackBoxWarning: els.fields.fdaBlackBoxWarning.value.trim(),
+      specialPopulation: els.fields.specialPopulation.value.trim(),
+      drugInteractions: els.fields.drugInteractions.value.trim(),
+      miscellaneous: els.fields.miscellaneous.value.trim(),
+      updatedAt: today
     });
   }
 
@@ -606,28 +634,25 @@
       const haystack = [
         drug.name,
         arrayFrom(drug.brands).join(" "),
-        drug.className,
-        arrayFrom(drug.therapeuticAreas).join(" "),
-        drug.indications,
-        drug.mechanism,
-        drug.adultDose,
-        drug.titration,
-        arrayFrom(drug.sideEffects).join(" "),
-        arrayFrom(drug.seriousWarnings).join(" "),
-        arrayFrom(drug.monitoring).join(" "),
-        arrayFrom(drug.interactions).join(" "),
-        arrayFrom(drug.cautions).join(" "),
-        arrayFrom(drug.counseling).join(" "),
-        arrayFrom(drug.pearls).join(" ")
-      ]
-        .join(" ")
-        .toLowerCase();
+        drug.classification,
+        drug.pharmacokinetics,
+        drug.pharmacodynamics,
+        drug.mechanismOfAction,
+        drug.dosageAndTitration,
+        drug.targetDose,
+        drug.maximumDose,
+        drug.indication,
+        drug.sideEffect,
+        drug.fdaBlackBoxWarning,
+        drug.specialPopulation,
+        drug.drugInteractions,
+        drug.miscellaneous
+      ].join(" ").toLowerCase();
 
       const queryMatch = !filters.query || haystack.includes(filters.query);
-      const classMatch = filters.className === "all" || drug.className === filters.className;
-      const areaMatch = filters.area === "all" || arrayFrom(drug.therapeuticAreas).includes(filters.area);
+      const classMatch = filters.classification === "all" || drug.classification === filters.classification;
       const riskMatch = filters.risk === "all" || drug.riskLevel === filters.risk;
-      return queryMatch && classMatch && areaMatch && riskMatch;
+      return queryMatch && classMatch && riskMatch;
     });
   }
 
@@ -640,23 +665,22 @@
       id: "",
       name: "",
       brands: [],
-      className: "",
+      classification: "",
       riskLevel: "standard",
-      therapeuticAreas: [],
-      indications: "",
-      mechanism: "",
-      adultDose: "",
-      titration: "",
-      sideEffects: [],
-      seriousWarnings: [],
-      monitoring: [],
-      interactions: [],
-      cautions: [],
-      counseling: [],
-      pearls: [],
+      targetDose: "",
+      maximumDose: "",
+      pharmacokinetics: "",
+      pharmacodynamics: "",
+      mechanismOfAction: "",
+      dosageAndTitration: "",
+      indication: "",
+      sideEffect: "",
+      fdaBlackBoxWarning: "",
+      specialPopulation: "",
+      drugInteractions: "",
+      miscellaneous: "",
       updatedAt: today,
-      lastReviewed: today,
-      updateNotes: []
+      lastReviewed: today
     };
   }
 
@@ -670,24 +694,27 @@
       id: String(drug.id || "").trim(),
       name: String(drug.name || "").trim(),
       brands: arrayFrom(drug.brands),
-      className: String(drug.className || "").trim(),
+      classification: textField(drug.classification || drug.className),
       riskLevel: ["standard", "watch", "high"].includes(drug.riskLevel) ? drug.riskLevel : "standard",
-      therapeuticAreas: arrayFrom(drug.therapeuticAreas),
-      indications: String(drug.indications || "").trim(),
-      mechanism: String(drug.mechanism || "").trim(),
-      adultDose: String(drug.adultDose || "").trim(),
-      titration: String(drug.titration || "").trim(),
-      sideEffects: arrayFrom(drug.sideEffects),
-      seriousWarnings: arrayFrom(drug.seriousWarnings),
-      monitoring: arrayFrom(drug.monitoring),
-      interactions: arrayFrom(drug.interactions),
-      cautions: arrayFrom(drug.cautions),
-      counseling: arrayFrom(drug.counseling),
-      pearls: arrayFrom(drug.pearls),
+      targetDose: textField(drug.targetDose),
+      maximumDose: textField(drug.maximumDose),
+      pharmacokinetics: textField(drug.pharmacokinetics),
+      pharmacodynamics: textField(drug.pharmacodynamics),
+      mechanismOfAction: textField(drug.mechanismOfAction || drug.mechanism),
+      dosageAndTitration: textField(drug.dosageAndTitration || joinLegacyDose(drug)),
+      indication: textField(drug.indication || drug.indications),
+      sideEffect: textField(drug.sideEffect || drug.sideEffects),
+      fdaBlackBoxWarning: textField(drug.fdaBlackBoxWarning || drug.seriousWarnings),
+      specialPopulation: textField(drug.specialPopulation || drug.cautions),
+      drugInteractions: textField(drug.drugInteractions || drug.interactions),
+      miscellaneous: textField(drug.miscellaneous || drug.pearls),
       updatedAt: String(drug.updatedAt || today).slice(0, 10),
-      lastReviewed: String(drug.lastReviewed || today).slice(0, 10),
-      updateNotes: arrayFrom(drug.updateNotes)
+      lastReviewed: String(drug.lastReviewed || today).slice(0, 10)
     };
+  }
+
+  function joinLegacyDose(drug) {
+    return [drug.adultDose, drug.titration].map(textField).filter(Boolean).join("\n");
   }
 
   function sortDrugs(collection) {
@@ -703,7 +730,7 @@
       return value.map((item) => String(item).trim()).filter(Boolean);
     }
     if (typeof value === "string" && value.trim()) {
-      return [value.trim()];
+      return value.split(",").map((item) => item.trim()).filter(Boolean);
     }
     return [];
   }
@@ -715,11 +742,16 @@
       .filter(Boolean);
   }
 
-  function splitLines(value) {
-    return String(value || "")
-      .split(/\r?\n/)
-      .map((item) => item.trim())
-      .filter(Boolean);
+  function textField(value) {
+    if (Array.isArray(value)) {
+      return value.map((item) => String(item).trim()).filter(Boolean).join("\n");
+    }
+    return String(value || "").trim();
+  }
+
+  function previewText(value) {
+    const text = textField(value);
+    return text.length > 130 ? `${text.slice(0, 127)}...` : text || "No section summary added yet";
   }
 
   function formatBrands(brands) {
@@ -820,4 +852,3 @@
     return escapeHtml(value);
   }
 })();
-

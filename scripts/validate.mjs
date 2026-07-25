@@ -12,7 +12,7 @@ if (!Array.isArray(drugs)) {
   throw new Error("server/data/drugs.json must contain a JSON array.");
 }
 
-const requiredFields = ["id", "name", "className", "riskLevel", "therapeuticAreas"];
+const requiredFields = ["id", "name", "classification", "riskLevel"];
 const ids = new Set();
 
 for (const drug of drugs) {

@@ -30,7 +30,7 @@
         <section class="summary-band" aria-label="Library summary">
           <div class="summary-copy">
             <p class="eyebrow">Backend managed reference</p>
-            <h1>Browse psychiatry drugs, open details, and update records from your own admin panel.</h1>
+            <h1>Select a psychiatry drug and jump straight to the exact pharmacology section you need.</h1>
           </div>
           <div class="summary-metrics" id="summaryMetrics" aria-live="polite"></div>
         </section>
@@ -38,19 +38,20 @@
         <section class="workspace" id="libraryView">
           <aside class="library-panel" aria-label="Drug library">
             <div class="toolbar">
+              <label class="select-block" for="drugNameSelect">
+                <span>Choose drug</span>
+                <select id="drugNameSelect"></select>
+              </label>
+
               <label class="search-box" for="drugSearch">
                 <span>Search</span>
-                <input id="drugSearch" type="search" placeholder="Name, brand, warning, use" autocomplete="off" />
+                <input id="drugSearch" type="search" placeholder="Search inside all drug sections" autocomplete="off" />
               </label>
 
               <div class="filter-grid">
                 <label>
-                  <span>Class</span>
+                  <span>Classification</span>
                   <select id="classFilter"></select>
-                </label>
-                <label>
-                  <span>Area</span>
-                  <select id="areaFilter"></select>
                 </label>
                 <label>
                   <span>Monitoring</span>
@@ -132,8 +133,8 @@
                 <input id="fieldBrands" placeholder="Separate with commas" />
               </label>
               <label>
-                <span>Class</span>
-                <input id="fieldClass" required />
+                <span>Classification</span>
+                <input id="fieldClassification" required />
               </label>
               <label>
                 <span>Monitoring intensity</span>
@@ -144,8 +145,12 @@
                 </select>
               </label>
               <label>
-                <span>Therapeutic areas</span>
-                <input id="fieldAreas" placeholder="Depression, Anxiety" />
+                <span>Target dose</span>
+                <input id="fieldTargetDose" placeholder="Example: 10-20 mg/day" />
+              </label>
+              <label>
+                <span>Maximum dose</span>
+                <input id="fieldMaximumDose" placeholder="Example: 40 mg/day" />
               </label>
               <label>
                 <span>Last reviewed</span>
@@ -155,55 +160,47 @@
 
             <div class="form-grid two-column">
               <label>
-                <span>Indications</span>
-                <textarea id="fieldIndications" rows="4"></textarea>
+                <span>Pharmacokinetics</span>
+                <textarea id="fieldPharmacokinetics" rows="5"></textarea>
               </label>
               <label>
-                <span>Mechanism</span>
-                <textarea id="fieldMechanism" rows="4"></textarea>
+                <span>Pharmacodynamics</span>
+                <textarea id="fieldPharmacodynamics" rows="5"></textarea>
               </label>
               <label>
-                <span>Adult dosing notes</span>
-                <textarea id="fieldDose" rows="4"></textarea>
+                <span>Mechanism of action</span>
+                <textarea id="fieldMechanismOfAction" rows="5"></textarea>
               </label>
               <label>
-                <span>Titration notes</span>
-                <textarea id="fieldTitration" rows="4"></textarea>
+                <span>Dosage and titration</span>
+                <textarea id="fieldDosageAndTitration" rows="5"></textarea>
               </label>
             </div>
 
             <div class="form-grid two-column">
               <label>
-                <span>Common adverse effects</span>
-                <textarea id="fieldSideEffects" rows="5" placeholder="One per line"></textarea>
+                <span>Indication</span>
+                <textarea id="fieldIndication" rows="5"></textarea>
               </label>
               <label>
-                <span>Serious warnings</span>
-                <textarea id="fieldWarnings" rows="5" placeholder="One per line"></textarea>
+                <span>Side effect</span>
+                <textarea id="fieldSideEffect" rows="5"></textarea>
               </label>
               <label>
-                <span>Monitoring</span>
-                <textarea id="fieldMonitoring" rows="5" placeholder="One per line"></textarea>
+                <span>FDA black box warning</span>
+                <textarea id="fieldFdaBlackBoxWarning" rows="5"></textarea>
               </label>
               <label>
-                <span>Interactions</span>
-                <textarea id="fieldInteractions" rows="5" placeholder="One per line"></textarea>
+                <span>Special population including organ impairment</span>
+                <textarea id="fieldSpecialPopulation" rows="5"></textarea>
               </label>
               <label>
-                <span>Cautions</span>
-                <textarea id="fieldCautions" rows="5" placeholder="One per line"></textarea>
+                <span>Drug interactions</span>
+                <textarea id="fieldDrugInteractions" rows="5"></textarea>
               </label>
               <label>
-                <span>Patient counseling</span>
-                <textarea id="fieldCounseling" rows="5" placeholder="One per line"></textarea>
-              </label>
-              <label>
-                <span>Clinical pearls</span>
-                <textarea id="fieldPearls" rows="5" placeholder="One per line"></textarea>
-              </label>
-              <label>
-                <span>Update notes</span>
-                <textarea id="fieldUpdates" rows="5" placeholder="One per line"></textarea>
+                <span>Miscellaneous</span>
+                <textarea id="fieldMiscellaneous" rows="5"></textarea>
               </label>
             </div>
           </form>
@@ -218,4 +215,3 @@
     <script src="app.js"></script>
   </body>
 </html>
-

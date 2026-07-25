@@ -7,11 +7,28 @@ No drug records are included by default. Add records only through the admin edit
 ## Features
 
 - Public drug dashboard with search and filters
-- Drug detail page for indications, mechanism, dose notes, warnings, monitoring, interactions, counseling, and update notes
+- Drug-name dropdown for quickly choosing a medication
+- Drug detail page with a clickable outline for jumping between sections
 - Backend API for drug records
 - Admin password protected editor
 - Add, edit, duplicate, delete, import, export, and clear records
 - JSON database file for simple self-hosting
+
+## Drug Record Sections
+
+Each drug record is organized under these headings:
+
+- Classification
+- Pharmacokinetics
+- Pharmacodynamics
+- Mechanism of Action
+- Dosage and Titration, including target dose and maximum dose
+- Indication
+- Side Effect
+- FDA Black Box Warning
+- Special Population Including Organ Impairment
+- Drug Interactions
+- Miscellaneous
 
 ## Local Setup
 
@@ -79,4 +96,3 @@ npm start
 ## Clinical Safety
 
 This is an educational reference system. Verify all drug information against current prescribing information, institutional protocols, local laws, and clinical judgment before publishing or using it.
-

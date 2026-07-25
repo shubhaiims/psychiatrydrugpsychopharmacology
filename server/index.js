@@ -193,13 +193,13 @@ function normalizeCollection(collection) {
 function normalizeDrug(input, options = {}) {
   const existingIds = options.existingIds || new Set();
   const name = cleanString(input.name);
-  const className = cleanString(input.className);
+  const classification = cleanString(input.classification || input.className);
 
   if (!name) {
     throw httpError(400, "Generic name is required.");
   }
-  if (!className) {
-    throw httpError(400, "Drug class is required.");
+  if (!classification) {
+    throw httpError(400, "Classification is required.");
   }
 
   const requestedId = cleanString(options.preserveId || input.id || slugify(name));
@@ -209,23 +209,22 @@ function normalizeDrug(input, options = {}) {
     id,
     name,
     brands: toArray(input.brands),
-    className,
+    classification,
     riskLevel: ["standard", "watch", "high"].includes(input.riskLevel) ? input.riskLevel : "standard",
-    therapeuticAreas: toArray(input.therapeuticAreas),
-    indications: cleanString(input.indications),
-    mechanism: cleanString(input.mechanism),
-    adultDose: cleanString(input.adultDose),
-    titration: cleanString(input.titration),
-    sideEffects: toArray(input.sideEffects),
-    seriousWarnings: toArray(input.seriousWarnings),
-    monitoring: toArray(input.monitoring),
-    interactions: toArray(input.interactions),
-    cautions: toArray(input.cautions),
-    counseling: toArray(input.counseling),
-    pearls: toArray(input.pearls),
+    targetDose: cleanString(input.targetDose),
+    maximumDose: cleanString(input.maximumDose),
+    pharmacokinetics: textField(input.pharmacokinetics),
+    pharmacodynamics: textField(input.pharmacodynamics),
+    mechanismOfAction: textField(input.mechanismOfAction || input.mechanism),
+    dosageAndTitration: textField(input.dosageAndTitration || joinLegacyDose(input)),
+    indication: textField(input.indication || input.indications),
+    sideEffect: textField(input.sideEffect || input.sideEffects),
+    fdaBlackBoxWarning: textField(input.fdaBlackBoxWarning || input.seriousWarnings),
+    specialPopulation: textField(input.specialPopulation || input.cautions),
+    drugInteractions: textField(input.drugInteractions || input.interactions),
+    miscellaneous: textField(input.miscellaneous || input.pearls),
     lastReviewed: dateString(input.lastReviewed) || todayString(),
-    updatedAt: todayString(),
-    updateNotes: toArray(input.updateNotes)
+    updatedAt: dateString(input.updatedAt) || todayString()
   };
 }
 
@@ -242,9 +241,20 @@ function toArray(value) {
     return value.map((item) => cleanString(item)).filter(Boolean);
   }
   if (typeof value === "string" && value.trim()) {
-    return value.split(/\r?\n|,/).map((item) => cleanString(item)).filter(Boolean);
+    return value.split(",").map((item) => cleanString(item)).filter(Boolean);
   }
   return [];
+}
+
+function textField(value) {
+  if (Array.isArray(value)) {
+    return value.map((item) => cleanString(item)).filter(Boolean).join("\n");
+  }
+  return cleanString(value);
+}
+
+function joinLegacyDose(input) {
+  return [input.adultDose, input.titration].map(textField).filter(Boolean).join("\n");
 }
 
 function dateString(value) {
