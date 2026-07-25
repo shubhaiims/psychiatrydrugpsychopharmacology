@@ -38,6 +38,11 @@
         <section class="workspace" id="libraryView">
           <aside class="library-panel" aria-label="Drug library">
             <div class="toolbar">
+              <label class="select-block" for="medicationGroupSelect">
+                <span>Medication group</span>
+                <select id="medicationGroupSelect"></select>
+              </label>
+
               <label class="select-block" for="drugNameSelect">
                 <span>Choose drug</span>
                 <select id="drugNameSelect"></select>
@@ -109,6 +114,10 @@
               <label>
                 <span>Brand names</span>
                 <input id="fieldBrands" placeholder="Separate with commas" />
+              </label>
+              <label>
+                <span>Medication group</span>
+                <select id="fieldMedicationGroup"></select>
               </label>
               <label>
                 <span>Classification</span>

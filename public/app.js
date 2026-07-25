@@ -16,12 +16,22 @@
     { key: "drugInteractions", title: "Drug Interactions" },
     { key: "miscellaneous", title: "Miscellaneous" }
   ];
+  const medicationGroups = [
+    "ADHD medications",
+    "Antidepressants",
+    "Antipsychotics",
+    "Anxiolytic and hypnotic medications",
+    "Dementia medications",
+    "Mood stabilizers and Anticonvulsants",
+    "Sexual dysfunction medications"
+  ];
 
   const els = {
     summaryMetrics: document.querySelector("#summaryMetrics"),
     libraryView: document.querySelector("#libraryView"),
     editorView: document.querySelector("#editorView"),
     viewTabs: document.querySelectorAll(".view-tab"),
+    medicationGroupSelect: document.querySelector("#medicationGroupSelect"),
     drugNameSelect: document.querySelector("#drugNameSelect"),
     outlineSelect: document.querySelector("#outlineSelect"),
     drugDetail: document.querySelector("#drugDetail"),
@@ -45,6 +55,7 @@
     fields: {
       name: document.querySelector("#fieldName"),
       brands: document.querySelector("#fieldBrands"),
+      medicationGroup: document.querySelector("#fieldMedicationGroup"),
       classification: document.querySelector("#fieldClassification"),
       riskLevel: document.querySelector("#fieldRisk"),
       targetDose: document.querySelector("#fieldTargetDose"),
@@ -64,6 +75,7 @@
   };
 
   let drugs = [];
+  let selectedGroup = "";
   let selectedId = "";
   let activeView = "library";
   let loading = true;
@@ -79,6 +91,17 @@
       tab.addEventListener("click", () => {
         setView(tab.dataset.view || "library");
       });
+    });
+
+    els.medicationGroupSelect.addEventListener("change", () => {
+      selectedGroup = els.medicationGroupSelect.value;
+      const groupDrugs = getVisibleDrugs();
+      selectedId = groupDrugs[0]?.id || "";
+      renderDrugNameSelect();
+      renderDetail();
+      renderOutlineSelect();
+      renderEditorSelect();
+      renderEditor();
     });
 
     els.drugNameSelect.addEventListener("change", () => {
@@ -118,6 +141,12 @@
 
     els.editorDrugSelect.addEventListener("change", () => {
       selectedId = els.editorDrugSelect.value;
+      const selectedDrug = getSelectedDrug();
+      if (selectedDrug?.medicationGroup) {
+        selectedGroup = selectedDrug.medicationGroup;
+      }
+      renderMedicationGroupSelect();
+      renderDrugNameSelect();
       renderEditor();
       renderDetail();
       renderOutlineSelect();
@@ -186,7 +215,8 @@
     try {
       const data = await api("/api/drugs");
       drugs = normalizeCollection(data.drugs || []);
-      selectedId = drugs.some((drug) => drug.id === selectedId) ? selectedId : drugs[0]?.id || "";
+      const groupDrugs = getVisibleDrugs();
+      selectedId = groupDrugs.some((drug) => drug.id === selectedId) ? selectedId : groupDrugs[0]?.id || "";
     } catch (error) {
       loadError = error.message || "Unable to reach backend.";
       drugs = [];
@@ -318,6 +348,8 @@
   }
 
   function render() {
+    renderMedicationGroupSelect();
+    renderMedicationGroupField();
     renderDrugNameSelect();
     renderOutlineSelect();
     renderSummary();
@@ -348,22 +380,44 @@
     return `<div class="metric"><strong>${escapeHtml(value)}</strong><span>${escapeHtml(label)}</span></div>`;
   }
 
+  function renderMedicationGroupSelect() {
+    els.medicationGroupSelect.innerHTML = [
+      `<option value="">Choose medication group</option>`,
+      ...medicationGroups.map((group) => `<option value="${escapeAttr(group)}">${escapeHtml(group)}</option>`)
+    ].join("");
+    els.medicationGroupSelect.value = selectedGroup;
+  }
+
+  function renderMedicationGroupField() {
+    els.fields.medicationGroup.innerHTML = [
+      `<option value="">Not assigned yet</option>`,
+      ...medicationGroups.map((group) => `<option value="${escapeAttr(group)}">${escapeHtml(group)}</option>`)
+    ].join("");
+  }
+
   function renderDrugNameSelect() {
-    if (!drugs.length) {
-      els.drugNameSelect.innerHTML = `<option value="">No drugs added yet</option>`;
+    const groupDrugs = getVisibleDrugs();
+    if (!selectedGroup) {
+      els.drugNameSelect.innerHTML = `<option value="">Choose medication group first</option>`;
       els.drugNameSelect.value = "";
       return;
     }
 
-    els.drugNameSelect.innerHTML = drugs
+    if (!groupDrugs.length) {
+      els.drugNameSelect.innerHTML = `<option value="">No drugs in this group yet</option>`;
+      els.drugNameSelect.value = "";
+      return;
+    }
+
+    els.drugNameSelect.innerHTML = groupDrugs
       .map((drug) => `<option value="${escapeAttr(drug.id)}">${escapeHtml(drug.name)}</option>`)
       .join("");
-    els.drugNameSelect.value = selectedId || drugs[0].id;
+    els.drugNameSelect.value = selectedId || groupDrugs[0].id;
   }
 
   function renderOutlineSelect() {
-    if (!drugs.length) {
-      els.outlineSelect.innerHTML = `<option value="">No outline available</option>`;
+    if (!getSelectedDrug()) {
+      els.outlineSelect.innerHTML = `<option value="">Choose drug first</option>`;
       els.outlineSelect.value = "";
       return;
     }
@@ -388,7 +442,10 @@
     }
 
     if (!drug) {
-      els.drugDetail.innerHTML = `<div class="empty-state">Choose a drug from the dropdown after records are added.</div>`;
+      const message = selectedGroup
+        ? "No drugs have been assigned to this medication group yet."
+        : "Choose a medication group, then choose a drug.";
+      els.drugDetail.innerHTML = `<div class="empty-state">${escapeHtml(message)}</div>`;
       return;
     }
 
@@ -497,11 +554,14 @@
       return;
     }
 
-    els.editorDrugSelect.innerHTML = drugs
-      .map((drug) => `<option value="${escapeAttr(drug.id)}">${escapeHtml(drug.name)}</option>`)
-      .join("");
+    els.editorDrugSelect.innerHTML = [
+      `<option value="">Choose record</option>`,
+      ...drugs.map((drug) => `<option value="${escapeAttr(drug.id)}">${escapeHtml(drug.name)}</option>`)
+    ].join("");
     if (selectedId && drugs.some((drug) => drug.id === selectedId)) {
       els.editorDrugSelect.value = selectedId;
+    } else {
+      els.editorDrugSelect.value = "";
     }
   }
 
@@ -536,6 +596,7 @@
     els.editorHeading.textContent = drug.id ? `Edit ${drug.name}` : "Create drug";
     els.fields.name.value = drug.name || "";
     els.fields.brands.value = arrayFrom(drug.brands).join(", ");
+    els.fields.medicationGroup.value = drug.medicationGroup || "";
     els.fields.classification.value = drug.classification || "";
     els.fields.riskLevel.value = drug.riskLevel || "standard";
     els.fields.targetDose.value = drug.targetDose || "";
@@ -558,6 +619,7 @@
       id: els.editDrugId.value,
       name: els.fields.name.value.trim(),
       brands: splitComma(els.fields.brands.value),
+      medicationGroup: els.fields.medicationGroup.value,
       classification: els.fields.classification.value.trim(),
       riskLevel: els.fields.riskLevel.value,
       targetDose: els.fields.targetDose.value.trim(),
@@ -578,7 +640,12 @@
   }
 
   function getSelectedDrug() {
-    return drugs.find((drug) => drug.id === selectedId) || drugs[0] || null;
+    return drugs.find((drug) => drug.id === selectedId) || null;
+  }
+
+  function getVisibleDrugs() {
+    if (!selectedGroup) return [];
+    return drugs.filter((drug) => drug.medicationGroup === selectedGroup);
   }
 
   function createBlankDrug() {
@@ -586,6 +653,7 @@
       id: "",
       name: "",
       brands: [],
+      medicationGroup: "",
       classification: "",
       riskLevel: "standard",
       targetDose: "",
@@ -615,6 +683,7 @@
       id: String(drug.id || "").trim(),
       name: String(drug.name || "").trim(),
       brands: arrayFrom(drug.brands),
+      medicationGroup: medicationGroups.includes(drug.medicationGroup || drug.category) ? drug.medicationGroup || drug.category : "",
       classification: textField(drug.classification || drug.className),
       riskLevel: ["standard", "watch", "high"].includes(drug.riskLevel) ? drug.riskLevel : "standard",
       targetDose: textField(drug.targetDose),

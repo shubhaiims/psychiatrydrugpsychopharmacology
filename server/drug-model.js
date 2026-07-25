@@ -8,6 +8,16 @@ export function normalizeCollection(collection) {
   }));
 }
 
+const medicationGroups = [
+  "ADHD medications",
+  "Antidepressants",
+  "Antipsychotics",
+  "Anxiolytic and hypnotic medications",
+  "Dementia medications",
+  "Mood stabilizers and Anticonvulsants",
+  "Sexual dysfunction medications"
+];
+
 export function normalizeDrug(input = {}, options = {}) {
   const existingIds = options.existingIds || new Set();
   const name = cleanString(input.name);
@@ -27,6 +37,9 @@ export function normalizeDrug(input = {}, options = {}) {
     id,
     name,
     brands: toArray(input.brands),
+    medicationGroup: medicationGroups.includes(input.medicationGroup || input.category)
+      ? input.medicationGroup || input.category
+      : "",
     classification,
     riskLevel: ["standard", "watch", "high"].includes(input.riskLevel) ? input.riskLevel : "standard",
     targetDose: cleanString(input.targetDose),
