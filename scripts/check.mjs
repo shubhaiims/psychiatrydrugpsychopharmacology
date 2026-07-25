@@ -1,7 +1,7 @@
 import { spawnSync } from "node:child_process";
 
 const files = [
-  "app.js",
+  "public/app.js",
   "server/index.js",
   "server/drug-model.js",
   "server/http.js",
@@ -22,4 +22,3 @@ for (const file of files) {
 }
 
 console.log(`Checked ${files.length} JavaScript files.`);
-

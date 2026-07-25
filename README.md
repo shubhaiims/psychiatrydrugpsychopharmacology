@@ -4,6 +4,8 @@ PsychRx Drug Library is a backend-backed website for maintaining psychiatry phar
 
 Drug records can be edited through GitHub JSON sync or through the password-protected admin editor.
 
+The frontend files live in `public/` so Vercel can publish them directly, while `/api` contains the Vercel serverless backend.
+
 ## Features
 
 - Public drug dashboard with search and filters

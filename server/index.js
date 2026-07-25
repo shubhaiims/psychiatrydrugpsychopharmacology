@@ -8,6 +8,7 @@ import { createDrug, deleteDrug, hasSupabaseConfig, listDrugs, replaceDrugs, upd
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const rootDir = resolve(__dirname, "..");
+const publicDir = resolve(rootDir, "public");
 loadDotEnv(resolve(rootDir, ".env"));
 
 const port = Number(process.env.PORT || 3000);
@@ -125,7 +126,7 @@ async function routeStatic(response, url) {
     return;
   }
 
-  const filePath = resolve(rootDir, requested);
+  const filePath = resolve(publicDir, requested);
   const contentType = mimeTypes.get(extname(filePath)) || "application/octet-stream";
   response.writeHead(200, { "Content-Type": contentType });
   createReadStream(filePath).pipe(response);

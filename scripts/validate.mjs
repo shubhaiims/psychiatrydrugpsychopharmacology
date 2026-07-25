@@ -1,9 +1,9 @@
 import { readFile } from "node:fs/promises";
 
 const requiredFiles = [
-  "index.html",
-  "styles.css",
-  "app.js",
+  "public/index.html",
+  "public/styles.css",
+  "public/app.js",
   "server/index.js",
   "server/data/drugs.json",
   "supabase/schema.sql",
