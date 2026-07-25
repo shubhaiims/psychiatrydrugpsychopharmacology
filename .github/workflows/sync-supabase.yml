@@ -1,0 +1,34 @@
+name: Sync Supabase Drug Data
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "server/data/drugs.json"
+      - "server/**"
+      - "scripts/push-to-supabase.mjs"
+      - ".github/workflows/sync-supabase.yml"
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Validate app and drug data
+        run: npm run build
+
+      - name: Push drug JSON to Supabase
+        run: npm run supabase:push
+        env:
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
+          SUPABASE_SERVICE_ROLE_KEY: ${{ secrets.SUPABASE_SERVICE_ROLE_KEY }}
+

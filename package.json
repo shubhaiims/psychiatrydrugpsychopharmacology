@@ -9,7 +9,8 @@
   "scripts": {
     "dev": "node server/index.js",
     "start": "node server/index.js",
-    "build": "node --check app.js && node --check server/index.js && node scripts/validate.mjs",
-    "test": "npm run build"
+    "build": "node scripts/check.mjs && node scripts/validate.mjs",
+    "test": "npm run build",
+    "supabase:push": "node scripts/push-to-supabase.mjs"
   }
 }

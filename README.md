@@ -2,7 +2,7 @@
 
 PsychRx Drug Library is a backend-backed website for maintaining psychiatry pharmacology drug information and showing it on a clean searchable dashboard.
 
-No drug records are included by default. Add records only through the admin editor or by importing drug data you have reviewed.
+Drug records can be edited through GitHub JSON sync or through the password-protected admin editor.
 
 ## Features
 
@@ -12,7 +12,8 @@ No drug records are included by default. Add records only through the admin edit
 - Backend API for drug records
 - Admin password protected editor
 - Add, edit, duplicate, delete, import, export, and clear records
-- JSON database file for simple self-hosting
+- Supabase-backed production storage
+- GitHub Actions workflow to sync `server/data/drugs.json` into Supabase
 
 ## Drug Record Sections
 
@@ -37,6 +38,8 @@ Create a `.env` file from `.env.example`.
 ```bash
 ADMIN_PASSWORD=replace-with-a-strong-password
 SESSION_SECRET=replace-with-a-long-random-secret
+SUPABASE_URL=https://your-project-ref.supabase.co
+SUPABASE_SERVICE_ROLE_KEY=your-backend-only-service-role-or-secret-key
 PORT=3000
 ```
 
@@ -54,43 +57,76 @@ http://localhost:3000
 
 ## Data Storage
 
-Drug records are stored in:
+For production, Vercel API routes read and write the `drugs` table in Supabase.
+
+For local fallback development and GitHub-based syncing, drug records live in:
 
 ```text
 server/data/drugs.json
 ```
 
-The committed database starts empty:
+When Supabase environment variables are present, the API uses Supabase. When they are missing, local development falls back to the JSON file.
 
-```json
-[]
-```
+## Supabase Setup
 
-When you add or edit drugs from the admin editor, the backend updates this file on the server where the app is running.
+1. Create a Supabase project.
+2. Open the Supabase SQL Editor.
+3. Run the SQL in `supabase/schema.sql`.
+4. Copy your project URL.
+5. Copy a backend-only secret key. You can use `SUPABASE_SERVICE_ROLE_KEY` or the newer secret key format.
 
-## Deploying
+Do not expose the secret/service-role key in browser JavaScript.
 
-This project needs a backend host. GitHub Pages cannot run the editor API.
+## Vercel Setup from GitHub
 
-Good launch options:
-
-- Render
-- Railway
-- Fly.io
-- A VPS with Node.js
-
-For deployment, set these environment variables on the host:
+1. Push this repository to GitHub.
+2. In Vercel, import the GitHub repository.
+3. Keep the framework preset as Other.
+4. Add these Vercel environment variables:
 
 ```text
+SUPABASE_URL
+SUPABASE_SERVICE_ROLE_KEY
 ADMIN_PASSWORD
 SESSION_SECRET
-PORT
 ```
 
-Then deploy from the GitHub repository and run:
+5. Deploy. Every push to `main` triggers a new Vercel deployment.
+
+## Sync GitHub Drug JSON to Supabase
+
+This repository includes `.github/workflows/sync-supabase.yml`.
+
+To make GitHub push `server/data/drugs.json` into Supabase automatically:
+
+1. Open your GitHub repository.
+2. Go to Settings > Secrets and variables > Actions.
+3. Add repository secrets:
+
+```text
+SUPABASE_URL
+SUPABASE_SERVICE_ROLE_KEY
+```
+
+4. Edit `server/data/drugs.json` in GitHub or locally.
+5. Commit to `main`.
+6. GitHub Actions runs `npm run supabase:push` and syncs the JSON into Supabase.
+
+You can also open the Actions tab and run `Sync Supabase Drug Data` manually.
+
+## Recommended Data Flow
+
+Use one primary editing path:
+
+- GitHub-first: edit `server/data/drugs.json`, commit, GitHub Actions syncs Supabase, and Vercel dashboard reads Supabase.
+- Admin-panel-first: edit in the website editor, Vercel writes directly to Supabase. Export JSON afterward if you want to update GitHub too.
+
+## Manual Supabase Upload
+
+After setting Supabase environment variables locally, you can push the committed JSON data manually:
 
 ```bash
-npm start
+npm run supabase:push
 ```
 
 ## Clinical Safety

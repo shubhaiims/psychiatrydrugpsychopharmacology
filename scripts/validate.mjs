@@ -1,6 +1,15 @@
 import { readFile } from "node:fs/promises";
 
-const requiredFiles = ["index.html", "styles.css", "app.js", "server/index.js", "server/data/drugs.json"];
+const requiredFiles = [
+  "index.html",
+  "styles.css",
+  "app.js",
+  "server/index.js",
+  "server/data/drugs.json",
+  "supabase/schema.sql",
+  "vercel.json",
+  ".github/workflows/sync-supabase.yml"
+];
 
 for (const file of requiredFiles) {
   await readFile(file, "utf8");
