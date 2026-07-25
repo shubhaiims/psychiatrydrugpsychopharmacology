@@ -27,6 +27,7 @@
       "Sarafem",
       "Symbyax (with olanzapine)"
     ],
+    "medicationGroup": "Antidepressants",
     "classification": "Selective Serotonin Reuptake Inhibitor (SSRI). Under Neuroscience-based Nomenclature (NbN), fluoxetine is classified as a Serotonin Reuptake Inhibitor (S-RI).",
     "riskLevel": "standard",
     "targetDose": "20-40 mg/day for Major Depressive Disorder; 60 mg/day for Bulimia Nervosa; up to 80 mg/day may be used for Obsessive-Compulsive Disorder.",
@@ -48,6 +49,7 @@
     "id": "escitalopram",
     "name": "Escitalopram",
     "brands": [],
+    "medicationGroup": "Antidepressants",
     "classification": "Selective Serotonin Reuptake Inhibitor (SSRI). Under Neuroscience-based Nomenclature (NbN), escitalopram is classified as a Serotonin Reuptake Inhibitor (S-RI).",
     "riskLevel": "standard",
     "targetDose": "10 mg once daily as the standard starting and target dose; may increase to 20 mg/day if response is inadequate.",
@@ -69,6 +71,7 @@
     "id": "fluvoxamine",
     "name": "Fluvoxamine",
     "brands": [],
+    "medicationGroup": "Antidepressants",
     "classification": [
       "* Fluvoxamine is classically categorized as a **Selective Serotonin Reuptake Inhibitor (SSRI)**.",
       "* Under the **Neuroscience-based Nomenclature (NbN)**, it is classified as a:",

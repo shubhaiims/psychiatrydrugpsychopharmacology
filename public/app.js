@@ -25,6 +25,32 @@
     "Mood stabilizers and Anticonvulsants",
     "Sexual dysfunction medications"
   ];
+  const medicationGroupDrugNames = {
+    "Antidepressants": [
+      "Brexanolone",
+      "Bupropion",
+      "Citalopram",
+      "Clomipramine",
+      "Desvenlafaxine",
+      "Duloxetine",
+      "Escitalopram",
+      "Esketamine",
+      "Fluoxetine",
+      "Fluvoxamine",
+      "Ketamine",
+      "Levomilnacipran",
+      "Mirtazapine",
+      "Nefazodone",
+      "Paroxetine",
+      "Selegeline",
+      "Trazodone",
+      "Tricyclic antidepressants",
+      "Venlafaxine",
+      "Vilazodone",
+      "Vortioxetine",
+      "Zuranolone"
+    ]
+  };
 
   const els = {
     summaryMetrics: document.querySelector("#summaryMetrics"),
@@ -95,8 +121,8 @@
 
     els.medicationGroupSelect.addEventListener("change", () => {
       selectedGroup = els.medicationGroupSelect.value;
-      const groupDrugs = getVisibleDrugs();
-      selectedId = groupDrugs[0]?.id || "";
+      const groupOptions = getVisibleDrugOptions();
+      selectedId = groupOptions[0]?.id || "";
       renderDrugNameSelect();
       renderDetail();
       renderOutlineSelect();
@@ -215,8 +241,8 @@
     try {
       const data = await api("/api/drugs");
       drugs = normalizeCollection(data.drugs || []);
-      const groupDrugs = getVisibleDrugs();
-      selectedId = groupDrugs.some((drug) => drug.id === selectedId) ? selectedId : groupDrugs[0]?.id || "";
+      const groupOptions = getVisibleDrugOptions();
+      selectedId = groupOptions.some((drug) => drug.id === selectedId) ? selectedId : groupOptions[0]?.id || "";
     } catch (error) {
       loadError = error.message || "Unable to reach backend.";
       drugs = [];
@@ -396,7 +422,7 @@
   }
 
   function renderDrugNameSelect() {
-    const groupDrugs = getVisibleDrugs();
+    const groupDrugs = getVisibleDrugOptions();
     if (!selectedGroup) {
       els.drugNameSelect.innerHTML = `<option value="">Choose medication group first</option>`;
       els.drugNameSelect.value = "";
@@ -431,6 +457,7 @@
 
   function renderDetail() {
     const drug = getSelectedDrug();
+    const selectedOption = getSelectedDrugOption();
     if (loading) {
       els.drugDetail.innerHTML = `<div class="empty-state">Loading selected drug details.</div>`;
       return;
@@ -442,9 +469,11 @@
     }
 
     if (!drug) {
-      const message = selectedGroup
-        ? "No drugs have been assigned to this medication group yet."
-        : "Choose a medication group, then choose a drug.";
+      const message = selectedOption
+        ? `Detailed information for ${selectedOption.name} has not been added yet.`
+        : (selectedGroup
+            ? "No drugs have been assigned to this medication group yet."
+            : "Choose a medication group, then choose a drug.");
       els.drugDetail.innerHTML = `<div class="empty-state">${escapeHtml(message)}</div>`;
       return;
     }
@@ -643,9 +672,45 @@
     return drugs.find((drug) => drug.id === selectedId) || null;
   }
 
-  function getVisibleDrugs() {
+  function getSelectedDrugOption() {
+    return getVisibleDrugOptions().find((drug) => drug.id === selectedId) || null;
+  }
+
+  function getVisibleDrugOptions() {
     if (!selectedGroup) return [];
-    return drugs.filter((drug) => drug.medicationGroup === selectedGroup);
+    const catalogNames = medicationGroupDrugNames[selectedGroup] || [];
+    if (catalogNames.length) {
+      return catalogNames.map((name) => {
+        const record = findDrugByName(name);
+        return {
+          id: record?.id || `catalog:${slugifyName(name)}`,
+          name,
+          hasRecord: Boolean(record)
+        };
+      });
+    }
+    return drugs
+      .filter((drug) => drug.medicationGroup === selectedGroup)
+      .map((drug) => ({
+        id: drug.id,
+        name: drug.name,
+        hasRecord: true
+      }));
+  }
+
+  function findDrugByName(name) {
+    const target = normalizeName(name);
+    return drugs.find((drug) => normalizeName(drug.name) === target) || null;
+  }
+
+  function normalizeName(name) {
+    return String(name || "").trim().toLowerCase();
+  }
+
+  function slugifyName(name) {
+    return normalizeName(name)
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-+|-+$/g, "") || "drug";
   }
 
   function createBlankDrug() {
