@@ -3,6 +3,7 @@
     "id": "sertraline",
     "name": "Sertraline",
     "brands": [],
+    "medicationGroup": "Antidepressants",
     "classification": "Selective serotonin reuptake inhibitor (SSRI). Under Neuroscience-based Nomenclature (NbN), sertraline is classified as a serotonin reuptake inhibitor (S-RI).",
     "riskLevel": "standard",
     "targetDose": "50 to 200 mg/day",

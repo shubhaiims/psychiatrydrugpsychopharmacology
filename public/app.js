@@ -42,6 +42,7 @@
       "Mirtazapine",
       "Nefazodone",
       "Paroxetine",
+      "Sertraline",
       "Selegeline",
       "Trazodone",
       "Tricyclic antidepressants",
