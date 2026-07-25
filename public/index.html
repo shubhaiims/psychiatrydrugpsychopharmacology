@@ -5,36 +5,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
       name="description"
-      content="Backend-backed psychiatry pharmacology drug dashboard and admin editor."
+      content="Psychiatry Made Easy psychopharmacology drug dashboard."
     />
-    <title>PsychRx Drug Library</title>
+    <title>Psychiatry Made Easy</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <div class="app-shell">
       <header class="topbar">
-        <a class="brand" href="#library" aria-label="PsychRx Drug Library home">
-          <span class="brand-mark" aria-hidden="true">Rx</span>
+        <a class="brand" href="#library" aria-label="Psychiatry Made Easy home">
+          <span class="brand-mark" aria-hidden="true">PME</span>
           <span>
-            <span class="brand-name">PsychRx Drug Library</span>
-            <span class="brand-subtitle">Psychiatry pharmacology dashboard</span>
+            <span class="brand-name">Psychiatry Made Easy</span>
+            <span class="brand-subtitle">Psychopharmacology dashboard</span>
           </span>
         </a>
-        <nav class="view-tabs" aria-label="Primary views">
-          <button class="view-tab is-active" type="button" data-view="library">Library</button>
-          <button class="view-tab" type="button" data-view="editor">Editor</button>
-        </nav>
       </header>
 
       <main>
-        <section class="summary-band" aria-label="Library summary">
-          <div class="summary-copy">
-            <p class="eyebrow">Backend managed reference</p>
-            <h1>Select a psychiatry drug and jump straight to the exact pharmacology section you need.</h1>
-          </div>
-          <div class="summary-metrics" id="summaryMetrics" aria-live="polite"></div>
-        </section>
-
         <section class="workspace" id="libraryView">
           <aside class="library-panel" aria-label="Drug library">
             <div class="toolbar">
@@ -59,139 +47,6 @@
           <section class="detail-panel" id="drugDetail" aria-live="polite"></section>
         </section>
 
-        <section class="editor-layout is-hidden" id="editorView" aria-label="Drug editor">
-          <aside class="editor-sidebar">
-            <form class="auth-panel" id="loginForm">
-              <label for="adminPassword">
-                <span>Admin password</span>
-                <input id="adminPassword" type="password" autocomplete="current-password" />
-              </label>
-              <div class="editor-actions">
-                <button class="primary-button" type="submit" id="loginButton">Unlock editor</button>
-                <button class="secondary-button" type="button" id="logoutButton">Lock</button>
-              </div>
-            </form>
-
-            <div class="editor-actions">
-              <button class="primary-button" type="button" id="newDrugButton">New drug</button>
-              <button class="secondary-button" type="button" id="duplicateDrugButton">Duplicate</button>
-            </div>
-
-            <label class="select-block" for="editorDrugSelect">
-              <span>Current record</span>
-              <select id="editorDrugSelect"></select>
-            </label>
-
-            <div class="data-actions">
-              <button class="secondary-button" type="button" id="exportJsonButton">Export JSON</button>
-              <button class="secondary-button" type="button" id="copyJsonButton">Copy JSON</button>
-              <label class="file-button" for="importJsonInput">Import JSON</label>
-              <input id="importJsonInput" type="file" accept="application/json,.json" />
-              <button class="danger-button" type="button" id="clearDataButton">Clear all records</button>
-            </div>
-
-            <p class="editor-status" id="editorStatus" role="status" aria-live="polite">Connect to the backend to begin.</p>
-          </aside>
-
-          <form class="editor-form" id="drugForm">
-            <input type="hidden" id="editDrugId" />
-            <div class="form-header">
-              <div>
-                <p class="eyebrow">Drug record</p>
-                <h2 id="editorHeading">Create drug</h2>
-              </div>
-              <div class="form-header-actions">
-                <button class="danger-button" type="button" id="deleteDrugButton">Delete</button>
-                <button class="primary-button" type="submit" id="saveDrugButton">Save changes</button>
-              </div>
-            </div>
-
-            <div class="form-grid">
-              <label>
-                <span>Generic name</span>
-                <input id="fieldName" required />
-              </label>
-              <label>
-                <span>Brand names</span>
-                <input id="fieldBrands" placeholder="Separate with commas" />
-              </label>
-              <label>
-                <span>Medication group</span>
-                <select id="fieldMedicationGroup"></select>
-              </label>
-              <label>
-                <span>Classification</span>
-                <input id="fieldClassification" required />
-              </label>
-              <label>
-                <span>Monitoring intensity</span>
-                <select id="fieldRisk">
-                  <option value="standard">Standard</option>
-                  <option value="watch">Watch</option>
-                  <option value="high">High</option>
-                </select>
-              </label>
-              <label>
-                <span>Target dose</span>
-                <input id="fieldTargetDose" placeholder="Example: 10-20 mg/day" />
-              </label>
-              <label>
-                <span>Maximum dose</span>
-                <input id="fieldMaximumDose" placeholder="Example: 40 mg/day" />
-              </label>
-              <label>
-                <span>Last reviewed</span>
-                <input id="fieldReviewed" type="date" />
-              </label>
-            </div>
-
-            <div class="form-grid two-column">
-              <label>
-                <span>Mechanism of Action and Receptor Profile</span>
-                <textarea id="fieldMechanismOfActionAndReceptorProfile" rows="5"></textarea>
-              </label>
-              <label>
-                <span>Pharmacodynamics</span>
-                <textarea id="fieldPharmacodynamics" rows="5"></textarea>
-              </label>
-              <label>
-                <span>FDA Approved and Off-Label Uses</span>
-                <textarea id="fieldFdaApprovedAndOffLabelUses" rows="5"></textarea>
-              </label>
-              <label>
-                <span>Pharmacokinetics and Half-Life</span>
-                <textarea id="fieldPharmacokineticsAndHalfLife" rows="5"></textarea>
-              </label>
-            </div>
-
-            <div class="form-grid two-column">
-              <label>
-                <span>Clinical Dosing, Optimization, and Target Dose</span>
-                <textarea id="fieldClinicalDosingOptimizationAndTargetDose" rows="5"></textarea>
-              </label>
-              <label>
-                <span>Side Effects</span>
-                <textarea id="fieldSideEffects" rows="5"></textarea>
-              </label>
-              <label>
-                <span>FDA black box warning</span>
-                <textarea id="fieldFdaBlackBoxWarning" rows="5"></textarea>
-              </label>
-              <label>
-                <span>Prescribing in Special Populations</span>
-                <textarea id="fieldPrescribingInSpecialPopulations" rows="5"></textarea>
-              </label>
-              <label>
-                <span>Drug interactions</span>
-                <textarea id="fieldDrugInteractions" rows="5"></textarea>
-              </label>
-              <label>
-                <span>Miscellaneous</span>
-                <textarea id="fieldMiscellaneous" rows="5"></textarea>
-              </label>
-            </div>
-          </form>
-        </section>
       </main>
 
       <footer class="site-footer">

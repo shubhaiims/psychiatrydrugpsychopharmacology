@@ -2,6 +2,7 @@ import { spawnSync } from "node:child_process";
 
 const files = [
   "public/app.js",
+  "public/admin.js",
   "server/index.js",
   "server/drug-model.js",
   "server/http.js",

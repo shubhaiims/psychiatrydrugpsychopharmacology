@@ -12,7 +12,7 @@ const publicDir = resolve(rootDir, "public");
 loadDotEnv(resolve(rootDir, ".env"));
 
 const port = Number(process.env.PORT || 3000);
-const staticFiles = new Set(["index.html", "styles.css", "app.js"]);
+const staticFiles = new Set(["index.html", "styles.css", "app.js", "admin.js", "admin/index.html"]);
 const mimeTypes = new Map([
   [".html", "text/html; charset=utf-8"],
   [".css", "text/css; charset=utf-8"],
@@ -34,7 +34,7 @@ const server = createServer(async (request, response) => {
 });
 
 server.listen(port, () => {
-  console.log(`PsychRx Drug Library running at http://localhost:${port}/`);
+  console.log(`Psychiatry Made Easy running at http://localhost:${port}/`);
   console.log(hasSupabaseConfig() ? "Using Supabase storage." : "Using local JSON fallback storage.");
   if (!isAdminConfigured()) {
     console.log("Admin editor is locked until ADMIN_PASSWORD is set.");
@@ -119,7 +119,11 @@ async function routeApi(request, response, url) {
 }
 
 async function routeStatic(response, url) {
-  const requested = url.pathname === "/" ? "index.html" : decodeURIComponent(url.pathname).replace(/^\/+/, "");
+  const requested = url.pathname === "/"
+    ? "index.html"
+    : ["/admin", "/admin/"].includes(url.pathname)
+      ? "admin/index.html"
+      : decodeURIComponent(url.pathname).replace(/^\/+/, "");
   if (!staticFiles.has(requested)) {
     response.writeHead(404, { "Content-Type": "text/plain; charset=utf-8" });
     response.end("Not found");
