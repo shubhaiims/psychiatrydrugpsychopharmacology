@@ -73,6 +73,7 @@
       "Pimavanserin",
       "Quetiapine",
       "Risperidone",
+      "Sulpiride",
       "Thioridazine",
       "Thiothixene",
       "Trifluoperazine",
