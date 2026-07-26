@@ -27,7 +27,7 @@
 
   const medicationGroupDrugNames = {
     "ADHD medications": [
-      "Amphetamine",
+      "Amphetamines",
       "Atomoxetine",
       "Clonidine",
       "DexMethylphenidate",
