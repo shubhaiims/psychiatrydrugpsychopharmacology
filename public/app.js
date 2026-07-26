@@ -111,6 +111,16 @@
       "Lecanemab",
       "Memantine",
       "Rivastigmine"
+    ],
+    "Mood stabilizers and Anticonvulsants": [
+      "Carbamazepine",
+      "Gabapentin",
+      "Lamotrigine",
+      "Lithium",
+      "Oxcarbazepine",
+      "Pregabalin",
+      "Topiramate",
+      "Valproic acid"
     ]
   };
 
