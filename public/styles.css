@@ -234,25 +234,41 @@ a:focus-visible {
 }
 
 .hero-section {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
+  position: relative;
+  display: flex;
   align-items: center;
-  margin: 64px 0;
-  padding: 80px clamp(18px, 4vw, 50px);
-  border-radius: 16px;
-  background: 
-    radial-gradient(circle at top right, rgba(0, 217, 255, 0.08), transparent 50%),
-    radial-gradient(circle at bottom left, rgba(255, 106, 0, 0.08), transparent 50%),
-    var(--surface);
-  border: 1px solid var(--line);
+  justify-content: flex-start;
+  gap: 48px;
+  margin: 0;
+  padding: 120px clamp(18px, 4vw, 50px);
+  min-height: 600px;
+  background-image: url('hero-bg.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  overflow: hidden;
+}
+
+.hero-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to right, rgba(15, 15, 30, 0.5), transparent 45%, rgba(15, 15, 30, 0.3));
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
 }
 
 .hero-image {
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
-  object-fit: cover;
+  display: none;
 }
 
 .hero-content h1 {
@@ -803,9 +819,20 @@ button,
 
 @media (max-width: 1120px) {
   .workspace,
-  .editor-layout,
-  .hero-section {
+  .editor-layout {
     grid-template-columns: 1fr;
+  }
+
+  .hero-section {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 100px clamp(18px, 4vw, 50px);
+  }
+
+  .hero-content {
+    max-width: 100%;
   }
 
   .library-panel,
