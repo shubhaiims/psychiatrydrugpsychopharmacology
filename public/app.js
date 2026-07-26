@@ -103,6 +103,14 @@
       "Zaleplon",
       "Chlordiazepoxide",
       "Oxazepam"
+    ],
+    "Dementia medications": [
+      "Donepezil",
+      "Galantamine",
+      "Adacanumab",
+      "Lecanemab",
+      "Memantine",
+      "Rivastigmine"
     ]
   };
 
