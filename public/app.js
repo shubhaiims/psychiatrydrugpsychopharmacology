@@ -107,7 +107,7 @@
     "Dementia medications": [
       "Donepezil",
       "Galantamine",
-      "Adacanumab",
+      "Aducanumab",
       "Lecanemab",
       "Memantine",
       "Rivastigmine"
