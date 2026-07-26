@@ -78,7 +78,8 @@
       "Thioridazine",
       "Thiothixene",
       "Trifluoperazine",
-      "Ziprasidone"
+      "Ziprasidone",
+      "Zuclopenthixol"
     ],
     "Benzodiazepines": [
       "Alprazolam",
