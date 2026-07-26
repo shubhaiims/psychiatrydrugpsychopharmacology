@@ -56,6 +56,7 @@
       "Amisulpride",
       "Aripiprazole",
       "Asenapine",
+      "Blonanserin",
       "Brexpiprazole",
       "Cariprazine",
       "Chlorpromazine",
