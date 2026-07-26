@@ -12,7 +12,7 @@ const publicDir = resolve(rootDir, "public");
 loadDotEnv(resolve(rootDir, ".env"));
 
 const port = Number(process.env.PORT || 3000);
-const staticFiles = new Set(["index.html", "library.html", "styles.css", "app.js", "homepage.js", "admin.js", "admin/index.html", "brain-network.png"]);
+const staticFiles = new Set(["index.html", "library.html", "styles.css", "app.js", "homepage.js", "admin.js", "admin/index.html", "brain-network.png", "logo.png", "hero-bg.png"]);
 const mimeTypes = new Map([
   [".html", "text/html; charset=utf-8"],
   [".css", "text/css; charset=utf-8"],
@@ -129,7 +129,7 @@ async function routeStatic(response, url) {
     ? "index.html"
     : ["/admin", "/admin/"].includes(url.pathname)
       ? "admin/index.html"
-      : ["/library", "/library/"].includes(url.pathname)
+      : ["/library", "/library/", "/dashboard", "/dashboard/"].includes(url.pathname)
         ? "library.html"
         : decodeURIComponent(url.pathname).replace(/^\/+/, "");
   
