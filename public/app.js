@@ -19,7 +19,7 @@
     "ADHD medications",
     "Antidepressants",
     "Antipsychotics",
-    "Anxiolytic and hypnotic medications",
+    "Benzodiazepines",
     "Dementia medications",
     "Mood stabilizers and Anticonvulsants",
     "Sexual dysfunction medications"
@@ -76,6 +76,20 @@
       "Thiothixene",
       "Trifluoperazine",
       "Ziprasidone"
+    ],
+    "Benzodiazepines": [
+      "Alprazolam",
+      "Clonazepam",
+      "Diazepam",
+      "Flurazepam",
+      "Lorazepam",
+      "Temazepam",
+      "Triazolam",
+      "Eszopiclone",
+      "Zolpidem",
+      "Zaleplon",
+      "Chlordiazepoxide",
+      "Oxazepam"
     ]
   };
 
