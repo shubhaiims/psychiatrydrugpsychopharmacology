@@ -12,12 +12,18 @@ const publicDir = resolve(rootDir, "public");
 loadDotEnv(resolve(rootDir, ".env"));
 
 const port = Number(process.env.PORT || 3000);
-const staticFiles = new Set(["index.html", "styles.css", "app.js", "admin.js", "admin/index.html"]);
+const staticFiles = new Set(["index.html", "library.html", "styles.css", "app.js", "homepage.js", "admin.js", "admin/index.html", "brain-network.png"]);
 const mimeTypes = new Map([
   [".html", "text/html; charset=utf-8"],
   [".css", "text/css; charset=utf-8"],
   [".js", "text/javascript; charset=utf-8"],
-  [".json", "application/json; charset=utf-8"]
+  [".json", "application/json; charset=utf-8"],
+  [".png", "image/png"],
+  [".jpg", "image/jpeg"],
+  [".jpeg", "image/jpeg"],
+  [".gif", "image/gif"],
+  [".svg", "image/svg+xml"],
+  [".webp", "image/webp"]
 ]);
 
 const server = createServer(async (request, response) => {
@@ -119,11 +125,14 @@ async function routeApi(request, response, url) {
 }
 
 async function routeStatic(response, url) {
-  const requested = url.pathname === "/"
+  let requested = url.pathname === "/"
     ? "index.html"
     : ["/admin", "/admin/"].includes(url.pathname)
       ? "admin/index.html"
-      : decodeURIComponent(url.pathname).replace(/^\/+/, "");
+      : ["/library", "/library/"].includes(url.pathname)
+        ? "library.html"
+        : decodeURIComponent(url.pathname).replace(/^\/+/, "");
+  
   if (!staticFiles.has(requested)) {
     response.writeHead(404, { "Content-Type": "text/plain; charset=utf-8" });
     response.end("Not found");

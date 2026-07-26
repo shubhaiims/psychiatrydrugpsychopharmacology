@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Psychiatry Made Easy: Drug Library - Comprehensive database of psychiatric medications with detailed profiles."
+    />
+    <meta name="theme-color" content="#0f0f1e" />
+    <title>Drug Library - Psychiatry Made Easy</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="/" aria-label="Psychiatry Made Easy home">
+          <span class="brand-mark" aria-hidden="true">PME</span>
+          <span>
+            <span class="brand-name">Psychiatry Made Easy</span>
+            <span class="brand-subtitle">Master the Mind</span>
+          </span>
+        </a>
+
+        <nav class="topbar-nav">
+          <a href="/">Home</a>
+          <a href="/library" class="active">Drug Library</a>
+          <a href="/#resources">Resources</a>
+          <a href="/#about">About</a>
+        </nav>
+
+        <div class="topbar-actions">
+          <a href="#login" class="btn-secondary">Login</a>
+          <a href="#signup" class="btn-primary">Create Account</a>
+        </div>
+      </header>
+
+      <main>
+        <section class="workspace" id="libraryView">
+          <aside class="library-panel" aria-label="Drug library">
+            <div class="toolbar">
+              <label class="select-block" for="medicationGroupSelect">
+                <span>Medication group</span>
+                <select id="medicationGroupSelect"></select>
+              </label>
+
+              <label class="select-block" for="drugNameSelect">
+                <span>Choose drug</span>
+                <select id="drugNameSelect"></select>
+              </label>
+
+              <label class="select-block" for="outlineSelect">
+                <span>Drug outline</span>
+                <select id="outlineSelect"></select>
+              </label>
+            </div>
+
+          </aside>
+
+          <section class="detail-panel" id="drugDetail" aria-live="polite"></section>
+        </section>
+
+      </main>
+
+      <footer class="site-footer">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h4>Product</h4>
+            <ul>
+              <li><a href="/">Home</a></li>
+              <li><a href="/library">Drug Library</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4>Support</h4>
+            <ul>
+              <li><a href="#contact">Contact Us</a></li>
+              <li><a href="#faq">FAQ</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h4>Legal</h4>
+            <ul>
+              <li><a href="#privacy">Privacy Policy</a></li>
+              <li><a href="#terms">Terms of Service</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>Educational reference. Always verify against current prescribing information.</p>
+        </div>
+      </footer>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
