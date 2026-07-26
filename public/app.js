@@ -51,6 +51,31 @@
       "Vilazodone",
       "Vortioxetine",
       "Zuranolone"
+    ],
+    "Antipsychotics": [
+      "Aripiprazole",
+      "Asenapine",
+      "Brexpiprazole",
+      "Cariprazine",
+      "Chlorpromazine",
+      "Clozapine",
+      "Fluphenazine",
+      "Haloperidol",
+      "Iloperidone",
+      "Loxapine",
+      "Lumateperone",
+      "Lurasidone",
+      "Molindone",
+      "Olanzapine",
+      "Paliperidone",
+      "Perphenazine",
+      "Pimavanserin",
+      "Quetiapine",
+      "Risperidone",
+      "Thioridazine",
+      "Thiothixene",
+      "Trifluoperazine",
+      "Ziprasidone"
     ]
   };
 
