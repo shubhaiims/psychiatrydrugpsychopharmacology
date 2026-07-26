@@ -26,6 +26,15 @@
   ];
 
   const medicationGroupDrugNames = {
+    "ADHD medications": [
+      "Amphetamine",
+      "Atomoxetine",
+      "Clonidine",
+      "DexMethylphenidate",
+      "Guanfacine",
+      "MethAmphetamine",
+      "Methylphenidate"
+    ],
     "Antidepressants": [
       "Brexanolone",
       "Bupropion",
