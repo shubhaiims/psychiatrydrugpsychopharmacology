@@ -105,7 +105,7 @@
   };
 
   let drugs = [];
-  let selectedGroup = "";
+  let selectedGroup = "Antipsychotics";
   let selectedId = "";
   let loading = true;
   let loadError = "";

@@ -8,18 +8,39 @@
       content="Psychiatry Made Easy psychopharmacology drug dashboard."
     />
     <title>Psychiatry Made Easy</title>
+    <link rel="icon" href="assets/psychiatry-made-easy-logo.png" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <div class="app-shell">
-      <header class="topbar">
-        <a class="brand" href="#library" aria-label="Psychiatry Made Easy home">
-          <span class="brand-mark" aria-hidden="true">PME</span>
-          <span>
-            <span class="brand-name">Psychiatry Made Easy</span>
-            <span class="brand-subtitle">Psychopharmacology dashboard</span>
-          </span>
-        </a>
+      <header class="site-masthead" id="home">
+        <nav class="masthead-nav" aria-label="Primary navigation">
+          <div class="nav-group">
+            <a class="nav-link" href="#home">Home</a>
+            <a class="nav-link nav-link-caret" href="#libraryView">Psychiatry Drugs</a>
+          </div>
+
+          <a class="masthead-brand" href="#libraryView" aria-label="Psychiatry Made Easy dashboard">
+            <img src="assets/psychiatry-made-easy-logo.png" alt="" />
+            <span>Psychiatry Made Easy</span>
+          </a>
+
+          <div class="nav-group nav-group-right">
+            <a class="nav-link" href="/admin/">Login</a>
+            <span class="user-glyph" aria-hidden="true"></span>
+          </div>
+        </nav>
+
+        <div class="hero-stage" aria-label="Psychiatry Made Easy">
+          <div class="hero-visual" aria-hidden="true">
+            <img src="assets/psychiatry-made-easy-logo.png" alt="" />
+          </div>
+          <div class="hero-copy">
+            <h1>Psychiatry Made Easy</h1>
+            <p>Master the mind</p>
+            <a class="hero-button" href="#libraryView">Open drug library</a>
+          </div>
+        </div>
       </header>
 
       <main>

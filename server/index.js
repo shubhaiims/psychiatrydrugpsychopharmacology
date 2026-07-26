@@ -12,12 +12,20 @@ const publicDir = resolve(rootDir, "public");
 loadDotEnv(resolve(rootDir, ".env"));
 
 const port = Number(process.env.PORT || 3000);
-const staticFiles = new Set(["index.html", "styles.css", "app.js", "admin.js", "admin/index.html"]);
+const staticFiles = new Set([
+  "index.html",
+  "styles.css",
+  "app.js",
+  "admin.js",
+  "admin/index.html",
+  "assets/psychiatry-made-easy-logo.png"
+]);
 const mimeTypes = new Map([
   [".html", "text/html; charset=utf-8"],
   [".css", "text/css; charset=utf-8"],
   [".js", "text/javascript; charset=utf-8"],
-  [".json", "application/json; charset=utf-8"]
+  [".json", "application/json; charset=utf-8"],
+  [".png", "image/png"]
 ]);
 
 const server = createServer(async (request, response) => {
