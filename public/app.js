@@ -32,7 +32,7 @@
       "Clonidine",
       "Dexmethylphenidate",
       "Guanfacine",
-      "MethAmphetamine",
+      "Methamphetamine",
       "Methylphenidate"
     ],
     "Antidepressants": [
