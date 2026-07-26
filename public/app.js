@@ -109,10 +109,19 @@
   let selectedId = "";
   let loading = true;
   let loadError = "";
+  
+  // Check for drug query parameter
+  const urlParams = new URLSearchParams(window.location.search);
+  const drugParam = urlParams.get("drug");
 
   bindEvents();
   render();
   loadDrugs();
+  
+  // Auto-select drug if specified in URL
+  if (drugParam) {
+    selectedId = drugParam;
+  }
 
   function bindEvents() {
     els.medicationGroupSelect.addEventListener("change", () => {
@@ -149,6 +158,15 @@
         throw new Error(data.error || `Request failed with status ${response.status}.`);
       }
       drugs = normalizeCollection(data.drugs || []);
+      
+      // If a drug was specified in the URL, find it and set its medication group
+      if (drugParam && selectedId === drugParam) {
+        const drug = drugs.find((d) => d.id === drugParam);
+        if (drug && drug.medicationGroup) {
+          selectedGroup = drug.medicationGroup;
+        }
+      }
+      
       const options = getVisibleDrugOptions();
       selectedId = options.some((drug) => drug.id === selectedId) ? selectedId : options[0]?.id || "";
     } catch (error) {
