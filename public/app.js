@@ -30,7 +30,7 @@
       "Amphetamines",
       "Atomoxetine",
       "Clonidine",
-      "DexMethylphenidate",
+      "Dexmethylphenidate",
       "Guanfacine",
       "MethAmphetamine",
       "Methylphenidate"
