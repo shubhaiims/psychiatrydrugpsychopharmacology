@@ -53,6 +53,7 @@
       "Zuranolone"
     ],
     "Antipsychotics": [
+      "Amisulpride",
       "Aripiprazole",
       "Asenapine",
       "Brexpiprazole",
