@@ -171,6 +171,7 @@
       els.adminPassword.value = "";
       setStatus("Editor unlocked.");
       renderEditorLock();
+      await loadDrugs();
     } catch (error) {
       adminToken = "";
       sessionStorage.removeItem(TOKEN_KEY);

@@ -2,7 +2,15 @@ import { createReadStream, readFileSync } from "node:fs";
 import { createServer } from "node:http";
 import { dirname, extname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
-import { isAdminConfigured, loginWithPassword, requireAdmin } from "./auth.js";
+import {
+  getCurrentUser,
+  isAdminConfigured,
+  loginWithPassword,
+  requestUserOtp,
+  requireAdmin,
+  requireDashboardAccess,
+  verifyUserOtp
+} from "./auth.js";
 import { methodNotAllowed, readJsonBody, sendError, sendJson } from "./http.js";
 import { createDrug, deleteDrug, hasSupabaseConfig, listDrugs, replaceDrugs, updateDrug } from "./store.js";
 
@@ -72,8 +80,38 @@ async function routeApi(request, response, url) {
     return;
   }
 
+  if (url.pathname === "/api/auth/request-otp") {
+    if (method !== "POST") {
+      methodNotAllowed(response, ["POST"]);
+      return;
+    }
+    const body = await readJsonBody(request);
+    sendJson(response, 200, await requestUserOtp(body));
+    return;
+  }
+
+  if (url.pathname === "/api/auth/verify-otp") {
+    if (method !== "POST") {
+      methodNotAllowed(response, ["POST"]);
+      return;
+    }
+    const body = await readJsonBody(request);
+    sendJson(response, 200, await verifyUserOtp(body));
+    return;
+  }
+
+  if (url.pathname === "/api/auth/me") {
+    if (method !== "GET") {
+      methodNotAllowed(response, ["GET"]);
+      return;
+    }
+    sendJson(response, 200, await getCurrentUser(request));
+    return;
+  }
+
   if (url.pathname === "/api/drugs") {
     if (method === "GET") {
+      requireDashboardAccess(request);
       sendJson(response, 200, { drugs: await listDrugs() });
       return;
     }
@@ -100,6 +138,7 @@ async function routeApi(request, response, url) {
   if (parts.length === 3 && parts[0] === "api" && parts[1] === "drugs") {
     const id = decodeURIComponent(parts[2]);
     if (method === "GET") {
+      requireDashboardAccess(request);
       const drug = (await listDrugs()).find((item) => item.id === id);
       if (!drug) {
         sendJson(response, 404, { error: "Drug record not found." });

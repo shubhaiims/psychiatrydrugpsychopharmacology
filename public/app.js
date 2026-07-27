@@ -1,6 +1,7 @@
 (function () {
   "use strict";
 
+  const USER_TOKEN_KEY = "psychrx.user.token.v1";
   const sections = [
     { key: "classification", title: "Classification" },
     { key: "mechanismOfActionAndReceptorProfile", title: "Mechanism of Action and Receptor Profile" },
@@ -125,6 +126,22 @@
   };
 
   const els = {
+    userSessionLink: document.querySelector("#userSessionLink"),
+    userAccess: document.querySelector("#userAccess"),
+    profileForm: document.querySelector("#profileForm"),
+    profileName: document.querySelector("#profileName"),
+    profilePhone: document.querySelector("#profilePhone"),
+    requestOtpButton: document.querySelector("#requestOtpButton"),
+    otpForm: document.querySelector("#otpForm"),
+    profileOtp: document.querySelector("#profileOtp"),
+    verifyOtpButton: document.querySelector("#verifyOtpButton"),
+    changePhoneButton: document.querySelector("#changePhoneButton"),
+    userProfilePanel: document.querySelector("#userProfilePanel"),
+    signedInName: document.querySelector("#signedInName"),
+    signedInPhone: document.querySelector("#signedInPhone"),
+    userLogoutButton: document.querySelector("#userLogoutButton"),
+    authStatus: document.querySelector("#authStatus"),
+    workspace: document.querySelector("#libraryView"),
     medicationGroupSelect: document.querySelector("#medicationGroupSelect"),
     drugNameSelect: document.querySelector("#drugNameSelect"),
     outlineSelect: document.querySelector("#outlineSelect"),
@@ -136,12 +153,37 @@
   let selectedId = "";
   let loading = true;
   let loadError = "";
+  let userToken = localStorage.getItem(USER_TOKEN_KEY) || "";
+  let currentUser = null;
+  let pendingPhone = "";
 
   bindEvents();
+  renderAuth();
   render();
-  loadDrugs();
+  checkSession();
 
   function bindEvents() {
+    els.profileForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      await requestOtp();
+    });
+
+    els.otpForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      await verifyOtp();
+    });
+
+    els.changePhoneButton.addEventListener("click", () => {
+      pendingPhone = "";
+      els.profileOtp.value = "";
+      setAuthStatus("Enter your profile details to request a new OTP.");
+      renderAuth();
+    });
+
+    els.userLogoutButton.addEventListener("click", () => {
+      logoutUser();
+    });
+
     els.medicationGroupSelect.addEventListener("change", () => {
       selectedGroup = els.medicationGroupSelect.value;
       const options = getVisibleDrugOptions();
@@ -165,16 +207,105 @@
     });
   }
 
+  async function checkSession() {
+    if (!userToken) {
+      loading = false;
+      renderAuth();
+      render();
+      return;
+    }
+
+    try {
+      const data = await api("/api/auth/me");
+      currentUser = data.user || null;
+      renderAuth();
+      await loadDrugs();
+    } catch (error) {
+      logoutUser(false);
+      setAuthStatus(error.message || "Please verify your phone to continue.", true);
+    }
+  }
+
+  async function requestOtp() {
+    const name = els.profileName.value.trim();
+    const phone = els.profilePhone.value.trim();
+    if (!name || !phone) {
+      setAuthStatus("Enter your name and phone number first.", true);
+      return;
+    }
+
+    setAuthBusy(true);
+    setAuthStatus("Sending OTP...");
+    try {
+      const data = await api("/api/auth/request-otp", {
+        method: "POST",
+        body: { name, phone }
+      });
+      pendingPhone = data.phone;
+      els.profileOtp.value = "";
+      const devText = data.devOtp ? ` Development OTP: ${data.devOtp}` : "";
+      setAuthStatus(`OTP sent to ${data.phone}.${devText}`);
+      renderAuth();
+      els.profileOtp.focus();
+    } catch (error) {
+      setAuthStatus(error.message || "Unable to send OTP.", true);
+    } finally {
+      setAuthBusy(false);
+    }
+  }
+
+  async function verifyOtp() {
+    const otp = els.profileOtp.value.trim();
+    if (!pendingPhone || !otp) {
+      setAuthStatus("Enter the OTP sent to your phone.", true);
+      return;
+    }
+
+    setAuthBusy(true);
+    setAuthStatus("Verifying OTP...");
+    try {
+      const data = await api("/api/auth/verify-otp", {
+        method: "POST",
+        body: { phone: pendingPhone, otp }
+      });
+      userToken = data.token;
+      currentUser = data.user || null;
+      localStorage.setItem(USER_TOKEN_KEY, userToken);
+      pendingPhone = "";
+      els.profileOtp.value = "";
+      setAuthStatus("Phone verified. Opening the drug library.");
+      renderAuth();
+      await loadDrugs();
+      document.querySelector("#libraryView")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    } catch (error) {
+      setAuthStatus(error.message || "OTP verification failed.", true);
+    } finally {
+      setAuthBusy(false);
+    }
+  }
+
+  function logoutUser(showMessage = true) {
+    userToken = "";
+    currentUser = null;
+    pendingPhone = "";
+    drugs = [];
+    selectedId = "";
+    localStorage.removeItem(USER_TOKEN_KEY);
+    loading = false;
+    loadError = "";
+    renderAuth();
+    render();
+    if (showMessage) {
+      setAuthStatus("Logged out. Verify your phone to open the drug library again.");
+    }
+  }
+
   async function loadDrugs() {
     loading = true;
     loadError = "";
     render();
     try {
-      const response = await fetch("/api/drugs", { headers: { Accept: "application/json" } });
-      const data = await response.json();
-      if (!response.ok) {
-        throw new Error(data.error || `Request failed with status ${response.status}.`);
-      }
+      const data = await api("/api/drugs");
       drugs = normalizeCollection(data.drugs || []);
       const options = getVisibleDrugOptions();
       selectedId = options.some((drug) => drug.id === selectedId) ? selectedId : options[0]?.id || "";
@@ -188,11 +319,54 @@
     }
   }
 
+  async function api(path, options = {}) {
+    const headers = {
+      Accept: "application/json",
+      ...(options.body ? { "Content-Type": "application/json" } : {}),
+      ...(options.headers || {})
+    };
+
+    if (userToken) {
+      headers.Authorization = `Bearer ${userToken}`;
+    }
+
+    const response = await fetch(path, {
+      method: options.method || "GET",
+      headers,
+      body: options.body ? JSON.stringify(options.body) : undefined
+    });
+
+    const contentType = response.headers.get("content-type") || "";
+    const data = contentType.includes("application/json") ? await response.json() : {};
+    if (!response.ok) {
+      throw new Error(data.error || `Request failed with status ${response.status}.`);
+    }
+    return data;
+  }
+
   function render() {
     renderMedicationGroupSelect();
     renderDrugNameSelect();
     renderOutlineSelect();
     renderDetail();
+  }
+
+  function renderAuth() {
+    const signedIn = Boolean(userToken && currentUser);
+    els.workspace.classList.toggle("is-hidden", !signedIn);
+    els.profileForm.classList.toggle("is-hidden", signedIn || Boolean(pendingPhone));
+    els.otpForm.classList.toggle("is-hidden", signedIn || !pendingPhone);
+    els.userProfilePanel.classList.toggle("is-hidden", !signedIn);
+    els.userAccess.classList.toggle("is-verified", signedIn);
+    els.userSessionLink.textContent = signedIn ? "My profile" : "User login";
+
+    if (signedIn) {
+      els.signedInName.textContent = currentUser.name || "Verified user";
+      els.signedInPhone.textContent = currentUser.phone || "";
+      if (!els.authStatus.textContent) {
+        setAuthStatus("You are verified and can access the dashboard.");
+      }
+    }
   }
 
   function renderMedicationGroupSelect() {
@@ -458,6 +632,17 @@
 
   function tag(value) {
     return `<span class="tag">${escapeHtml(value)}</span>`;
+  }
+
+  function setAuthBusy(isBusy) {
+    els.requestOtpButton.disabled = isBusy;
+    els.verifyOtpButton.disabled = isBusy;
+    els.changePhoneButton.disabled = isBusy;
+  }
+
+  function setAuthStatus(message, danger = false) {
+    els.authStatus.textContent = message;
+    els.authStatus.classList.toggle("is-danger", danger);
   }
 
   function formatInline(value) {

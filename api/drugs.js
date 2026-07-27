@@ -1,10 +1,11 @@
-import { requireAdmin } from "../server/auth.js";
+import { requireAdmin, requireDashboardAccess } from "../server/auth.js";
 import { createDrug, listDrugs, replaceDrugs } from "../server/store.js";
 import { methodNotAllowed, readJsonBody, sendError, sendJson } from "../server/http.js";
 
 export default async function handler(request, response) {
   try {
     if (request.method === "GET") {
+      requireDashboardAccess(request);
       sendJson(response, 200, { drugs: await listDrugs() });
       return;
     }
@@ -32,4 +33,3 @@ export default async function handler(request, response) {
     sendError(response, error);
   }
 }
-

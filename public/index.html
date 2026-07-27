@@ -26,7 +26,8 @@
           </a>
 
           <div class="nav-group nav-group-right">
-            <a class="nav-link" href="/admin/">Login</a>
+            <a class="nav-link" href="#userAccess" id="userSessionLink">User login</a>
+            <a class="nav-link" href="/admin/">Admin</a>
             <span class="user-glyph" aria-hidden="true"></span>
           </div>
         </nav>
@@ -38,13 +39,58 @@
           <div class="hero-copy">
             <h1>Psychiatry Made Easy</h1>
             <p>Master the mind</p>
-            <a class="hero-button" href="#libraryView">Open drug library</a>
+            <a class="hero-button" href="#userAccess">Open drug library</a>
           </div>
         </div>
       </header>
 
       <main>
-        <section class="workspace" id="libraryView">
+        <section class="auth-gate" id="userAccess" aria-label="User access">
+          <div class="auth-card">
+            <div>
+              <p class="eyebrow">Member access</p>
+              <h2>Verify your phone to open the drug library</h2>
+              <p class="auth-copy">Create your profile once, confirm the OTP sent to your phone, and continue into the Psychiatry Made Easy dashboard.</p>
+            </div>
+
+            <form class="user-auth-form" id="profileForm">
+              <label for="profileName">
+                <span>Full name</span>
+                <input id="profileName" autocomplete="name" required />
+              </label>
+              <label for="profilePhone">
+                <span>Phone number</span>
+                <input id="profilePhone" type="tel" autocomplete="tel" placeholder="+91 98765 43210" required />
+              </label>
+              <button class="primary-button" type="submit" id="requestOtpButton">Send OTP</button>
+            </form>
+
+            <form class="user-auth-form is-hidden" id="otpForm">
+              <label for="profileOtp">
+                <span>One-time password</span>
+                <input id="profileOtp" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="6-digit OTP" required />
+              </label>
+              <button class="primary-button" type="submit" id="verifyOtpButton">Verify and open library</button>
+              <button class="secondary-button" type="button" id="changePhoneButton">Change phone</button>
+            </form>
+
+            <div class="user-profile-panel is-hidden" id="userProfilePanel">
+              <div>
+                <span>Signed in as</span>
+                <strong id="signedInName">Verified user</strong>
+                <small id="signedInPhone"></small>
+              </div>
+              <div class="profile-actions">
+                <a class="secondary-button" href="#libraryView">Go to library</a>
+                <button class="secondary-button" type="button" id="userLogoutButton">Log out</button>
+              </div>
+            </div>
+
+            <p class="auth-status" id="authStatus" role="status" aria-live="polite"></p>
+          </div>
+        </section>
+
+        <section class="workspace is-hidden" id="libraryView">
           <aside class="library-panel" aria-label="Drug library">
             <div class="toolbar">
               <label class="select-block" for="medicationGroupSelect">

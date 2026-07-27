@@ -8,8 +8,12 @@ const files = [
   "server/http.js",
   "server/auth.js",
   "server/store.js",
+  "server/user-store.js",
   "api/drugs.js",
   "api/auth/login.js",
+  "api/auth/request-otp.js",
+  "api/auth/verify-otp.js",
+  "api/auth/me.js",
   "api/drugs/[id].js",
   "scripts/validate.mjs",
   "scripts/push-to-supabase.mjs"

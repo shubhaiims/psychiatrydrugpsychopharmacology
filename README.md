@@ -8,7 +8,7 @@ The frontend files live in `public/` so Vercel can publish them directly, while 
 
 ## Features
 
-- Public drug dashboard with search and filters
+- Phone OTP gated public drug dashboard with search and filters
 - Drug-name dropdown for quickly choosing a medication
 - Drug detail page with a clickable outline for jumping between sections
 - Backend API for drug records
@@ -42,6 +42,9 @@ ADMIN_PASSWORD=replace-with-a-strong-password
 SESSION_SECRET=replace-with-a-long-random-secret
 SUPABASE_URL=https://your-project-ref.supabase.co
 SUPABASE_SERVICE_ROLE_KEY=your-backend-only-service-role-or-secret-key
+OTP_WEBHOOK_URL=https://your-sms-gateway.example/send-otp
+OTP_WEBHOOK_TOKEN=optional-gateway-token
+OTP_DEV_MODE=true
 PORT=3000
 ```
 
@@ -60,6 +63,7 @@ http://localhost:3000
 ## Data Storage
 
 For production, Vercel API routes read and write the `drugs` table in Supabase.
+Verified public user profiles are stored in `user_profiles`, and short-lived OTP challenges are stored in `user_otps`.
 
 For local fallback development and GitHub-based syncing, drug records live in:
 
@@ -68,6 +72,22 @@ server/data/drugs.json
 ```
 
 When Supabase environment variables are present, the API uses Supabase. When they are missing, local development falls back to the JSON file.
+
+## User Phone OTP Access
+
+Public users must create a profile with their name and phone number, request an OTP, and verify it before the dashboard can read `/api/drugs`.
+
+The backend posts OTP delivery requests to `OTP_WEBHOOK_URL` when configured. The webhook receives:
+
+```json
+{
+  "phone": "+919876543210",
+  "otp": "123456",
+  "message": "Your Psychiatry Made Easy OTP is 123456. It expires in 10 minutes."
+}
+```
+
+Use this webhook to connect an SMS provider such as Twilio, MSG91, Vonage, or your own gateway. In local development, set `OTP_DEV_MODE=true` to return the OTP in the browser for testing. Do not enable `OTP_DEV_MODE` in production.
 
 ## Supabase Setup
 
@@ -91,6 +111,8 @@ SUPABASE_URL
 SUPABASE_SERVICE_ROLE_KEY or SUPABASE_SECRET_KEY
 ADMIN_PASSWORD
 SESSION_SECRET
+OTP_WEBHOOK_URL
+OTP_WEBHOOK_TOKEN, if your gateway requires it
 ```
 
 5. Deploy. Every push to `main` triggers a new Vercel deployment.
