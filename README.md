@@ -44,6 +44,9 @@ SUPABASE_URL=https://your-project-ref.supabase.co
 SUPABASE_SERVICE_ROLE_KEY=your-backend-only-service-role-or-secret-key
 OTP_WEBHOOK_URL=https://your-sms-gateway.example/send-otp
 OTP_WEBHOOK_TOKEN=optional-gateway-token
+TWILIO_ACCOUNT_SID=your-twilio-account-sid
+TWILIO_AUTH_TOKEN=your-twilio-auth-token
+TWILIO_FROM_NUMBER=+15551234567
 OTP_DEV_MODE=true
 PORT=3000
 ```
@@ -77,7 +80,17 @@ When Supabase environment variables are present, the API uses Supabase. When the
 
 Public users must create a profile with their name and phone number, request an OTP, and verify it before the dashboard can read `/api/drugs`.
 
-The backend posts OTP delivery requests to `OTP_WEBHOOK_URL` when configured. The webhook receives:
+The backend can send OTPs directly through Twilio when these variables are configured:
+
+```text
+TWILIO_ACCOUNT_SID
+TWILIO_AUTH_TOKEN
+TWILIO_FROM_NUMBER
+```
+
+Alternatively, use `TWILIO_MESSAGING_SERVICE_SID` instead of `TWILIO_FROM_NUMBER`.
+
+The backend can also post OTP delivery requests to `OTP_WEBHOOK_URL` when configured. The webhook receives:
 
 ```json
 {
@@ -87,7 +100,7 @@ The backend posts OTP delivery requests to `OTP_WEBHOOK_URL` when configured. Th
 }
 ```
 
-Use this webhook to connect an SMS provider such as Twilio, MSG91, Vonage, or your own gateway. In local development, set `OTP_DEV_MODE=true` to return the OTP in the browser for testing. Do not enable `OTP_DEV_MODE` in production.
+Use this webhook to connect an SMS provider such as MSG91, Vonage, or your own gateway. In local development, set `OTP_DEV_MODE=true` to return the OTP in the browser for testing. Do not enable `OTP_DEV_MODE` in production.
 
 ## Supabase Setup
 
@@ -113,6 +126,7 @@ ADMIN_PASSWORD
 SESSION_SECRET
 OTP_WEBHOOK_URL
 OTP_WEBHOOK_TOKEN, if your gateway requires it
+TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, and TWILIO_FROM_NUMBER if using Twilio directly
 ```
 
 5. Deploy. Every push to `main` triggers a new Vercel deployment.

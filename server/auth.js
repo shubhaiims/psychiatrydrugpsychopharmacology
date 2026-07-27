@@ -171,6 +171,11 @@ function hashOtp(phone, otp) {
 }
 
 async function deliverOtp(phone, otp) {
+  if (hasTwilioConfig()) {
+    await sendTwilioSms(phone, `Your Psychiatry Made Easy OTP is ${otp}. It expires in 10 minutes.`);
+    return { channel: "twilio" };
+  }
+
   const webhookUrl = process.env.OTP_WEBHOOK_URL || "";
   if (webhookUrl) {
     const response = await fetch(webhookUrl, {
@@ -197,6 +202,47 @@ async function deliverOtp(phone, otp) {
   }
 
   throw httpError(503, "OTP gateway is not configured. Add OTP_WEBHOOK_URL before enabling user login.");
+}
+
+async function sendTwilioSms(phone, message) {
+  const accountSid = process.env.TWILIO_ACCOUNT_SID || "";
+  const authToken = process.env.TWILIO_AUTH_TOKEN || "";
+  const fromNumber = process.env.TWILIO_FROM_NUMBER || "";
+  const messagingServiceSid = process.env.TWILIO_MESSAGING_SERVICE_SID || "";
+
+  const body = new URLSearchParams({
+    To: phone,
+    Body: message,
+    ...(messagingServiceSid ? { MessagingServiceSid: messagingServiceSid } : { From: fromNumber })
+  });
+
+  const response = await fetch(`https://api.twilio.com/2010-04-01/Accounts/${encodeURIComponent(accountSid)}/Messages.json`, {
+    method: "POST",
+    headers: {
+      Authorization: `Basic ${Buffer.from(`${accountSid}:${authToken}`).toString("base64")}`,
+      "Content-Type": "application/x-www-form-urlencoded"
+    },
+    body
+  });
+
+  if (!response.ok) {
+    let detail = `status ${response.status}`;
+    try {
+      const data = await response.json();
+      detail = data.message || detail;
+    } catch {
+      // Twilio error details are usually JSON, but keep the fallback readable.
+    }
+    throw httpError(502, `Twilio failed to send OTP: ${detail}`);
+  }
+}
+
+function hasTwilioConfig() {
+  return Boolean(
+    process.env.TWILIO_ACCOUNT_SID &&
+    process.env.TWILIO_AUTH_TOKEN &&
+    (process.env.TWILIO_FROM_NUMBER || process.env.TWILIO_MESSAGING_SERVICE_SID)
+  );
 }
 
 function allowDevelopmentOtp() {
