@@ -142,6 +142,11 @@
     userLogoutButton: document.querySelector("#userLogoutButton"),
     authStatus: document.querySelector("#authStatus"),
     workspace: document.querySelector("#libraryView"),
+    notebookSearchView: document.querySelector("#notebookSearchView"),
+    notebookSearchForm: document.querySelector("#notebookSearchForm"),
+    notebookQuery: document.querySelector("#notebookQuery"),
+    notebookSearchButton: document.querySelector("#notebookSearchButton"),
+    notebookAnswer: document.querySelector("#notebookAnswer"),
     medicationGroupSelect: document.querySelector("#medicationGroupSelect"),
     drugNameSelect: document.querySelector("#drugNameSelect"),
     outlineSelect: document.querySelector("#outlineSelect"),
@@ -182,6 +187,11 @@
 
     els.userLogoutButton.addEventListener("click", () => {
       logoutUser();
+    });
+
+    els.notebookSearchForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      await searchNotebook();
     });
 
     els.medicationGroupSelect.addEventListener("change", () => {
@@ -290,6 +300,8 @@
     pendingPhone = "";
     drugs = [];
     selectedId = "";
+    els.notebookAnswer.classList.add("is-hidden");
+    els.notebookAnswer.innerHTML = "";
     localStorage.removeItem(USER_TOKEN_KEY);
     loading = false;
     loadError = "";
@@ -297,6 +309,28 @@
     render();
     if (showMessage) {
       setAuthStatus("Logged out. Verify your phone to open the drug library again.");
+    }
+  }
+
+  async function searchNotebook() {
+    const query = els.notebookQuery.value.trim();
+    if (!query) {
+      renderNotebookAnswer("Ask a question before searching.", [], true);
+      return;
+    }
+
+    els.notebookSearchButton.disabled = true;
+    renderNotebookAnswer("Searching your notebook sources...", []);
+    try {
+      const data = await api("/api/notebook/search", {
+        method: "POST",
+        body: { query }
+      });
+      renderNotebookAnswer(data.answer, data.results || []);
+    } catch (error) {
+      renderNotebookAnswer(error.message || "Notebook search failed.", [], true);
+    } finally {
+      els.notebookSearchButton.disabled = false;
     }
   }
 
@@ -354,6 +388,7 @@
   function renderAuth() {
     const signedIn = Boolean(userToken && currentUser);
     els.workspace.classList.toggle("is-hidden", !signedIn);
+    els.notebookSearchView.classList.toggle("is-hidden", !signedIn);
     els.profileForm.classList.toggle("is-hidden", signedIn || Boolean(pendingPhone));
     els.otpForm.classList.toggle("is-hidden", signedIn || !pendingPhone);
     els.userProfilePanel.classList.toggle("is-hidden", !signedIn);
@@ -632,6 +667,31 @@
 
   function tag(value) {
     return `<span class="tag">${escapeHtml(value)}</span>`;
+  }
+
+  function renderNotebookAnswer(answer, results, danger = false) {
+    els.notebookAnswer.classList.remove("is-hidden");
+    els.notebookAnswer.classList.toggle("is-danger", danger);
+    els.notebookAnswer.innerHTML = `
+      <h3>${danger ? "Search issue" : "Notebook answer"}</h3>
+      <div class="notebook-answer-text">${renderFormattedText(answer || "No answer returned.")}</div>
+      ${renderNotebookResults(results)}
+    `;
+  }
+
+  function renderNotebookResults(results) {
+    if (!Array.isArray(results) || !results.length) return "";
+    return `
+      <div class="notebook-results">
+        ${results.map((result) => `
+          <article class="notebook-result">
+            <strong>${escapeHtml(result.sourceTitle || "Notebook source")}</strong>
+            <span>${escapeHtml(result.fileName || "Pasted source")} · match score ${Number(result.score || 0)}</span>
+            <p>${escapeHtml(result.snippet || "")}</p>
+          </article>
+        `).join("")}
+      </div>
+    `;
   }
 
   function setAuthBusy(isBusy) {

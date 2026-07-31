@@ -12,6 +12,7 @@ import {
   verifyUserOtp
 } from "./auth.js";
 import { methodNotAllowed, readJsonBody, sendError, sendJson } from "./http.js";
+import { createNotebookSource, deleteNotebookSource, listNotebookSources, searchNotebook } from "./notebook-store.js";
 import { createDrug, deleteDrug, hasSupabaseConfig, listDrugs, replaceDrugs, updateDrug } from "./store.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -132,6 +133,43 @@ async function routeApi(request, response, url) {
       return;
     }
     methodNotAllowed(response, ["GET", "POST", "PUT"]);
+    return;
+  }
+
+  if (url.pathname === "/api/notebook/sources") {
+    if (method === "GET") {
+      requireAdmin(request);
+      sendJson(response, 200, { sources: await listNotebookSources() });
+      return;
+    }
+    if (method === "POST") {
+      requireAdmin(request);
+      const body = await readJsonBody(request);
+      sendJson(response, 201, { source: await createNotebookSource(body) });
+      return;
+    }
+    methodNotAllowed(response, ["GET", "POST"]);
+    return;
+  }
+
+  if (parts.length === 4 && parts[0] === "api" && parts[1] === "notebook" && parts[2] === "sources") {
+    if (method === "DELETE") {
+      requireAdmin(request);
+      sendJson(response, 200, { source: await deleteNotebookSource(decodeURIComponent(parts[3])) });
+      return;
+    }
+    methodNotAllowed(response, ["DELETE"]);
+    return;
+  }
+
+  if (url.pathname === "/api/notebook/search") {
+    if (method !== "POST") {
+      methodNotAllowed(response, ["POST"]);
+      return;
+    }
+    requireDashboardAccess(request);
+    const body = await readJsonBody(request);
+    sendJson(response, 200, await searchNotebook(body.query));
     return;
   }
 

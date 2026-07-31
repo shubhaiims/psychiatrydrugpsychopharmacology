@@ -1,6 +1,6 @@
 import { httpError } from "./drug-model.js";
 
-const bodyLimitBytes = 2 * 1024 * 1024;
+const bodyLimitBytes = 12 * 1024 * 1024;
 
 export async function readJsonBody(request) {
   if (request.body && typeof request.body === "object" && !isReadable(request.body)) {
@@ -55,4 +55,3 @@ function parseJson(text) {
 function isReadable(value) {
   return value && typeof value.on === "function" && typeof value.pipe === "function";
 }
-

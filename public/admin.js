@@ -25,6 +25,12 @@
     copyJsonButton: document.querySelector("#copyJsonButton"),
     importJsonInput: document.querySelector("#importJsonInput"),
     clearDataButton: document.querySelector("#clearDataButton"),
+    sourceForm: document.querySelector("#sourceForm"),
+    sourceTitle: document.querySelector("#sourceTitle"),
+    sourceFileInput: document.querySelector("#sourceFileInput"),
+    sourceText: document.querySelector("#sourceText"),
+    saveSourceButton: document.querySelector("#saveSourceButton"),
+    sourceList: document.querySelector("#sourceList"),
     editorStatus: document.querySelector("#editorStatus"),
     drugForm: document.querySelector("#drugForm"),
     editDrugId: document.querySelector("#editDrugId"),
@@ -54,6 +60,7 @@
   };
 
   let drugs = [];
+  let sources = [];
   let selectedId = "";
   let adminToken = sessionStorage.getItem(TOKEN_KEY) || "";
 
@@ -61,6 +68,7 @@
   renderMedicationGroupField();
   renderEditorLock();
   loadDrugs();
+  loadNotebookSources();
 
   function bindEvents() {
     els.loginForm.addEventListener("submit", async (event) => {
@@ -112,6 +120,11 @@
     els.exportJsonButton.addEventListener("click", exportJson);
     els.copyJsonButton.addEventListener("click", copyJson);
     els.importJsonInput.addEventListener("change", importJson);
+    els.sourceForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      if (!requireEditor()) return;
+      await saveNotebookSource();
+    });
 
     els.clearDataButton.addEventListener("click", async () => {
       if (!requireEditor()) return;
@@ -172,11 +185,79 @@
       setStatus("Editor unlocked.");
       renderEditorLock();
       await loadDrugs();
+      await loadNotebookSources();
     } catch (error) {
       adminToken = "";
       sessionStorage.removeItem(TOKEN_KEY);
       setStatus(error.message || "Login failed.", true);
       renderEditorLock();
+    }
+  }
+
+  async function loadNotebookSources() {
+    if (!adminToken) {
+      sources = [];
+      renderSourceList();
+      return;
+    }
+
+    try {
+      const data = await api("/api/notebook/sources");
+      sources = Array.isArray(data.sources) ? data.sources : [];
+      renderSourceList();
+    } catch (error) {
+      sources = [];
+      renderSourceList();
+      setStatus(error.message || "Unable to load notebook sources.", true);
+    }
+  }
+
+  async function saveNotebookSource() {
+    const file = els.sourceFileInput.files && els.sourceFileInput.files[0];
+    const title = els.sourceTitle.value.trim() || file?.name || "Notebook source";
+    const text = els.sourceText.value.trim();
+    if (!file && !text) {
+      setStatus("Choose a PDF/text file or paste source text.", true);
+      return;
+    }
+
+    try {
+      els.saveSourceButton.disabled = true;
+      const body = {
+        title,
+        text,
+        fileName: file?.name || "",
+        contentType: file?.type || ""
+      };
+      if (file) {
+        body.dataBase64 = await readFileAsBase64(file);
+      }
+      await api("/api/notebook/sources", {
+        method: "POST",
+        body
+      });
+      els.sourceTitle.value = "";
+      els.sourceFileInput.value = "";
+      els.sourceText.value = "";
+      await loadNotebookSources();
+      setStatus("Notebook source added and indexed.");
+    } catch (error) {
+      setStatus(error.message || "Unable to add notebook source.", true);
+    } finally {
+      els.saveSourceButton.disabled = !adminToken;
+    }
+  }
+
+  async function deleteNotebookSource(id) {
+    if (!requireEditor()) return;
+    const source = sources.find((item) => item.id === id);
+    if (!window.confirm(`Delete ${source?.title || "this source"} from notebook search?`)) return;
+    try {
+      await api(`/api/notebook/sources/${encodeURIComponent(id)}`, { method: "DELETE" });
+      await loadNotebookSources();
+      setStatus("Notebook source deleted.");
+    } catch (error) {
+      setStatus(error.message || "Unable to delete notebook source.", true);
     }
   }
 
@@ -297,15 +378,23 @@
       els.duplicateDrugButton,
       els.deleteDrugButton,
       els.saveDrugButton,
-      els.clearDataButton
+      els.clearDataButton,
+      els.saveSourceButton
     ].forEach((button) => {
       button.disabled = !unlocked;
     });
     els.importJsonInput.disabled = !unlocked;
+    els.sourceTitle.disabled = !unlocked;
+    els.sourceText.disabled = !unlocked;
+    els.sourceFileInput.disabled = !unlocked;
     els.loginButton.disabled = unlocked;
     els.logoutButton.disabled = !unlocked;
     els.adminPassword.disabled = unlocked;
     document.body.classList.toggle("is-locked", !unlocked);
+    if (!unlocked) {
+      sources = [];
+      renderSourceList();
+    }
   }
 
   function populateForm(drug) {
@@ -383,6 +472,29 @@
       updatedAt: today,
       lastReviewed: today
     };
+  }
+
+  function renderSourceList() {
+    if (!adminToken) {
+      els.sourceList.innerHTML = `<p class="source-empty">Unlock editor to manage notebook sources.</p>`;
+      return;
+    }
+    if (!sources.length) {
+      els.sourceList.innerHTML = `<p class="source-empty">No notebook sources added yet.</p>`;
+      return;
+    }
+    els.sourceList.innerHTML = sources.map((source) => `
+      <article class="source-list-item">
+        <div>
+          <strong>${escapeHtml(source.title)}</strong>
+          <span>${escapeHtml(source.fileName || "Pasted text")} · ${Number(source.wordCount || 0).toLocaleString()} words</span>
+        </div>
+        <button class="danger-button" type="button" data-source-delete="${escapeAttr(source.id)}">Delete</button>
+      </article>
+    `).join("");
+    els.sourceList.querySelectorAll("[data-source-delete]").forEach((button) => {
+      button.addEventListener("click", () => deleteNotebookSource(button.dataset.sourceDelete));
+    });
   }
 
   function normalizeCollection(collection) {
@@ -492,6 +604,18 @@
 
   function structuredCloneSafe(value) {
     return JSON.parse(JSON.stringify(value));
+  }
+
+  function readFileAsBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        const result = String(reader.result || "");
+        resolve(result.includes(",") ? result.split(",").pop() : result);
+      };
+      reader.onerror = () => reject(reader.error || new Error("Unable to read file."));
+      reader.readAsDataURL(file);
+    });
   }
 
   function escapeHtml(value) {

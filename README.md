@@ -11,6 +11,7 @@ The frontend files live in `public/` so Vercel can publish them directly, while 
 - Phone OTP gated public drug dashboard with search and filters
 - Drug-name dropdown for quickly choosing a medication
 - Drug detail page with a clickable outline for jumping between sections
+- NotebookLM-style source search for uploaded PDFs, text files, and pasted notes
 - Backend API for drug records
 - Admin password protected editor
 - Add, edit, duplicate, delete, import, export, and clear records
@@ -101,6 +102,20 @@ The backend can also post OTP delivery requests to `OTP_WEBHOOK_URL` when config
 ```
 
 Use this webhook to connect an SMS provider such as MSG91, Vonage, or your own gateway. In local development, set `OTP_DEV_MODE=true` to return the OTP in the browser for testing. Do not enable `OTP_DEV_MODE` in production.
+
+## Ask My Notes
+
+The dashboard includes a NotebookLM-style search area called **Ask My Notes**. Admins can add source material from `/admin/` by uploading a PDF, text file, Markdown file, or by pasting notes. Verified users can then ask questions against those sources from the public dashboard.
+
+Notebook source records are stored in the Supabase `notebook_sources` table. PDF extraction uses the `pdf-parse` package during upload. If a PDF is scanned or image-only, paste OCR text into the source text box instead.
+
+The search endpoint is:
+
+```text
+POST /api/notebook/search
+```
+
+It requires the same verified user token used by the drug dashboard.
 
 ## Supabase Setup
 

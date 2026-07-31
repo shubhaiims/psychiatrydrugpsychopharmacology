@@ -114,6 +114,26 @@
           <section class="detail-panel" id="drugDetail" aria-live="polite"></section>
         </section>
 
+        <section class="notebook-search-panel is-hidden" id="notebookSearchView" aria-label="Ask My Notes">
+          <div class="notebook-search-header">
+            <div>
+              <p class="eyebrow">Ask My Notes</p>
+              <h2>Search your uploaded PDFs and notes</h2>
+            </div>
+            <p>Answers are grounded in the notebook sources added through the admin panel.</p>
+          </div>
+
+          <form class="notebook-search-form" id="notebookSearchForm">
+            <label for="notebookQuery">
+              <span>Question</span>
+              <textarea id="notebookQuery" rows="3" placeholder="Ask about a concept, drug, dose, mechanism, or clinical pearl."></textarea>
+            </label>
+            <button class="primary-button" type="submit" id="notebookSearchButton">Search notes</button>
+          </form>
+
+          <section class="notebook-answer is-hidden" id="notebookAnswer" aria-live="polite"></section>
+        </section>
+
       </main>
 
       <footer class="site-footer">

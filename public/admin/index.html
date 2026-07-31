@@ -52,6 +52,24 @@
               <button class="danger-button" type="button" id="clearDataButton">Clear all records</button>
             </div>
 
+            <section class="source-admin-panel" aria-label="Notebook sources">
+              <h2>Notebook sources</h2>
+              <form id="sourceForm" class="source-form">
+                <label for="sourceTitle">
+                  <span>Source title</span>
+                  <input id="sourceTitle" placeholder="Example: ADHD lecture notes" />
+                </label>
+                <label class="file-button source-file-button" for="sourceFileInput">Choose PDF or text file</label>
+                <input id="sourceFileInput" type="file" accept=".pdf,.txt,.md,text/plain,application/pdf" />
+                <label for="sourceText">
+                  <span>Or paste source text</span>
+                  <textarea id="sourceText" rows="5" placeholder="Paste notes here if you do not have a file."></textarea>
+                </label>
+                <button class="primary-button" type="submit" id="saveSourceButton">Add source</button>
+              </form>
+              <div class="source-list" id="sourceList"></div>
+            </section>
+
             <p class="editor-status" id="editorStatus" role="status" aria-live="polite">Connect to the backend to begin.</p>
           </aside>
 

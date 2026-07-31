@@ -10,3 +10,4 @@ dist/
 coverage/
 server/data/users.json
 server/data/user-otps.json
+server/data/notebook-sources.json

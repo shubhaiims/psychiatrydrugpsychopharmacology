@@ -42,3 +42,22 @@ alter table public.user_otps enable row level security;
 
 comment on table public.user_otps is
   'Short-lived OTP login challenges. Store only OTP hashes, never plaintext OTPs.';
+
+create table if not exists public.notebook_sources (
+  id text primary key,
+  title text not null,
+  file_name text,
+  content_type text,
+  word_count integer not null default 0,
+  payload jsonb not null,
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
+);
+
+create index if not exists notebook_sources_title_idx on public.notebook_sources (title);
+create index if not exists notebook_sources_updated_at_idx on public.notebook_sources (updated_at);
+
+alter table public.notebook_sources enable row level security;
+
+comment on table public.notebook_sources is
+  'Admin-managed NotebookLM-style searchable source payloads for the dashboard.';

@@ -9,12 +9,16 @@ const files = [
   "server/auth.js",
   "server/store.js",
   "server/user-store.js",
+  "server/notebook-store.js",
   "api/drugs.js",
   "api/auth/login.js",
   "api/auth/request-otp.js",
   "api/auth/verify-otp.js",
   "api/auth/me.js",
   "api/drugs/[id].js",
+  "api/notebook/sources.js",
+  "api/notebook/sources/[id].js",
+  "api/notebook/search.js",
   "scripts/validate.mjs",
   "scripts/push-to-supabase.mjs"
 ];
