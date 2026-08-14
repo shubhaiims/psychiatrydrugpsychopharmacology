@@ -2,11 +2,23 @@ import { readFile } from "node:fs/promises";
 
 const requiredFiles = [
   "public/index.html",
+  "public/login.html",
+  "public/register.html",
+  "public/forgot-password.html",
+  "public/reset-password.html",
+  "public/admin-login.html",
   "public/styles.css",
   "public/app.js",
+  "public/admin.js",
+  "public/auth.js",
+  "server/library.html",
+  "server/admin.html",
   "server/index.js",
   "server/data/drugs.json",
   "supabase/schema.sql",
+  "supabase/migrations/202608150000_existing_storage_schema.sql",
+  "supabase/migrations/202608150001_auth_profiles_and_admins.sql",
+  "supabase/migrations/202608150002_authorization_policies.sql",
   "vercel.json",
   ".github/workflows/sync-supabase.yml"
 ];
@@ -19,6 +31,10 @@ const source = await readFile("server/data/drugs.json", "utf8");
 const drugs = JSON.parse(source);
 if (!Array.isArray(drugs)) {
   throw new Error("server/data/drugs.json must contain a JSON array.");
+}
+
+if (drugs.length !== 61) {
+  throw new Error(`Expected all 61 drug records, found ${drugs.length}.`);
 }
 
 const requiredFields = ["id", "name", "classification", "riskLevel"];
@@ -35,5 +51,25 @@ for (const drug of drugs) {
   }
   ids.add(drug.id);
 }
+
+const browserFiles = [
+  "public/index.html",
+  "public/login.html",
+  "public/register.html",
+  "public/forgot-password.html",
+  "public/reset-password.html",
+  "public/admin-login.html",
+  "public/app.js",
+  "public/admin.js",
+  "public/auth.js"
+];
+for (const file of browserFiles) {
+  const browserSource = await readFile(file, "utf8");
+  if (/SUPABASE_(?:SECRET_KEY|SERVICE_ROLE_KEY)/.test(browserSource)) {
+    throw new Error(`Backend-only Supabase key name found in browser asset: ${file}`);
+  }
+}
+
+JSON.parse(await readFile("vercel.json", "utf8"));
 
 console.log(`Validated backend app and ${drugs.length} drug records.`);

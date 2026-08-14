@@ -1,4 +1,4 @@
-import { requireAdmin, requireDashboardAccess } from "../../server/auth.js";
+import { assertMutationRequest, requireAdmin, requireUser } from "../../server/auth.js";
 import { deleteDrug, listDrugs, updateDrug } from "../../server/store.js";
 import { methodNotAllowed, readJsonBody, sendError, sendJson } from "../../server/http.js";
 
@@ -7,7 +7,7 @@ export default async function handler(request, response) {
 
   try {
     if (request.method === "GET") {
-      requireDashboardAccess(request);
+      await requireUser(request, response);
       const drug = (await listDrugs()).find((item) => item.id === id);
       if (!drug) {
         sendJson(response, 404, { error: "Drug record not found." });
@@ -18,14 +18,16 @@ export default async function handler(request, response) {
     }
 
     if (request.method === "PUT" || request.method === "PATCH") {
-      requireAdmin(request);
+      assertMutationRequest(request);
+      await requireAdmin(request, response);
       const body = await readJsonBody(request);
       sendJson(response, 200, { drug: await updateDrug(id, body) });
       return;
     }
 
     if (request.method === "DELETE") {
-      requireAdmin(request);
+      assertMutationRequest(request);
+      await requireAdmin(request, response);
       sendJson(response, 200, { drug: await deleteDrug(id) });
       return;
     }

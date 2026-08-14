@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Protected Psychiatry Made Easy drug library." />
+    <title>Drug Library | Psychiatry Made Easy</title>
+    <link rel="icon" href="/assets/psychiatry-made-easy-logo.png" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="library-page">
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="/" aria-label="Psychiatry Made Easy home">
+          <span class="brand-mark" aria-hidden="true">PME</span>
+          <span>
+            <span class="brand-name">Psychiatry Made Easy</span>
+            <span class="brand-subtitle">Drug library</span>
+          </span>
+        </a>
+        <div class="topbar-actions">
+          <span class="session-identity" id="sessionIdentity">Checking session...</span>
+          <a class="secondary-button is-hidden" href="/admin" id="adminEditorLink">Admin editor</a>
+          <a class="secondary-button" href="/">Home</a>
+          <button class="secondary-button" type="button" id="logoutButton">Log out</button>
+        </div>
+      </header>
+
+      <main>
+        <section class="workspace" id="libraryView">
+          <aside class="library-panel" aria-label="Drug library">
+            <div class="toolbar">
+              <label class="select-block" for="medicationGroupSelect">
+                <span>Medication group</span>
+                <select id="medicationGroupSelect" disabled></select>
+              </label>
+
+              <label class="select-block" for="drugNameSelect">
+                <span>Choose drug</span>
+                <select id="drugNameSelect" disabled></select>
+              </label>
+
+              <label class="select-block" for="outlineSelect">
+                <span>Drug outline</span>
+                <select id="outlineSelect" disabled></select>
+              </label>
+            </div>
+          </aside>
+
+          <section class="detail-panel" id="drugDetail" aria-live="polite">
+            <div class="empty-state">Loading the protected drug library.</div>
+          </section>
+        </section>
+
+        <section class="notebook-search-panel" id="notebookSearchView" aria-label="Ask My Notes">
+          <div class="notebook-search-header">
+            <div>
+              <p class="eyebrow">Ask My Notes</p>
+              <h2>Search uploaded PDFs and notes</h2>
+            </div>
+            <p>Answers are grounded in notebook sources managed through the admin editor.</p>
+          </div>
+
+          <form class="notebook-search-form" id="notebookSearchForm">
+            <label for="notebookQuery">
+              <span>Question</span>
+              <textarea id="notebookQuery" rows="3" placeholder="Ask about a concept, drug, dose, mechanism, or clinical pearl."></textarea>
+            </label>
+            <button class="primary-button" type="submit" id="notebookSearchButton">Search notes</button>
+          </form>
+
+          <section class="notebook-answer is-hidden" id="notebookAnswer" aria-live="polite"></section>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        Educational reference. Verify all drug information against current prescribing information, local protocols, and clinical judgment.
+      </footer>
+    </div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

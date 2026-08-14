@@ -1,268 +1,492 @@
-import { createHmac, randomBytes, timingSafeEqual } from "node:crypto";
+import { randomBytes, timingSafeEqual } from "node:crypto";
 import { httpError } from "./drug-model.js";
 import {
-  deleteOtpChallenge,
-  getOtpChallenge,
-  getUserProfile,
-  normalizePhone,
-  normalizeUserProfile,
-  publicUser,
-  saveOtpChallenge,
-  updateOtpAttempts,
-  upsertUserProfile
-} from "./user-store.js";
+  hasSupabaseAuthConfig,
+  isHostedProduction,
+  supabaseAuthRequest,
+  supabaseServiceRequest
+} from "./supabase.js";
 
-const fallbackSecret = randomBytes(32).toString("hex");
-const adminTokenLifetimeMs = 12 * 60 * 60 * 1000;
-const userTokenLifetimeMs = 30 * 24 * 60 * 60 * 1000;
-const otpLifetimeMs = 10 * 60 * 1000;
-const maxOtpAttempts = 5;
+const ACCESS_COOKIE = "pme_access";
+const REFRESH_COOKIE = "pme_refresh";
+const CSRF_COOKIE = "pme_csrf";
+const refreshCookieLifetimeSeconds = 30 * 24 * 60 * 60;
 
-export function loginWithPassword(password) {
-  const adminPassword = getAdminPassword();
-  if (!adminPassword) {
-    throw httpError(503, "Admin password is not configured on this server.");
-  }
-  if (String(password || "") !== adminPassword) {
-    throw httpError(401, "Incorrect admin password.");
-  }
-
-  const expiresAt = Date.now() + adminTokenLifetimeMs;
-  return {
-    token: signToken({ sub: "admin", role: "admin", exp: expiresAt }),
-    expiresAt
-  };
+export function isAuthConfigured() {
+  return hasSupabaseAuthConfig();
 }
 
-export async function requestUserOtp(input) {
-  const profile = normalizeUserProfile(input);
-  const otp = createOtp();
-  const expiresAt = new Date(Date.now() + otpLifetimeMs).toISOString();
-  await saveOtpChallenge({
-    phone: profile.phone,
-    profile,
-    otpHash: hashOtp(profile.phone, otp),
-    expiresAt,
-    attempts: 0
-  });
+export async function registerUser(input, request, response) {
+  assertAuthConfigured();
+  assertSameOrigin(request);
+  const fullName = normalizeFullName(input.fullName);
+  const email = normalizeEmail(input.email);
+  const password = validatePasswordPair(input.password, input.confirmPassword);
+  const redirectTo = `${getApplicationOrigin(request)}/login?confirmed=1`;
 
-  const delivery = await deliverOtp(profile.phone, otp);
+  let data;
+  try {
+    data = await supabaseAuthRequest(`signup?redirect_to=${encodeURIComponent(redirectTo)}`, {
+      method: "POST",
+      body: {
+        email,
+        password,
+        data: { full_name: fullName }
+      }
+    });
+  } catch (error) {
+    throw mapRegistrationError(error);
+  }
+
+  const session = normalizeSession(data);
+  if (session) {
+    setSessionCookies(request, response, session);
+  }
+
   return {
     ok: true,
-    phone: profile.phone,
-    expiresAt,
-    delivery: delivery.channel,
-    ...(delivery.devOtp ? { devOtp: delivery.devOtp } : {})
+    requiresEmailConfirmation: !session,
+    user: toPublicUser(data.user || session?.user)
   };
 }
 
-export async function verifyUserOtp(input) {
-  const phone = normalizePhone(input.phone);
-  const code = String(input.otp || "").replace(/\D/g, "");
-  if (code.length !== 6) {
-    throw httpError(400, "Enter the 6-digit OTP.");
+export async function loginUser(input, request, response, options = {}) {
+  assertAuthConfigured();
+  assertSameOrigin(request);
+  const email = normalizeEmail(input.email);
+  const password = String(input.password || "");
+  if (!password) {
+    throw httpError(400, "Enter your password.");
   }
 
-  const challenge = await getOtpChallenge(phone);
-  if (!challenge) {
-    throw httpError(404, "Request a fresh OTP before logging in.");
-  }
-  if (Date.parse(challenge.expiresAt) <= Date.now()) {
-    await deleteOtpChallenge(phone);
-    throw httpError(410, "OTP expired. Request a fresh OTP.");
-  }
-  if (Number(challenge.attempts || 0) >= maxOtpAttempts) {
-    await deleteOtpChallenge(phone);
-    throw httpError(429, "Too many OTP attempts. Request a fresh OTP.");
-  }
-  if (challenge.otpHash !== hashOtp(phone, code)) {
-    await updateOtpAttempts(phone, Number(challenge.attempts || 0) + 1);
-    throw httpError(401, "Incorrect OTP.");
-  }
-
-  const verifiedAt = new Date().toISOString();
-  const user = await upsertUserProfile({
-    ...challenge.profile,
-    phone,
-    phoneVerifiedAt: verifiedAt
-  });
-  await deleteOtpChallenge(phone);
-
-  const expiresAt = Date.now() + userTokenLifetimeMs;
-  return {
-    token: signToken({ sub: user.phone, role: "user", phone: user.phone, exp: expiresAt }),
-    expiresAt,
-    user: publicUser(user)
-  };
-}
-
-export async function getCurrentUser(request) {
-  const payload = verifyBearerToken(request);
-  if (!payload) {
-    throw httpError(401, "Log in with phone OTP to continue.");
-  }
-  if (payload.role === "admin") {
-    return { role: "admin", user: { name: "Admin", phone: "", phoneVerifiedAt: "" } };
-  }
-  if (payload.role !== "user" || !payload.phone) {
-    throw httpError(401, "Log in with phone OTP to continue.");
-  }
-  const user = await getUserProfile(payload.phone);
-  if (!user?.phoneVerifiedAt) {
-    throw httpError(401, "Log in with phone OTP to continue.");
-  }
-  return { role: "user", user: publicUser(user) };
-}
-
-export function requireAdmin(request) {
-  if (!getAdminPassword()) {
-    throw httpError(503, "Admin password is not configured on this server.");
-  }
-
-  const payload = verifyBearerToken(request);
-  if (payload?.role !== "admin") {
-    throw httpError(401, "Unauthorized or expired admin token.");
-  }
-}
-
-export function requireDashboardAccess(request) {
-  const payload = verifyBearerToken(request);
-  if (payload?.role === "admin" || payload?.role === "user") {
-    return payload;
-  }
-  throw httpError(401, "Log in with phone OTP to read the drug library.");
-}
-
-export function isAdminConfigured() {
-  return Boolean(getAdminPassword());
-}
-
-function signToken(payload) {
-  const body = Buffer.from(JSON.stringify(payload)).toString("base64url");
-  const signature = sign(body);
-  return `${body}.${signature}`;
-}
-
-function verifyBearerToken(request) {
-  const header = request.headers.authorization || "";
-  const token = header.startsWith("Bearer ") ? header.slice(7) : "";
-  if (!token || !token.includes(".")) return false;
-  const [body, signature] = token.split(".");
-  const expected = sign(body);
-  if (!safeEqual(signature, expected)) return false;
+  let data;
   try {
-    const payload = JSON.parse(Buffer.from(body, "base64url").toString("utf8"));
-    if (!["admin", "user"].includes(payload.role)) return false;
-    if (Number(payload.exp) <= Date.now()) return false;
-    return payload;
+    data = await supabaseAuthRequest("token?grant_type=password", {
+      method: "POST",
+      body: { email, password }
+    });
+  } catch (error) {
+    if (/email not confirmed/i.test(String(error.message || ""))) {
+      throw httpError(403, "Confirm your email address before logging in.");
+    }
+    if ([400, 401].includes(error.supabaseStatus || error.status)) {
+      throw httpError(401, "Invalid email or password.");
+    }
+    throw error;
+  }
+
+  const session = normalizeSession(data);
+  if (!session) {
+    throw httpError(502, "Supabase Auth did not return a valid session.");
+  }
+
+  const user = data.user || session.user || await fetchUser(session.accessToken);
+  const admin = await isAdminUser(user.id);
+  if (options.adminOnly && !admin) {
+    await revokeAccessToken(session.accessToken);
+    clearSessionCookies(request, response);
+    throw httpError(403, "This account is not authorized for the admin editor.");
+  }
+
+  setSessionCookies(request, response, session);
+  return {
+    ok: true,
+    role: admin ? "admin" : "user",
+    user: toPublicUser(user)
+  };
+}
+
+export async function requestPasswordReset(input, request) {
+  assertAuthConfigured();
+  assertSameOrigin(request);
+  const email = normalizeEmail(input.email);
+  const redirectTo = `${getApplicationOrigin(request)}/reset-password`;
+
+  await supabaseAuthRequest(`recover?redirect_to=${encodeURIComponent(redirectTo)}`, {
+    method: "POST",
+    body: { email }
+  });
+
+  return {
+    ok: true,
+    message: "If an account exists for that email, a password reset link has been sent."
+  };
+}
+
+export async function establishRedirectSession(input, request, response) {
+  assertAuthConfigured();
+  assertSameOrigin(request);
+  const accessToken = String(input.accessToken || "").trim();
+  const refreshToken = String(input.refreshToken || "").trim();
+  const expiresIn = Number(input.expiresIn || 3600);
+  if (!accessToken || !refreshToken) {
+    throw httpError(400, "The authentication link is incomplete or expired.");
+  }
+
+  const user = await fetchUser(accessToken);
+  const admin = await isAdminUser(user.id);
+  setSessionCookies(request, response, {
+    accessToken,
+    refreshToken,
+    expiresIn,
+    user
+  });
+
+  return {
+    ok: true,
+    role: admin ? "admin" : "user",
+    user: toPublicUser(user)
+  };
+}
+
+export async function resetPassword(input, request, response) {
+  assertAuthConfigured();
+  assertMutationRequest(request);
+  const password = validatePasswordPair(input.password, input.confirmPassword);
+  const session = await requireUser(request, response);
+
+  await supabaseAuthRequest("user", {
+    method: "PUT",
+    accessToken: session.accessToken,
+    body: { password }
+  });
+
+  await revokeAccessToken(session.accessToken);
+  clearSessionCookies(request, response);
+  return { ok: true };
+}
+
+export async function logoutUser(request, response) {
+  assertMutationRequest(request, { allowMissingCsrf: true });
+  const accessToken = readCookie(request, ACCESS_COOKIE);
+  const refreshToken = readCookie(request, REFRESH_COOKIE);
+  const revoked = accessToken ? await revokeAccessToken(accessToken) : false;
+  if (!revoked && refreshToken && hasSupabaseAuthConfig()) {
+    try {
+      const refreshed = normalizeSession(await supabaseAuthRequest("token?grant_type=refresh_token", {
+        method: "POST",
+        body: { refresh_token: refreshToken }
+      }));
+      if (refreshed?.accessToken) {
+        await revokeAccessToken(refreshed.accessToken);
+      }
+    } catch {
+      // Local cookies are still cleared when the remote session is already invalid or unavailable.
+    }
+  }
+  clearSessionCookies(request, response);
+  return { ok: true };
+}
+
+export async function getCurrentUser(request, response) {
+  assertAuthConfigured();
+  const session = await requireUser(request, response);
+  const admin = await isAdminUser(session.user.id);
+  return {
+    authenticated: true,
+    role: admin ? "admin" : "user",
+    user: toPublicUser(session.user)
+  };
+}
+
+export async function requireUser(request, response) {
+  assertAuthConfigured();
+  const accessToken = readCookie(request, ACCESS_COOKIE);
+  if (accessToken) {
+    const user = await fetchUser(accessToken, { allowUnauthorized: true });
+    if (user) {
+      return { accessToken, user };
+    }
+  }
+
+  const refreshToken = readCookie(request, REFRESH_COOKIE);
+  if (!refreshToken) {
+    clearSessionCookies(request, response);
+    throw httpError(401, "Log in to continue.");
+  }
+
+  let refreshed;
+  try {
+    refreshed = await supabaseAuthRequest("token?grant_type=refresh_token", {
+      method: "POST",
+      body: { refresh_token: refreshToken }
+    });
+  } catch (error) {
+    clearSessionCookies(request, response);
+    if ([400, 401].includes(error.supabaseStatus || error.status)) {
+      throw httpError(401, "Your session has expired. Log in again.");
+    }
+    throw error;
+  }
+
+  const session = normalizeSession(refreshed);
+  if (!session) {
+    clearSessionCookies(request, response);
+    throw httpError(401, "Your session has expired. Log in again.");
+  }
+  const user = refreshed.user || session.user || await fetchUser(session.accessToken);
+  setSessionCookies(request, response, { ...session, user });
+  return { accessToken: session.accessToken, user };
+}
+
+export async function requireAdmin(request, response) {
+  const session = await requireUser(request, response);
+  if (!await isAdminUser(session.user.id)) {
+    throw httpError(403, "Admin authorization is required.");
+  }
+  return { ...session, role: "admin" };
+}
+
+export function assertMutationRequest(request, options = {}) {
+  assertSameOrigin(request);
+  const cookies = parseCookies(request);
+  const expected = cookies[CSRF_COOKIE] || "";
+  const supplied = String(getHeader(request, "x-csrf-token") || "");
+  if (!expected && options.allowMissingCsrf) return;
+  if (!expected || !supplied || !safeEqual(expected, supplied)) {
+    throw httpError(403, "The security token is missing or invalid. Refresh the page and try again.");
+  }
+}
+
+export function assertSameOrigin(request) {
+  const fetchSite = String(getHeader(request, "sec-fetch-site") || "").toLowerCase();
+  if (fetchSite === "cross-site") {
+    throw httpError(403, "Cross-origin requests are not allowed.");
+  }
+  const origin = String(getHeader(request, "origin") || "").trim();
+  if (!origin) return;
+
+  let suppliedOrigin;
+  try {
+    suppliedOrigin = new URL(origin).origin;
   } catch {
+    throw httpError(403, "Request origin is invalid.");
+  }
+  if (suppliedOrigin !== getApplicationOrigin(request)) {
+    throw httpError(403, "Cross-origin requests are not allowed.");
+  }
+}
+
+async function fetchUser(accessToken, options = {}) {
+  try {
+    const data = await supabaseAuthRequest("user", { accessToken });
+    if (!data?.id) {
+      throw httpError(401, "Your session is invalid. Log in again.");
+    }
+    return data;
+  } catch (error) {
+    if (options.allowUnauthorized && [400, 401].includes(error.supabaseStatus || error.status)) {
+      return null;
+    }
+    if ([400, 401].includes(error.supabaseStatus || error.status)) {
+      throw httpError(401, "Your session is invalid or expired. Log in again.");
+    }
+    throw error;
+  }
+}
+
+async function isAdminUser(userId) {
+  const rows = await supabaseServiceRequest(
+    `admin_users?select=user_id&user_id=eq.${encodeURIComponent(userId)}&limit=1`
+  );
+  return Array.isArray(rows) && rows.length === 1;
+}
+
+async function revokeAccessToken(accessToken) {
+  try {
+    await supabaseAuthRequest("logout", {
+      method: "POST",
+      accessToken
+    });
+    return true;
+  } catch (error) {
+    if (![400, 401, 403].includes(error.supabaseStatus || error.status)) {
+      console.error("Supabase logout failed.", error);
+    }
     return false;
   }
 }
 
-function createOtp() {
-  return String(Math.floor(100000 + Math.random() * 900000));
+function normalizeSession(data = {}) {
+  const source = data.session || data;
+  const accessToken = String(source.access_token || "");
+  const refreshToken = String(source.refresh_token || "");
+  if (!accessToken || !refreshToken) return null;
+  return {
+    accessToken,
+    refreshToken,
+    expiresIn: Number(source.expires_in || 3600),
+    user: source.user || data.user || null
+  };
 }
 
-function hashOtp(phone, otp) {
-  return createHmac("sha256", getSessionSecret())
-    .update(`${phone}:${otp}`)
-    .digest("base64url");
+function setSessionCookies(request, response, session) {
+  const secure = shouldUseSecureCookies(request);
+  const csrfToken = readCookie(request, CSRF_COOKIE) || randomBytes(24).toString("base64url");
+  appendSetCookie(response, serializeCookie(ACCESS_COOKIE, session.accessToken, {
+    httpOnly: true,
+    secure,
+    maxAge: Math.max(60, Math.min(Number(session.expiresIn || 3600), 24 * 60 * 60))
+  }));
+  appendSetCookie(response, serializeCookie(REFRESH_COOKIE, session.refreshToken, {
+    httpOnly: true,
+    secure,
+    maxAge: refreshCookieLifetimeSeconds
+  }));
+  appendSetCookie(response, serializeCookie(CSRF_COOKIE, csrfToken, {
+    secure,
+    maxAge: refreshCookieLifetimeSeconds
+  }));
 }
 
-async function deliverOtp(phone, otp) {
-  if (hasTwilioConfig()) {
-    await sendTwilioSms(phone, `Your Psychiatry Made Easy OTP is ${otp}. It expires in 10 minutes.`);
-    return { channel: "twilio" };
+function clearSessionCookies(request, response) {
+  if (!response || response.headersSent) return;
+  const secure = shouldUseSecureCookies(request);
+  for (const name of [ACCESS_COOKIE, REFRESH_COOKIE, CSRF_COOKIE]) {
+    appendSetCookie(response, serializeCookie(name, "", {
+      httpOnly: name !== CSRF_COOKIE,
+      secure,
+      maxAge: 0
+    }));
   }
-
-  const webhookUrl = process.env.OTP_WEBHOOK_URL || "";
-  if (webhookUrl) {
-    const response = await fetch(webhookUrl, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        ...(process.env.OTP_WEBHOOK_TOKEN ? { Authorization: `Bearer ${process.env.OTP_WEBHOOK_TOKEN}` } : {})
-      },
-      body: JSON.stringify({
-        phone,
-        otp,
-        message: `Your Psychiatry Made Easy OTP is ${otp}. It expires in 10 minutes.`
-      })
-    });
-    if (!response.ok) {
-      throw httpError(502, "OTP gateway failed to send the code.");
-    }
-    return { channel: "sms-gateway" };
-  }
-
-  if (allowDevelopmentOtp()) {
-    console.log(`Development OTP for ${phone}: ${otp}`);
-    return { channel: "development", devOtp: otp };
-  }
-
-  throw httpError(503, "OTP gateway is not configured. Add OTP_WEBHOOK_URL before enabling user login.");
 }
 
-async function sendTwilioSms(phone, message) {
-  const accountSid = process.env.TWILIO_ACCOUNT_SID || "";
-  const authToken = process.env.TWILIO_AUTH_TOKEN || "";
-  const fromNumber = process.env.TWILIO_FROM_NUMBER || "";
-  const messagingServiceSid = process.env.TWILIO_MESSAGING_SERVICE_SID || "";
+function appendSetCookie(response, value) {
+  if (!response || response.headersSent) return;
+  const current = response.getHeader?.("Set-Cookie");
+  const values = current ? (Array.isArray(current) ? current : [current]) : [];
+  response.setHeader("Set-Cookie", [...values, value]);
+}
 
-  const body = new URLSearchParams({
-    To: phone,
-    Body: message,
-    ...(messagingServiceSid ? { MessagingServiceSid: messagingServiceSid } : { From: fromNumber })
-  });
+function serializeCookie(name, value, options = {}) {
+  return [
+    `${name}=${encodeURIComponent(String(value || ""))}`,
+    "Path=/",
+    `Max-Age=${Math.max(0, Math.floor(options.maxAge || 0))}`,
+    "SameSite=Lax",
+    ...(options.httpOnly ? ["HttpOnly"] : []),
+    ...(options.secure ? ["Secure"] : [])
+  ].join("; ");
+}
 
-  const response = await fetch(`https://api.twilio.com/2010-04-01/Accounts/${encodeURIComponent(accountSid)}/Messages.json`, {
-    method: "POST",
-    headers: {
-      Authorization: `Basic ${Buffer.from(`${accountSid}:${authToken}`).toString("base64")}`,
-      "Content-Type": "application/x-www-form-urlencoded"
-    },
-    body
-  });
-
-  if (!response.ok) {
-    let detail = `status ${response.status}`;
+function parseCookies(request) {
+  const source = String(getHeader(request, "cookie") || "");
+  const cookies = {};
+  for (const part of source.split(";")) {
+    const separator = part.indexOf("=");
+    if (separator < 0) continue;
+    const name = part.slice(0, separator).trim();
+    const value = part.slice(separator + 1).trim();
+    if (!name) continue;
     try {
-      const data = await response.json();
-      detail = data.message || detail;
+      cookies[name] = decodeURIComponent(value);
     } catch {
-      // Twilio error details are usually JSON, but keep the fallback readable.
+      cookies[name] = value;
     }
-    throw httpError(502, `Twilio failed to send OTP: ${detail}`);
+  }
+  return cookies;
+}
+
+function readCookie(request, name) {
+  return parseCookies(request)[name] || "";
+}
+
+function getHeader(request, name) {
+  if (typeof request.headers?.get === "function") {
+    return request.headers.get(name);
+  }
+  return request.headers?.[name] || request.headers?.[name.toLowerCase()] || "";
+}
+
+function getApplicationOrigin(request) {
+  const configured = String(process.env.APP_ORIGIN || "").trim();
+  if (configured) {
+    let url;
+    try {
+      url = new URL(configured);
+    } catch {
+      throw httpError(503, "APP_ORIGIN must be a valid absolute URL.");
+    }
+    if (isHostedProduction() && url.protocol !== "https:") {
+      throw httpError(503, "APP_ORIGIN must use HTTPS in production.");
+    }
+    return url.origin;
+  }
+
+  if (isHostedProduction()) {
+    throw httpError(503, "APP_ORIGIN is required in production.");
+  }
+
+  const forwardedProto = String(getHeader(request, "x-forwarded-proto") || "").split(",")[0].trim();
+  const forwardedHost = String(getHeader(request, "x-forwarded-host") || "").split(",")[0].trim();
+  const protocol = forwardedProto || "http";
+  const host = forwardedHost || String(getHeader(request, "host") || "localhost:3000");
+  return new URL(`${protocol}://${host}`).origin;
+}
+
+function shouldUseSecureCookies(request) {
+  const forwardedProto = String(getHeader(request, "x-forwarded-proto") || "").split(",")[0].trim();
+  return isHostedProduction() || forwardedProto === "https";
+}
+
+function normalizeEmail(value) {
+  const email = String(value || "").trim().toLowerCase();
+  if (email.length > 320 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    throw httpError(400, "Enter a valid email address.");
+  }
+  return email;
+}
+
+function normalizeFullName(value) {
+  const fullName = String(value || "").trim().replace(/\s+/g, " ");
+  if (fullName.length < 2 || fullName.length > 120) {
+    throw httpError(400, "Enter your full name.");
+  }
+  return fullName;
+}
+
+function validatePasswordPair(passwordInput, confirmationInput) {
+  const password = String(passwordInput || "");
+  const confirmation = String(confirmationInput || "");
+  if (password.length < 8 || password.length > 128) {
+    throw httpError(400, "Password must be between 8 and 128 characters.");
+  }
+  if (password !== confirmation) {
+    throw httpError(400, "Passwords do not match.");
+  }
+  return password;
+}
+
+function toPublicUser(user = {}) {
+  const fullName = String(user.user_metadata?.full_name || user.user_metadata?.name || "").trim();
+  return {
+    id: String(user.id || ""),
+    fullName,
+    name: fullName,
+    email: String(user.email || "")
+  };
+}
+
+function mapRegistrationError(error) {
+  const status = error.supabaseStatus || error.status;
+  const message = String(error.message || "");
+  if ([400, 422].includes(status) && /already|registered|exists/i.test(message)) {
+    return httpError(409, "An account with this email already exists.");
+  }
+  if ([400, 422].includes(status)) {
+    return httpError(400, "Unable to create the account. Check the email and password requirements.");
+  }
+  return error;
+}
+
+function assertAuthConfigured() {
+  if (!hasSupabaseAuthConfig()) {
+    throw httpError(503, "Supabase Auth is not fully configured on this server.");
   }
 }
 
-function hasTwilioConfig() {
-  return Boolean(
-    process.env.TWILIO_ACCOUNT_SID &&
-    process.env.TWILIO_AUTH_TOKEN &&
-    (process.env.TWILIO_FROM_NUMBER || process.env.TWILIO_MESSAGING_SERVICE_SID)
-  );
-}
-
-function allowDevelopmentOtp() {
-  return process.env.OTP_DEV_MODE === "true" || (!process.env.OTP_WEBHOOK_URL && process.env.NODE_ENV !== "production");
-}
-
-function sign(value) {
-  return createHmac("sha256", getSessionSecret()).update(value).digest("base64url");
-}
-
-function safeEqual(a, b) {
-  const first = Buffer.from(a || "");
-  const second = Buffer.from(b || "");
+function safeEqual(firstValue, secondValue) {
+  const first = Buffer.from(String(firstValue || ""));
+  const second = Buffer.from(String(secondValue || ""));
   return first.length === second.length && timingSafeEqual(first, second);
-}
-
-function getAdminPassword() {
-  return process.env.ADMIN_PASSWORD || "";
-}
-
-function getSessionSecret() {
-  return process.env.SESSION_SECRET || process.env.ADMIN_PASSWORD || fallbackSecret;
 }

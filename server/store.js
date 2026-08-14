@@ -2,26 +2,28 @@ import { mkdir, readFile, rename, writeFile } from "node:fs/promises";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { httpError, normalizeCollection, normalizeDrug, sortDrugs } from "./drug-model.js";
+import { hasSupabaseServiceConfig, isHostedProduction, supabaseServiceRequest } from "./supabase.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export async function listDrugs() {
   if (hasSupabaseConfig()) {
-    const rows = await supabaseRequest("drugs?select=id,name,payload,updated_at&order=name.asc");
+    const rows = await supabaseServiceRequest("drugs?select=id,name,payload,updated_at&order=name.asc");
     return normalizeCollection(rows.map(fromSupabaseRow));
   }
+  assertLocalFallbackAllowed();
   return readLocalDrugs();
 }
 
 export async function replaceDrugs(records) {
   const drugs = normalizeCollection(records);
   if (hasSupabaseConfig()) {
-    await supabaseRequest("drugs?id=not.is.null", {
+    await supabaseServiceRequest("drugs?id=not.is.null", {
       method: "DELETE",
       headers: { Prefer: "return=minimal" }
     });
     if (!drugs.length) return [];
-    const rows = await supabaseRequest("drugs", {
+    const rows = await supabaseServiceRequest("drugs", {
       method: "POST",
       body: drugs.map(toSupabaseRow),
       headers: { Prefer: "return=representation" }
@@ -29,6 +31,7 @@ export async function replaceDrugs(records) {
     return normalizeCollection(rows.map(fromSupabaseRow));
   }
 
+  assertLocalFallbackAllowed();
   await writeLocalDrugs(drugs);
   return drugs;
 }
@@ -38,7 +41,7 @@ export async function createDrug(input) {
   const drug = normalizeDrug(input, { existingIds: new Set(existing.map((item) => item.id)) });
 
   if (hasSupabaseConfig()) {
-    const rows = await supabaseRequest("drugs", {
+    const rows = await supabaseServiceRequest("drugs", {
       method: "POST",
       body: toSupabaseRow(drug),
       headers: { Prefer: "return=representation" }
@@ -61,7 +64,7 @@ export async function updateDrug(id, input) {
   const drug = normalizeDrug({ ...existing[index], ...input, id }, { existingIds, preserveId: id });
 
   if (hasSupabaseConfig()) {
-    const rows = await supabaseRequest(`drugs?id=eq.${encodeURIComponent(id)}`, {
+    const rows = await supabaseServiceRequest(`drugs?id=eq.${encodeURIComponent(id)}`, {
       method: "PATCH",
       body: toSupabaseRow(drug),
       headers: { Prefer: "return=representation" }
@@ -82,7 +85,7 @@ export async function deleteDrug(id) {
   }
 
   if (hasSupabaseConfig()) {
-    const rows = await supabaseRequest(`drugs?id=eq.${encodeURIComponent(id)}`, {
+    const rows = await supabaseServiceRequest(`drugs?id=eq.${encodeURIComponent(id)}`, {
       method: "DELETE",
       headers: { Prefer: "return=representation" }
     });
@@ -95,7 +98,7 @@ export async function deleteDrug(id) {
 }
 
 export function hasSupabaseConfig() {
-  return Boolean(getSupabaseUrl() && getSupabaseKey());
+  return hasSupabaseServiceConfig();
 }
 
 async function readLocalDrugs() {
@@ -117,34 +120,6 @@ async function writeLocalDrugs(drugs) {
   await rename(tempFile, dataFile);
 }
 
-async function supabaseRequest(path, options = {}) {
-  const url = getSupabaseUrl();
-  const key = getSupabaseKey();
-  if (!url || !key) {
-    throw httpError(500, "Supabase is not configured. Add SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY.");
-  }
-
-  const response = await fetch(`${url}/rest/v1/${path}`, {
-    method: options.method || "GET",
-    headers: {
-      apikey: key,
-      Authorization: `Bearer ${key}`,
-      Accept: "application/json",
-      ...(options.body ? { "Content-Type": "application/json" } : {}),
-      ...(options.headers || {})
-    },
-    body: options.body ? JSON.stringify(options.body) : undefined
-  });
-
-  const text = await response.text();
-  const data = text ? JSON.parse(text) : null;
-  if (!response.ok) {
-    const detail = data?.message || data?.hint || text || `status ${response.status}`;
-    throw httpError(response.status, `Supabase request failed: ${detail}`);
-  }
-  return data || [];
-}
-
 function toSupabaseRow(drug) {
   return {
     id: drug.id,
@@ -163,14 +138,12 @@ function fromSupabaseRow(row = {}) {
   };
 }
 
-function getSupabaseUrl() {
-  return String(process.env.SUPABASE_URL || "").replace(/\/+$/, "");
-}
-
-function getSupabaseKey() {
-  return process.env.SUPABASE_SECRET_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY || "";
-}
-
 function getDataFile() {
   return resolve(process.env.DATA_FILE || join(__dirname, "data", "drugs.json"));
+}
+
+function assertLocalFallbackAllowed() {
+  if (isHostedProduction()) {
+    throw httpError(503, "Supabase database storage is required in production.");
+  }
 }

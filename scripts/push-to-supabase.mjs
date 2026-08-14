@@ -8,7 +8,7 @@ const source = await readFile("server/data/drugs.json", "utf8");
 const drugs = JSON.parse(source);
 
 if (!process.env.SUPABASE_URL || !(process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SECRET_KEY)) {
-  throw new Error("Set SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY before running npm run supabase:push.");
+  throw new Error("Set SUPABASE_URL and SUPABASE_SECRET_KEY (or the legacy SUPABASE_SERVICE_ROLE_KEY) before running npm run supabase:push.");
 }
 
 const saved = await replaceDrugs(drugs);

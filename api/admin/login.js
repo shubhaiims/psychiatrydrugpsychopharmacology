@@ -9,7 +9,7 @@ export default async function handler(request, response) {
 
   try {
     const body = await readJsonBody(request);
-    sendJson(response, 200, await loginUser(body, request, response));
+    sendJson(response, 200, await loginUser(body, request, response, { adminOnly: true }));
   } catch (error) {
     sendError(response, error);
   }

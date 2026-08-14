@@ -28,6 +28,8 @@ export async function readJsonBody(request) {
 export function sendJson(response, status, payload) {
   response.statusCode = status;
   response.setHeader("Content-Type", "application/json; charset=utf-8");
+  response.setHeader("Cache-Control", "no-store");
+  response.setHeader("X-Content-Type-Options", "nosniff");
   response.end(JSON.stringify(payload));
 }
 

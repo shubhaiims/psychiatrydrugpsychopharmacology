@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Log in to the Psychiatry Made Easy drug library." />
+    <title>Log In | Psychiatry Made Easy</title>
+    <link rel="icon" href="/assets/psychiatry-made-easy-logo.png" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body class="auth-page" data-auth-page="login">
+    <div class="app-shell">
+      <header class="topbar">
+        <a class="brand" href="/" aria-label="Psychiatry Made Easy home">
+          <span class="brand-mark" aria-hidden="true">PME</span>
+          <span><span class="brand-name">Psychiatry Made Easy</span><span class="brand-subtitle">Member access</span></span>
+        </a>
+        <a class="topbar-link" href="/">Home</a>
+      </header>
+      <main class="auth-page-main">
+        <section class="auth-form-shell" aria-labelledby="authHeading">
+          <p class="eyebrow">Drug library</p>
+          <h1 id="authHeading">Log in</h1>
+          <form class="user-auth-form" id="authForm">
+            <label for="email"><span>Email</span><input id="email" type="email" autocomplete="email" required /></label>
+            <label for="password"><span>Password</span><input id="password" type="password" autocomplete="current-password" required /></label>
+            <button class="primary-button" type="submit">Log in</button>
+          </form>
+          <p class="auth-status" id="authStatus" role="status" aria-live="polite"></p>
+          <div class="auth-links">
+            <a href="/forgot-password">Forgot password?</a>
+            <a href="/register">Create account</a>
+            <a href="/admin/login">Admin login</a>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="/auth.js"></script>
+  </body>
+</html>

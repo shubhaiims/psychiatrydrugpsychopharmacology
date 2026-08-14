@@ -3,6 +3,7 @@ import { mkdir, readFile, rename, writeFile } from "node:fs/promises";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { httpError } from "./drug-model.js";
+import { hasSupabaseServiceConfig, isHostedProduction, supabaseServiceRequest } from "./supabase.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const maxSourceBytes = 8 * 1024 * 1024;
@@ -11,7 +12,7 @@ const chunkOverlap = 45;
 
 export async function listNotebookSources() {
   if (hasSupabaseConfig()) {
-    const rows = await supabaseRequest("notebook_sources?select=id,title,file_name,content_type,word_count,created_at,updated_at&order=updated_at.desc");
+    const rows = await supabaseServiceRequest("notebook_sources?select=id,title,file_name,content_type,word_count,created_at,updated_at&order=updated_at.desc");
     return rows.map((row) => ({
       id: row.id,
       title: row.title,
@@ -23,6 +24,7 @@ export async function listNotebookSources() {
     }));
   }
 
+  assertLocalFallbackAllowed();
   return (await readLocalSources()).map(toPublicSource);
 }
 
@@ -30,7 +32,7 @@ export async function createNotebookSource(input = {}) {
   const source = await normalizeSourceInput(input);
 
   if (hasSupabaseConfig()) {
-    const rows = await supabaseRequest("notebook_sources", {
+    const rows = await supabaseServiceRequest("notebook_sources", {
       method: "POST",
       body: toSupabaseRow(source),
       headers: { Prefer: "return=representation" }
@@ -38,6 +40,7 @@ export async function createNotebookSource(input = {}) {
     return toPublicSource(fromSupabaseRow(rows[0]));
   }
 
+  assertLocalFallbackAllowed();
   const sources = await readLocalSources();
   sources.push(source);
   await writeLocalSources(sources);
@@ -51,7 +54,7 @@ export async function deleteNotebookSource(id) {
   }
 
   if (hasSupabaseConfig()) {
-    const rows = await supabaseRequest(`notebook_sources?id=eq.${encodeURIComponent(sourceId)}`, {
+    const rows = await supabaseServiceRequest(`notebook_sources?id=eq.${encodeURIComponent(sourceId)}`, {
       method: "DELETE",
       headers: { Prefer: "return=representation" }
     });
@@ -61,6 +64,7 @@ export async function deleteNotebookSource(id) {
     return toPublicSource(fromSupabaseRow(rows[0]));
   }
 
+  assertLocalFallbackAllowed();
   const sources = await readLocalSources();
   const index = sources.findIndex((source) => source.id === sourceId);
   if (index < 0) {
@@ -160,9 +164,10 @@ async function extractPdfText(buffer) {
 
 async function readAllSources() {
   if (hasSupabaseConfig()) {
-    const rows = await supabaseRequest("notebook_sources?select=id,title,file_name,content_type,payload,created_at,updated_at");
+    const rows = await supabaseServiceRequest("notebook_sources?select=id,title,file_name,content_type,payload,created_at,updated_at");
     return rows.map(fromSupabaseRow);
   }
+  assertLocalFallbackAllowed();
   return readLocalSources();
 }
 
@@ -292,42 +297,18 @@ function fromSupabaseRow(row = {}) {
   };
 }
 
-async function supabaseRequest(path, options = {}) {
-  const response = await fetch(`${getSupabaseUrl()}/rest/v1/${path}`, {
-    method: options.method || "GET",
-    headers: {
-      apikey: getSupabaseKey(),
-      Authorization: `Bearer ${getSupabaseKey()}`,
-      Accept: "application/json",
-      ...(options.body ? { "Content-Type": "application/json" } : {}),
-      ...(options.headers || {})
-    },
-    body: options.body ? JSON.stringify(options.body) : undefined
-  });
-
-  const text = await response.text();
-  const data = text ? JSON.parse(text) : null;
-  if (!response.ok) {
-    const detail = data?.message || data?.hint || text || `status ${response.status}`;
-    throw httpError(response.status, `Supabase request failed: ${detail}`);
-  }
-  return data || [];
-}
-
 function hasSupabaseConfig() {
-  return Boolean(getSupabaseUrl() && getSupabaseKey());
-}
-
-function getSupabaseUrl() {
-  return String(process.env.SUPABASE_URL || "").replace(/\/+$/, "");
-}
-
-function getSupabaseKey() {
-  return process.env.SUPABASE_SECRET_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY || "";
+  return hasSupabaseServiceConfig();
 }
 
 function getSourcesFile() {
   return resolve(process.env.NOTEBOOK_SOURCES_FILE || join(__dirname, "data", "notebook-sources.json"));
+}
+
+function assertLocalFallbackAllowed() {
+  if (isHostedProduction()) {
+    throw httpError(503, "Supabase notebook storage is required in production.");
+  }
 }
 
 function countWords(value) {

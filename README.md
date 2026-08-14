@@ -1,185 +1,127 @@
 # PsychRx Drug Library
 
-PsychRx Drug Library is a backend-backed website for maintaining psychiatry pharmacology drug information and showing it on a clean searchable dashboard.
+Psychiatry Made Easy is a plain Node.js, static HTML/CSS/JavaScript, and Vercel Serverless application. It is not a Next.js project.
 
-Drug records can be edited through GitHub JSON sync or through the password-protected admin editor.
+The public homepage remains at `/`. The drug library and admin editor are protected by Supabase Auth and by server-side authorization checks.
 
-The frontend files live in `public/` so Vercel can publish them directly, while `/api` contains the Vercel serverless backend.
+## Routes
 
-## Features
+- `/` - public homepage
+- `/login` - member login
+- `/register` - member registration with full name, email, password, and password confirmation
+- `/forgot-password` - password recovery request
+- `/reset-password` - password update after a Supabase recovery link
+- `/library` - authenticated drug library and Ask My Notes
+- `/admin/login` - separate admin login
+- `/admin` - authenticated and database-authorized Admin Drug Editor
 
-- Phone OTP gated public drug dashboard with search and filters
-- Drug-name dropdown for quickly choosing a medication
-- Drug detail page with a clickable outline for jumping between sections
-- NotebookLM-style source search for uploaded PDFs, text files, and pasted notes
-- Backend API for drug records
-- Admin password protected editor
-- Add, edit, duplicate, delete, import, export, and clear records
-- Supabase-backed production storage
-- GitHub Actions workflow to sync `server/data/drugs.json` into Supabase
+## Preserved Editor Features
 
-## Drug Record Sections
+- New Drug, Edit Drug, Duplicate Drug, and Delete Drug
+- JSON import, export, and clipboard copy
+- Notebook Sources upload, indexing, listing, search, and deletion
+- Direct Supabase-backed editing without a website redeploy
+- The complete 61-record JSON seed in `server/data/drugs.json`
 
-Each drug record is organized under these headings:
+## Security Architecture
 
-- Classification
-- Mechanism of Action and Receptor Profile
-- Pharmacodynamics
-- FDA Approved and Off-Label Uses
-- Pharmacokinetics and Half-Life
-- Clinical Dosing, Optimization, and Target Dose, including separate target dose and maximum dose fields
-- Side Effects
-- FDA Black Box Warning
-- Prescribing in Special Populations
-- Drug Interactions
-- Miscellaneous
+The browser sends credentials only to this application's same-origin API routes. Those routes call Supabase Auth with the publishable key. Supabase access and refresh tokens are stored in `HttpOnly`, `SameSite=Lax`, `Secure` production cookies; they are not stored in `localStorage` or `sessionStorage`.
+
+State-changing requests also require a same-origin request and a matching CSRF token. `/library`, `/admin`, all drug APIs, and all notebook APIs verify the Supabase session on the server. Expired access tokens are refreshed server-side and the rotated session is written back to cookies.
+
+Admin authorization is not read from user metadata. After Supabase verifies the user, the server checks `public.admin_users` for the authenticated `auth.users.id`. RLS provides an additional database layer. Authenticated users have no policy or grant that can insert, update, or delete `admin_users` rows.
+
+The Supabase secret or legacy service-role key is used only by Node.js server code. It must never be added to `public/`, browser JavaScript, HTML, or client-visible responses.
 
 ## Local Setup
 
-Create a `.env` file from `.env.example`.
+Create `.env` from `.env.example`:
 
-```bash
-ADMIN_PASSWORD=replace-with-a-strong-password
-SESSION_SECRET=replace-with-a-long-random-secret
-SUPABASE_URL=https://your-project-ref.supabase.co
-SUPABASE_SERVICE_ROLE_KEY=your-backend-only-service-role-or-secret-key
-OTP_WEBHOOK_URL=https://your-sms-gateway.example/send-otp
-OTP_WEBHOOK_TOKEN=optional-gateway-token
-TWILIO_ACCOUNT_SID=your-twilio-account-sid
-TWILIO_AUTH_TOKEN=your-twilio-auth-token
-TWILIO_FROM_NUMBER=+15551234567
-OTP_DEV_MODE=true
+```text
 PORT=3000
+APP_ORIGIN=http://localhost:3000
+SUPABASE_URL=https://your-project-ref.supabase.co
+SUPABASE_PUBLISHABLE_KEY=your-publishable-key
+SUPABASE_SECRET_KEY=your-backend-only-secret-key
 ```
 
-Run the app:
+Legacy `SUPABASE_ANON_KEY` and `SUPABASE_SERVICE_ROLE_KEY` names are supported as migration aliases. Prefer the current publishable and secret keys for new configuration.
+
+Run:
 
 ```bash
 npm run dev
 ```
 
-Open:
+Local storage can fall back to `server/data/drugs.json` and the ignored notebook JSON file when database credentials are absent. Authentication still requires Supabase, so protected local routes use the same identity system as production. Production fails closed instead of using local JSON when Supabase storage is missing.
 
-```text
-http://localhost:3000
+## Database Migrations
+
+Do not run migrations automatically against production. Review and apply these files manually, in order, from the Supabase SQL Editor or an approved migration workflow:
+
+1. `supabase/migrations/202608150000_existing_storage_schema.sql`
+2. `supabase/migrations/202608150001_auth_profiles_and_admins.sql`
+3. `supabase/migrations/202608150002_authorization_policies.sql`
+
+The migrations are idempotent and do not truncate, replace, or delete drug rows. The old `user_profiles` and `user_otps` tables are retained but locked and marked deprecated.
+
+## Supabase Auth Settings
+
+In Authentication settings:
+
+1. Enable the Email provider and email/password signups.
+2. Require email confirmation for new accounts.
+3. Set the Site URL to the production origin, for example `https://your-domain.example`.
+4. Add exact redirect URLs for `https://your-domain.example/login` and `https://your-domain.example/reset-password`.
+5. Add `http://localhost:3000/login` and `http://localhost:3000/reset-password` for local testing.
+6. Set a minimum password length of at least 8 characters and enable leaked-password protection when available.
+7. Review Auth rate limits. CAPTCHA requires a corresponding browser challenge integration before it is enabled.
+8. Configure custom SMTP before production email confirmation and password recovery. Supabase's default mail service is intended only for limited testing.
+
+Vercel preview URLs should be added deliberately. Avoid a broad wildcard unless preview authentication is required and the security tradeoff has been reviewed.
+
+## Create the First Admin
+
+1. Apply all three migrations.
+2. Register the intended admin through `/register` using their real full name and email.
+3. Confirm the email address and verify that normal `/login` opens `/library`.
+4. In Supabase Dashboard, open Authentication > Users and copy that user's UUID.
+5. In the SQL Editor, run the following after replacing the UUID:
+
+```sql
+insert into public.admin_users (user_id, created_by)
+values ('00000000-0000-0000-0000-000000000000', '00000000-0000-0000-0000-000000000000')
+on conflict (user_id) do nothing;
 ```
 
-## Data Storage
+6. Log out, then use `/admin/login` with that same Supabase email and password.
 
-For production, Vercel API routes read and write the `drugs` table in Supabase.
-Verified public user profiles are stored in `user_profiles`, and short-lived OTP challenges are stored in `user_otps`.
+Only a trusted database operator with SQL Editor or backend secret-key access can create the first admin. There is intentionally no browser endpoint for promotion.
 
-For local fallback development and GitHub-based syncing, drug records live in:
+## Vercel Configuration
 
-```text
-server/data/drugs.json
-```
-
-When Supabase environment variables are present, the API uses Supabase. When they are missing, local development falls back to the JSON file.
-
-## User Phone OTP Access
-
-Public users must create a profile with their name and phone number, request an OTP, and verify it before the dashboard can read `/api/drugs`.
-
-The backend can send OTPs directly through Twilio when these variables are configured:
+Keep the Framework Preset set to **Other** and configure these environment variables for Production and any approved Preview environments:
 
 ```text
-TWILIO_ACCOUNT_SID
-TWILIO_AUTH_TOKEN
-TWILIO_FROM_NUMBER
-```
-
-Alternatively, use `TWILIO_MESSAGING_SERVICE_SID` instead of `TWILIO_FROM_NUMBER`.
-
-The backend can also post OTP delivery requests to `OTP_WEBHOOK_URL` when configured. The webhook receives:
-
-```json
-{
-  "phone": "+919876543210",
-  "otp": "123456",
-  "message": "Your Psychiatry Made Easy OTP is 123456. It expires in 10 minutes."
-}
-```
-
-Use this webhook to connect an SMS provider such as MSG91, Vonage, or your own gateway. In local development, set `OTP_DEV_MODE=true` to return the OTP in the browser for testing. Do not enable `OTP_DEV_MODE` in production.
-
-## Ask My Notes
-
-The dashboard includes a NotebookLM-style search area called **Ask My Notes**. Admins can add source material from `/admin/` by uploading a PDF, text file, Markdown file, or by pasting notes. Verified users can then ask questions against those sources from the public dashboard.
-
-Notebook source records are stored in the Supabase `notebook_sources` table. PDF extraction uses the `pdf-parse` package during upload. If a PDF is scanned or image-only, paste OCR text into the source text box instead.
-
-The search endpoint is:
-
-```text
-POST /api/notebook/search
-```
-
-It requires the same verified user token used by the drug dashboard.
-
-## Supabase Setup
-
-1. Create a Supabase project.
-2. Open the Supabase SQL Editor.
-3. Run the SQL in `supabase/schema.sql`.
-4. Copy your project URL.
-5. Copy a backend-only secret key. You can use `SUPABASE_SERVICE_ROLE_KEY` or the newer secret key format.
-
-Do not expose the secret/service-role key in browser JavaScript.
-
-## Vercel Setup from GitHub
-
-1. Push this repository to GitHub.
-2. In Vercel, import the GitHub repository.
-3. Keep the framework preset as Other.
-4. Add these Vercel environment variables:
-
-```text
+APP_ORIGIN
 SUPABASE_URL
-SUPABASE_SERVICE_ROLE_KEY or SUPABASE_SECRET_KEY
-ADMIN_PASSWORD
-SESSION_SECRET
-OTP_WEBHOOK_URL
-OTP_WEBHOOK_TOKEN, if your gateway requires it
-TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, and TWILIO_FROM_NUMBER if using Twilio directly
+SUPABASE_PUBLISHABLE_KEY
+SUPABASE_SECRET_KEY
 ```
 
-5. Deploy. Every push to `main` triggers a new Vercel deployment.
+Set `APP_ORIGIN` to the exact deployed origin, without a path. Vercel functions serve `/library` and `/admin` only after server-side session checks. Security headers and clean route rewrites are defined in `vercel.json`.
 
-## Sync GitHub Drug JSON to Supabase
+## Drug Data and GitHub Sync
 
-This repository includes `.github/workflows/sync-supabase.yml`.
+Production reads and writes `public.drugs` through server-only APIs. Admin editor changes take effect immediately without redeploying. The committed seed remains at `server/data/drugs.json`.
 
-To make GitHub push `server/data/drugs.json` into Supabase automatically:
+The existing `.github/workflows/sync-supabase.yml` workflow can still sync that seed after changes to `main`. Its repository secrets must include `SUPABASE_URL` and either `SUPABASE_SECRET_KEY` or `SUPABASE_SERVICE_ROLE_KEY`. Because the sync replaces the database collection with the committed JSON, use it only as an intentional data operation.
 
-1. Open your GitHub repository.
-2. Go to Settings > Secrets and variables > Actions.
-3. Add repository secrets:
-
-```text
-SUPABASE_URL
-SUPABASE_SERVICE_ROLE_KEY or SUPABASE_SECRET_KEY
-```
-
-4. Edit `server/data/drugs.json` in GitHub or locally.
-5. Commit to `main`.
-6. GitHub Actions runs `npm run supabase:push` and syncs the JSON into Supabase.
-
-You can also open the Actions tab and run `Sync Supabase Drug Data` manually.
-
-## Recommended Data Flow
-
-Use one primary editing path:
-
-- GitHub-first: edit `server/data/drugs.json`, commit, GitHub Actions syncs Supabase, and Vercel dashboard reads Supabase.
-- Admin-panel-first: edit in the website editor, Vercel writes directly to Supabase. Export JSON afterward if you want to update GitHub too.
-
-## Manual Supabase Upload
-
-After setting Supabase environment variables locally, you can push the committed JSON data manually:
+## Validation
 
 ```bash
-npm run supabase:push
+npm run build
+npm test
 ```
 
 ## Clinical Safety

@@ -1,11 +1,12 @@
-import { requireAdmin } from "../../../server/auth.js";
+import { assertMutationRequest, requireAdmin } from "../../../server/auth.js";
 import { methodNotAllowed, sendError, sendJson } from "../../../server/http.js";
 import { deleteNotebookSource } from "../../../server/notebook-store.js";
 
 export default async function handler(request, response) {
   try {
     if (request.method === "DELETE") {
-      requireAdmin(request);
+      assertMutationRequest(request);
+      await requireAdmin(request, response);
       sendJson(response, 200, { source: await deleteNotebookSource(getRouteId(request)) });
       return;
     }

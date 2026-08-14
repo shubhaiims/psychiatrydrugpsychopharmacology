@@ -1,4 +1,4 @@
-import { requestUserOtp } from "../../server/auth.js";
+import { requestPasswordReset } from "../../server/auth.js";
 import { methodNotAllowed, readJsonBody, sendError, sendJson } from "../../server/http.js";
 
 export default async function handler(request, response) {
@@ -9,7 +9,7 @@ export default async function handler(request, response) {
 
   try {
     const body = await readJsonBody(request);
-    sendJson(response, 200, await requestUserOtp(body));
+    sendJson(response, 200, await requestPasswordReset(body, request));
   } catch (error) {
     sendError(response, error);
   }

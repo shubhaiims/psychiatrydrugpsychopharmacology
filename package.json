@@ -13,7 +13,7 @@
     "dev": "node server/index.js",
     "start": "node server/index.js",
     "build": "node scripts/check.mjs && node scripts/validate.mjs",
-    "test": "npm run build",
+    "test": "node --test tests/auth.test.mjs && npm run build",
     "supabase:push": "node scripts/push-to-supabase.mjs"
   }
 }

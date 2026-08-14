@@ -1,4 +1,4 @@
-import { verifyUserOtp } from "../../server/auth.js";
+import { establishRedirectSession } from "../../server/auth.js";
 import { methodNotAllowed, readJsonBody, sendError, sendJson } from "../../server/http.js";
 
 export default async function handler(request, response) {
@@ -9,7 +9,7 @@ export default async function handler(request, response) {
 
   try {
     const body = await readJsonBody(request);
-    sendJson(response, 200, await verifyUserOtp(body));
+    sendJson(response, 200, await establishRedirectSession(body, request, response));
   } catch (error) {
     sendError(response, error);
   }

@@ -3,11 +3,12 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Psychiatry Made Easy admin editor." />
-    <title>Psychiatry Made Easy Admin</title>
-    <link rel="stylesheet" href="../styles.css" />
+    <meta name="description" content="Protected Psychiatry Made Easy admin drug editor." />
+    <title>Admin Editor | Psychiatry Made Easy</title>
+    <link rel="icon" href="/assets/psychiatry-made-easy-logo.png" />
+    <link rel="stylesheet" href="/styles.css" />
   </head>
-  <body class="admin-page">
+  <body class="admin-page is-locked">
     <div class="app-shell">
       <header class="topbar">
         <a class="brand" href="/" aria-label="Psychiatry Made Easy home">
@@ -17,23 +18,17 @@
             <span class="brand-subtitle">Admin editor</span>
           </span>
         </a>
-        <a class="topbar-link" href="/">View dashboard</a>
+        <div class="topbar-actions">
+          <span class="session-identity" id="adminIdentity">Checking admin session...</span>
+          <a class="secondary-button" href="/library">View library</a>
+          <a class="secondary-button" href="/">Home</a>
+          <button class="secondary-button" type="button" id="logoutButton">Log out</button>
+        </div>
       </header>
 
       <main>
         <section class="editor-layout" id="editorView" aria-label="Drug editor">
           <aside class="editor-sidebar">
-            <form class="auth-panel" id="loginForm">
-              <label for="adminPassword">
-                <span>Admin password</span>
-                <input id="adminPassword" type="password" autocomplete="current-password" />
-              </label>
-              <div class="editor-actions">
-                <button class="primary-button" type="submit" id="loginButton">Unlock editor</button>
-                <button class="secondary-button" type="button" id="logoutButton">Lock</button>
-              </div>
-            </form>
-
             <div class="editor-actions">
               <button class="primary-button" type="button" id="newDrugButton">New drug</button>
               <button class="secondary-button" type="button" id="duplicateDrugButton">Duplicate</button>
@@ -70,7 +65,7 @@
               <div class="source-list" id="sourceList"></div>
             </section>
 
-            <p class="editor-status" id="editorStatus" role="status" aria-live="polite">Connect to the backend to begin.</p>
+            <p class="editor-status" id="editorStatus" role="status" aria-live="polite">Verifying admin authorization.</p>
           </aside>
 
           <form class="editor-form" id="drugForm">
@@ -87,22 +82,10 @@
             </div>
 
             <div class="form-grid">
-              <label>
-                <span>Generic name</span>
-                <input id="fieldName" required />
-              </label>
-              <label>
-                <span>Brand names</span>
-                <input id="fieldBrands" placeholder="Separate with commas" />
-              </label>
-              <label>
-                <span>Medication group</span>
-                <select id="fieldMedicationGroup"></select>
-              </label>
-              <label>
-                <span>Classification</span>
-                <input id="fieldClassification" required />
-              </label>
+              <label><span>Generic name</span><input id="fieldName" required /></label>
+              <label><span>Brand names</span><input id="fieldBrands" placeholder="Separate with commas" /></label>
+              <label><span>Medication group</span><select id="fieldMedicationGroup"></select></label>
+              <label><span>Classification</span><input id="fieldClassification" required /></label>
               <label>
                 <span>Monitoring intensity</span>
                 <select id="fieldRisk">
@@ -111,70 +94,31 @@
                   <option value="high">High</option>
                 </select>
               </label>
-              <label>
-                <span>Target dose</span>
-                <input id="fieldTargetDose" placeholder="Example: 10-20 mg/day" />
-              </label>
-              <label>
-                <span>Maximum dose</span>
-                <input id="fieldMaximumDose" placeholder="Example: 40 mg/day" />
-              </label>
-              <label>
-                <span>Last reviewed</span>
-                <input id="fieldReviewed" type="date" />
-              </label>
+              <label><span>Target dose</span><input id="fieldTargetDose" placeholder="Example: 10-20 mg/day" /></label>
+              <label><span>Maximum dose</span><input id="fieldMaximumDose" placeholder="Example: 40 mg/day" /></label>
+              <label><span>Last reviewed</span><input id="fieldReviewed" type="date" /></label>
             </div>
 
             <div class="form-grid two-column">
-              <label>
-                <span>Mechanism of Action and Receptor Profile</span>
-                <textarea id="fieldMechanismOfActionAndReceptorProfile" rows="5"></textarea>
-              </label>
-              <label>
-                <span>Pharmacodynamics</span>
-                <textarea id="fieldPharmacodynamics" rows="5"></textarea>
-              </label>
-              <label>
-                <span>FDA Approved and Off-Label Uses</span>
-                <textarea id="fieldFdaApprovedAndOffLabelUses" rows="5"></textarea>
-              </label>
-              <label>
-                <span>Pharmacokinetics and Half-Life</span>
-                <textarea id="fieldPharmacokineticsAndHalfLife" rows="5"></textarea>
-              </label>
+              <label><span>Mechanism of Action and Receptor Profile</span><textarea id="fieldMechanismOfActionAndReceptorProfile" rows="5"></textarea></label>
+              <label><span>Pharmacodynamics</span><textarea id="fieldPharmacodynamics" rows="5"></textarea></label>
+              <label><span>FDA Approved and Off-Label Uses</span><textarea id="fieldFdaApprovedAndOffLabelUses" rows="5"></textarea></label>
+              <label><span>Pharmacokinetics and Half-Life</span><textarea id="fieldPharmacokineticsAndHalfLife" rows="5"></textarea></label>
             </div>
 
             <div class="form-grid two-column">
-              <label>
-                <span>Clinical Dosing, Optimization, and Target Dose</span>
-                <textarea id="fieldClinicalDosingOptimizationAndTargetDose" rows="5"></textarea>
-              </label>
-              <label>
-                <span>Side Effects</span>
-                <textarea id="fieldSideEffects" rows="5"></textarea>
-              </label>
-              <label>
-                <span>FDA black box warning</span>
-                <textarea id="fieldFdaBlackBoxWarning" rows="5"></textarea>
-              </label>
-              <label>
-                <span>Prescribing in Special Populations</span>
-                <textarea id="fieldPrescribingInSpecialPopulations" rows="5"></textarea>
-              </label>
-              <label>
-                <span>Drug interactions</span>
-                <textarea id="fieldDrugInteractions" rows="5"></textarea>
-              </label>
-              <label>
-                <span>Miscellaneous</span>
-                <textarea id="fieldMiscellaneous" rows="5"></textarea>
-              </label>
+              <label><span>Clinical Dosing, Optimization, and Target Dose</span><textarea id="fieldClinicalDosingOptimizationAndTargetDose" rows="5"></textarea></label>
+              <label><span>Side Effects</span><textarea id="fieldSideEffects" rows="5"></textarea></label>
+              <label><span>FDA black box warning</span><textarea id="fieldFdaBlackBoxWarning" rows="5"></textarea></label>
+              <label><span>Prescribing in Special Populations</span><textarea id="fieldPrescribingInSpecialPopulations" rows="5"></textarea></label>
+              <label><span>Drug interactions</span><textarea id="fieldDrugInteractions" rows="5"></textarea></label>
+              <label><span>Miscellaneous</span><textarea id="fieldMiscellaneous" rows="5"></textarea></label>
             </div>
           </form>
         </section>
       </main>
     </div>
 
-    <script src="../admin.js"></script>
+    <script src="/admin.js"></script>
   </body>
 </html>

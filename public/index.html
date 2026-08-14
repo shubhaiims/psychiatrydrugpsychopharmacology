@@ -3,144 +3,99 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="Psychiatry Made Easy psychopharmacology drug dashboard."
-    />
+    <meta name="description" content="Psychiatry Made Easy psychopharmacology drug library." />
     <title>Psychiatry Made Easy</title>
-    <link rel="icon" href="assets/psychiatry-made-easy-logo.png" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="/assets/psychiatry-made-easy-logo.png" />
+    <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
     <div class="app-shell">
-      <header class="site-masthead" id="home">
+      <header class="site-masthead">
         <nav class="masthead-nav" aria-label="Primary navigation">
           <div class="nav-group">
-            <a class="nav-link" href="#home">Home</a>
-            <a class="nav-link nav-link-caret" href="#libraryView">Psychiatry Drugs</a>
+            <a class="nav-link" href="/">Home</a>
+            <a class="nav-link" href="#latest-updates">Latest Updates</a>
+            <a class="nav-link nav-link-caret" href="/library">Psychiatry Drugs</a>
           </div>
 
-          <a class="masthead-brand" href="#libraryView" aria-label="Psychiatry Made Easy dashboard">
-            <img src="assets/psychiatry-made-easy-logo.png" alt="" />
+          <a class="masthead-brand" href="/" aria-label="Psychiatry Made Easy home">
+            <img src="/assets/psychiatry-made-easy-logo.png" alt="" />
             <span>Psychiatry Made Easy</span>
           </a>
 
           <div class="nav-group nav-group-right">
-            <a class="nav-link" href="#userAccess" id="userSessionLink">User login</a>
-            <a class="nav-link" href="/admin/">Admin</a>
-            <span class="user-glyph" aria-hidden="true"></span>
+            <a class="nav-link" href="/login">Log in</a>
+            <a class="nav-link" href="/register">Register</a>
+            <a class="nav-link" href="/admin/login">Admin</a>
           </div>
         </nav>
 
         <div class="hero-stage" aria-label="Psychiatry Made Easy">
           <div class="hero-visual" aria-hidden="true">
-            <img src="assets/psychiatry-made-easy-logo.png" alt="" />
+            <img src="/assets/psychiatry-made-easy-logo.png" alt="" />
           </div>
           <div class="hero-copy">
             <h1>Psychiatry Made Easy</h1>
             <p>Master the mind</p>
-            <a class="hero-button" href="#userAccess">Open drug library</a>
+            <a class="hero-button" href="/library">Open drug library</a>
           </div>
         </div>
       </header>
 
-      <main>
-        <section class="auth-gate" id="userAccess" aria-label="User access">
-          <div class="auth-card">
+      <main class="home-main">
+        <section class="latest-updates" id="latest-updates" aria-labelledby="latestUpdatesTitle">
+          <div class="latest-updates-header">
             <div>
-              <p class="eyebrow">Member access</p>
-              <h2>Verify your phone to open the drug library</h2>
-              <p class="auth-copy">Create your profile once, confirm the OTP sent to your phone, and continue into the Psychiatry Made Easy dashboard.</p>
+              <p class="eyebrow">Latest information</p>
+              <h2 id="latestUpdatesTitle">Latest Updates</h2>
             </div>
-
-            <form class="user-auth-form" id="profileForm">
-              <label for="profileName">
-                <span>Full name</span>
-                <input id="profileName" autocomplete="name" required />
-              </label>
-              <label for="profilePhone">
-                <span>Phone number</span>
-                <input id="profilePhone" type="tel" autocomplete="tel" placeholder="+91 98765 43210" required />
-              </label>
-              <button class="primary-button" type="submit" id="requestOtpButton">Send OTP</button>
-            </form>
-
-            <form class="user-auth-form is-hidden" id="otpForm">
-              <label for="profileOtp">
-                <span>One-time password</span>
-                <input id="profileOtp" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="6-digit OTP" required />
-              </label>
-              <button class="primary-button" type="submit" id="verifyOtpButton">Verify and open library</button>
-              <button class="secondary-button" type="button" id="changePhoneButton">Change phone</button>
-            </form>
-
-            <div class="user-profile-panel is-hidden" id="userProfilePanel">
-              <div>
-                <span>Signed in as</span>
-                <strong id="signedInName">Verified user</strong>
-                <small id="signedInPhone"></small>
-              </div>
-              <div class="profile-actions">
-                <a class="secondary-button" href="#libraryView">Go to library</a>
-                <button class="secondary-button" type="button" id="userLogoutButton">Log out</button>
-              </div>
-            </div>
-
-            <p class="auth-status" id="authStatus" role="status" aria-live="polite"></p>
-          </div>
-        </section>
-
-        <section class="workspace is-hidden" id="libraryView">
-          <aside class="library-panel" aria-label="Drug library">
-            <div class="toolbar">
-              <label class="select-block" for="medicationGroupSelect">
-                <span>Medication group</span>
-                <select id="medicationGroupSelect"></select>
-              </label>
-
-              <label class="select-block" for="drugNameSelect">
-                <span>Choose drug</span>
-                <select id="drugNameSelect"></select>
-              </label>
-
-              <label class="select-block" for="outlineSelect">
-                <span>Drug outline</span>
-                <select id="outlineSelect"></select>
-              </label>
-            </div>
-
-          </aside>
-
-          <section class="detail-panel" id="drugDetail" aria-live="polite"></section>
-        </section>
-
-        <section class="notebook-search-panel is-hidden" id="notebookSearchView" aria-label="Ask My Notes">
-          <div class="notebook-search-header">
-            <div>
-              <p class="eyebrow">Ask My Notes</p>
-              <h2>Search your uploaded PDFs and notes</h2>
-            </div>
-            <p>Answers are grounded in the notebook sources added through the admin panel.</p>
+            <p>Recent announcements, new articles, important notices, and current Psychiatry Made Easy information.</p>
           </div>
 
-          <form class="notebook-search-form" id="notebookSearchForm">
-            <label for="notebookQuery">
-              <span>Question</span>
-              <textarea id="notebookQuery" rows="3" placeholder="Ask about a concept, drug, dose, mechanism, or clinical pearl."></textarea>
-            </label>
-            <button class="primary-button" type="submit" id="notebookSearchButton">Search notes</button>
-          </form>
+          <div class="updates-grid">
+            <article class="update-card update-card-featured">
+              <div class="update-meta">
+                <span>Announcement</span>
+                <time datetime="2026-08-15">Aug 15, 2026</time>
+              </div>
+              <h3>New resources and platform notices</h3>
+              <p>Add your most important homepage announcement here so visitors see it before entering the drug library.</p>
+              <a class="update-link" href="/library">Browse library</a>
+            </article>
 
-          <section class="notebook-answer is-hidden" id="notebookAnswer" aria-live="polite"></section>
+            <article class="update-card">
+              <div class="update-meta">
+                <span>New article</span>
+                <time datetime="2026-08-15">Aug 15, 2026</time>
+              </div>
+              <h3>Recently added article</h3>
+              <p>Highlight a newly published psychopharmacology article, clinical explainer, or study note.</p>
+            </article>
+
+            <article class="update-card">
+              <div class="update-meta">
+                <span>Important notice</span>
+                <time datetime="2026-08-15">Aug 15, 2026</time>
+              </div>
+              <h3>Important notice</h3>
+              <p>Use this area for urgent updates, corrections, access changes, or important education notices.</p>
+            </article>
+
+            <article class="update-card">
+              <div class="update-meta">
+                <span>Latest info</span>
+                <time datetime="2026-08-15">Aug 15, 2026</time>
+              </div>
+              <h3>Latest information</h3>
+              <p>Share the newest library additions, upcoming improvements, or helpful reading guidance.</p>
+            </article>
+          </div>
         </section>
-
       </main>
 
-      <footer class="site-footer">
-        Educational reference scaffold. Verify all drug information against current prescribing information, local protocols, and clinical judgment.
+      <footer class="site-footer home-footer">
+        Educational reference. Verify all drug information against current prescribing information, local protocols, and clinical judgment.
       </footer>
     </div>
-
-    <script src="app.js"></script>
   </body>
 </html>

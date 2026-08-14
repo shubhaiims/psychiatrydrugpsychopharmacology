@@ -1,7 +1,6 @@
 (function () {
   "use strict";
 
-  const TOKEN_KEY = "psychrx.admin.token.v1";
   const today = new Date().toISOString().slice(0, 10);
   const medicationGroups = [
     "ADHD medications",
@@ -14,9 +13,7 @@
   ];
 
   const els = {
-    loginForm: document.querySelector("#loginForm"),
-    adminPassword: document.querySelector("#adminPassword"),
-    loginButton: document.querySelector("#loginButton"),
+    adminIdentity: document.querySelector("#adminIdentity"),
     logoutButton: document.querySelector("#logoutButton"),
     editorDrugSelect: document.querySelector("#editorDrugSelect"),
     newDrugButton: document.querySelector("#newDrugButton"),
@@ -62,31 +59,22 @@
   let drugs = [];
   let sources = [];
   let selectedId = "";
-  let adminToken = sessionStorage.getItem(TOKEN_KEY) || "";
+  let adminReady = false;
 
   bindEvents();
   renderMedicationGroupField();
   renderEditorLock();
-  loadDrugs();
-  loadNotebookSources();
+  initialize();
 
   function bindEvents() {
-    els.loginForm.addEventListener("submit", async (event) => {
-      event.preventDefault();
-      const password = els.adminPassword.value;
-      if (!password) {
-        setStatus("Enter the admin password.", true);
-        return;
+    els.logoutButton.addEventListener("click", async () => {
+      els.logoutButton.disabled = true;
+      try {
+        await api("/api/auth/logout", { method: "POST" });
+      } catch (error) {
+        console.warn("Logout request failed; leaving the editor view.", error);
       }
-      await login(password);
-    });
-
-    els.logoutButton.addEventListener("click", () => {
-      adminToken = "";
-      sessionStorage.removeItem(TOKEN_KEY);
-      els.adminPassword.value = "";
-      setStatus("Editor locked.");
-      renderEditorLock();
+      window.location.replace("/");
     });
 
     els.editorDrugSelect.addEventListener("change", () => {
@@ -156,6 +144,29 @@
     });
   }
 
+  async function initialize() {
+    try {
+      const session = await api("/api/auth/me");
+      if (session.role !== "admin") {
+        window.location.replace("/admin/login");
+        return;
+      }
+      adminReady = true;
+      els.adminIdentity.textContent = session.user?.fullName || session.user?.email || "Authorized admin";
+      renderEditorLock();
+      await loadDrugs();
+      await loadNotebookSources();
+    } catch (error) {
+      adminReady = false;
+      renderEditorLock();
+      if ([401, 403].includes(error.status)) {
+        window.location.replace("/admin/login");
+        return;
+      }
+      setStatus(error.message || "Unable to verify admin authorization.", true);
+    }
+  }
+
   async function loadDrugs() {
     try {
       const data = await api("/api/drugs");
@@ -163,7 +174,7 @@
       selectedId = drugs.some((drug) => drug.id === selectedId) ? selectedId : drugs[0]?.id || "";
       renderEditorSelect();
       renderEditor();
-      setStatus(adminToken ? "Editor unlocked." : "Editor locked. Enter the admin password to add or edit records.");
+      setStatus("Editor ready. Changes are saved to the backend database.");
     } catch (error) {
       drugs = [];
       selectedId = "";
@@ -173,29 +184,8 @@
     }
   }
 
-  async function login(password) {
-    try {
-      const data = await api("/api/auth/login", {
-        method: "POST",
-        body: { password }
-      });
-      adminToken = data.token;
-      sessionStorage.setItem(TOKEN_KEY, adminToken);
-      els.adminPassword.value = "";
-      setStatus("Editor unlocked.");
-      renderEditorLock();
-      await loadDrugs();
-      await loadNotebookSources();
-    } catch (error) {
-      adminToken = "";
-      sessionStorage.removeItem(TOKEN_KEY);
-      setStatus(error.message || "Login failed.", true);
-      renderEditorLock();
-    }
-  }
-
   async function loadNotebookSources() {
-    if (!adminToken) {
+    if (!adminReady) {
       sources = [];
       renderSourceList();
       return;
@@ -244,7 +234,7 @@
     } catch (error) {
       setStatus(error.message || "Unable to add notebook source.", true);
     } finally {
-      els.saveSourceButton.disabled = !adminToken;
+      els.saveSourceButton.disabled = !adminReady;
     }
   }
 
@@ -303,43 +293,45 @@
   }
 
   async function api(path, options = {}) {
+    const method = options.method || "GET";
     const headers = {
       Accept: "application/json",
       ...(options.body ? { "Content-Type": "application/json" } : {}),
+      ...(method !== "GET" ? { "X-CSRF-Token": readCookie("pme_csrf") } : {}),
       ...(options.headers || {})
     };
 
-    if (adminToken) {
-      headers.Authorization = `Bearer ${adminToken}`;
-    }
-
     const response = await fetch(path, {
-      method: options.method || "GET",
+      method,
       headers,
+      credentials: "same-origin",
       body: options.body ? JSON.stringify(options.body) : undefined
     });
 
     const contentType = response.headers.get("content-type") || "";
     const data = contentType.includes("application/json") ? await response.json() : {};
     if (!response.ok) {
-      throw new Error(data.error || `Request failed with status ${response.status}.`);
+      const error = new Error(data.error || `Request failed with status ${response.status}.`);
+      error.status = response.status;
+      throw error;
     }
     return data;
   }
 
   function handleWriteError(error) {
     const message = error.message || "Backend write failed.";
-    if (/token|unauthorized|expired/i.test(message)) {
-      adminToken = "";
-      sessionStorage.removeItem(TOKEN_KEY);
+    if ([401, 403].includes(error.status)) {
+      adminReady = false;
       renderEditorLock();
+      window.location.replace("/admin/login");
+      return;
     }
     setStatus(message, true);
   }
 
   function requireEditor() {
-    if (adminToken) return true;
-    setStatus("Unlock the editor before changing drug records.", true);
+    if (adminReady) return true;
+    setStatus("Admin authorization is required.", true);
     return false;
   }
 
@@ -369,7 +361,7 @@
   }
 
   function renderEditorLock() {
-    const unlocked = Boolean(adminToken);
+    const unlocked = adminReady;
     Object.values(els.fields).forEach((control) => {
       control.disabled = !unlocked;
     });
@@ -387,9 +379,7 @@
     els.sourceTitle.disabled = !unlocked;
     els.sourceText.disabled = !unlocked;
     els.sourceFileInput.disabled = !unlocked;
-    els.loginButton.disabled = unlocked;
     els.logoutButton.disabled = !unlocked;
-    els.adminPassword.disabled = unlocked;
     document.body.classList.toggle("is-locked", !unlocked);
     if (!unlocked) {
       sources = [];
@@ -475,8 +465,8 @@
   }
 
   function renderSourceList() {
-    if (!adminToken) {
-      els.sourceList.innerHTML = `<p class="source-empty">Unlock editor to manage notebook sources.</p>`;
+    if (!adminReady) {
+      els.sourceList.innerHTML = `<p class="source-empty">Admin authorization is required.</p>`;
       return;
     }
     if (!sources.length) {
@@ -616,6 +606,14 @@
       reader.onerror = () => reject(reader.error || new Error("Unable to read file."));
       reader.readAsDataURL(file);
     });
+  }
+
+  function readCookie(name) {
+    for (const part of document.cookie.split(";")) {
+      const [cookieName, ...rest] = part.trim().split("=");
+      if (cookieName === name) return decodeURIComponent(rest.join("="));
+    }
+    return "";
   }
 
   function escapeHtml(value) {

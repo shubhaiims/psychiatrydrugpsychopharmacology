@@ -3,16 +3,21 @@ import { createServer } from "node:http";
 import { dirname, extname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import {
+  assertMutationRequest,
+  establishRedirectSession,
   getCurrentUser,
-  isAdminConfigured,
-  loginWithPassword,
-  requestUserOtp,
+  isAuthConfigured,
+  loginUser,
+  logoutUser,
+  registerUser,
+  requestPasswordReset,
   requireAdmin,
-  requireDashboardAccess,
-  verifyUserOtp
+  requireUser,
+  resetPassword
 } from "./auth.js";
 import { methodNotAllowed, readJsonBody, sendError, sendJson } from "./http.js";
 import { createNotebookSource, deleteNotebookSource, listNotebookSources, searchNotebook } from "./notebook-store.js";
+import { serveAdminPage, serveLibraryPage } from "./pages.js";
 import { createDrug, deleteDrug, hasSupabaseConfig, listDrugs, replaceDrugs, updateDrug } from "./store.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -21,12 +26,20 @@ const publicDir = resolve(rootDir, "public");
 loadDotEnv(resolve(rootDir, ".env"));
 
 const port = Number(process.env.PORT || 3000);
+const pageRoutes = new Map([
+  ["/", "index.html"],
+  ["/login", "login.html"],
+  ["/register", "register.html"],
+  ["/forgot-password", "forgot-password.html"],
+  ["/reset-password", "reset-password.html"],
+  ["/admin/login", "admin-login.html"]
+]);
 const staticFiles = new Set([
-  "index.html",
+  ...pageRoutes.values(),
   "styles.css",
   "app.js",
   "admin.js",
-  "admin/index.html",
+  "auth.js",
   "assets/psychiatry-made-easy-logo.png"
 ]);
 const mimeTypes = new Map([
@@ -38,13 +51,14 @@ const mimeTypes = new Map([
 ]);
 
 const server = createServer(async (request, response) => {
+  setSecurityHeaders(response);
   try {
     const url = new URL(request.url || "/", `http://${request.headers.host || "localhost"}`);
     if (url.pathname.startsWith("/api/")) {
       await routeApi(request, response, url);
       return;
     }
-    await routeStatic(response, url);
+    await routeStatic(request, response, url);
   } catch (error) {
     sendError(response, error);
   }
@@ -53,8 +67,8 @@ const server = createServer(async (request, response) => {
 server.listen(port, () => {
   console.log(`Psychiatry Made Easy running at http://localhost:${port}/`);
   console.log(hasSupabaseConfig() ? "Using Supabase storage." : "Using local JSON fallback storage.");
-  if (!isAdminConfigured()) {
-    console.log("Admin editor is locked until ADMIN_PASSWORD is set.");
+  if (!isAuthConfigured()) {
+    console.log("Protected routes are locked until Supabase Auth environment variables are configured.");
   }
 });
 
@@ -65,65 +79,94 @@ async function routeApi(request, response, url) {
   if (method === "GET" && url.pathname === "/api/health") {
     sendJson(response, 200, {
       ok: true,
-      editorEnabled: isAdminConfigured(),
+      authConfigured: isAuthConfigured(),
       storage: hasSupabaseConfig() ? "supabase" : "local-json"
     });
     return;
   }
 
+  if (url.pathname === "/api/auth/register") {
+    if (method !== "POST") return methodNotAllowed(response, ["POST"]);
+    const body = await readJsonBody(request);
+    sendJson(response, 201, await registerUser(body, request, response));
+    return;
+  }
+
   if (url.pathname === "/api/auth/login") {
-    if (method !== "POST") {
-      methodNotAllowed(response, ["POST"]);
-      return;
-    }
+    if (method !== "POST") return methodNotAllowed(response, ["POST"]);
     const body = await readJsonBody(request);
-    sendJson(response, 200, loginWithPassword(body.password));
+    sendJson(response, 200, await loginUser(body, request, response));
     return;
   }
 
-  if (url.pathname === "/api/auth/request-otp") {
-    if (method !== "POST") {
-      methodNotAllowed(response, ["POST"]);
-      return;
-    }
+  if (url.pathname === "/api/admin/login") {
+    if (method !== "POST") return methodNotAllowed(response, ["POST"]);
     const body = await readJsonBody(request);
-    sendJson(response, 200, await requestUserOtp(body));
+    sendJson(response, 200, await loginUser(body, request, response, { adminOnly: true }));
     return;
   }
 
-  if (url.pathname === "/api/auth/verify-otp") {
-    if (method !== "POST") {
-      methodNotAllowed(response, ["POST"]);
-      return;
-    }
+  if (url.pathname === "/api/auth/logout") {
+    if (method !== "POST") return methodNotAllowed(response, ["POST"]);
+    sendJson(response, 200, await logoutUser(request, response));
+    return;
+  }
+
+  if (url.pathname === "/api/auth/forgot-password") {
+    if (method !== "POST") return methodNotAllowed(response, ["POST"]);
     const body = await readJsonBody(request);
-    sendJson(response, 200, await verifyUserOtp(body));
+    sendJson(response, 200, await requestPasswordReset(body, request));
+    return;
+  }
+
+  if (url.pathname === "/api/auth/reset-password") {
+    if (method !== "POST") return methodNotAllowed(response, ["POST"]);
+    const body = await readJsonBody(request);
+    sendJson(response, 200, await resetPassword(body, request, response));
+    return;
+  }
+
+  if (url.pathname === "/api/auth/session") {
+    if (method !== "POST") return methodNotAllowed(response, ["POST"]);
+    const body = await readJsonBody(request);
+    sendJson(response, 200, await establishRedirectSession(body, request, response));
     return;
   }
 
   if (url.pathname === "/api/auth/me") {
-    if (method !== "GET") {
-      methodNotAllowed(response, ["GET"]);
-      return;
-    }
-    sendJson(response, 200, await getCurrentUser(request));
+    if (method !== "GET") return methodNotAllowed(response, ["GET"]);
+    sendJson(response, 200, await getCurrentUser(request, response));
+    return;
+  }
+
+  if (url.pathname === "/api/pages/library") {
+    if (method !== "GET") return methodNotAllowed(response, ["GET"]);
+    await serveLibraryPage(request, response);
+    return;
+  }
+
+  if (url.pathname === "/api/admin/page") {
+    if (method !== "GET") return methodNotAllowed(response, ["GET"]);
+    await serveAdminPage(request, response);
     return;
   }
 
   if (url.pathname === "/api/drugs") {
     if (method === "GET") {
-      requireDashboardAccess(request);
+      await requireUser(request, response);
       sendJson(response, 200, { drugs: await listDrugs() });
       return;
     }
     if (method === "POST") {
-      requireAdmin(request);
+      assertMutationRequest(request);
+      await requireAdmin(request, response);
       const body = await readJsonBody(request);
       sendJson(response, 201, { drug: await createDrug(body) });
       return;
     }
     if (method === "PUT") {
-      requireAdmin(request);
+      assertMutationRequest(request);
+      await requireAdmin(request, response);
       const body = await readJsonBody(request);
       if (!Array.isArray(body)) {
         sendJson(response, 400, { error: "Expected a JSON array of drug records." });
@@ -138,12 +181,13 @@ async function routeApi(request, response, url) {
 
   if (url.pathname === "/api/notebook/sources") {
     if (method === "GET") {
-      requireAdmin(request);
+      await requireAdmin(request, response);
       sendJson(response, 200, { sources: await listNotebookSources() });
       return;
     }
     if (method === "POST") {
-      requireAdmin(request);
+      assertMutationRequest(request);
+      await requireAdmin(request, response);
       const body = await readJsonBody(request);
       sendJson(response, 201, { source: await createNotebookSource(body) });
       return;
@@ -154,7 +198,8 @@ async function routeApi(request, response, url) {
 
   if (parts.length === 4 && parts[0] === "api" && parts[1] === "notebook" && parts[2] === "sources") {
     if (method === "DELETE") {
-      requireAdmin(request);
+      assertMutationRequest(request);
+      await requireAdmin(request, response);
       sendJson(response, 200, { source: await deleteNotebookSource(decodeURIComponent(parts[3])) });
       return;
     }
@@ -163,11 +208,9 @@ async function routeApi(request, response, url) {
   }
 
   if (url.pathname === "/api/notebook/search") {
-    if (method !== "POST") {
-      methodNotAllowed(response, ["POST"]);
-      return;
-    }
-    requireDashboardAccess(request);
+    if (method !== "POST") return methodNotAllowed(response, ["POST"]);
+    assertMutationRequest(request);
+    await requireUser(request, response);
     const body = await readJsonBody(request);
     sendJson(response, 200, await searchNotebook(body.query));
     return;
@@ -176,7 +219,7 @@ async function routeApi(request, response, url) {
   if (parts.length === 3 && parts[0] === "api" && parts[1] === "drugs") {
     const id = decodeURIComponent(parts[2]);
     if (method === "GET") {
-      requireDashboardAccess(request);
+      await requireUser(request, response);
       const drug = (await listDrugs()).find((item) => item.id === id);
       if (!drug) {
         sendJson(response, 404, { error: "Drug record not found." });
@@ -186,13 +229,15 @@ async function routeApi(request, response, url) {
       return;
     }
     if (method === "PUT" || method === "PATCH") {
-      requireAdmin(request);
+      assertMutationRequest(request);
+      await requireAdmin(request, response);
       const body = await readJsonBody(request);
       sendJson(response, 200, { drug: await updateDrug(id, body) });
       return;
     }
     if (method === "DELETE") {
-      requireAdmin(request);
+      assertMutationRequest(request);
+      await requireAdmin(request, response);
       sendJson(response, 200, { drug: await deleteDrug(id) });
       return;
     }
@@ -203,12 +248,18 @@ async function routeApi(request, response, url) {
   sendJson(response, 404, { error: "API route not found." });
 }
 
-async function routeStatic(response, url) {
-  const requested = url.pathname === "/"
-    ? "index.html"
-    : ["/admin", "/admin/"].includes(url.pathname)
-      ? "admin/index.html"
-      : decodeURIComponent(url.pathname).replace(/^\/+/, "");
+async function routeStatic(request, response, url) {
+  if (["/library", "/library/"].includes(url.pathname)) {
+    await serveLibraryPage(request, response);
+    return;
+  }
+  if (["/admin", "/admin/", "/admin/index.html"].includes(url.pathname)) {
+    await serveAdminPage(request, response);
+    return;
+  }
+
+  const requested = pageRoutes.get(url.pathname)
+    || decodeURIComponent(url.pathname).replace(/^\/+/, "");
   if (!staticFiles.has(requested)) {
     response.writeHead(404, { "Content-Type": "text/plain; charset=utf-8" });
     response.end("Not found");
@@ -219,6 +270,14 @@ async function routeStatic(response, url) {
   const contentType = mimeTypes.get(extname(filePath)) || "application/octet-stream";
   response.writeHead(200, { "Content-Type": contentType });
   createReadStream(filePath).pipe(response);
+}
+
+function setSecurityHeaders(response) {
+  response.setHeader("Content-Security-Policy", "default-src 'self'; base-uri 'self'; connect-src 'self'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data:; object-src 'none'; script-src 'self'; style-src 'self'");
+  response.setHeader("Permissions-Policy", "camera=(), microphone=(), geolocation=()");
+  response.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
+  response.setHeader("X-Content-Type-Options", "nosniff");
+  response.setHeader("X-Frame-Options", "DENY");
 }
 
 function loadDotEnv(filePath) {
