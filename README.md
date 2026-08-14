@@ -113,9 +113,20 @@ Set `APP_ORIGIN` to the exact deployed origin, without a path. Vercel functions 
 
 ## Drug Data and GitHub Sync
 
-Production reads and writes `public.drugs` through server-only APIs. Admin editor changes take effect immediately without redeploying. The committed seed remains at `server/data/drugs.json`.
+Production reads and writes `public.drugs` through server-only APIs. Supabase is the live source of truth, and Admin Drug Editor changes take effect immediately without redeploying. Normal code pushes, Vercel deployments, and authentication changes never synchronize or replace drug records.
 
-The existing `.github/workflows/sync-supabase.yml` workflow can still sync that seed after changes to `main`. Its repository secrets must include `SUPABASE_URL` and either `SUPABASE_SECRET_KEY` or `SUPABASE_SERVICE_ROLE_KEY`. Because the sync replaces the database collection with the committed JSON, use it only as an intentional data operation.
+The original 61-record backup/seed remains at `server/data/drugs.json`. `.github/workflows/sync-supabase.yml` is available only through GitHub Actions `workflow_dispatch`; it has no `push` trigger. A manual run requires typing `REPLACE_ALL_SUPABASE_DRUGS` before it invokes the replacement script.
+
+`npm run supabase:push` is a destructive full-table replacement, not a deployment step. It deletes every row in `public.drugs` and then inserts the committed seed. The script refuses to run unless `CONFIRM_SUPABASE_DRUG_REPLACE=REPLACE_ALL_SUPABASE_DRUGS` is set explicitly. Never add this command to a normal build, deploy, push, or scheduled workflow.
+
+For a deliberate local seed restore in PowerShell, after reviewing the target project and seed file:
+
+```powershell
+$env:CONFIRM_SUPABASE_DRUG_REPLACE="REPLACE_ALL_SUPABASE_DRUGS"
+npm run supabase:push
+```
+
+The manual workflow and local command require `SUPABASE_URL` plus either `SUPABASE_SECRET_KEY` or the legacy `SUPABASE_SERVICE_ROLE_KEY`. These server-side secrets must never be exposed to browser code.
 
 ## Validation
 

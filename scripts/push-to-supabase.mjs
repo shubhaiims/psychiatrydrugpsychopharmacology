@@ -1,18 +1,27 @@
 import { readFile } from "node:fs/promises";
 import { readFileSync } from "node:fs";
 
-loadDotEnv(".env");
-const { replaceDrugs } = await import("../server/store.js");
+// Manual seed/disaster-recovery operation only: this deletes every row in
+// public.drugs before inserting server/data/drugs.json. Never run it as part of
+// a normal deployment or an automatic push workflow.
+const requiredConfirmation = "REPLACE_ALL_SUPABASE_DRUGS";
+if (process.env.CONFIRM_SUPABASE_DRUG_REPLACE !== requiredConfirmation) {
+  throw new Error(
+    `Refusing to replace public.drugs. Set CONFIRM_SUPABASE_DRUG_REPLACE=${requiredConfirmation} only for a deliberate full-table replacement.`
+  );
+}
 
-const source = await readFile("server/data/drugs.json", "utf8");
-const drugs = JSON.parse(source);
+loadDotEnv(".env");
 
 if (!process.env.SUPABASE_URL || !(process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SECRET_KEY)) {
   throw new Error("Set SUPABASE_URL and SUPABASE_SECRET_KEY (or the legacy SUPABASE_SERVICE_ROLE_KEY) before running npm run supabase:push.");
 }
 
+const { replaceDrugs } = await import("../server/store.js");
+const source = await readFile("server/data/drugs.json", "utf8");
+const drugs = JSON.parse(source);
 const saved = await replaceDrugs(drugs);
-console.log(`Uploaded ${saved.length} drug records to Supabase.`);
+console.log(`Replaced public.drugs with ${saved.length} records from server/data/drugs.json.`);
 
 function loadDotEnv(filePath) {
   try {
