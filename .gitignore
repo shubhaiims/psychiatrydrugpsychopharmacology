@@ -6,6 +6,8 @@ Thumbs.db
 .env.local
 .env.*.local
 .vercel/
+supabase/.temp/
+notebook-imports/
 dist/
 coverage/
 server/data/users.json
