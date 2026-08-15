@@ -73,4 +73,27 @@ for (const file of browserFiles) {
 
 JSON.parse(await readFile("vercel.json", "utf8"));
 
+const homepage = await readFile("public/index.html", "utf8");
+if (/href=["']\/admin(?:\/login)?["']/i.test(homepage)) {
+  throw new Error("The public homepage must not expose an admin login link.");
+}
+
+const userLoginPage = await readFile("public/login.html", "utf8");
+if (/href=["']\/admin(?:\/login)?["']/i.test(userLoginPage)) {
+  throw new Error("The user login page must not expose an admin login link.");
+}
+
+const activeSqlFiles = [
+  "supabase/schema.sql",
+  "supabase/migrations/202608150000_existing_storage_schema.sql",
+  "supabase/migrations/202608150001_auth_profiles_and_admins.sql",
+  "supabase/migrations/202608150002_authorization_policies.sql"
+];
+for (const file of activeSqlFiles) {
+  const sql = await readFile(file, "utf8");
+  if (/\buser_otps\b|\buser_profiles\b|\botp_hash\b|\bphone\s+text\b/i.test(sql)) {
+    throw new Error(`Legacy mobile OTP storage found in active SQL: ${file}`);
+  }
+}
+
 console.log(`Validated backend app and ${drugs.length} drug records.`);

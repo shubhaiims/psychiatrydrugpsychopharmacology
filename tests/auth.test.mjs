@@ -7,6 +7,8 @@ import {
   requireAdmin,
   requireUser
 } from "../server/auth.js";
+import { serveAdminPage, serveLibraryPage } from "../server/pages.js";
+import { supabaseServiceRequest } from "../server/supabase.js";
 
 const originalFetch = global.fetch;
 const originalEnvironment = {
@@ -135,6 +137,64 @@ test("state-changing requests require a matching CSRF cookie and header", () => 
   );
 });
 
+test("protected library page redirects anonymous users to user login", async () => {
+  const output = response();
+
+  await serveLibraryPage(request(), output);
+
+  assert.equal(output.statusCode, 303);
+  assert.equal(output.getHeader("Location"), "/login?next=%2Flibrary");
+  assert.equal(output.ended, true);
+});
+
+test("admin page redirects signed-in non-admin users to admin login", async () => {
+  global.fetch = async (url) => {
+    if (String(url).endsWith("/auth/v1/user")) return jsonResponse(200, authSession().user);
+    if (String(url).includes("/rest/v1/admin_users")) return jsonResponse(200, []);
+    throw new Error(`Unexpected URL: ${url}`);
+  };
+
+  const output = response();
+  await serveAdminPage(request({ cookie: "pme_access=access-token" }), output);
+
+  assert.equal(output.statusCode, 303);
+  assert.equal(output.getHeader("Location"), "/admin/login");
+  assert.equal(output.ended, true);
+});
+
+test("Supabase secret keys are sent without a bearer token", async () => {
+  let serviceHeaders;
+  global.fetch = async (_url, options) => {
+    serviceHeaders = options.headers;
+    return jsonResponse(200, []);
+  };
+
+  await supabaseServiceRequest("drugs?select=id&limit=1");
+
+  assert.equal(serviceHeaders.apikey, "sb_secret_test");
+  assert.equal(serviceHeaders.Authorization, undefined);
+});
+
+test("legacy Supabase JWT service-role keys are sent as bearer tokens", async () => {
+  const legacyKey = [
+    Buffer.from(JSON.stringify({ alg: "HS256", typ: "JWT" })).toString("base64url"),
+    Buffer.from(JSON.stringify({ role: "service_role" })).toString("base64url"),
+    "signature"
+  ].join(".");
+  process.env.SUPABASE_SECRET_KEY = legacyKey;
+
+  let serviceHeaders;
+  global.fetch = async (_url, options) => {
+    serviceHeaders = options.headers;
+    return jsonResponse(200, []);
+  };
+
+  await supabaseServiceRequest("drugs?select=id&limit=1");
+
+  assert.equal(serviceHeaders.apikey, legacyKey);
+  assert.equal(serviceHeaders.Authorization, `Bearer ${legacyKey}`);
+});
+
 function authSession() {
   return {
     access_token: "access-token",
@@ -161,12 +221,18 @@ function request(headers = {}) {
 function response() {
   const headers = new Map();
   return {
+    statusCode: 200,
+    ended: false,
     headersSent: false,
     getHeader(name) {
       return headers.get(name.toLowerCase());
     },
     setHeader(name, value) {
       headers.set(name.toLowerCase(), value);
+    },
+    end() {
+      this.ended = true;
+      this.headersSent = true;
     }
   };
 }
