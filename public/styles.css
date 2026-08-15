@@ -544,7 +544,7 @@ a:focus-visible {
 }
 
 .formula-copy,
-.formula-placeholder {
+.dose-calculator {
   padding: clamp(18px, 3vw, 28px);
   border: 1px solid rgba(20, 200, 203, 0.34);
   border-radius: var(--radius);
@@ -566,27 +566,85 @@ a:focus-visible {
 }
 
 .formula-copy p:last-child,
-.formula-placeholder p {
+.dose-calculator p {
   margin: 0;
   color: var(--muted);
   line-height: 1.55;
 }
 
-.formula-placeholder {
+.dose-calculator {
   display: grid;
-  place-content: center;
-  gap: 10px;
-  min-height: 210px;
+  gap: 16px;
   border-color: rgba(255, 138, 0, 0.36);
   background:
     linear-gradient(135deg, rgba(255, 138, 0, 0.1), transparent 44%),
     var(--surface-soft);
 }
 
-.formula-placeholder span {
+.calculator-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.formula-equations {
+  display: grid;
+  gap: 7px;
+  padding: 14px;
+  border: 1px solid rgba(77, 90, 95, 0.72);
+  border-radius: var(--radius);
+  background: rgba(5, 7, 7, 0.72);
+}
+
+.formula-equations p {
+  font-size: 0.92rem;
+}
+
+.formula-equations strong {
   color: var(--accent);
-  font-size: 1.2rem;
   font-weight: 900;
+}
+
+.calculator-results {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.calculator-result {
+  min-height: 118px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid rgba(20, 200, 203, 0.28);
+  border-radius: var(--radius);
+  background: rgba(9, 13, 16, 0.94);
+}
+
+.calculator-result span {
+  color: var(--muted);
+  font-size: 0.77rem;
+  font-weight: 850;
+  letter-spacing: 0.04em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.calculator-result strong {
+  color: #ffffff;
+  font-size: clamp(1.35rem, 2.5vw, 1.9rem);
+  line-height: 1.05;
+}
+
+.calculator-note {
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 107, 95, 0.38);
+  border-radius: var(--radius);
+  background: rgba(255, 107, 95, 0.1);
+  color: #ffd8d4 !important;
+  font-size: 0.9rem;
 }
 
 .topbar {
@@ -1512,6 +1570,8 @@ button,
   .form-grid,
   .form-grid.two-column,
   .dose-grid,
+  .calculator-fields,
+  .calculator-results,
   .notebook-search-header {
     grid-template-columns: 1fr;
   }

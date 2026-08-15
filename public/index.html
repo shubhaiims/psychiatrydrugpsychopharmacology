@@ -113,14 +113,46 @@
         <section class="formula-section" id="formula" aria-labelledby="formulaTitle">
           <div class="formula-copy">
             <p class="eyebrow">Clinical tools</p>
-            <h2 id="formulaTitle">Formula</h2>
-            <p>Add your formulas here as interactive calculators. Each tool can accept values, calculate the result instantly, and show the final unit clearly.</p>
+            <h2 id="formulaTitle">Alcohol Withdrawal Benzodiazepine Dose Calculator</h2>
+            <p>Enter alcohol volume and alcohol percentage to calculate estimated single-dose QID benzodiazepine equivalents.</p>
           </div>
 
-          <div class="formula-placeholder" aria-label="Formula calculator placeholder">
-            <span>Formula tools coming next</span>
-            <p>Send the formula name, input fields, equation, and result unit, and this section can become a working calculator panel.</p>
-          </div>
+          <form class="dose-calculator" id="benzodiazepineCalculator">
+            <div class="calculator-fields">
+              <label for="alcoholVolume">
+                <span>Alcohol volume V (mL)</span>
+                <input id="alcoholVolume" name="volume" type="number" min="0" step="0.1" inputmode="decimal" placeholder="Example: 750" required />
+              </label>
+
+              <label for="alcoholPercentage">
+                <span>Alcohol percentage P (%)</span>
+                <input id="alcoholPercentage" name="percentage" type="number" min="0" step="0.1" inputmode="decimal" placeholder="Example: 40" required />
+              </label>
+            </div>
+
+            <div class="formula-equations" aria-label="Calculator formulas">
+              <p><strong>Chlordiazepoxide:</strong> C dose = (V x P) / 1000 mg QID</p>
+              <p><strong>Diazepam:</strong> D dose = 0.4 x ((V x P) / 1000) mg QID</p>
+              <p><strong>Lorazepam APA / Kaplan &amp; Sadock Standard:</strong> L dose = 0.08 x ((V x P) / 1000) mg QID</p>
+            </div>
+
+            <div class="calculator-results" aria-live="polite">
+              <output class="calculator-result" id="chlordiazepoxideDose">
+                <span>Chlordiazepoxide single dose QID</span>
+                <strong>-- mg</strong>
+              </output>
+              <output class="calculator-result" id="diazepamDose">
+                <span>Diazepam single dose QID</span>
+                <strong>-- mg</strong>
+              </output>
+              <output class="calculator-result" id="lorazepamDose">
+                <span>Lorazepam single dose QID</span>
+                <strong>-- mg</strong>
+              </output>
+            </div>
+
+            <p class="calculator-note">Educational calculator only. Do not use as a standalone prescribing recommendation; verify dosing against current clinical protocols and individual patient risk factors.</p>
+          </form>
         </section>
       </main>
 
