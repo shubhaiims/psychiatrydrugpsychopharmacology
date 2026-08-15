@@ -15,37 +15,6 @@ alter table public.drugs enable row level security;
 comment on table public.drugs is
   'PsychRx drug records. The Vercel API reads and writes with a backend-only Supabase key.';
 
-create table if not exists public.user_profiles (
-  id text primary key,
-  phone text not null unique,
-  name text not null,
-  payload jsonb not null,
-  updated_at timestamptz not null default now()
-);
-
-create index if not exists user_profiles_phone_idx on public.user_profiles (phone);
-
-alter table public.user_profiles enable row level security;
-
-comment on table public.user_profiles is
-  'Deprecated phone OTP profiles retained temporarily for rollback and audit.';
-
-create table if not exists public.user_otps (
-  phone text primary key,
-  otp_hash text not null,
-  attempts integer not null default 0,
-  expires_at timestamptz not null,
-  profile_payload jsonb not null,
-  created_at timestamptz not null default now()
-);
-
-create index if not exists user_otps_expires_at_idx on public.user_otps (expires_at);
-
-alter table public.user_otps enable row level security;
-
-comment on table public.user_otps is
-  'Deprecated phone OTP challenges retained temporarily. The application no longer uses this table.';
-
 create table if not exists public.notebook_sources (
   id text primary key,
   title text not null,

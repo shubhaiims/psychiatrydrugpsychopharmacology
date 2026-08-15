@@ -19,6 +19,7 @@ const requiredFiles = [
   "supabase/migrations/202608150000_existing_storage_schema.sql",
   "supabase/migrations/202608150001_auth_profiles_and_admins.sql",
   "supabase/migrations/202608150002_authorization_policies.sql",
+  "supabase/migrations/202608150003_drop_legacy_mobile_otp.sql",
   "vercel.json",
   ".github/workflows/sync-supabase.yml"
 ];

@@ -91,10 +91,4 @@ comment on table public.profiles is
 comment on table public.admin_users is
   'Server-managed admin allowlist keyed by auth.users.id. No client-facing insert or update policy is permitted.';
 
-comment on table public.user_profiles is
-  'Deprecated phone OTP profiles retained temporarily for rollback and audit. The application no longer uses this table.';
-
-comment on table public.user_otps is
-  'Deprecated phone OTP challenges retained temporarily. The application no longer creates or verifies these records.';
-
 commit;

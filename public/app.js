@@ -17,7 +17,6 @@
 
   const els = {
     sessionIdentity: document.querySelector("#sessionIdentity"),
-    adminEditorLink: document.querySelector("#adminEditorLink"),
     logoutButton: document.querySelector("#logoutButton"),
     medicationGroupSelect: document.querySelector("#medicationGroupSelect"),
     drugNameSelect: document.querySelector("#drugNameSelect"),
@@ -66,7 +65,6 @@
       const session = await api("/api/auth/me");
       const displayName = session.user?.fullName || session.user?.email || "Signed-in user";
       els.sessionIdentity.textContent = displayName;
-      els.adminEditorLink.classList.toggle("is-hidden", session.role !== "admin");
       await loadDrugs();
     } catch (error) {
       if (error.status === 401) {

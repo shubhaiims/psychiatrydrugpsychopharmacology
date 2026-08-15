@@ -62,8 +62,9 @@ Do not run migrations automatically against production. Review and apply these f
 1. `supabase/migrations/202608150000_existing_storage_schema.sql`
 2. `supabase/migrations/202608150001_auth_profiles_and_admins.sql`
 3. `supabase/migrations/202608150002_authorization_policies.sql`
+4. `supabase/migrations/202608150003_drop_legacy_mobile_otp.sql`
 
-The migrations are idempotent and do not truncate, replace, or delete drug rows. The old `user_profiles` and `user_otps` tables are retained but locked and marked deprecated.
+The migrations are idempotent and do not truncate, replace, or delete drug rows. Mobile/phone OTP storage is removed; authentication uses Supabase email and password accounts.
 
 ## Supabase Auth Settings
 

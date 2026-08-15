@@ -4,8 +4,6 @@ alter table public.profiles enable row level security;
 alter table public.admin_users enable row level security;
 alter table public.drugs enable row level security;
 alter table public.notebook_sources enable row level security;
-alter table public.user_profiles enable row level security;
-alter table public.user_otps enable row level security;
 
 create or replace function private.is_admin()
 returns boolean
@@ -37,9 +35,6 @@ grant select, insert, update, delete on table public.drugs to authenticated;
 
 revoke all on table public.notebook_sources from anon, authenticated;
 grant select, insert, update, delete on table public.notebook_sources to authenticated;
-
-revoke all on table public.user_profiles from anon, authenticated;
-revoke all on table public.user_otps from anon, authenticated;
 
 drop policy if exists profiles_select_own on public.profiles;
 create policy profiles_select_own
