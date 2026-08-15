@@ -7,14 +7,33 @@
     <title>Psychiatry Made Easy</title>
     <link rel="icon" href="/assets/psychiatry-made-easy-logo.png" />
     <link rel="stylesheet" href="/styles.css" />
+    <script src="/home.js" defer></script>
   </head>
   <body>
+    <button class="side-menu-toggle" type="button" aria-controls="homepageSidebar" aria-expanded="false">
+      <span class="side-menu-icon" aria-hidden="true"></span>
+      <span>Menu</span>
+    </button>
+    <div class="side-menu-backdrop" data-sidebar-close hidden></div>
+    <aside class="homepage-sidebar" id="homepageSidebar" aria-label="Homepage sections" hidden>
+      <div class="sidebar-header">
+        <span>Navigate</span>
+        <button class="sidebar-close" type="button" data-sidebar-close aria-label="Close menu">&times;</button>
+      </div>
+      <nav class="sidebar-nav" aria-label="Section links">
+        <a href="/library">Drug Library</a>
+        <a href="#latest-updates">Latest Updates</a>
+        <a href="#formula">Formula</a>
+      </nav>
+    </aside>
+
     <div class="app-shell">
       <header class="site-masthead">
         <nav class="masthead-nav" aria-label="Primary navigation">
           <div class="nav-group">
             <a class="nav-link" href="/">Home</a>
             <a class="nav-link" href="#latest-updates">Latest Updates</a>
+            <a class="nav-link" href="#formula">Formula</a>
             <a class="nav-link nav-link-caret" href="/library">Psychiatry Drugs</a>
           </div>
 
@@ -88,6 +107,19 @@
               <h3>Live library updates enabled</h3>
               <p>Approved drug edits are stored in the live database and appear without rebuilding the website.</p>
             </article>
+          </div>
+        </section>
+
+        <section class="formula-section" id="formula" aria-labelledby="formulaTitle">
+          <div class="formula-copy">
+            <p class="eyebrow">Clinical tools</p>
+            <h2 id="formulaTitle">Formula</h2>
+            <p>Add your formulas here as interactive calculators. Each tool can accept values, calculate the result instantly, and show the final unit clearly.</p>
+          </div>
+
+          <div class="formula-placeholder" aria-label="Formula calculator placeholder">
+            <span>Formula tools coming next</span>
+            <p>Send the formula name, input fields, equation, and result unit, and this section can become a working calculator panel.</p>
           </div>
         </section>
       </main>

@@ -37,6 +37,7 @@ const pageRoutes = new Map([
 const staticFiles = new Set([
   ...pageRoutes.values(),
   "styles.css",
+  "home.js",
   "app.js",
   "admin.js",
   "auth.js",

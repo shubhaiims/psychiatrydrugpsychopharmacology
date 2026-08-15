@@ -81,6 +81,131 @@ a:focus-visible {
   flex-direction: column;
 }
 
+.side-menu-toggle {
+  position: fixed;
+  top: 18px;
+  left: 18px;
+  z-index: 60;
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 0 13px;
+  border: 1px solid rgba(20, 200, 203, 0.62);
+  border-radius: 7px;
+  background: rgba(9, 13, 16, 0.92);
+  color: #ffffff;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.36);
+  backdrop-filter: blur(14px);
+}
+
+.side-menu-toggle:hover {
+  border-color: rgba(255, 138, 0, 0.84);
+  color: var(--accent);
+}
+
+.side-menu-icon,
+.side-menu-icon::before,
+.side-menu-icon::after {
+  width: 17px;
+  height: 2px;
+  display: block;
+  border-radius: 2px;
+  background: currentColor;
+}
+
+.side-menu-icon {
+  position: relative;
+}
+
+.side-menu-icon::before,
+.side-menu-icon::after {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+
+.side-menu-icon::before {
+  top: -6px;
+}
+
+.side-menu-icon::after {
+  top: 6px;
+}
+
+.side-menu-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.homepage-sidebar {
+  position: fixed;
+  inset: 0 auto 0 0;
+  z-index: 80;
+  width: min(310px, calc(100vw - 34px));
+  padding: 20px;
+  border-right: 1px solid rgba(20, 200, 203, 0.42);
+  background:
+    radial-gradient(circle at top left, rgba(255, 138, 0, 0.16), transparent 38%),
+    var(--surface);
+  box-shadow: 24px 0 48px rgba(0, 0, 0, 0.48);
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: center;
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid rgba(77, 90, 95, 0.72);
+}
+
+.sidebar-header span {
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.sidebar-close {
+  width: 38px;
+  min-height: 38px;
+  padding: 0;
+  border: 1px solid var(--line-strong);
+  border-radius: 7px;
+  background: transparent;
+  color: var(--ink);
+  font-size: 1.45rem;
+  line-height: 1;
+}
+
+.sidebar-nav {
+  display: grid;
+  gap: 10px;
+}
+
+.sidebar-nav a {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  padding: 0 13px;
+  border: 1px solid rgba(77, 90, 95, 0.72);
+  border-radius: 7px;
+  background: rgba(17, 23, 27, 0.82);
+  color: #ffffff;
+  font-weight: 850;
+  text-decoration: none;
+}
+
+.sidebar-nav a:hover {
+  border-color: rgba(255, 138, 0, 0.72);
+  color: var(--accent);
+}
+
 .site-masthead {
   position: relative;
   min-height: 580px;
@@ -407,6 +532,61 @@ a:focus-visible {
 .update-link:hover {
   border-color: rgba(255, 138, 0, 0.82);
   color: var(--accent);
+}
+
+.formula-section {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.78fr) minmax(300px, 1fr);
+  gap: 18px;
+  align-items: stretch;
+  margin-top: clamp(26px, 5vw, 54px);
+  scroll-margin-top: 24px;
+}
+
+.formula-copy,
+.formula-placeholder {
+  padding: clamp(18px, 3vw, 28px);
+  border: 1px solid rgba(20, 200, 203, 0.34);
+  border-radius: var(--radius);
+  background: rgba(9, 13, 16, 0.96);
+  box-shadow: var(--shadow);
+}
+
+.formula-copy {
+  background:
+    radial-gradient(circle at top right, rgba(20, 200, 203, 0.14), transparent 34%),
+    var(--surface);
+}
+
+.formula-copy h2 {
+  margin: 0 0 12px;
+  color: #ffffff;
+  font-size: clamp(2rem, 4vw, 3.1rem);
+  line-height: 1.02;
+}
+
+.formula-copy p:last-child,
+.formula-placeholder p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.formula-placeholder {
+  display: grid;
+  place-content: center;
+  gap: 10px;
+  min-height: 210px;
+  border-color: rgba(255, 138, 0, 0.36);
+  background:
+    linear-gradient(135deg, rgba(255, 138, 0, 0.1), transparent 44%),
+    var(--surface-soft);
+}
+
+.formula-placeholder span {
+  color: var(--accent);
+  font-size: 1.2rem;
+  font-weight: 900;
 }
 
 .topbar {
@@ -1239,7 +1419,8 @@ button,
   .workspace,
   .editor-layout,
   .auth-card,
-  .updates-grid {
+  .updates-grid,
+  .formula-section {
     grid-template-columns: 1fr;
   }
 
@@ -1260,7 +1441,7 @@ button,
   }
 
   .masthead-nav {
-    padding: 16px;
+    padding: 72px 16px 16px;
   }
 
   .nav-group {
