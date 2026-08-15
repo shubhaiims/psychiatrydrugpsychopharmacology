@@ -57,6 +57,7 @@ test("registration requires matching passwords before contacting Supabase", asyn
 });
 
 test("member login stores Supabase tokens only in secure server cookies", async () => {
+  process.env.SUPABASE_URL = "https://project.supabase.co/rest/v1";
   const calls = [];
   global.fetch = async (url, options) => {
     calls.push({ url: String(url), options });
@@ -83,6 +84,8 @@ test("member login stores Supabase tokens only in secure server cookies", async 
   assert.match(cookies[1], /HttpOnly/);
   assert.match(cookies[2], /^pme_csrf=/);
   assert.doesNotMatch(cookies[2], /HttpOnly/);
+  assert.equal(calls[0].url, "https://project.supabase.co/auth/v1/token?grant_type=password");
+  assert.match(calls[1].url, /^https:\/\/project\.supabase\.co\/rest\/v1\/admin_users\?/);
   assert.equal(calls[1].options.headers.Authorization, undefined);
 });
 

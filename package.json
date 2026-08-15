@@ -4,10 +4,10 @@
   "private": true,
   "type": "module",
   "dependencies": {
-    "pdf-parse": "^1.1.1"
+    "pdf-parse": "1.1.4"
   },
   "engines": {
-    "node": ">=20"
+    "node": "22.x"
   },
   "scripts": {
     "dev": "node server/index.js",

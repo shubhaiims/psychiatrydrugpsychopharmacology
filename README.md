@@ -63,6 +63,7 @@ Do not run migrations automatically against production. Review and apply these f
 2. `supabase/migrations/202608150001_auth_profiles_and_admins.sql`
 3. `supabase/migrations/202608150002_authorization_policies.sql`
 4. `supabase/migrations/202608150003_drop_legacy_mobile_otp.sql`
+5. `supabase/migrations/20260815061242_harden_public_defaults_and_indexes.sql`
 
 The migrations are idempotent and do not truncate, replace, or delete drug rows. Mobile/phone OTP storage is removed; authentication uses Supabase email and password accounts.
 
@@ -111,6 +112,8 @@ SUPABASE_SECRET_KEY
 ```
 
 Set `APP_ORIGIN` to the exact deployed origin, without a path. Vercel functions serve `/library` and `/admin` only after server-side session checks. Security headers and clean route rewrites are defined in `vercel.json`.
+
+`SUPABASE_URL` should be the project origin (for example, `https://project-ref.supabase.co`). The server also normalizes a mistakenly copied `/rest/v1` endpoint to the project origin so Auth and database requests cannot be routed to the wrong Supabase service.
 
 ## Drug Data and GitHub Sync
 

@@ -1,7 +1,16 @@
 import { httpError } from "./drug-model.js";
 
 export function getSupabaseUrl() {
-  return String(process.env.SUPABASE_URL || "").trim().replace(/\/+$/, "");
+  const configured = String(process.env.SUPABASE_URL || "").trim();
+  if (!configured) return "";
+
+  try {
+    // The dashboard also shows /rest/v1 endpoints. Auth and Data API clients
+    // both need the project origin, so normalize either copied form here.
+    return new URL(configured).origin;
+  } catch {
+    return configured.replace(/\/+$/, "");
+  }
 }
 
 export function getSupabasePublishableKey() {
