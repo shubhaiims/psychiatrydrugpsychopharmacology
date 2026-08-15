@@ -13,6 +13,7 @@ const files = [
   "server/store.js",
   "server/notebook-store.js",
   "api/drugs.js",
+  "api/health.js",
   "api/auth/[action].js",
   "api/admin/login.js",
   "api/admin/page.js",

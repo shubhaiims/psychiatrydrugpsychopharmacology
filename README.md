@@ -115,6 +115,8 @@ Set `APP_ORIGIN` to the exact deployed origin, without a path. Vercel functions 
 
 `SUPABASE_URL` should be the project origin (for example, `https://project-ref.supabase.co`). The server also normalizes a mistakenly copied `/rest/v1` endpoint to the project origin so Auth and database requests cannot be routed to the wrong Supabase service.
 
+`GET /api/health` checks the deployed server's Auth and backend-only database configuration. It returns readiness states only; it never returns keys or drug records.
+
 ## Drug Data and GitHub Sync
 
 Production reads and writes `public.drugs` through server-only APIs. Supabase is the live source of truth, and Admin Drug Editor changes take effect immediately without redeploying. Normal code pushes, Vercel deployments, and authentication changes never synchronize or replace drug records.

@@ -14,6 +14,7 @@ const requiredFiles = [
   "server/library.html",
   "server/admin.html",
   "server/index.js",
+  "api/health.js",
   "server/data/drugs.json",
   "supabase/schema.sql",
   "supabase/migrations/202608150000_existing_storage_schema.sql",
