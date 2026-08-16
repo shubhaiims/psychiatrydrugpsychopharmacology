@@ -32,6 +32,7 @@
   let medicationGroups = [];
   let selectedGroup = "";
   let selectedId = "";
+  const initialSelection = readInitialSelection();
   let loading = true;
   let loadError = "";
 
@@ -96,10 +97,7 @@
       drugs = normalizeCollection(data.drugs);
       medicationGroups = [...new Set(drugs.map((drug) => drug.medicationGroup).filter(Boolean))]
         .sort((first, second) => first.localeCompare(second));
-      selectedGroup = medicationGroups.includes(selectedGroup) ? selectedGroup : medicationGroups[0] || "";
-      selectedId = getVisibleDrugs().some((drug) => drug.id === selectedId)
-        ? selectedId
-        : getVisibleDrugs()[0]?.id || "";
+      applyInitialSelection();
     } catch (error) {
       if (error.status === 401) {
         window.location.replace("/login?next=%2Flibrary");
@@ -317,6 +315,34 @@
 
   function getSelectedDrug() {
     return drugs.find((drug) => drug.id === selectedId) || null;
+  }
+
+  function applyInitialSelection() {
+    const drugMatch = initialSelection.drugId
+      ? drugs.find((drug) => drug.id === initialSelection.drugId)
+      : null;
+    if (drugMatch) {
+      selectedGroup = drugMatch.medicationGroup;
+      selectedId = drugMatch.id;
+      return;
+    }
+
+    selectedGroup = medicationGroups.includes(initialSelection.className)
+      ? initialSelection.className
+      : medicationGroups.includes(selectedGroup)
+        ? selectedGroup
+        : medicationGroups[0] || "";
+    selectedId = getVisibleDrugs().some((drug) => drug.id === selectedId)
+      ? selectedId
+      : getVisibleDrugs()[0]?.id || "";
+  }
+
+  function readInitialSelection() {
+    const params = new URLSearchParams(window.location.search);
+    return {
+      drugId: String(params.get("drug") || "").trim(),
+      className: String(params.get("class") || "").trim()
+    };
   }
 
   function normalizeCollection(collection) {

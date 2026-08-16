@@ -3,155 +3,134 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Psychiatry Made Easy psychopharmacology drug library." />
-    <title>Psychiatry Made Easy</title>
+    <meta name="description" content="A clinician-built psychopharmacology reference. Search drug monographs by name or class." />
+    <title>Psychiatry Made Easy - Psychopharmacology Reference</title>
     <link rel="icon" href="/assets/psychiatry-made-easy-logo.png" />
     <link rel="stylesheet" href="/styles.css" />
     <script src="/home.js" defer></script>
   </head>
-  <body>
-    <button class="side-menu-toggle" type="button" aria-controls="homepageSidebar" aria-expanded="false">
-      <span class="side-menu-icon" aria-hidden="true"></span>
-      <span>Menu</span>
-    </button>
-    <div class="side-menu-backdrop" data-sidebar-close hidden></div>
-    <aside class="homepage-sidebar" id="homepageSidebar" aria-label="Homepage sections" hidden>
-      <div class="sidebar-header">
-        <span>Navigate</span>
-        <button class="sidebar-close" type="button" data-sidebar-close aria-label="Close menu">&times;</button>
+  <body class="dashboard-page">
+    <a class="dashboard-skip-link" href="#main">Skip to content</a>
+
+    <aside class="dashboard-sidebar" id="sidebar" aria-label="Primary navigation">
+      <div class="dashboard-sidebar__brand">
+        <img src="/assets/psychiatry-made-easy-logo.png" alt="" class="dashboard-brand-mark" />
+        <span class="dashboard-brand-name">Psychiatry <em>Made Easy</em></span>
       </div>
-      <nav class="sidebar-nav" aria-label="Section links">
-        <a href="/library">Drug Library</a>
-        <a href="#latest-updates">Latest Updates</a>
-        <a href="#formula">Formula</a>
-      </nav>
-    </aside>
 
-    <div class="app-shell">
-      <header class="site-masthead">
-        <nav class="masthead-nav" aria-label="Primary navigation">
-          <div class="nav-group">
-            <a class="nav-link" href="/">Home</a>
-            <a class="nav-link" href="#latest-updates">Latest Updates</a>
-            <a class="nav-link" href="#formula">Formula</a>
-            <a class="nav-link nav-link-caret" href="/library">Psychiatry Drugs</a>
-          </div>
+      <nav class="dashboard-sidebar__nav">
+        <a href="/" class="dashboard-nav-item is-active">Dashboard</a>
 
-          <a class="masthead-brand" href="/" aria-label="Psychiatry Made Easy home">
-            <img src="/assets/psychiatry-made-easy-logo.png" alt="" />
-            <span>Psychiatry Made Easy</span>
-          </a>
-
-          <div class="nav-group nav-group-right">
-            <a class="nav-link" href="/login">User Login</a>
-            <a class="nav-link" href="/register">Register</a>
-          </div>
-        </nav>
-
-        <div class="hero-stage" aria-label="Psychiatry Made Easy">
-          <div class="hero-visual" aria-hidden="true">
-            <img src="/assets/psychiatry-made-easy-logo.png" alt="" />
-          </div>
-          <div class="hero-copy">
-            <h1>Psychiatry Made Easy</h1>
-            <p>Master the mind</p>
-            <a class="hero-button" href="/library">Open drug library</a>
+        <div class="dashboard-nav-group">
+          <button class="dashboard-nav-item dashboard-nav-group__toggle" id="libraryToggle" type="button" aria-expanded="false" aria-controls="librarySubgroup">
+            <span>Drug Library</span>
+            <span class="dashboard-chevron" aria-hidden="true"></span>
+          </button>
+          <div class="dashboard-nav-subgroup" id="librarySubgroup" hidden>
+            <a href="/library?class=Antidepressants">Antidepressants</a>
+            <a href="/library?class=Antipsychotics">Antipsychotics</a>
+            <a href="/library?class=Mood%20stabilizers%20and%20Anticonvulsants">Mood stabilizers</a>
+            <a href="/library?class=Anxiolytic%20and%20hypnotic%20medications">Anxiolytics &amp; hypnotics</a>
+            <a href="/library?class=ADHD%20medications">ADHD medications</a>
+            <a href="/library">All drugs</a>
           </div>
         </div>
-      </header>
 
-      <main class="home-main">
-        <section class="latest-updates" id="latest-updates" aria-labelledby="latestUpdatesTitle">
-          <div class="latest-updates-header">
-            <div>
-              <p class="eyebrow">Latest information</p>
-              <h2 id="latestUpdatesTitle">Latest Updates</h2>
-            </div>
-            <p>Recent announcements, new articles, important notices, and current Psychiatry Made Easy information.</p>
-          </div>
+        <a href="#recentUpdatesCard" class="dashboard-nav-item">Updates</a>
+        <a href="#bookmarksCard" class="dashboard-nav-item" data-requires-auth hidden>Bookmarks</a>
+        <a href="#about" class="dashboard-nav-item">About</a>
+      </nav>
 
-          <div class="updates-grid">
-            <article class="update-card update-card-featured">
-              <div class="update-meta">
-                <span>Announcement</span>
-                <time datetime="2026-08-15">Aug 15, 2026</time>
-              </div>
-              <h3>Member access is now live</h3>
-              <p>Register with your name and email, confirm your address, and use your password to enter the Drug Library.</p>
-              <a class="update-link" href="/library">Browse library</a>
-            </article>
+      <div class="dashboard-sidebar__footer">
+        <a href="/library" class="dashboard-nav-item" data-requires-auth hidden>Account</a>
+        <a href="#disclaimerBanner" class="dashboard-nav-item dashboard-nav-item--muted">Disclaimer</a>
+      </div>
+    </aside>
+    <div class="dashboard-sidebar-scrim" id="sidebarScrim" hidden></div>
 
-            <article class="update-card">
-              <div class="update-meta">
-                <span>Library update</span>
-                <time datetime="2026-08-15">Aug 15, 2026</time>
-              </div>
-              <h3>61 drug records available</h3>
-              <p>The complete psychopharmacology reference collection remains available after registration.</p>
-            </article>
+    <header class="dashboard-topbar">
+      <button class="dashboard-icon-btn dashboard-topbar__menu" id="menuBtn" type="button" aria-label="Open menu" aria-controls="sidebar" aria-expanded="false">
+        <span class="dashboard-menu-icon" aria-hidden="true"></span>
+      </button>
+      <a href="/" class="dashboard-topbar__brand" aria-label="Psychiatry Made Easy home">
+        <img src="/assets/psychiatry-made-easy-logo.png" alt="" class="dashboard-brand-mark" />
+      </a>
 
-            <article class="update-card">
-              <div class="update-meta">
-                <span>Important notice</span>
-                <time datetime="2026-08-15">Aug 15, 2026</time>
-              </div>
-              <h3>Educational reference only</h3>
-              <p>Always verify drug information against current prescribing information, local protocols, and clinical judgment.</p>
-            </article>
+      <div class="dashboard-search" role="search">
+        <span class="dashboard-search__icon" aria-hidden="true"></span>
+        <input id="drugSearch" type="search" placeholder="Search drug monographs..." autocomplete="off" aria-label="Search drugs" aria-expanded="false" aria-controls="searchResults" />
+        <div class="dashboard-search__results" id="searchResults" role="listbox" hidden></div>
+      </div>
 
-            <article class="update-card">
-              <div class="update-meta">
-                <span>Latest info</span>
-                <time datetime="2026-08-15">Aug 15, 2026</time>
-              </div>
-              <h3>Live library updates enabled</h3>
-              <p>Approved drug edits are stored in the live database and appear without rebuilding the website.</p>
-            </article>
-          </div>
+      <div class="dashboard-topbar__auth" id="authArea">
+        <a href="/login" class="dashboard-btn dashboard-btn--ghost">Log in</a>
+        <a href="/register" class="dashboard-btn dashboard-btn--primary">Register</a>
+      </div>
+    </header>
+
+    <main class="dashboard-main" id="main">
+      <section class="dashboard-page-head">
+        <h1>Dashboard</h1>
+        <p class="dashboard-lede">A psychopharmacology reference for clinicians. Search a drug, or browse by class.</p>
+      </section>
+
+      <section class="dashboard-stats" aria-label="Library at a glance">
+        <div class="dashboard-stat">
+          <span class="dashboard-stat__value" id="statDrugs">-</span>
+          <span class="dashboard-stat__label">Drug monographs</span>
+        </div>
+        <div class="dashboard-stat">
+          <span class="dashboard-stat__value" id="statClasses">-</span>
+          <span class="dashboard-stat__label">Drug classes</span>
+        </div>
+        <div class="dashboard-stat">
+          <span class="dashboard-stat__value" id="statUpdated">-</span>
+          <span class="dashboard-stat__label">Last updated</span>
+        </div>
+      </section>
+
+      <div class="dashboard-grid-2">
+        <section class="dashboard-card" id="recentUpdatesCard" aria-labelledby="recentHead">
+          <header class="dashboard-card__head">
+            <h2 id="recentHead">Recently updated</h2>
+          </header>
+          <ul class="dashboard-row-list" id="recentUpdates">
+            <li class="dashboard-row-list__empty">Loading...</li>
+          </ul>
         </section>
 
-        <section class="formula-section" id="formula" aria-labelledby="formulaTitle">
-          <div class="formula-copy">
-            <p class="eyebrow">Clinical tools</p>
-            <h2 id="formulaTitle">Alcohol Withdrawal Benzodiazepine Dose Calculator</h2>
-          </div>
-
-          <form class="dose-calculator" id="benzodiazepineCalculator">
-            <div class="calculator-fields">
-              <label for="alcoholVolume">
-                <span>Alcohol volume V (mL)</span>
-                <input id="alcoholVolume" name="volume" type="number" min="0" step="0.1" inputmode="decimal" placeholder="Example: 750" required />
-              </label>
-
-              <label for="alcoholPercentage">
-                <span>Alcohol percentage P (%)</span>
-                <input id="alcoholPercentage" name="percentage" type="number" min="0" max="100" step="0.1" inputmode="decimal" placeholder="Example: 40" required />
-              </label>
-            </div>
-
-            <div class="calculator-results" aria-live="polite">
-              <output class="calculator-result" id="chlordiazepoxideDose">
-                <span>Chlordiazepoxide single dose QID</span>
-                <strong>-- mg</strong>
-              </output>
-              <output class="calculator-result" id="diazepamDose">
-                <span>Diazepam single dose QID</span>
-                <strong>-- mg</strong>
-              </output>
-              <output class="calculator-result" id="lorazepamApaDose">
-                <span>Lorazepam single dose QID</span>
-                <strong>-- mg</strong>
-              </output>
-            </div>
-
-            <p class="calculator-note">Educational calculator only. Do not use as a standalone prescribing recommendation; verify dosing against current clinical protocols and individual patient risk factors.</p>
-          </form>
+        <section class="dashboard-card" id="bookmarksCard" aria-labelledby="bmHead" hidden>
+          <header class="dashboard-card__head">
+            <h2 id="bmHead">Your bookmarks</h2>
+          </header>
+          <ul class="dashboard-row-list" id="bookmarkList">
+            <li class="dashboard-row-list__empty">No bookmarks yet.</li>
+          </ul>
         </section>
-      </main>
 
-      <footer class="site-footer home-footer">
-        Educational reference. Verify all drug information against current prescribing information, local protocols, and clinical judgment.
-      </footer>
-    </div>
+        <section class="dashboard-card" aria-labelledby="browseHead">
+          <header class="dashboard-card__head">
+            <h2 id="browseHead">Browse by class</h2>
+          </header>
+          <div class="dashboard-chip-grid" id="classChips">
+            <a class="dashboard-chip dashboard-chip--all" href="/library">All drugs</a>
+          </div>
+        </section>
+      </div>
+
+      <aside class="dashboard-disclaimer" id="disclaimerBanner" hidden>
+        <p><strong>Educational reference only.</strong> Verify all drug information against current prescribing information, local protocols, and clinical judgment.</p>
+        <button class="dashboard-icon-btn" id="dismissDisclaimer" type="button" aria-label="Dismiss disclaimer">&times;</button>
+      </aside>
+
+      <section class="dashboard-about" id="about" aria-labelledby="aboutHead">
+        <h2 id="aboutHead">About</h2>
+        <p>Psychiatry Made Easy is a focused drug reference designed for fast scanning, comparison, and clinical study.</p>
+      </section>
+    </main>
+
+    <footer class="dashboard-footer">
+      <p>Educational reference only. Verify all drug information against current prescribing information, local protocols, and clinical judgment.</p>
+    </footer>
   </body>
 </html>

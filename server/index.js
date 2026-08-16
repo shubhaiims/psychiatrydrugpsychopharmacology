@@ -16,6 +16,7 @@ import {
   resetPassword
 } from "./auth.js";
 import { methodNotAllowed, readJsonBody, sendError, sendJson } from "./http.js";
+import { getDashboardData } from "./dashboard.js";
 import { createNotebookSource, deleteNotebookSource, listNotebookSources, searchNotebook } from "./notebook-store.js";
 import { serveAdminPage, serveLibraryPage } from "./pages.js";
 import { createDrug, deleteDrug, hasSupabaseConfig, listDrugs, replaceDrugs, updateDrug } from "./store.js";
@@ -83,6 +84,11 @@ async function routeApi(request, response, url) {
       authConfigured: isAuthConfigured(),
       storage: hasSupabaseConfig() ? "supabase" : "local-json"
     });
+    return;
+  }
+
+  if (method === "GET" && url.pathname === "/api/dashboard") {
+    sendJson(response, 200, await getDashboardData());
     return;
   }
 
