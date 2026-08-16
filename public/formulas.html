@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Psychiatry Made Easy clinical formula calculators." />
+    <title>Formulas - Psychiatry Made Easy</title>
+    <link rel="icon" href="/assets/psychiatry-made-easy-logo.png" />
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="/formulas.js" defer></script>
+  </head>
+  <body class="dashboard-page">
+    <a class="dashboard-skip-link" href="#main">Skip to content</a>
+
+    <aside class="dashboard-sidebar" id="sidebar" aria-label="Primary navigation">
+      <div class="dashboard-sidebar__brand">
+        <img src="/assets/psychiatry-made-easy-logo.png" alt="" class="dashboard-brand-mark" />
+        <span class="dashboard-brand-name">Psychiatry <em>Made Easy</em></span>
+      </div>
+
+      <nav class="dashboard-sidebar__nav">
+        <a href="/" class="dashboard-nav-item">Dashboard</a>
+
+        <div class="dashboard-nav-group">
+          <div class="dashboard-nav-split">
+            <a href="/library" class="dashboard-nav-item dashboard-nav-item--split-link">Drug Library</a>
+            <button class="dashboard-nav-arrow" id="libraryToggle" type="button" aria-expanded="false" aria-controls="librarySubgroup" aria-label="Toggle Drug Library menu">
+              <span class="dashboard-chevron" aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="dashboard-nav-subgroup" id="librarySubgroup" hidden>
+            <a href="/library?class=Antidepressants">Antidepressants</a>
+            <a href="/library?class=Antipsychotics">Antipsychotics</a>
+            <a href="/library?class=Mood%20stabilizers%20and%20Anticonvulsants">Mood stabilizers</a>
+            <a href="/library?class=Anxiolytic%20and%20hypnotic%20medications">Anxiolytics &amp; hypnotics</a>
+            <a href="/library?class=ADHD%20medications">ADHD medications</a>
+            <a href="/library">All drugs</a>
+          </div>
+        </div>
+
+        <a href="/#recentUpdatesCard" class="dashboard-nav-item">Updates</a>
+        <div class="dashboard-nav-group">
+          <div class="dashboard-nav-split">
+            <a href="/formulas" class="dashboard-nav-item dashboard-nav-item--split-link is-active">Formulas</a>
+            <button class="dashboard-nav-arrow" id="formulaToggle" type="button" aria-expanded="true" aria-controls="formulaSubgroup" aria-label="Toggle Formulas menu">
+              <span class="dashboard-chevron" aria-hidden="true"></span>
+            </button>
+          </div>
+          <div class="dashboard-nav-subgroup" id="formulaSubgroup">
+            <a href="/formulas#alcoholDoseCalculator" class="is-active">Alcohol dose calculator</a>
+          </div>
+        </div>
+        <a href="/#bookmarksCard" class="dashboard-nav-item" data-requires-auth hidden>Bookmarks</a>
+        <a href="/#about" class="dashboard-nav-item">About</a>
+      </nav>
+
+      <div class="dashboard-sidebar__footer">
+        <a href="/library" class="dashboard-nav-item" data-requires-auth hidden>Account</a>
+        <a href="/#disclaimerBanner" class="dashboard-nav-item dashboard-nav-item--muted">Disclaimer</a>
+      </div>
+    </aside>
+    <div class="dashboard-sidebar-scrim" id="sidebarScrim" hidden></div>
+
+    <header class="dashboard-topbar">
+      <button class="dashboard-icon-btn dashboard-topbar__menu" id="menuBtn" type="button" aria-label="Open menu" aria-controls="sidebar" aria-expanded="false">
+        <span class="dashboard-menu-icon" aria-hidden="true"></span>
+      </button>
+      <a href="/" class="dashboard-topbar__brand" aria-label="Psychiatry Made Easy home">
+        <img src="/assets/psychiatry-made-easy-logo.png" alt="" class="dashboard-brand-mark" />
+      </a>
+      <div class="dashboard-topbar__title">Formulas</div>
+      <div class="dashboard-topbar__auth" id="authArea">
+        <a href="/login" class="dashboard-btn dashboard-btn--ghost">Log in</a>
+        <a href="/register" class="dashboard-btn dashboard-btn--primary">Register</a>
+      </div>
+    </header>
+
+    <main class="dashboard-main" id="main">
+      <section class="dashboard-page-head">
+        <h1>Formulas</h1>
+        <p class="dashboard-lede">Clinical calculation tools for Psychiatry Made Easy.</p>
+      </section>
+
+      <section class="dashboard-card dashboard-formula-card" id="alcoholDoseCalculator" aria-labelledby="alcoholDoseCalculatorHead">
+        <header class="dashboard-card__head">
+          <h2 id="alcoholDoseCalculatorHead">Alcohol Withdrawal Benzodiazepine Dose Calculator</h2>
+        </header>
+        <form class="dashboard-dose-calculator" id="benzodiazepineCalculator">
+          <div class="dashboard-calculator-fields">
+            <label>
+              <span>Alcohol volume V (mL)</span>
+              <input id="alcoholVolume" type="number" inputmode="decimal" min="0" step="any" placeholder="Enter mL per day" />
+            </label>
+            <label>
+              <span>Alcohol percentage P (%)</span>
+              <input id="alcoholPercentage" type="number" inputmode="decimal" min="0" max="100" step="any" placeholder="Enter percentage" />
+            </label>
+          </div>
+          <div class="dashboard-calculator-results" aria-live="polite">
+            <div class="dashboard-calculator-result" id="chlordiazepoxideDose">
+              <span>Chlordiazepoxide single dose QID</span>
+              <strong>-- mg</strong>
+            </div>
+            <div class="dashboard-calculator-result" id="diazepamDose">
+              <span>Diazepam single dose QID</span>
+              <strong>-- mg</strong>
+            </div>
+            <div class="dashboard-calculator-result" id="lorazepamDose">
+              <span>Lorazepam single dose QID</span>
+              <strong>-- mg</strong>
+            </div>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <footer class="dashboard-footer">
+      <p>Educational reference only. Verify all drug information against current prescribing information, local protocols, and clinical judgment.</p>
+    </footer>
+  </body>
+</html>

@@ -4,6 +4,7 @@ const files = [
   "public/app.js",
   "public/admin.js",
   "public/auth.js",
+  "public/formulas.js",
   "server/index.js",
   "server/drug-model.js",
   "server/dashboard.js",

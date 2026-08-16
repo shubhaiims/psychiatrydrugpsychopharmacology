@@ -22,10 +22,12 @@
         <a href="/" class="dashboard-nav-item is-active">Dashboard</a>
 
         <div class="dashboard-nav-group">
-          <button class="dashboard-nav-item dashboard-nav-group__toggle" id="libraryToggle" type="button" aria-expanded="false" aria-controls="librarySubgroup">
-            <span>Drug Library</span>
-            <span class="dashboard-chevron" aria-hidden="true"></span>
-          </button>
+          <div class="dashboard-nav-split">
+            <a href="/library" class="dashboard-nav-item dashboard-nav-item--split-link">Drug Library</a>
+            <button class="dashboard-nav-arrow" id="libraryToggle" type="button" aria-expanded="false" aria-controls="librarySubgroup" aria-label="Toggle Drug Library menu">
+              <span class="dashboard-chevron" aria-hidden="true"></span>
+            </button>
+          </div>
           <div class="dashboard-nav-subgroup" id="librarySubgroup" hidden>
             <a href="/library?class=Antidepressants">Antidepressants</a>
             <a href="/library?class=Antipsychotics">Antipsychotics</a>
@@ -38,12 +40,14 @@
 
         <a href="#recentUpdatesCard" class="dashboard-nav-item">Updates</a>
         <div class="dashboard-nav-group">
-          <button class="dashboard-nav-item dashboard-nav-group__toggle" id="formulaToggle" type="button" aria-expanded="false" aria-controls="formulaSubgroup">
-            <span>Formulas</span>
-            <span class="dashboard-chevron" aria-hidden="true"></span>
-          </button>
+          <div class="dashboard-nav-split">
+            <a href="/formulas" class="dashboard-nav-item dashboard-nav-item--split-link">Formulas</a>
+            <button class="dashboard-nav-arrow" id="formulaToggle" type="button" aria-expanded="false" aria-controls="formulaSubgroup" aria-label="Toggle Formulas menu">
+              <span class="dashboard-chevron" aria-hidden="true"></span>
+            </button>
+          </div>
           <div class="dashboard-nav-subgroup" id="formulaSubgroup" hidden>
-            <a href="#alcoholDoseCalculator">Alcohol dose calculator</a>
+            <a href="/formulas#alcoholDoseCalculator">Alcohol dose calculator</a>
           </div>
         </div>
         <a href="#bookmarksCard" class="dashboard-nav-item" data-requires-auth hidden>Bookmarks</a>
@@ -126,38 +130,6 @@
           </div>
         </section>
       </div>
-
-      <section class="dashboard-card dashboard-formula-card" id="alcoholDoseCalculator" aria-labelledby="alcoholDoseCalculatorHead">
-        <header class="dashboard-card__head">
-          <h2 id="alcoholDoseCalculatorHead">Alcohol Withdrawal Benzodiazepine Dose Calculator</h2>
-        </header>
-        <form class="dashboard-dose-calculator" id="benzodiazepineCalculator">
-          <div class="dashboard-calculator-fields">
-            <label>
-              <span>Alcohol volume V (mL)</span>
-              <input id="alcoholVolume" type="number" inputmode="decimal" min="0" step="any" placeholder="Enter mL per day" />
-            </label>
-            <label>
-              <span>Alcohol percentage P (%)</span>
-              <input id="alcoholPercentage" type="number" inputmode="decimal" min="0" max="100" step="any" placeholder="Enter percentage" />
-            </label>
-          </div>
-          <div class="dashboard-calculator-results" aria-live="polite">
-            <div class="dashboard-calculator-result" id="chlordiazepoxideDose">
-              <span>Chlordiazepoxide single dose QID</span>
-              <strong>-- mg</strong>
-            </div>
-            <div class="dashboard-calculator-result" id="diazepamDose">
-              <span>Diazepam single dose QID</span>
-              <strong>-- mg</strong>
-            </div>
-            <div class="dashboard-calculator-result" id="lorazepamDose">
-              <span>Lorazepam single dose QID</span>
-              <strong>-- mg</strong>
-            </div>
-          </div>
-        </form>
-      </section>
 
       <aside class="dashboard-disclaimer" id="disclaimerBanner" hidden>
         <p><strong>Educational reference only.</strong> Verify all drug information against current prescribing information, local protocols, and clinical judgment.</p>

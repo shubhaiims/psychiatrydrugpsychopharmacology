@@ -60,15 +60,11 @@
     });
 
     els.libraryToggle?.addEventListener("click", () => {
-      const isOpen = els.libraryToggle.getAttribute("aria-expanded") === "true";
-      els.libraryToggle.setAttribute("aria-expanded", String(!isOpen));
-      els.librarySubgroup.hidden = isOpen;
+      toggleSubgroup(els.libraryToggle, els.librarySubgroup);
     });
 
     els.formulaToggle?.addEventListener("click", () => {
-      const isOpen = els.formulaToggle.getAttribute("aria-expanded") === "true";
-      els.formulaToggle.setAttribute("aria-expanded", String(!isOpen));
-      els.formulaSubgroup.hidden = isOpen;
+      toggleSubgroup(els.formulaToggle, els.formulaSubgroup);
     });
 
     els.searchInput?.addEventListener("input", () => {
@@ -159,6 +155,13 @@
     els.sidebar.classList.toggle("is-open", isOpen);
     els.scrim.hidden = !isOpen;
     els.menuBtn.setAttribute("aria-expanded", String(isOpen));
+  }
+
+  function toggleSubgroup(toggle, subgroup) {
+    if (!toggle || !subgroup) return;
+    const isOpen = toggle.getAttribute("aria-expanded") === "true";
+    toggle.setAttribute("aria-expanded", String(!isOpen));
+    subgroup.hidden = isOpen;
   }
 
   function renderStats(stats) {

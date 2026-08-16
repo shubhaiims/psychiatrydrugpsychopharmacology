@@ -29,6 +29,8 @@ loadDotEnv(resolve(rootDir, ".env"));
 const port = Number(process.env.PORT || 3000);
 const pageRoutes = new Map([
   ["/", "index.html"],
+  ["/formulas", "formulas.html"],
+  ["/formulas/", "formulas.html"],
   ["/login", "login.html"],
   ["/register", "register.html"],
   ["/forgot-password", "forgot-password.html"],
@@ -39,6 +41,7 @@ const staticFiles = new Set([
   ...pageRoutes.values(),
   "styles.css",
   "home.js",
+  "formulas.js",
   "app.js",
   "admin.js",
   "auth.js",
