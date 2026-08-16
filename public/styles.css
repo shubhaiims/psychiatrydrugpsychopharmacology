@@ -565,11 +565,35 @@ a:focus-visible {
   line-height: 1.02;
 }
 
+.formula-copy > p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
 .formula-copy p:last-child,
 .dose-calculator p {
   margin: 0;
   color: var(--muted);
   line-height: 1.55;
+}
+
+.formula-definitions {
+  display: grid;
+  gap: 8px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(77, 90, 95, 0.72);
+}
+
+.formula-definitions p {
+  margin: 0;
+  color: #c2c2c2;
+  line-height: 1.5;
+}
+
+.formula-definitions strong {
+  color: var(--accent);
 }
 
 .dose-calculator {
@@ -607,7 +631,7 @@ a:focus-visible {
 
 .calculator-results {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(130px, 1fr));
   gap: 10px;
 }
 

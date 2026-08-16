@@ -6,9 +6,11 @@ const sidebarLinks = document.querySelectorAll(".sidebar-nav a");
 const calculator = document.querySelector("#benzodiazepineCalculator");
 const alcoholVolume = document.querySelector("#alcoholVolume");
 const alcoholPercentage = document.querySelector("#alcoholPercentage");
+const baseAlcoholFactor = document.querySelector("#baseAlcoholFactor strong");
 const chlordiazepoxideDose = document.querySelector("#chlordiazepoxideDose strong");
 const diazepamDose = document.querySelector("#diazepamDose strong");
-const lorazepamDose = document.querySelector("#lorazepamDose strong");
+const lorazepamMaudsleyDose = document.querySelector("#lorazepamMaudsleyDose strong");
+const lorazepamApaDose = document.querySelector("#lorazepamApaDose strong");
 
 function setSidebarOpen(isOpen) {
   if (!menuButton || !sidebar || !backdrop) return;
@@ -42,16 +44,18 @@ function formatDose(value) {
 }
 
 function updateBenzodiazepineDoses() {
-  if (!alcoholVolume || !alcoholPercentage || !chlordiazepoxideDose || !diazepamDose || !lorazepamDose) return;
+  if (!alcoholVolume || !alcoholPercentage || !baseAlcoholFactor || !chlordiazepoxideDose || !diazepamDose || !lorazepamMaudsleyDose || !lorazepamApaDose) return;
 
   const volume = Number.parseFloat(alcoholVolume.value);
   const percentage = Number.parseFloat(alcoholPercentage.value);
-  const hasValidInputs = Number.isFinite(volume) && Number.isFinite(percentage) && volume >= 0 && percentage >= 0;
-  const chlordiazepoxide = hasValidInputs ? (volume * percentage) / 1000 : Number.NaN;
+  const hasValidInputs = Number.isFinite(volume) && Number.isFinite(percentage) && volume >= 0 && percentage >= 0 && percentage <= 100;
+  const alcoholFactor = hasValidInputs ? (volume * percentage) / 1000 : Number.NaN;
 
-  chlordiazepoxideDose.textContent = formatDose(chlordiazepoxide);
-  diazepamDose.textContent = formatDose(0.4 * chlordiazepoxide);
-  lorazepamDose.textContent = formatDose(0.08 * chlordiazepoxide);
+  baseAlcoholFactor.textContent = Number.isFinite(alcoholFactor) ? alcoholFactor.toFixed(2).replace(/\.?0+$/, "") : "--";
+  chlordiazepoxideDose.textContent = formatDose(alcoholFactor);
+  diazepamDose.textContent = formatDose(0.4 * alcoholFactor);
+  lorazepamMaudsleyDose.textContent = formatDose(0.04 * alcoholFactor);
+  lorazepamApaDose.textContent = formatDose(0.08 * alcoholFactor);
 }
 
 calculator?.addEventListener("input", updateBenzodiazepineDoses);
