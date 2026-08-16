@@ -592,6 +592,14 @@ a:focus-visible {
   line-height: 1.5;
 }
 
+.formula-definitions-title {
+  color: var(--accent) !important;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
 .formula-definitions strong {
   color: var(--accent);
 }
