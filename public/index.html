@@ -114,14 +114,6 @@
           <div class="formula-copy">
             <p class="eyebrow">Clinical tools</p>
             <h2 id="formulaTitle">Alcohol Withdrawal Benzodiazepine Dose Calculator</h2>
-            <p>Benzodiazepine dose calculation for alcohol withdrawal. Enter alcohol volume and alcohol concentration as a whole-number percentage.</p>
-            <div class="formula-definitions">
-              <p class="formula-definitions-title">Abbreviations</p>
-              <p><strong>V</strong> = volume of alcohol consumed per day in mL</p>
-              <p><strong>P</strong> = alcohol concentration in percent (%), entered as a whole number. Example: 40% alcohol means P = 40.</p>
-              <p><strong>Important:</strong> Do not interpret P as a decimal fraction; if the user selects 40% alcohol, use P = 40. This prevents a 100-fold calculation error.</p>
-              <p><strong>A</strong> = (V x P) / 1000</p>
-            </div>
           </div>
 
           <form class="dose-calculator" id="benzodiazepineCalculator">
@@ -137,19 +129,7 @@
               </label>
             </div>
 
-            <div class="formula-equations" aria-label="Calculator formulas">
-              <p><strong>Base alcohol factor:</strong> A = (V x P) / 1000</p>
-              <p><strong>Chlordiazepoxide - Single Dose, given QID:</strong> C dose = A mg</p>
-              <p><strong>Diazepam - Single Dose, given QID:</strong> D dose = 0.4 x A mg</p>
-              <p><strong>Lorazepam - Maudsley Standard, Single Dose, given QID:</strong> L dose = 0.04 x A mg</p>
-              <p><strong>Lorazepam - APA / Kaplan &amp; Sadock Standard, Single Dose, given QID:</strong> L dose = 0.08 x A mg</p>
-            </div>
-
             <div class="calculator-results" aria-live="polite">
-              <output class="calculator-result" id="baseAlcoholFactor">
-                <span>Base alcohol factor A</span>
-                <strong>--</strong>
-              </output>
               <output class="calculator-result" id="chlordiazepoxideDose">
                 <span>Chlordiazepoxide single dose QID</span>
                 <strong>-- mg</strong>
@@ -158,12 +138,8 @@
                 <span>Diazepam single dose QID</span>
                 <strong>-- mg</strong>
               </output>
-              <output class="calculator-result" id="lorazepamMaudsleyDose">
-                <span>Lorazepam Maudsley single dose QID</span>
-                <strong>-- mg</strong>
-              </output>
               <output class="calculator-result" id="lorazepamApaDose">
-                <span>Lorazepam APA / Kaplan &amp; Sadock single dose QID</span>
+                <span>Lorazepam single dose QID</span>
                 <strong>-- mg</strong>
               </output>
             </div>
