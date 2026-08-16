@@ -2131,6 +2131,82 @@ button,
   color: var(--dashboard-accent);
 }
 
+.dashboard-formula-card {
+  margin-top: 14px;
+  scroll-margin-top: calc(var(--dashboard-topbar-height) + 18px);
+}
+
+.dashboard-dose-calculator {
+  display: grid;
+  gap: 14px;
+}
+
+.dashboard-calculator-fields {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.dashboard-calculator-fields label span {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--dashboard-muted);
+  font-size: 0.77rem;
+  font-weight: 850;
+  letter-spacing: 0.04em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.dashboard-calculator-fields input {
+  width: 100%;
+  min-height: 44px;
+  padding: 0 12px;
+  border: 1px solid var(--dashboard-border);
+  border-radius: 9px;
+  background: var(--dashboard-surface-2);
+  color: var(--dashboard-text);
+  font: inherit;
+}
+
+.dashboard-calculator-fields input:focus {
+  border-color: var(--dashboard-accent);
+  outline: none;
+}
+
+.dashboard-calculator-results {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.dashboard-calculator-result {
+  min-height: 112px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 14px;
+  border: 1px solid var(--dashboard-border);
+  border-radius: var(--dashboard-radius);
+  background: #0c1219;
+}
+
+.dashboard-calculator-result span {
+  color: var(--dashboard-muted);
+  font-size: 0.77rem;
+  font-weight: 850;
+  letter-spacing: 0.04em;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.dashboard-calculator-result strong {
+  color: var(--dashboard-text);
+  font-size: clamp(1.35rem, 2.4vw, 1.9rem);
+  line-height: 1.05;
+}
+
 .dashboard-disclaimer {
   display: flex;
   align-items: flex-start;
@@ -2202,6 +2278,10 @@ button,
     grid-template-columns: 1fr;
   }
 
+  .dashboard-calculator-results {
+    grid-template-columns: 1fr;
+  }
+
   .dashboard-stats {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -2218,6 +2298,10 @@ button,
   }
 
   .dashboard-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-calculator-fields {
     grid-template-columns: 1fr;
   }
 

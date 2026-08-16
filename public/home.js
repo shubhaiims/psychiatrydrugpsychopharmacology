@@ -16,6 +16,8 @@
     menuBtn: document.querySelector("#menuBtn"),
     libraryToggle: document.querySelector("#libraryToggle"),
     librarySubgroup: document.querySelector("#librarySubgroup"),
+    formulaToggle: document.querySelector("#formulaToggle"),
+    formulaSubgroup: document.querySelector("#formulaSubgroup"),
     searchInput: document.querySelector("#drugSearch"),
     searchResults: document.querySelector("#searchResults"),
     statDrugs: document.querySelector("#statDrugs"),
@@ -26,7 +28,13 @@
     authArea: document.querySelector("#authArea"),
     bookmarksCard: document.querySelector("#bookmarksCard"),
     disclaimerBanner: document.querySelector("#disclaimerBanner"),
-    dismissDisclaimer: document.querySelector("#dismissDisclaimer")
+    dismissDisclaimer: document.querySelector("#dismissDisclaimer"),
+    calculator: document.querySelector("#benzodiazepineCalculator"),
+    alcoholVolume: document.querySelector("#alcoholVolume"),
+    alcoholPercentage: document.querySelector("#alcoholPercentage"),
+    chlordiazepoxideDose: document.querySelector("#chlordiazepoxideDose strong"),
+    diazepamDose: document.querySelector("#diazepamDose strong"),
+    lorazepamDose: document.querySelector("#lorazepamDose strong")
   };
 
   let drugs = [];
@@ -57,6 +65,12 @@
       els.librarySubgroup.hidden = isOpen;
     });
 
+    els.formulaToggle?.addEventListener("click", () => {
+      const isOpen = els.formulaToggle.getAttribute("aria-expanded") === "true";
+      els.formulaToggle.setAttribute("aria-expanded", String(!isOpen));
+      els.formulaSubgroup.hidden = isOpen;
+    });
+
     els.searchInput?.addEventListener("input", () => {
       clearTimeout(debounceTimer);
       const query = els.searchInput.value.trim();
@@ -77,6 +91,9 @@
       els.disclaimerBanner.hidden = true;
       localStorage.setItem("pme_disclaimer_dismissed", "1");
     });
+
+    els.calculator?.addEventListener("input", updateBenzodiazepineDoses);
+    els.calculator?.addEventListener("submit", (event) => event.preventDefault());
   }
 
   async function initialize() {
@@ -257,6 +274,24 @@
       month: "short",
       ...(options.year ? { year: "numeric" } : {})
     }).format(date);
+  }
+
+  function updateBenzodiazepineDoses() {
+    if (!els.alcoholVolume || !els.alcoholPercentage || !els.chlordiazepoxideDose || !els.diazepamDose || !els.lorazepamDose) return;
+
+    const volume = Number.parseFloat(els.alcoholVolume.value);
+    const percentage = Number.parseFloat(els.alcoholPercentage.value);
+    const hasValidInputs = Number.isFinite(volume) && Number.isFinite(percentage) && volume >= 0 && percentage >= 0 && percentage <= 100;
+    const baseDose = hasValidInputs ? (volume * percentage) / 1000 : Number.NaN;
+
+    els.chlordiazepoxideDose.textContent = formatDose(baseDose);
+    els.diazepamDose.textContent = formatDose(0.4 * baseDose);
+    els.lorazepamDose.textContent = formatDose(0.08 * baseDose);
+  }
+
+  function formatDose(value) {
+    if (!Number.isFinite(value)) return "-- mg";
+    return `${value.toFixed(2).replace(/\.?0+$/, "")} mg`;
   }
 
   function escapeHtml(value) {
