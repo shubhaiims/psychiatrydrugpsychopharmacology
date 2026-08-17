@@ -5,6 +5,8 @@
     { "source": "/library/", "destination": "/api/pages/library" },
     { "source": "/formulas", "destination": "/formulas.html" },
     { "source": "/formulas/", "destination": "/formulas.html" },
+    { "source": "/qtc", "destination": "/qtc.html" },
+    { "source": "/qtc/", "destination": "/qtc.html" },
     { "source": "/admin", "destination": "/api/admin/page" },
     { "source": "/admin/", "destination": "/api/admin/page" },
     { "source": "/admin/index.html", "destination": "/api/admin/page" },
