@@ -2699,8 +2699,8 @@ button,
   background: var(--dashboard-surface);
 }
 
-.qtc-ecg svg {
-  width: min(680px, 100%);
+.qtc-ecg img {
+  width: min(760px, 100%);
   height: auto;
   display: block;
   margin: 0 auto;

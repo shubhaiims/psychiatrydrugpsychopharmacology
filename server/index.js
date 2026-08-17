@@ -49,7 +49,8 @@ const staticFiles = new Set([
   "app.js",
   "admin.js",
   "auth.js",
-  "assets/psychiatry-made-easy-logo.png"
+  "assets/psychiatry-made-easy-logo.png",
+  "assets/qtc-ecg-reference.png"
 ]);
 const mimeTypes = new Map([
   [".html", "text/html; charset=utf-8"],

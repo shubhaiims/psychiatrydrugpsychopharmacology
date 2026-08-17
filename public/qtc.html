@@ -154,42 +154,10 @@
         </form>
 
         <figure class="qtc-ecg" aria-label="ECG paper reference: large box and small box durations">
-          <svg viewBox="0 0 820 360" width="100%" role="img" aria-label="ECG grid showing one large box and one small box durations" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <pattern id="smGrid" width="20" height="20" patternUnits="userSpaceOnUse">
-                <path d="M20 0H0V20" fill="none" stroke="#e8b8b3" stroke-width="1"/>
-              </pattern>
-              <pattern id="lgGrid" width="100" height="100" patternUnits="userSpaceOnUse">
-                <rect width="100" height="100" fill="url(#smGrid)"/>
-                <path d="M100 0H0V100" fill="none" stroke="#c96f68" stroke-width="1.6"/>
-              </pattern>
-              <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-                <path d="M0 0L10 5L0 10z" fill="#f97316"/>
-              </marker>
-            </defs>
-
-            <rect x="40" y="10" width="540" height="320" fill="#fff"/>
-            <rect x="40" y="10" width="540" height="320" fill="url(#lgGrid)"/>
-            <rect x="40" y="10" width="540" height="320" fill="none" stroke="#c96f68" stroke-width="1.6"/>
-
-            <path d="M40 268 C70 268 80 268 95 268 C105 256 120 256 130 268 C140 274 148 270 154 272 C156 246 158 186 160 158 C162 186 164 256 168 284 C172 270 176 268 182 268 C200 268 205 250 225 246 C245 242 255 258 265 268 C300 268 310 268 325 268 C335 256 350 256 360 268 C370 274 378 270 384 272 C386 246 388 186 390 158 C392 186 394 256 398 284 C402 270 406 268 412 268 C430 268 435 250 455 246 C475 242 485 258 495 268 C530 268 550 268 580 268"
-              fill="none" stroke="#111" stroke-width="4" stroke-linecap="round"/>
-
-            <rect x="340" y="30" width="100" height="100" fill="none" stroke="#111" stroke-width="5"/>
-            <line x1="600" y1="80" x2="445" y2="80" stroke="#f97316" stroke-width="1.6" marker-end="url(#arr)"/>
-            <text x="610" y="74" font-family="inherit" font-size="20" font-weight="700" fill="#f7f8f8">One large box</text>
-            <text x="610" y="96" font-family="inherit" font-size="12.5" fill="#d4d7d8">*200 msec at 25 mm/sec;</text>
-            <text x="610" y="112" font-family="inherit" font-size="12.5" fill="#d4d7d8">*100 msec at 50 mm/sec</text>
-
-            <rect x="330" y="160" width="20" height="20" fill="#fff" stroke="#111" stroke-width="4"/>
-            <line x1="600" y1="170" x2="355" y2="170" stroke="#f97316" stroke-width="1.6" marker-end="url(#arr)"/>
-            <text x="610" y="164" font-family="inherit" font-size="20" font-weight="700" fill="#f7f8f8">One small box</text>
-            <text x="610" y="186" font-family="inherit" font-size="12.5" fill="#d4d7d8">*40 msec at 25 mm/sec;</text>
-            <text x="610" y="202" font-family="inherit" font-size="12.5" fill="#d4d7d8">*20 msec at 50 mm/sec</text>
-
-            <text x="16" y="180" font-family="inherit" font-size="17" fill="#111" transform="rotate(-90 16 180)" text-anchor="middle">Amplitude</text>
-            <text x="310" y="352" font-family="inherit" font-size="17" fill="#111" text-anchor="middle">Time</text>
-          </svg>
+          <img
+            src="/assets/qtc-ecg-reference.png"
+            alt="ECG paper reference showing one large box equals 200 msec at 25 mm/sec or 100 msec at 50 mm/sec, and one small box equals 40 msec at 25 mm/sec or 20 msec at 50 mm/sec."
+          />
         </figure>
 
         <div class="qtc-result" id="resultBar" aria-live="polite">
