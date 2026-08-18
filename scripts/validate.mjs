@@ -80,6 +80,36 @@ if (/href=["']\/admin(?:\/login)?["']/i.test(homepage)) {
   throw new Error("The public homepage must not expose an admin login link.");
 }
 
+if (/dashboard-page-head|dashboard-stats|dashboard-grid-2|statUpdated|recentUpdatesCard|bookmarksCard|Last updated|Recently updated/i.test(homepage)) {
+  throw new Error("The public homepage must not include dashboard summaries or update dates.");
+}
+
+if (!/<h1[^>]*>Browse the drug library<\/h1>/i.test(homepage) || !/id=["']classChips["']/i.test(homepage)) {
+  throw new Error("The public homepage must retain the drug-library browse experience.");
+}
+
+for (const file of ["public/index.html", "public/formulas.html", "public/qtc.html"]) {
+  const page = await readFile(file, "utf8");
+  if (/recentUpdatesCard|bookmarksCard|>\s*(?:Dashboard|Updates|Bookmarks)\s*</i.test(page)) {
+    throw new Error(`${file} must not expose removed dashboard navigation.`);
+  }
+}
+
+const publicLibraryScript = await readFile("public/app.js", "utf8");
+if (/\b(?:updatedAt|lastReviewed|formatDate)\b/.test(publicLibraryScript)) {
+  throw new Error("The public drug library must not include review or update-date presentation.");
+}
+
+const homepageScript = await readFile("public/home.js", "utf8");
+if (/statUpdated|recentUpdates|lastUpdated|renderStats|renderRecentUpdates|formatDate/.test(homepageScript)) {
+  throw new Error("The homepage script must not restore dashboard summaries or update dates.");
+}
+
+const dashboardDataSource = await readFile("server/dashboard.js", "utf8");
+if (/\b(?:lastUpdated|recent|updatedAt|lastReviewed)\b/.test(dashboardDataSource)) {
+  throw new Error("The public homepage data must not include update-date fields.");
+}
+
 const dashboardStyles = await readFile("public/styles.css", "utf8");
 if (!/\.dashboard-nav-subgroup\[hidden\]\s*\{[^}]*display:\s*none\s*;/s.test(dashboardStyles)) {
   throw new Error("Collapsed dashboard navigation subgroups must be hidden by CSS.");

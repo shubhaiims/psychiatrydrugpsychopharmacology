@@ -219,8 +219,6 @@
         <div class="tag-row">
           ${tag(`Target ${drug.targetDose || "not added"}`)}
           ${tag(`Maximum ${drug.maximumDose || "not added"}`)}
-          ${tag(`Reviewed ${formatDate(drug.lastReviewed)}`)}
-          ${tag(`Updated ${formatDate(drug.updatedAt)}`)}
         </div>
       </div>
       <div class="detail-grid">
@@ -368,9 +366,7 @@
       fdaBlackBoxWarning: textField(drug.fdaBlackBoxWarning || drug.seriousWarnings),
       prescribingInSpecialPopulations: textField(drug.prescribingInSpecialPopulations || drug.specialPopulation || drug.cautions),
       drugInteractions: textField(drug.drugInteractions || drug.interactions),
-      miscellaneous: textField(drug.miscellaneous || drug.pearls),
-      updatedAt: String(drug.updatedAt || "").slice(0, 10),
-      lastReviewed: String(drug.lastReviewed || "").slice(0, 10)
+      miscellaneous: textField(drug.miscellaneous || drug.pearls)
     };
   }
 
@@ -395,13 +391,6 @@
   function formatBrands(brands) {
     const items = arrayFrom(brands);
     return items.length ? items.join(", ") : "No brand names added";
-  }
-
-  function formatDate(value) {
-    if (!value) return "Not set";
-    const date = new Date(`${value}T00:00:00`);
-    if (Number.isNaN(date.getTime())) return value;
-    return new Intl.DateTimeFormat("en", { year: "numeric", month: "short", day: "numeric" }).format(date);
   }
 
   function tag(value) {

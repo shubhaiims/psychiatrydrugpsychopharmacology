@@ -19,7 +19,7 @@
       </div>
 
       <nav class="dashboard-sidebar__nav">
-        <a href="/" class="dashboard-nav-item is-active">Dashboard</a>
+        <a href="/" class="dashboard-nav-item is-active">Home</a>
 
         <div class="dashboard-nav-group">
           <div class="dashboard-nav-split">
@@ -38,7 +38,6 @@
           </div>
         </div>
 
-        <a href="#recentUpdatesCard" class="dashboard-nav-item">Updates</a>
         <div class="dashboard-nav-group">
           <div class="dashboard-nav-split">
             <a href="/formulas" class="dashboard-nav-item dashboard-nav-item--split-link">Formulas</a>
@@ -51,7 +50,6 @@
             <a href="/qtc.html">QTc calculator</a>
           </div>
         </div>
-        <a href="#bookmarksCard" class="dashboard-nav-item" data-requires-auth hidden>Bookmarks</a>
         <a href="#about" class="dashboard-nav-item">About</a>
       </nav>
 
@@ -83,54 +81,13 @@
     </header>
 
     <main class="dashboard-main" id="main">
-      <section class="dashboard-page-head">
-        <h1>Dashboard</h1>
-        <p class="dashboard-lede">A psychopharmacology reference for clinicians. Search a drug, or browse by class.</p>
-      </section>
-
-      <section class="dashboard-stats" aria-label="Library at a glance">
-        <div class="dashboard-stat">
-          <span class="dashboard-stat__value" id="statDrugs">-</span>
-          <span class="dashboard-stat__label">Drug monographs</span>
-        </div>
-        <div class="dashboard-stat">
-          <span class="dashboard-stat__value" id="statClasses">-</span>
-          <span class="dashboard-stat__label">Drug classes</span>
-        </div>
-        <div class="dashboard-stat">
-          <span class="dashboard-stat__value" id="statUpdated">-</span>
-          <span class="dashboard-stat__label">Last updated</span>
+      <section class="library-browse" aria-labelledby="browseHead">
+        <h1 id="browseHead">Browse the drug library</h1>
+        <p>Search by drug name above, or choose a medication class.</p>
+        <div class="dashboard-chip-grid" id="classChips">
+          <a class="dashboard-chip dashboard-chip--all" href="/library">All drugs</a>
         </div>
       </section>
-
-      <div class="dashboard-grid-2">
-        <section class="dashboard-card" id="recentUpdatesCard" aria-labelledby="recentHead">
-          <header class="dashboard-card__head">
-            <h2 id="recentHead">Recently updated</h2>
-          </header>
-          <ul class="dashboard-row-list" id="recentUpdates">
-            <li class="dashboard-row-list__empty">Loading...</li>
-          </ul>
-        </section>
-
-        <section class="dashboard-card" id="bookmarksCard" aria-labelledby="bmHead" hidden>
-          <header class="dashboard-card__head">
-            <h2 id="bmHead">Your bookmarks</h2>
-          </header>
-          <ul class="dashboard-row-list" id="bookmarkList">
-            <li class="dashboard-row-list__empty">No bookmarks yet.</li>
-          </ul>
-        </section>
-
-        <section class="dashboard-card" aria-labelledby="browseHead">
-          <header class="dashboard-card__head">
-            <h2 id="browseHead">Browse by class</h2>
-          </header>
-          <div class="dashboard-chip-grid" id="classChips">
-            <a class="dashboard-chip dashboard-chip--all" href="/library">All drugs</a>
-          </div>
-        </section>
-      </div>
 
       <aside class="dashboard-disclaimer" id="disclaimerBanner" hidden>
         <p><strong>Educational reference only.</strong> Verify all drug information against current prescribing information, local protocols, and clinical judgment.</p>

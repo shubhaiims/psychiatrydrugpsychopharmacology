@@ -20,13 +20,8 @@
     formulaSubgroup: document.querySelector("#formulaSubgroup"),
     searchInput: document.querySelector("#drugSearch"),
     searchResults: document.querySelector("#searchResults"),
-    statDrugs: document.querySelector("#statDrugs"),
-    statClasses: document.querySelector("#statClasses"),
-    statUpdated: document.querySelector("#statUpdated"),
-    recentUpdates: document.querySelector("#recentUpdates"),
     classChips: document.querySelector("#classChips"),
     authArea: document.querySelector("#authArea"),
-    bookmarksCard: document.querySelector("#bookmarksCard"),
     disclaimerBanner: document.querySelector("#disclaimerBanner"),
     dismissDisclaimer: document.querySelector("#dismissDisclaimer"),
     calculator: document.querySelector("#benzodiazepineCalculator"),
@@ -99,13 +94,9 @@
 
     try {
       const data = await api("/api/dashboard");
-      drugs = normalizeDashboardDrugs(data.drugs);
-      renderStats(data.stats || buildStats(drugs));
-      renderRecentUpdates(data.recent || getRecentDrugs(drugs));
+      drugs = normalizeDrugs(data.drugs);
       renderClassChips(data.classes || getClasses(drugs));
     } catch {
-      renderStats({ totalDrugs: "-", totalClasses: "-", lastUpdated: "" });
-      renderRecentUpdates([]);
       renderClassChips(fallbackClasses);
     }
 
@@ -122,16 +113,10 @@
       document.querySelectorAll("[data-requires-auth]").forEach((element) => {
         element.hidden = false;
       });
-      if (els.bookmarksCard) {
-        els.bookmarksCard.hidden = false;
-      }
     } catch {
       document.querySelectorAll("[data-requires-auth]").forEach((element) => {
         element.hidden = true;
       });
-      if (els.bookmarksCard) {
-        els.bookmarksCard.hidden = true;
-      }
     }
   }
 
@@ -162,26 +147,6 @@
     const isOpen = toggle.getAttribute("aria-expanded") === "true";
     toggle.setAttribute("aria-expanded", String(!isOpen));
     subgroup.hidden = isOpen;
-  }
-
-  function renderStats(stats) {
-    els.statDrugs.textContent = String(stats.totalDrugs ?? "-");
-    els.statClasses.textContent = String(stats.totalClasses ?? "-");
-    els.statUpdated.textContent = stats.lastUpdated ? formatDate(stats.lastUpdated, { year: true }) : "-";
-  }
-
-  function renderRecentUpdates(recent) {
-    if (!els.recentUpdates) return;
-    if (!recent.length) {
-      els.recentUpdates.innerHTML = `<li class="dashboard-row-list__empty">No recent updates.</li>`;
-      return;
-    }
-    els.recentUpdates.innerHTML = recent.slice(0, 5).map((drug) => `
-      <li>
-        <a href="${drugUrl(drug.id)}">${escapeHtml(drug.name)}</a>
-        <span class="dashboard-row-meta">${escapeHtml(formatDate(drug.updatedAt))}</span>
-      </li>
-    `).join("");
   }
 
   function renderClassChips(classes) {
@@ -223,34 +188,19 @@
     els.searchInput.setAttribute("aria-expanded", "false");
   }
 
-  function normalizeDashboardDrugs(collection) {
+  function normalizeDrugs(collection) {
     if (!Array.isArray(collection)) return [];
     return collection.map((drug) => ({
       id: String(drug.id || ""),
       name: String(drug.name || ""),
       brands: Array.isArray(drug.brands) ? drug.brands : [],
       medicationGroup: String(drug.medicationGroup || ""),
-      classification: String(drug.classification || ""),
-      updatedAt: String(drug.updatedAt || "")
+      classification: String(drug.classification || "")
     })).filter((drug) => drug.id && drug.name);
-  }
-
-  function buildStats(items) {
-    const classes = getClasses(items);
-    const latest = getRecentDrugs(items)[0]?.updatedAt || "";
-    return {
-      totalDrugs: items.length,
-      totalClasses: classes.length,
-      lastUpdated: latest
-    };
   }
 
   function getClasses(items) {
     return [...new Set(items.map((drug) => drug.medicationGroup).filter(Boolean))];
-  }
-
-  function getRecentDrugs(items) {
-    return [...items].sort((first, second) => String(second.updatedAt).localeCompare(String(first.updatedAt)));
   }
 
   function drugUrl(id) {
@@ -266,17 +216,6 @@
       .replace(" and Anticonvulsants", "")
       .replace(" medications", "")
       .replace("Anxiolytic and hypnotic", "Anxiolytics & hypnotics");
-  }
-
-  function formatDate(value, options = {}) {
-    if (!value) return "-";
-    const date = new Date(`${String(value).slice(0, 10)}T00:00:00`);
-    if (Number.isNaN(date.getTime())) return String(value);
-    return new Intl.DateTimeFormat("en-IN", {
-      day: "numeric",
-      month: "short",
-      ...(options.year ? { year: "numeric" } : {})
-    }).format(date);
   }
 
   function updateBenzodiazepineDoses() {

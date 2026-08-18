@@ -2060,44 +2060,11 @@ button,
   font-size: 14.5px;
 }
 
-.dashboard-stats {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
-  margin-bottom: 20px;
-}
-
-.dashboard-stat,
 .dashboard-card,
 .dashboard-about {
   border: 1px solid var(--dashboard-border);
   border-radius: var(--dashboard-radius);
   background: var(--dashboard-surface);
-}
-
-.dashboard-stat {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  padding: 16px 18px;
-}
-
-.dashboard-stat__value {
-  color: var(--dashboard-text);
-  font-size: 24px;
-  font-weight: 700;
-  letter-spacing: 0;
-}
-
-.dashboard-stat__label {
-  color: var(--dashboard-muted);
-  font-size: 12.5px;
-}
-
-.dashboard-grid-2 {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
 }
 
 .dashboard-card,
@@ -2120,40 +2087,22 @@ button,
   font-weight: 600;
 }
 
-.dashboard-row-list {
+.library-browse {
+  padding: 8px 0 18px;
+}
+
+.library-browse h1 {
   margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.dashboard-row-list li {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 10px 0;
-  border-bottom: 1px solid var(--dashboard-border);
   color: var(--dashboard-text);
-  font-size: 14px;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.15;
 }
 
-.dashboard-row-list li:last-child {
-  border-bottom: 0;
-}
-
-.dashboard-row-list a:hover {
-  color: var(--dashboard-accent);
-}
-
-.dashboard-row-meta {
+.library-browse p {
+  margin: 8px 0 20px;
   color: var(--dashboard-muted);
-  font-size: 12.5px;
-  white-space: nowrap;
-}
-
-.dashboard-row-list__empty {
-  justify-content: flex-start !important;
-  color: var(--dashboard-muted) !important;
+  font-size: 14.5px;
 }
 
 .dashboard-chip-grid {
@@ -2829,16 +2778,8 @@ button,
     padding: calc(var(--dashboard-topbar-height) + 24px) 16px 40px;
   }
 
-  .dashboard-grid-2 {
-    grid-template-columns: 1fr;
-  }
-
   .dashboard-calculator-results {
     grid-template-columns: 1fr;
-  }
-
-  .dashboard-stats {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .dashboard-topbar__auth .dashboard-btn--ghost {
@@ -2850,10 +2791,6 @@ button,
   .dashboard-topbar {
     gap: 10px;
     padding: 0 12px;
-  }
-
-  .dashboard-stats {
-    grid-template-columns: 1fr;
   }
 
   .dashboard-calculator-fields {
