@@ -1785,6 +1785,10 @@ button,
   border-left: 1px solid var(--dashboard-border);
 }
 
+.dashboard-nav-subgroup[hidden] {
+  display: none;
+}
+
 .dashboard-nav-subgroup a {
   padding: 7px 10px;
   border-radius: 6px;

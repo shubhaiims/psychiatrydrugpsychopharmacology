@@ -80,6 +80,11 @@ if (/href=["']\/admin(?:\/login)?["']/i.test(homepage)) {
   throw new Error("The public homepage must not expose an admin login link.");
 }
 
+const dashboardStyles = await readFile("public/styles.css", "utf8");
+if (!/\.dashboard-nav-subgroup\[hidden\]\s*\{[^}]*display:\s*none\s*;/s.test(dashboardStyles)) {
+  throw new Error("Collapsed dashboard navigation subgroups must be hidden by CSS.");
+}
+
 const userLoginPage = await readFile("public/login.html", "utf8");
 if (/href=["']\/admin(?:\/login)?["']/i.test(userLoginPage)) {
   throw new Error("The user login page must not expose an admin login link.");
