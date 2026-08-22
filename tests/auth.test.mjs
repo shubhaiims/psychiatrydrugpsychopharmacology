@@ -56,6 +56,44 @@ test("registration requires matching passwords before contacting Supabase", asyn
   assert.equal(fetchCalled, false);
 });
 
+test("registration reports existing email errors clearly", async () => {
+  global.fetch = async (url) => {
+    if (String(url).includes("/auth/v1/signup")) {
+      return jsonResponse(400, { message: "User already registered" });
+    }
+    throw new Error(`Unexpected URL: ${url}`);
+  };
+
+  await assert.rejects(
+    registerUser({
+      fullName: "Test User",
+      email: "test@example.com",
+      password: "correct-password",
+      confirmPassword: "correct-password"
+    }, request(), response()),
+    (error) => error.status === 409 && /already exists/i.test(error.message)
+  );
+});
+
+test("registration reports Supabase password requirement errors clearly", async () => {
+  global.fetch = async (url) => {
+    if (String(url).includes("/auth/v1/signup")) {
+      return jsonResponse(422, { message: "Password should contain at least one uppercase character" });
+    }
+    throw new Error(`Unexpected URL: ${url}`);
+  };
+
+  await assert.rejects(
+    registerUser({
+      fullName: "Test User",
+      email: "test@example.com",
+      password: "correct-password",
+      confirmPassword: "correct-password"
+    }, request(), response()),
+    (error) => error.status === 400 && /uppercase character/i.test(error.message)
+  );
+});
+
 test("member login stores Supabase tokens only in secure server cookies", async () => {
   process.env.SUPABASE_URL = "https://project.supabase.co/rest/v1";
   const calls = [];

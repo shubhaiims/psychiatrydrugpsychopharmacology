@@ -473,10 +473,41 @@ function mapRegistrationError(error) {
   if ([400, 422].includes(status) && /already|registered|exists/i.test(message)) {
     return httpError(409, "An account with this email already exists.");
   }
+  if ([400, 422].includes(status) && /signup.*disabled|signups?.*disabled|not allowed/i.test(message)) {
+    return httpError(403, "New account registration is currently disabled.");
+  }
+  if ([400, 422].includes(status) && /password|weak|pwned|breach|leaked/i.test(message)) {
+    return httpError(400, readableSupabaseSignupMessage(message, "Use a stronger password that meets the site requirements."));
+  }
+  if ([400, 422].includes(status) && /email|invalid/i.test(message)) {
+    return httpError(400, readableSupabaseSignupMessage(message, "Enter a valid email address."));
+  }
   if ([400, 422].includes(status)) {
-    return httpError(400, "Unable to create the account. Check the email and password requirements.");
+    return httpError(400, readableSupabaseSignupMessage(message, "Unable to create the account. Check the email and password requirements."));
   }
   return error;
+}
+
+function readableSupabaseSignupMessage(message, fallback) {
+  const detail = String(message || "")
+    .replace(/^Supabase auth request failed:\s*/i, "")
+    .replace(/^AuthApiError:\s*/i, "")
+    .trim();
+  if (!detail || /^status\s+\d+$/i.test(detail)) return fallback;
+
+  if (/password/i.test(detail)) {
+    return normalizeSentence(detail);
+  }
+  if (/email/i.test(detail)) {
+    return normalizeSentence(detail);
+  }
+  return fallback;
+}
+
+function normalizeSentence(value) {
+  const message = String(value || "").trim().replace(/\s+/g, " ");
+  if (!message) return "";
+  return /[.!?]$/.test(message) ? message : `${message}.`;
 }
 
 function assertAuthConfigured() {
