@@ -36,8 +36,8 @@ if (!Array.isArray(drugs)) {
   throw new Error("server/data/drugs.json must contain a JSON array.");
 }
 
-if (drugs.length !== 69) {
-  throw new Error(`Expected all 69 drug records, found ${drugs.length}.`);
+if (drugs.length !== 70) {
+  throw new Error(`Expected all 70 drug records, found ${drugs.length}.`);
 }
 
 const requiredFields = ["id", "name", "classification", "riskLevel"];
