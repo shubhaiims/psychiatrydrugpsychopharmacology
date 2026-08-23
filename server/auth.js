@@ -470,8 +470,12 @@ function toPublicUser(user = {}) {
 function mapRegistrationError(error) {
   const status = error.supabaseStatus || error.status;
   const message = String(error.message || "");
+  const code = String(error.supabaseCode || "");
   if ([400, 422].includes(status) && /already|registered|exists/i.test(message)) {
     return httpError(409, "An account with this email already exists.");
+  }
+  if (status === 429 || /rate limit|too many/i.test(message) || /over_.*rate_limit/i.test(code)) {
+    return httpError(429, "Too many confirmation emails have been requested. Please wait a while before trying again, or use User Login if your account was already created.");
   }
   if ([400, 422].includes(status) && /signup.*disabled|signups?.*disabled|not allowed/i.test(message)) {
     return httpError(403, "New account registration is currently disabled.");

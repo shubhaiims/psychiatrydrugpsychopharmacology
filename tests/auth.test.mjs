@@ -94,6 +94,28 @@ test("registration reports Supabase password requirement errors clearly", async 
   );
 });
 
+test("registration reports Supabase email rate limits clearly", async () => {
+  global.fetch = async (url) => {
+    if (String(url).includes("/auth/v1/signup")) {
+      return jsonResponse(429, {
+        code: "over_email_send_rate_limit",
+        message: "email rate limit exceeded"
+      });
+    }
+    throw new Error(`Unexpected URL: ${url}`);
+  };
+
+  await assert.rejects(
+    registerUser({
+      fullName: "Test User",
+      email: "test@example.com",
+      password: "correct-password",
+      confirmPassword: "correct-password"
+    }, request(), response()),
+    (error) => error.status === 429 && /too many confirmation emails/i.test(error.message)
+  );
+});
+
 test("member login stores Supabase tokens only in secure server cookies", async () => {
   process.env.SUPABASE_URL = "https://project.supabase.co/rest/v1";
   const calls = [];
