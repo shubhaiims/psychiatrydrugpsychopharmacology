@@ -2,11 +2,12 @@
 
 Psychiatry Made Easy is a plain Node.js, static HTML/CSS/JavaScript, and Vercel Serverless application. It is not a Next.js project.
 
-The public homepage remains at `/`. The drug library and admin editor are protected by Supabase Auth and by server-side authorization checks.
+The public landing page is at `/`, and the public drug-library browse page is at `/browse`. The drug library and admin editor are protected by Supabase Auth and by server-side authorization checks.
 
 ## Routes
 
-- `/` - public homepage
+- `/` - public landing page (about the site, features, plans)
+- `/browse` - public drug-library browse page, search, and class chips
 - `/login` - member login
 - `/register` - member registration with full name, email, password, and password confirmation
 - `/forgot-password` - password recovery request

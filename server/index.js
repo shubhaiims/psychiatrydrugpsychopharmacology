@@ -29,6 +29,8 @@ loadDotEnv(resolve(rootDir, ".env"));
 const port = Number(process.env.PORT || 3000);
 const pageRoutes = new Map([
   ["/", "index.html"],
+  ["/browse", "browse.html"],
+  ["/browse/", "browse.html"],
   ["/formulas", "formulas.html"],
   ["/formulas/", "formulas.html"],
   ["/qtc", "qtc.html"],
@@ -50,14 +52,26 @@ const staticFiles = new Set([
   "admin.js",
   "auth.js",
   "assets/psychiatry-made-easy-logo.png",
-  "assets/qtc-ecg-reference.png"
+  "assets/qtc-ecg-reference.png",
+  // Landing page assets
+  "landing.css",
+  "landing.js",
+  "assets/fonts/newsreader-roman.woff2",
+  "assets/fonts/newsreader-italic.woff2",
+  "assets/fonts/atkinson-next.woff2",
+  "assets/landing/logo-mark-64.png",
+  "assets/landing/logo-mark-128.png",
+  ...["hero-plant-960", "hero-plant-1600", "hero-plant-2400"].map((name) => `assets/landing/${name}.webp`),
+  ...["window-light", "window-figure"].flatMap((name) => [600, 900, 1200].map((width) => `assets/landing/${name}-${width}.webp`))
 ]);
 const mimeTypes = new Map([
   [".html", "text/html; charset=utf-8"],
   [".css", "text/css; charset=utf-8"],
   [".js", "text/javascript; charset=utf-8"],
   [".json", "application/json; charset=utf-8"],
-  [".png", "image/png"]
+  [".png", "image/png"],
+  [".webp", "image/webp"],
+  [".woff2", "font/woff2"]
 ]);
 
 const server = createServer(async (request, response) => {

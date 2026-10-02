@@ -3,105 +3,295 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="A clinician-built psychopharmacology reference. Search drug monographs by name or class." />
-    <title>Psychiatry Made Easy - Psychopharmacology Reference</title>
+    <meta name="description" content="Psychiatry Made Easy is a clinician-built psychopharmacology reference: structured monographs for psychiatric medicines, clinical calculators, and Ask My Notes." />
+    <meta name="theme-color" content="#181512" />
+    <meta property="og:title" content="Psychiatry Made Easy" />
+    <meta property="og:description" content="Structured monographs for psychiatric medicines, written for students, trainees and clinicians." />
+    <meta property="og:type" content="website" />
+    <title>Psychiatry Made Easy | Psychopharmacology reference</title>
     <link rel="icon" href="/assets/psychiatry-made-easy-logo.png" />
-    <link rel="stylesheet" href="/styles.css" />
-    <script src="/home.js" defer></script>
+    <link rel="preload" href="/assets/fonts/newsreader-roman.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/assets/fonts/newsreader-italic.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="stylesheet" href="/landing.css" />
+    <script src="/landing.js" defer></script>
   </head>
-  <body class="dashboard-page">
-    <a class="dashboard-skip-link" href="#main">Skip to content</a>
+  <body class="lp">
+    <a class="lp-skip" href="#main">Skip to content</a>
 
-    <aside class="dashboard-sidebar" id="sidebar" aria-label="Primary navigation">
-      <div class="dashboard-sidebar__brand">
-        <img src="/assets/psychiatry-made-easy-logo.png" alt="" class="dashboard-brand-mark" />
-        <span class="dashboard-brand-name">Psychiatry <em>Made Easy</em></span>
-      </div>
-
-      <nav class="dashboard-sidebar__nav">
-        <a href="/" class="dashboard-nav-item is-active">Home</a>
-
-        <div class="dashboard-nav-group">
-          <div class="dashboard-nav-split">
-            <a href="/library" class="dashboard-nav-item dashboard-nav-item--split-link">Drug Library</a>
-            <button class="dashboard-nav-arrow" id="libraryToggle" type="button" aria-expanded="false" aria-controls="librarySubgroup" aria-label="Toggle Drug Library menu">
-              <span class="dashboard-chevron" aria-hidden="true"></span>
-            </button>
-          </div>
-          <div class="dashboard-nav-subgroup" id="librarySubgroup" hidden>
-            <a href="/library?class=Antidepressants">Antidepressants</a>
-            <a href="/library?class=Antipsychotics">Antipsychotics</a>
-            <a href="/library?class=Mood%20stabilizers%20and%20Anticonvulsants">Mood stabilizers</a>
-            <a href="/library?class=Anxiolytic%20and%20hypnotic%20medications">Anxiolytics &amp; hypnotics</a>
-            <a href="/library?class=ADHD%20medications">ADHD medications</a>
-            <a href="/library">All drugs</a>
-          </div>
+    <header class="lp-header" id="siteHeader">
+      <div class="lp-header__inner">
+        <a class="lp-brand" href="/" aria-label="Psychiatry Made Easy home">
+          <img src="/assets/landing/logo-mark-64.png" srcset="/assets/landing/logo-mark-64.png 1x, /assets/landing/logo-mark-128.png 2x" alt="" width="36" height="36" />
+          <span class="lp-brand__name">Psychiatry <em>Made Easy</em></span>
+        </a>
+        <nav class="lp-nav" aria-label="Primary">
+          <a href="#inside">What's inside</a>
+          <a href="#tools">Tools</a>
+          <a href="#about">About</a>
+          <a href="#plans">Plans</a>
+        </nav>
+        <div class="lp-header__actions">
+          <a class="lp-link" href="/login" data-guest>Log in</a>
+          <a class="lp-button lp-button--small" href="/register" data-guest>Create free account</a>
+          <a class="lp-button lp-button--small" href="/library" data-member hidden>Open the library</a>
         </div>
-
-        <div class="dashboard-nav-group">
-          <div class="dashboard-nav-split">
-            <a href="/formulas" class="dashboard-nav-item dashboard-nav-item--split-link">Formulas</a>
-            <button class="dashboard-nav-arrow" id="formulaToggle" type="button" aria-expanded="false" aria-controls="formulaSubgroup" aria-label="Toggle Formulas menu">
-              <span class="dashboard-chevron" aria-hidden="true"></span>
-            </button>
-          </div>
-          <div class="dashboard-nav-subgroup" id="formulaSubgroup" hidden>
-            <a href="/formulas#alcoholDoseCalculator">Alcohol dose calculator</a>
-            <a href="/qtc.html">QTc calculator</a>
-          </div>
-        </div>
-        <a href="#about" class="dashboard-nav-item">About</a>
-      </nav>
-
-      <div class="dashboard-sidebar__footer">
-        <a href="/library" class="dashboard-nav-item" data-requires-auth hidden>Account</a>
-        <a href="#disclaimerBanner" class="dashboard-nav-item dashboard-nav-item--muted">Disclaimer</a>
-      </div>
-    </aside>
-    <div class="dashboard-sidebar-scrim" id="sidebarScrim" hidden></div>
-
-    <header class="dashboard-topbar">
-      <button class="dashboard-icon-btn dashboard-topbar__menu" id="menuBtn" type="button" aria-label="Open menu" aria-controls="sidebar" aria-expanded="false">
-        <span class="dashboard-menu-icon" aria-hidden="true"></span>
-      </button>
-      <a href="/" class="dashboard-topbar__brand" aria-label="Psychiatry Made Easy home">
-        <img src="/assets/psychiatry-made-easy-logo.png" alt="" class="dashboard-brand-mark" />
-      </a>
-
-      <div class="dashboard-search" role="search">
-        <span class="dashboard-search__icon" aria-hidden="true"></span>
-        <input id="drugSearch" type="search" placeholder="Search drug monographs..." autocomplete="off" aria-label="Search drugs" aria-expanded="false" aria-controls="searchResults" />
-        <div class="dashboard-search__results" id="searchResults" role="listbox" hidden></div>
-      </div>
-
-      <div class="dashboard-topbar__auth" id="authArea">
-        <a href="/login" class="dashboard-btn dashboard-btn--ghost">Log in</a>
-        <a href="/register" class="dashboard-btn dashboard-btn--primary">Register</a>
       </div>
     </header>
 
-    <main class="dashboard-main" id="main">
-      <section class="library-browse" aria-labelledby="browseHead">
-        <h1 id="browseHead">Browse the drug library</h1>
-        <p>Search by drug name above, or choose a medication class.</p>
-        <div class="dashboard-chip-grid" id="classChips">
-          <a class="dashboard-chip dashboard-chip--all" href="/library">All drugs</a>
+    <main id="main">
+      <section class="lp-hero" aria-labelledby="heroTitle">
+        <div class="lp-hero__media" aria-hidden="true">
+          <img
+            class="lp-hero__photo"
+            src="/assets/landing/hero-plant-1600.webp"
+            srcset="/assets/landing/hero-plant-960.webp 960w, /assets/landing/hero-plant-1600.webp 1600w, /assets/landing/hero-plant-2400.webp 2400w"
+            sizes="100vw"
+            alt=""
+            width="1600"
+            height="1067"
+            fetchpriority="high"
+          />
+          <div class="lp-hero__light"></div>
+          <div class="lp-hero__veil"></div>
+        </div>
+        <div class="lp-container lp-hero__content">
+          <h1 class="lp-hero__title" id="heroTitle">
+            <span class="lp-word">Psycho&shy;pharmacology,</span>
+            <span class="lp-word"><em>made easy.</em></span>
+          </h1>
+          <p class="lp-hero__lede">Clear, structured monographs for <span data-drug-count>79</span> psychiatric medicines: how they work, how to dose them, and what to watch for. Written for medical students, psychiatry trainees and clinicians.</p>
+          <div class="lp-hero__actions">
+            <a class="lp-button" href="/register" data-guest>Create free account</a>
+            <a class="lp-button" href="/library" data-member hidden>Open the library</a>
+            <a class="lp-button lp-button--ghost" href="/browse">Browse the drug library</a>
+          </div>
         </div>
       </section>
 
-      <aside class="dashboard-disclaimer" id="disclaimerBanner" hidden>
-        <p><strong>Educational reference only.</strong> Verify all drug information against current prescribing information, local protocols, and clinical judgment.</p>
-        <button class="dashboard-icon-btn" id="dismissDisclaimer" type="button" aria-label="Dismiss disclaimer">&times;</button>
-      </aside>
+      <section class="lp-section lp-inside" id="inside" aria-labelledby="insideTitle">
+        <div class="lp-container lp-split">
+          <div class="lp-split__intro lp-prose">
+            <h2 class="lp-h2" id="insideTitle">Every drug follows <em>the same outline.</em></h2>
+            <p>Learn where things live once, and the next drug takes seconds. Each monograph covers the same eleven sections in the same order, from classification to clinical notes.</p>
+            <p class="lp-muted">Target and maximum doses sit at the top of every monograph, so the number you need most is never buried.</p>
+          </div>
 
-      <section class="dashboard-about" id="about" aria-labelledby="aboutHead">
-        <h2 id="aboutHead">About</h2>
-        <p>Psychiatry Made Easy is a focused drug reference designed for fast scanning, comparison, and clinical study.</p>
+          <article class="lp-monograph" aria-labelledby="sampleName">
+            <p class="lp-monograph__tag">Example monograph</p>
+            <h3 class="lp-monograph__name" id="sampleName">Sertraline</h3>
+            <p class="lp-monograph__class">Antidepressants, selective serotonin reuptake inhibitor (SSRI)</p>
+            <dl class="lp-monograph__doses">
+              <div>
+                <dt>Target dose</dt>
+                <dd>50–200 mg/day</dd>
+              </div>
+              <div>
+                <dt>Maximum dose</dt>
+                <dd>200 mg/day, usual maximum</dd>
+              </div>
+            </dl>
+            <p class="lp-monograph__label">Contents</p>
+            <ol class="lp-toc" role="list">
+              <li>Classification</li>
+              <li>Mechanism of action and receptor profile</li>
+              <li>Pharmacodynamics</li>
+              <li>FDA approved and off-label uses</li>
+              <li>Pharmacokinetics and half-life</li>
+              <li>Clinical dosing, optimization and target dose</li>
+              <li>Side effects</li>
+              <li>FDA black box warning</li>
+              <li>Prescribing in special populations</li>
+              <li>Drug interactions</li>
+              <li>Miscellaneous</li>
+            </ol>
+          </article>
+        </div>
+      </section>
+
+      <section class="lp-section lp-tools" id="tools" aria-labelledby="toolsTitle">
+        <div class="lp-container">
+          <h2 class="lp-h2" id="toolsTitle">Three ways to <em>find an answer.</em></h2>
+          <div class="lp-cards">
+            <article class="lp-card">
+              <h3 class="lp-card__title">Drug library</h3>
+              <p class="lp-card__meta"><span data-drug-count>79</span> monographs</p>
+              <ul class="lp-checks" role="list">
+                <li>Search by generic or brand name</li>
+                <li>Browse by medication class</li>
+                <li>Doses, interactions and warnings in one place</li>
+              </ul>
+              <div class="lp-card__links">
+                <a class="lp-text-link" href="/browse">Browse the drug library</a>
+              </div>
+            </article>
+            <article class="lp-card">
+              <h3 class="lp-card__title">Clinical calculators</h3>
+              <p class="lp-card__meta">Open to everyone</p>
+              <ul class="lp-checks" role="list">
+                <li>QTc by Bazett, Fridericia, Framingham or Hodges</li>
+                <li>Benzodiazepine doses for alcohol withdrawal</li>
+                <li>No account needed</li>
+              </ul>
+              <div class="lp-card__links">
+                <a class="lp-text-link" href="/qtc">QTc calculator</a>
+                <a class="lp-text-link" href="/formulas">Alcohol withdrawal</a>
+              </div>
+            </article>
+            <article class="lp-card">
+              <h3 class="lp-card__title">Ask My Notes</h3>
+              <p class="lp-card__meta">For members</p>
+              <ul class="lp-checks" role="list">
+                <li>Ask about a concept, drug, dose or mechanism</li>
+                <li>Answers come from curated notes and PDFs</li>
+                <li>Each answer shows which note it came from</li>
+              </ul>
+              <div class="lp-card__links">
+                <a class="lp-text-link" href="/library">Ask a question</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="lp-section lp-classes" aria-labelledby="classesTitle">
+        <div class="lp-container lp-split">
+          <div class="lp-split__intro lp-prose">
+            <h2 class="lp-h2" id="classesTitle">Browse by class</h2>
+            <p><span data-drug-count>79</span> monographs across <span data-class-count>6</span> medication classes, with more being added.</p>
+          </div>
+          <ul class="lp-class-list" id="classList" role="list">
+            <li><a href="/library?class=Antipsychotics"><span class="lp-class-list__name">Antipsychotics</span><span class="lp-class-list__count">27 drugs</span></a></li>
+            <li><a href="/library?class=Antidepressants"><span class="lp-class-list__name">Antidepressants</span><span class="lp-class-list__count">20 drugs</span></a></li>
+            <li><a href="/library?class=Anxiolytic%20and%20hypnotic%20medications"><span class="lp-class-list__name">Anxiolytics and hypnotics</span><span class="lp-class-list__count">16 drugs</span></a></li>
+            <li><a href="/library?class=Dementia%20medications"><span class="lp-class-list__name">Dementia medications</span><span class="lp-class-list__count">8 drugs</span></a></li>
+            <li><a href="/library?class=ADHD%20medications"><span class="lp-class-list__name">ADHD medications</span><span class="lp-class-list__count">7 drugs</span></a></li>
+            <li><a href="/library?class=Mood%20stabilizers%20and%20Anticonvulsants"><span class="lp-class-list__name">Mood stabilizers and anticonvulsants</span><span class="lp-class-list__count">1 drug so far</span></a></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="lp-pause" id="breathe" aria-labelledby="pauseTitle">
+        <div class="lp-container lp-pause__grid">
+          <div class="lp-prose">
+            <h2 class="lp-h2" id="pauseTitle">Take a <em>slow</em> breath.</h2>
+            <p>Psychiatry asks a lot of the people who practise it. Breathe in as the light grows, and out as it fades.</p>
+            <div class="lp-breath" aria-hidden="true">
+              <div class="lp-breath__ring"></div>
+              <span class="lp-breath__cue lp-breath__cue--in">Breathe in</span>
+              <span class="lp-breath__cue lp-breath__cue--out">Breathe out</span>
+              <span class="lp-breath__cue lp-breath__cue--still">In for four, out for six</span>
+            </div>
+            <p class="lp-visually-hidden">Breathing guide: breathe in for four seconds, then out for six.</p>
+            <button class="lp-motion-toggle" type="button" id="motionToggle">Pause motion</button>
+          </div>
+          <figure class="lp-pause__media" aria-hidden="true">
+            <img
+              src="/assets/landing/window-figure-900.webp"
+              srcset="/assets/landing/window-figure-600.webp 600w, /assets/landing/window-figure-900.webp 900w, /assets/landing/window-figure-1200.webp 1200w"
+              sizes="(min-width: 961px) 40vw, 92vw"
+              alt=""
+              width="900"
+              height="1350"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="lp-pause__glow"></div>
+          </figure>
+        </div>
+      </section>
+
+      <section class="lp-section lp-about" id="about" aria-labelledby="aboutTitle">
+        <div class="lp-container lp-about__grid">
+          <figure class="lp-about__media" aria-hidden="true">
+            <img
+              src="/assets/landing/window-light-900.webp"
+              srcset="/assets/landing/window-light-600.webp 600w, /assets/landing/window-light-900.webp 900w, /assets/landing/window-light-1200.webp 1200w"
+              sizes="(min-width: 961px) 38vw, 92vw"
+              alt=""
+              width="900"
+              height="1603"
+              loading="lazy"
+              decoding="async"
+            />
+          </figure>
+          <div class="lp-prose">
+            <h2 class="lp-h2" id="aboutTitle">A reference that <em>stays out of your way.</em></h2>
+            <p>Psychopharmacology is dense, and the detail you need is easy to lose between textbooks, guidelines and lecture notes.</p>
+            <p>Psychiatry Made Easy is a focused drug reference designed for fast scanning, comparison, and clinical study. Every medicine follows the same outline, so you can check a dose before a ward round or revise a receptor profile before an exam.</p>
+            <p>It is clinician-built and still growing, with new monographs and tools added over time.</p>
+            <!-- TODO: add the founder's name and credentials here -->
+          </div>
+        </div>
+      </section>
+
+      <section class="lp-section lp-plans" id="plans" aria-labelledby="plansTitle">
+        <div class="lp-container">
+          <h2 class="lp-h2" id="plansTitle">Start with a <em>free</em> account.</h2>
+          <div class="lp-cards lp-cards--two">
+            <article class="lp-card lp-card--featured">
+              <h3 class="lp-card__title">Free account</h3>
+              <p class="lp-card__meta">Available now</p>
+              <ul class="lp-checks" role="list">
+                <li>Every drug monograph</li>
+                <li>Ask My Notes</li>
+                <li>Clinical calculators</li>
+              </ul>
+              <div class="lp-card__links">
+                <a class="lp-button" href="/register" data-guest>Create free account</a>
+                <a class="lp-button" href="/library" data-member hidden>Open the library</a>
+              </div>
+            </article>
+            <article class="lp-card">
+              <h3 class="lp-card__title">Subscription</h3>
+              <p class="lp-card__meta">Coming soon</p>
+              <p class="lp-card__text">Paid plans are on the way. Pricing and what's included will be listed here.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="lp-section lp-faq" aria-labelledby="faqTitle">
+        <div class="lp-container lp-split">
+          <h2 class="lp-h2" id="faqTitle">Questions</h2>
+          <div class="lp-faq__list">
+            <details>
+              <summary>Is this medical advice?</summary>
+              <p>No. Psychiatry Made Easy is an educational reference. Verify all drug information against current prescribing information, local protocols, and clinical judgment.</p>
+            </details>
+            <details>
+              <summary>Who is it for?</summary>
+              <p>Medical students, psychiatry trainees and clinicians who want quick, structured answers about psychiatric medicines.</p>
+            </details>
+            <details>
+              <summary>What can I use without an account?</summary>
+              <p>The calculators and the drug library browser are open to everyone. Full monographs and Ask My Notes need a free account.</p>
+            </details>
+            <details>
+              <summary>Will more drugs be added?</summary>
+              <p>Yes. New monographs are added over time, and the numbers on this page update as they are.</p>
+            </details>
+          </div>
+        </div>
       </section>
     </main>
 
-    <footer class="dashboard-footer">
-      <p>Educational reference only. Verify all drug information against current prescribing information, local protocols, and clinical judgment.</p>
+    <footer class="lp-footer">
+      <div class="lp-container lp-footer__grid">
+        <div>
+          <a class="lp-brand" href="/" aria-label="Psychiatry Made Easy home">
+            <img src="/assets/landing/logo-mark-64.png" srcset="/assets/landing/logo-mark-64.png 1x, /assets/landing/logo-mark-128.png 2x" alt="" width="32" height="32" />
+            <span class="lp-brand__name">Psychiatry <em>Made Easy</em></span>
+          </a>
+          <p class="lp-footer__note">Educational reference only. Verify all drug information against current prescribing information, local protocols, and clinical judgment.</p>
+        </div>
+        <nav class="lp-footer__nav" aria-label="Footer">
+          <a href="/browse">Drug library</a>
+          <a href="/formulas">Formulas</a>
+          <a href="/qtc">QTc calculator</a>
+          <a href="/login">Log in</a>
+          <a href="/register">Create free account</a>
+        </nav>
+      </div>
     </footer>
   </body>
 </html>

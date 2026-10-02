@@ -1,6 +1,8 @@
 {
   "version": 2,
   "rewrites": [
+    { "source": "/browse", "destination": "/browse.html" },
+    { "source": "/browse/", "destination": "/browse.html" },
     { "source": "/library", "destination": "/api/pages/library" },
     { "source": "/library/", "destination": "/api/pages/library" },
     { "source": "/formulas", "destination": "/formulas.html" },

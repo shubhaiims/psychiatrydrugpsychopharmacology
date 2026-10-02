@@ -3,11 +3,11 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Psychiatry Made Easy clinical formula calculators." />
-    <title>Formulas - Psychiatry Made Easy</title>
+    <meta name="description" content="A clinician-built psychopharmacology reference. Search drug monographs by name or class." />
+    <title>Psychiatry Made Easy - Psychopharmacology Reference</title>
     <link rel="icon" href="/assets/psychiatry-made-easy-logo.png" />
     <link rel="stylesheet" href="/styles.css" />
-    <script src="/formulas.js" defer></script>
+    <script src="/home.js" defer></script>
   </head>
   <body class="dashboard-page">
     <a class="dashboard-skip-link" href="#main">Skip to content</a>
@@ -19,7 +19,7 @@
       </div>
 
       <nav class="dashboard-sidebar__nav">
-        <a href="/browse" class="dashboard-nav-item">Home</a>
+        <a href="/browse" class="dashboard-nav-item is-active">Home</a>
 
         <div class="dashboard-nav-group">
           <div class="dashboard-nav-split">
@@ -40,22 +40,22 @@
 
         <div class="dashboard-nav-group">
           <div class="dashboard-nav-split">
-            <a href="/formulas" class="dashboard-nav-item dashboard-nav-item--split-link is-active">Formulas</a>
-            <button class="dashboard-nav-arrow" id="formulaToggle" type="button" aria-expanded="true" aria-controls="formulaSubgroup" aria-label="Toggle Formulas menu">
+            <a href="/formulas" class="dashboard-nav-item dashboard-nav-item--split-link">Formulas</a>
+            <button class="dashboard-nav-arrow" id="formulaToggle" type="button" aria-expanded="false" aria-controls="formulaSubgroup" aria-label="Toggle Formulas menu">
               <span class="dashboard-chevron" aria-hidden="true"></span>
             </button>
           </div>
-          <div class="dashboard-nav-subgroup" id="formulaSubgroup">
-            <a href="/formulas#alcoholDoseCalculator" class="is-active">Alcohol dose calculator</a>
+          <div class="dashboard-nav-subgroup" id="formulaSubgroup" hidden>
+            <a href="/formulas#alcoholDoseCalculator">Alcohol dose calculator</a>
             <a href="/qtc.html">QTc calculator</a>
           </div>
         </div>
-        <a href="/#about" class="dashboard-nav-item">About</a>
+        <a href="#about" class="dashboard-nav-item">About</a>
       </nav>
 
       <div class="dashboard-sidebar__footer">
         <a href="/library" class="dashboard-nav-item" data-requires-auth hidden>Account</a>
-        <a href="/#disclaimerBanner" class="dashboard-nav-item dashboard-nav-item--muted">Disclaimer</a>
+        <a href="#disclaimerBanner" class="dashboard-nav-item dashboard-nav-item--muted">Disclaimer</a>
       </div>
     </aside>
     <div class="dashboard-sidebar-scrim" id="sidebarScrim" hidden></div>
@@ -68,7 +68,12 @@
         <img src="/assets/psychiatry-made-easy-logo.png" alt="" class="dashboard-brand-mark" />
       </a>
 
-      <div class="dashboard-topbar__title">Formulas</div>
+      <div class="dashboard-search" role="search">
+        <span class="dashboard-search__icon" aria-hidden="true"></span>
+        <input id="drugSearch" type="search" placeholder="Search drug monographs..." autocomplete="off" aria-label="Search drugs" aria-expanded="false" aria-controls="searchResults" />
+        <div class="dashboard-search__results" id="searchResults" role="listbox" hidden></div>
+      </div>
+
       <div class="dashboard-topbar__auth" id="authArea">
         <a href="/login" class="dashboard-btn dashboard-btn--ghost">Log in</a>
         <a href="/register" class="dashboard-btn dashboard-btn--primary">Register</a>
@@ -76,41 +81,22 @@
     </header>
 
     <main class="dashboard-main" id="main">
-      <section class="dashboard-page-head">
-        <h1>Formulas</h1>
-        <p class="dashboard-lede">Clinical calculation tools for Psychiatry Made Easy.</p>
+      <section class="library-browse" aria-labelledby="browseHead">
+        <h1 id="browseHead">Browse the drug library</h1>
+        <p>Search by drug name above, or choose a medication class.</p>
+        <div class="dashboard-chip-grid" id="classChips">
+          <a class="dashboard-chip dashboard-chip--all" href="/library">All drugs</a>
+        </div>
       </section>
 
-      <section class="dashboard-card dashboard-formula-card" id="alcoholDoseCalculator" aria-labelledby="alcoholDoseCalculatorHead">
-        <header class="dashboard-card__head">
-          <h2 id="alcoholDoseCalculatorHead">Alcohol Withdrawal Benzodiazepine Dose Calculator</h2>
-        </header>
-        <form class="dashboard-dose-calculator" id="benzodiazepineCalculator">
-          <div class="dashboard-calculator-fields">
-            <label>
-              <span>Alcohol volume V (mL)</span>
-              <input id="alcoholVolume" type="number" inputmode="decimal" min="0" step="any" placeholder="Enter mL per day" />
-            </label>
-            <label>
-              <span>Alcohol percentage P (%)</span>
-              <input id="alcoholPercentage" type="number" inputmode="decimal" min="0" max="100" step="any" placeholder="Enter percentage" />
-            </label>
-          </div>
-          <div class="dashboard-calculator-results" aria-live="polite">
-            <div class="dashboard-calculator-result" id="chlordiazepoxideDose">
-              <span>Chlordiazepoxide single dose QID</span>
-              <strong>-- mg</strong>
-            </div>
-            <div class="dashboard-calculator-result" id="diazepamDose">
-              <span>Diazepam single dose QID</span>
-              <strong>-- mg</strong>
-            </div>
-            <div class="dashboard-calculator-result" id="lorazepamDose">
-              <span>Lorazepam single dose QID</span>
-              <strong>-- mg</strong>
-            </div>
-          </div>
-        </form>
+      <aside class="dashboard-disclaimer" id="disclaimerBanner" hidden>
+        <p><strong>Educational reference only.</strong> Verify all drug information against current prescribing information, local protocols, and clinical judgment.</p>
+        <button class="dashboard-icon-btn" id="dismissDisclaimer" type="button" aria-label="Dismiss disclaimer">&times;</button>
+      </aside>
+
+      <section class="dashboard-about" id="about" aria-labelledby="aboutHead">
+        <h2 id="aboutHead">About</h2>
+        <p>Psychiatry Made Easy is a focused drug reference designed for fast scanning, comparison, and clinical study.</p>
       </section>
     </main>
 

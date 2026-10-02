@@ -7,6 +7,7 @@ const files = [
   "public/home.js",
   "public/formulas.js",
   "public/qtc.js",
+  "public/landing.js",
   "server/index.js",
   "server/drug-model.js",
   "server/dashboard.js",

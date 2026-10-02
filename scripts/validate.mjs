@@ -2,6 +2,9 @@ import { readFile } from "node:fs/promises";
 
 const requiredFiles = [
   "public/index.html",
+  "public/browse.html",
+  "public/landing.css",
+  "public/landing.js",
   "public/login.html",
   "public/register.html",
   "public/forgot-password.html",
@@ -57,6 +60,7 @@ for (const drug of drugs) {
 
 const browserFiles = [
   "public/index.html",
+  "public/browse.html",
   "public/login.html",
   "public/register.html",
   "public/forgot-password.html",
@@ -64,7 +68,8 @@ const browserFiles = [
   "public/admin-login.html",
   "public/app.js",
   "public/admin.js",
-  "public/auth.js"
+  "public/auth.js",
+  "public/landing.js"
 ];
 for (const file of browserFiles) {
   const browserSource = await readFile(file, "utf8");
@@ -75,20 +80,29 @@ for (const file of browserFiles) {
 
 JSON.parse(await readFile("vercel.json", "utf8"));
 
+// "/" is the public landing page; the browse experience lives at "/browse"
 const homepage = await readFile("public/index.html", "utf8");
-if (/href=["']\/admin(?:\/login)?["']/i.test(homepage)) {
-  throw new Error("The public homepage must not expose an admin login link.");
+const browsePage = await readFile("public/browse.html", "utf8");
+
+for (const [file, page] of [["public/index.html", homepage], ["public/browse.html", browsePage]]) {
+  if (/href=["']\/admin(?:\/login)?["']/i.test(page)) {
+    throw new Error(`${file} must not expose an admin login link.`);
+  }
+
+  if (/dashboard-page-head|dashboard-stats|dashboard-grid-2|statUpdated|recentUpdatesCard|bookmarksCard|Last updated|Recently updated/i.test(page)) {
+    throw new Error(`${file} must not include dashboard summaries or update dates.`);
+  }
 }
 
-if (/dashboard-page-head|dashboard-stats|dashboard-grid-2|statUpdated|recentUpdatesCard|bookmarksCard|Last updated|Recently updated/i.test(homepage)) {
-  throw new Error("The public homepage must not include dashboard summaries or update dates.");
+if (!/<h1[^>]*>Browse the drug library<\/h1>/i.test(browsePage) || !/id=["']classChips["']/i.test(browsePage)) {
+  throw new Error("The browse page must retain the drug-library browse experience.");
 }
 
-if (!/<h1[^>]*>Browse the drug library<\/h1>/i.test(homepage) || !/id=["']classChips["']/i.test(homepage)) {
-  throw new Error("The public homepage must retain the drug-library browse experience.");
+if (!/href=["']\/browse["']/i.test(homepage)) {
+  throw new Error("The public homepage must link to the drug-library browse page.");
 }
 
-for (const file of ["public/index.html", "public/formulas.html", "public/qtc.html"]) {
+for (const file of ["public/index.html", "public/browse.html", "public/formulas.html", "public/qtc.html"]) {
   const page = await readFile(file, "utf8");
   if (/recentUpdatesCard|bookmarksCard|>\s*(?:Dashboard|Updates|Bookmarks)\s*</i.test(page)) {
     throw new Error(`${file} must not expose removed dashboard navigation.`);
