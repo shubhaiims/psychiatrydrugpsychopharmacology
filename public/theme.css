@@ -1,0 +1,187 @@
+/* Landing-page palette and type for the app pages. Loaded after styles.css; colors and fonts only. */
+
+@font-face {
+  font-family: "Newsreader";
+  src: url("/assets/fonts/newsreader-roman.woff2") format("woff2");
+  font-weight: 300 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Newsreader";
+  src: url("/assets/fonts/newsreader-italic.woff2") format("woff2");
+  font-weight: 300 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Atkinson Hyperlegible Next";
+  src: url("/assets/fonts/atkinson-next.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --bg: #181512;
+  --surface: #1d1a16;
+  --surface-soft: #231f1b;
+  --surface-lift: #2a2520;
+  --ink: #eee6da;
+  --muted: #a69b8c;
+  --line: rgba(238, 230, 218, 0.13);
+  --line-strong: rgba(238, 230, 218, 0.24);
+  --accent: #e49b5a;
+  --accent-dark: #c9844a;
+  --teal: #c4a16c;
+  --silver: #d3c9bb;
+  --red: #e8806f;
+  --focus: 0 0 0 3px rgba(228, 155, 90, 0.35);
+  --theme-serif: "Newsreader", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
+  --theme-sans: "Atkinson Hyperlegible Next", "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+.dashboard-page {
+  --dashboard-bg: #181512;
+  --dashboard-surface: #1f1b17;
+  --dashboard-surface-2: #262119;
+  --dashboard-border: rgba(238, 230, 218, 0.12);
+  --dashboard-text: #eee6da;
+  --dashboard-muted: #a69b8c;
+  --dashboard-accent: #e49b5a;
+  --dashboard-accent-hover: #efb27c;
+  --dashboard-accent-soft: rgba(228, 155, 90, 0.12);
+  --dashboard-teal: #c4a16c;
+}
+
+body {
+  background: var(--bg);
+  font-family: var(--theme-sans);
+}
+
+.qtc-tool {
+  font-family: var(--theme-sans);
+}
+
+/* Serif headings, matching the front page */
+.auth-form-shell h1,
+.detail-title,
+.library-browse h1,
+.qtc-tool__head h1,
+.dashboard-main h1,
+.notebook-search-header h2,
+.info-section h2,
+.dashboard-card__head h2,
+.dashboard-about h2,
+.brand-name,
+.dashboard-brand-name {
+  font-family: var(--theme-serif);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  text-transform: none;
+  font-synthesis: none;
+}
+
+.auth-form-shell h1,
+.detail-title {
+  color: var(--ink);
+}
+
+.dashboard-card__head h2,
+.dashboard-about h2 {
+  font-size: 1.2rem;
+}
+
+/* Hard-coded colors in styles.css that tokens don't reach */
+.auth-links a {
+  color: #efb27c;
+}
+
+.tag {
+  border-color: rgba(196, 161, 108, 0.4);
+  background: rgba(196, 161, 108, 0.1);
+  color: #e2c79c;
+}
+
+.notebook-result,
+.source-list-item {
+  background: var(--surface-soft);
+}
+
+.notebook-result p,
+.update-card p,
+.info-section li,
+.dose-grid span {
+  color: var(--silver);
+}
+
+.primary-button:hover,
+.topbar-link:hover {
+  background: #efb27c;
+  border-color: #efb27c;
+}
+
+/* Navy and teal panels from the old palette */
+.dashboard-topbar {
+  background: rgba(24, 21, 18, 0.88);
+}
+
+.side-menu-toggle,
+.dose-calculator,
+.calculator-result,
+.library-panel,
+.detail-panel,
+.editor-sidebar,
+.editor-form {
+  background: rgba(31, 27, 23, 0.96);
+}
+
+.auth-card {
+  background:
+    radial-gradient(circle at top right, rgba(196, 161, 108, 0.12), transparent 34%),
+    radial-gradient(circle at bottom left, rgba(228, 155, 90, 0.1), transparent 38%),
+    rgba(31, 27, 23, 0.96);
+}
+
+.toolbar {
+  background:
+    linear-gradient(180deg, rgba(196, 161, 108, 0.08), rgba(31, 27, 23, 0)),
+    radial-gradient(circle at top left, rgba(228, 155, 90, 0.1), transparent 42%);
+}
+
+.notebook-search-panel {
+  border-color: rgba(196, 161, 108, 0.3);
+  background:
+    radial-gradient(circle at top right, rgba(196, 161, 108, 0.1), transparent 32%),
+    rgba(31, 27, 23, 0.96);
+}
+
+.topbar {
+  background: rgba(24, 21, 18, 0.92);
+}
+
+input,
+select,
+textarea {
+  background: #13110f;
+}
+
+/* Teal borders become brass */
+.side-menu-toggle,
+.dose-calculator,
+.calculator-result,
+.auth-card,
+.auth-form-shell,
+.library-panel,
+.notebook-answer {
+  border-color: rgba(196, 161, 108, 0.3);
+}
+
+.detail-hero {
+  background:
+    radial-gradient(circle at top right, rgba(228, 155, 90, 0.12), transparent 34%),
+    linear-gradient(135deg, rgba(196, 161, 108, 0.07), transparent 42%),
+    var(--surface);
+}

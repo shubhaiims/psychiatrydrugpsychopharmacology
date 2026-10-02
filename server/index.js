@@ -55,6 +55,7 @@ const staticFiles = new Set([
   "assets/qtc-ecg-reference.png",
   // Landing page assets
   "landing.css",
+  "theme.css",
   "landing.js",
   "assets/fonts/newsreader-roman.woff2",
   "assets/fonts/newsreader-italic.woff2",
