@@ -151,7 +151,7 @@
 
   function safeNextPath(fallback) {
     const next = new URLSearchParams(window.location.search).get("next");
-    return ["/library", "/subscribe"].includes(next) ? next : fallback;
+    return ["/library", "/subscribe", "/account"].includes(next) ? next : fallback;
   }
 
   function clearFragment() {

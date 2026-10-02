@@ -1,3 +1,4 @@
+import { getAccount, updateAccount } from "../../server/account.js";
 import {
   establishRedirectSession,
   getCurrentUser,
@@ -8,7 +9,9 @@ import {
   resetPassword
 } from "../../server/auth.js";
 import { methodNotAllowed, readJsonBody, sendError, sendJson } from "../../server/http.js";
+import { listMembers } from "../../server/members.js";
 
+// Also serves /api/account and /api/admin/members (see vercel.json) to stay within Vercel's 12-function limit
 export default async function handler(request, response) {
   const action = getRouteAction(request);
 
@@ -57,6 +60,24 @@ export default async function handler(request, response) {
     if (action === "me") {
       if (request.method !== "GET") return methodNotAllowed(response, ["GET"]);
       sendJson(response, 200, await getCurrentUser(request, response));
+      return;
+    }
+
+    if (action === "account") {
+      if (request.method === "GET") {
+        sendJson(response, 200, await getAccount(request, response));
+        return;
+      }
+      if (request.method === "PATCH") {
+        sendJson(response, 200, await updateAccount(request, response));
+        return;
+      }
+      return methodNotAllowed(response, ["GET", "PATCH"]);
+    }
+
+    if (action === "members") {
+      if (request.method !== "GET") return methodNotAllowed(response, ["GET"]);
+      sendJson(response, 200, await listMembers(request, response));
       return;
     }
 

@@ -437,7 +437,7 @@ function normalizeEmail(value) {
   return email;
 }
 
-function normalizeFullName(value) {
+export function normalizeFullName(value) {
   const fullName = String(value || "").trim().replace(/\s+/g, " ");
   if (fullName.length < 2 || fullName.length > 120) {
     throw httpError(400, "Enter your full name.");
@@ -457,7 +457,7 @@ function validatePasswordPair(passwordInput, confirmationInput) {
   return password;
 }
 
-function toPublicUser(user = {}) {
+export function toPublicUser(user = {}) {
   const fullName = String(user.user_metadata?.full_name || user.user_metadata?.name || "").trim();
   return {
     id: String(user.id || ""),

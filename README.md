@@ -13,8 +13,10 @@ The public landing page is at `/`, and the public drug-library browse page is at
 - `/forgot-password` - password recovery request
 - `/reset-password` - password update after a Supabase recovery link
 - `/library` - authenticated drug library and Ask My Notes
+- `/subscribe` - membership page with Razorpay checkout
+- `/account` - signed-in account page: name, membership status, password reset email, log out
 - `/admin/login` - separate admin login
-- `/admin` - authenticated and database-authorized Admin Drug Editor
+- `/admin` - authenticated and database-authorized Admin Drug Editor, including a read-only Members list
 
 ## Preserved Editor Features
 
@@ -66,6 +68,13 @@ Members pay through Razorpay Checkout on `/subscribe`. Each payment adds `MEMBER
 - `PAYWALL_ENABLED=true` makes `/library`, the drug APIs and Ask My Notes members-only; admins always have access
 - Only `/subscribe` allows Razorpay in its Content-Security-Policy
 - Apply `supabase/migrations/202610020001_memberships_and_payments.sql` before turning payments on
+
+## Account and Members API
+
+- `GET /api/account` returns the signed-in user's name, email, role and membership status. `PATCH /api/account` with `{ "fullName": "..." }` changes the name; the existing database trigger copies it into `public.profiles`.
+- `GET /api/admin/members` (admins only) returns the newest 500 profiles with each member's access end date.
+
+Vercel's free plan allows 12 serverless functions per deployment, and `api/` is already at 12. These two routes are served by `api/auth/[action].js` through rewrites in `vercel.json` instead of getting their own files. `npm run build` fails if `api/` grows past 12 files.
 
 ## Database Migrations
 

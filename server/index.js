@@ -15,9 +15,11 @@ import {
   requireUser,
   resetPassword
 } from "./auth.js";
+import { getAccount, updateAccount } from "./account.js";
 import { methodNotAllowed, readJsonBody, sendError, sendJson } from "./http.js";
 import { createOrder, getMembershipStatus, getPublicBillingInfo, requireMember, verifyPayment } from "./billing.js";
 import { getDashboardData } from "./dashboard.js";
+import { listMembers } from "./members.js";
 import { createNotebookSource, deleteNotebookSource, listNotebookSources, searchNotebook } from "./notebook-store.js";
 import { serveAdminPage, serveLibraryPage } from "./pages.js";
 import { createDrug, deleteDrug, hasSupabaseConfig, listDrugs, replaceDrugs, updateDrug } from "./store.js";
@@ -33,6 +35,8 @@ const pageRoutes = new Map([
   ["/browse", "browse.html"],
   ["/subscribe", "subscribe.html"],
   ["/subscribe/", "subscribe.html"],
+  ["/account", "account.html"],
+  ["/account/", "account.html"],
   ["/browse/", "browse.html"],
   ["/formulas", "formulas.html"],
   ["/formulas/", "formulas.html"],
@@ -61,6 +65,7 @@ const staticFiles = new Set([
   "theme.css",
   "landing.js",
   "subscribe.js",
+  "account.js",
   "assets/fonts/newsreader-roman.woff2",
   "assets/fonts/newsreader-italic.woff2",
   "assets/fonts/atkinson-next.woff2",
@@ -170,6 +175,24 @@ async function routeApi(request, response, url) {
   if (url.pathname === "/api/auth/me") {
     if (method !== "GET") return methodNotAllowed(response, ["GET"]);
     sendJson(response, 200, await getCurrentUser(request, response));
+    return;
+  }
+
+  if (url.pathname === "/api/account") {
+    if (method === "GET") {
+      sendJson(response, 200, await getAccount(request, response));
+      return;
+    }
+    if (method === "PATCH") {
+      sendJson(response, 200, await updateAccount(request, response));
+      return;
+    }
+    return methodNotAllowed(response, ["GET", "PATCH"]);
+  }
+
+  if (url.pathname === "/api/admin/members") {
+    if (method !== "GET") return methodNotAllowed(response, ["GET"]);
+    sendJson(response, 200, await listMembers(request, response));
     return;
   }
 

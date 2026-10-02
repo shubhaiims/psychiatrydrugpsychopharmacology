@@ -1122,8 +1122,14 @@ p {
   padding-block: 160px 120px;
 }
 
-.lp-sub-page .lp-header__actions {
+.lp-sub-page .lp-header__actions,
+.lp-page .lp-header__actions {
   margin-left: auto;
+}
+
+/* Without this the logo is squeezed away when the header link is long */
+.lp-page .lp-brand {
+  flex-shrink: 0;
 }
 
 .lp-sub__card {
@@ -1177,6 +1183,98 @@ button.lp-button:disabled {
 
 @media (max-width: 960px) {
   .lp-sub {
+    grid-template-columns: minmax(0, 1fr);
+    padding-top: 120px;
+  }
+}
+
+/* Account page */
+
+.lp-account {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: clamp(40px, 7vw, 112px);
+  align-items: start;
+  padding-block: 160px 120px;
+}
+
+.lp-account__stack {
+  display: grid;
+  gap: 16px;
+  max-width: 520px;
+}
+
+.lp-account__loading {
+  color: var(--ash);
+}
+
+.lp-account__text {
+  color: var(--parchment-soft);
+}
+
+.lp-account__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.lp-account__status {
+  min-height: 1.5em;
+  margin: 16px 0 0;
+  color: var(--parchment-soft);
+  font-size: 0.95rem;
+}
+
+.lp-account__status.is-error {
+  color: #ef9f8c;
+}
+
+.lp-account__badge {
+  display: inline-block;
+  margin: 0 0 22px;
+  padding: 3px 14px;
+  border: 1px solid rgba(196, 161, 108, 0.5);
+  border-radius: 999px;
+  color: var(--brass);
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.lp-field {
+  display: block;
+  margin: 0 0 20px;
+}
+
+.lp-field__label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--ash);
+  font-size: 0.9rem;
+}
+
+.lp-field__input {
+  width: 100%;
+  min-height: 50px;
+  padding: 0 16px;
+  border: 1px solid var(--line-strong);
+  border-radius: 12px;
+  background: rgba(238, 230, 218, 0.04);
+  color: var(--parchment);
+  font: inherit;
+}
+
+.lp-field__input:focus {
+  border-color: var(--amber);
+}
+
+.lp-field__static {
+  margin: 0;
+  color: var(--parchment);
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 960px) {
+  .lp-account {
     grid-template-columns: minmax(0, 1fr);
     padding-top: 120px;
   }

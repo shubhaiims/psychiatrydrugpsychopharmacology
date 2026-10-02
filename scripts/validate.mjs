@@ -1,4 +1,4 @@
-import { readFile } from "node:fs/promises";
+import { readdir, readFile } from "node:fs/promises";
 
 const requiredFiles = [
   "public/index.html",
@@ -7,6 +7,8 @@ const requiredFiles = [
   "public/landing.js",
   "public/subscribe.html",
   "public/subscribe.js",
+  "public/account.html",
+  "public/account.js",
   "public/login.html",
   "public/register.html",
   "public/forgot-password.html",
@@ -19,6 +21,8 @@ const requiredFiles = [
   "server/library.html",
   "server/admin.html",
   "server/index.js",
+  "server/account.js",
+  "server/members.js",
   "api/health.js",
   "server/data/drugs.json",
   "supabase/schema.sql",
@@ -74,7 +78,9 @@ const browserFiles = [
   "public/auth.js",
   "public/landing.js",
   "public/subscribe.html",
-  "public/subscribe.js"
+  "public/subscribe.js",
+  "public/account.html",
+  "public/account.js"
 ];
 for (const file of browserFiles) {
   const browserSource = await readFile(file, "utf8");
@@ -149,6 +155,32 @@ for (const file of activeSqlFiles) {
   const sql = await readFile(file, "utf8");
   if (/\buser_otps\b|\buser_profiles\b|\botp_hash\b|\bphone\s+text\b/i.test(sql)) {
     throw new Error(`Legacy mobile OTP storage found in active SQL: ${file}`);
+  }
+}
+
+// Vercel's free plan allows 12 serverless functions; extra routes go through an existing [action].js
+const functionFiles = (await readdir("api", { recursive: true })).filter((file) => file.endsWith(".js"));
+if (functionFiles.length > 12) {
+  throw new Error(`api/ has ${functionFiles.length} functions but Vercel's free plan allows 12. Serve new routes from an existing [action].js handler.`);
+}
+
+// Pages that run under the strict Content-Security-Policy and must stay public-safe
+const strictPages = [
+  "public/account.html"
+];
+for (const file of strictPages) {
+  const page = await readFile(file, "utf8");
+  if (/<script(?![^>]*\ssrc=)/i.test(page) || /<style[\s>]/i.test(page) || /\sstyle=["']/i.test(page)) {
+    throw new Error(`${file} must not use inline scripts or styles.`);
+  }
+  if (/(?:src|href|action)=["']https?:\/\//i.test(page)) {
+    throw new Error(`${file} must not load or link to external hosts.`);
+  }
+  if (/href=["']\/admin(?:\/login)?["']/i.test(page)) {
+    throw new Error(`${file} must not expose an admin link.`);
+  }
+  if (/Last updated|Recently updated|Last reviewed/i.test(page)) {
+    throw new Error(`${file} must not show update or review dates.`);
   }
 }
 

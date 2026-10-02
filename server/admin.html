@@ -117,6 +117,30 @@
             </div>
           </form>
         </section>
+
+        <section class="members-panel" id="membersView" aria-labelledby="membersHeading">
+          <div class="members-head">
+            <div>
+              <p class="eyebrow">Members</p>
+              <h2 id="membersHeading">Registered members</h2>
+            </div>
+            <p class="members-count" id="membersCount"></p>
+          </div>
+          <div class="members-scroll" id="membersScroll" hidden>
+            <table class="members-table">
+              <thead>
+                <tr>
+                  <th scope="col">Name</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Joined</th>
+                  <th scope="col">Membership</th>
+                </tr>
+              </thead>
+              <tbody id="membersBody"></tbody>
+            </table>
+          </div>
+          <p class="members-empty" id="membersEmpty" role="status">Loading members.</p>
+        </section>
       </main>
     </div>
 

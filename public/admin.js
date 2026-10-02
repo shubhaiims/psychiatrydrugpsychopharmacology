@@ -28,6 +28,10 @@
     sourceText: document.querySelector("#sourceText"),
     saveSourceButton: document.querySelector("#saveSourceButton"),
     sourceList: document.querySelector("#sourceList"),
+    membersCount: document.querySelector("#membersCount"),
+    membersScroll: document.querySelector("#membersScroll"),
+    membersBody: document.querySelector("#membersBody"),
+    membersEmpty: document.querySelector("#membersEmpty"),
     editorStatus: document.querySelector("#editorStatus"),
     drugForm: document.querySelector("#drugForm"),
     editDrugId: document.querySelector("#editDrugId"),
@@ -58,6 +62,7 @@
 
   let drugs = [];
   let sources = [];
+  let members = [];
   let selectedId = "";
   let adminReady = false;
 
@@ -156,6 +161,7 @@
       renderEditorLock();
       await loadDrugs();
       await loadNotebookSources();
+      await loadMembers();
     } catch (error) {
       adminReady = false;
       renderEditorLock();
@@ -199,6 +205,23 @@
       sources = [];
       renderSourceList();
       setStatus(error.message || "Unable to load notebook sources.", true);
+    }
+  }
+
+  async function loadMembers() {
+    if (!adminReady) {
+      members = [];
+      renderMembers("Admin authorization is required.");
+      return;
+    }
+
+    try {
+      const data = await api("/api/admin/members");
+      members = Array.isArray(data.members) ? data.members : [];
+      renderMembers();
+    } catch (error) {
+      members = [];
+      renderMembers(error.message || "Unable to load members.");
     }
   }
 
@@ -462,6 +485,32 @@
       updatedAt: today,
       lastReviewed: today
     };
+  }
+
+  function renderMembers(message = "") {
+    els.membersCount.textContent = members.length ? `${members.length.toLocaleString()} registered` : "";
+    els.membersScroll.hidden = !members.length;
+    els.membersEmpty.hidden = Boolean(members.length);
+    els.membersEmpty.textContent = message || "No members have registered yet.";
+    els.membersBody.innerHTML = members.map((member) => `
+      <tr>
+        <td>${escapeHtml(member.name || "No name")}</td>
+        <td>${escapeHtml(member.email)}</td>
+        <td>${escapeHtml(formatDate(member.joinedAt))}</td>
+        <td>${membershipLabel(member)}</td>
+      </tr>
+    `).join("");
+  }
+
+  function membershipLabel(member) {
+    if (member.active) return `<span class="members-active">Active until ${escapeHtml(formatDate(member.accessUntil))}</span>`;
+    return member.accessUntil ? `Expired ${escapeHtml(formatDate(member.accessUntil))}` : "None";
+  }
+
+  function formatDate(value) {
+    const date = new Date(value);
+    if (!value || Number.isNaN(date.getTime())) return "";
+    return date.toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" });
   }
 
   function renderSourceList() {

@@ -713,6 +713,16 @@ a:focus-visible {
   overflow-wrap: anywhere;
 }
 
+a.session-identity {
+  text-decoration: none;
+}
+
+a.session-identity:hover {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
 main {
   width: min(1480px, 100%);
   margin: 0 auto;
@@ -877,7 +887,8 @@ p {
 .library-panel,
 .detail-panel,
 .editor-sidebar,
-.editor-form {
+.editor-form,
+.members-panel {
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: rgba(9, 13, 16, 0.96);
@@ -1372,6 +1383,73 @@ button,
 
 .source-empty {
   margin: 0;
+}
+
+.members-panel {
+  margin-top: 20px;
+  padding: clamp(16px, 3vw, 24px);
+}
+
+.members-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: start;
+  margin-bottom: 14px;
+}
+
+.members-head h2 {
+  margin: 0;
+  color: var(--accent);
+  font-size: 1.2rem;
+}
+
+.members-count,
+.members-empty {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.members-scroll {
+  overflow-x: auto;
+}
+
+.members-table {
+  width: 100%;
+  min-width: 640px;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+.members-table th,
+.members-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+
+.members-table td:first-child {
+  overflow-wrap: anywhere;
+}
+
+.members-table td:nth-child(n + 2),
+.members-table th {
+  white-space: nowrap;
+}
+
+.members-table th {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 760;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.members-active {
+  color: var(--teal);
+  font-weight: 760;
 }
 
 .editor-status.is-danger {

@@ -134,7 +134,8 @@ body {
 .library-panel,
 .detail-panel,
 .editor-sidebar,
-.editor-form {
+.editor-form,
+.members-panel {
   background: rgba(31, 27, 23, 0.96);
 }
 

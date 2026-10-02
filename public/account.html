@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Manage your Psychiatry Made Easy account, membership and password." />
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#181512" />
+    <title>Your account | Psychiatry Made Easy</title>
+    <link rel="icon" href="/assets/psychiatry-made-easy-logo.png" />
+    <link rel="stylesheet" href="/landing.css" />
+    <script src="/account.js" defer></script>
+  </head>
+  <body class="lp lp-page">
+    <a class="lp-skip" href="#main">Skip to content</a>
+
+    <header class="lp-header is-solid">
+      <div class="lp-header__inner">
+        <a class="lp-brand" href="/" aria-label="Psychiatry Made Easy home">
+          <img src="/assets/landing/logo-mark-64.png" srcset="/assets/landing/logo-mark-64.png 1x, /assets/landing/logo-mark-128.png 2x" alt="" width="36" height="36" />
+          <span class="lp-brand__name">Psychiatry <em>Made Easy</em></span>
+        </a>
+        <div class="lp-header__actions">
+          <a class="lp-link" href="/browse">Drug library</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="lp-container lp-account">
+      <section class="lp-account__intro lp-prose" aria-labelledby="accountTitle">
+        <h1 class="lp-h2" id="accountTitle">Your <em>account.</em></h1>
+        <p>See your details, check your membership, and manage your password.</p>
+      </section>
+
+      <div class="lp-account__body">
+        <p class="lp-account__loading" id="accountLoading">Loading your account…</p>
+        <p class="lp-account__status is-error" id="accountError" role="alert" hidden></p>
+
+        <div class="lp-account__stack" id="accountCards" hidden>
+          <article class="lp-card" aria-labelledby="profileTitle">
+            <h2 class="lp-card__title" id="profileTitle">Profile</h2>
+            <p class="lp-card__meta">Your name and email</p>
+            <form id="nameForm" novalidate>
+              <label class="lp-field" for="fullName">
+                <span class="lp-field__label">Full name</span>
+                <input class="lp-field__input" id="fullName" name="fullName" type="text" autocomplete="name" minlength="2" maxlength="120" required />
+              </label>
+              <div class="lp-field">
+                <span class="lp-field__label">Email</span>
+                <p class="lp-field__static" id="accountEmail"></p>
+              </div>
+              <p class="lp-account__badge" id="adminNote" hidden>Admin</p>
+              <div class="lp-account__actions">
+                <button class="lp-button" type="submit" id="saveName">Save</button>
+              </div>
+              <p class="lp-account__status" id="nameStatus" role="status" aria-live="polite"></p>
+            </form>
+          </article>
+
+          <article class="lp-card" aria-labelledby="membershipTitle">
+            <h2 class="lp-card__title" id="membershipTitle">Membership</h2>
+            <p class="lp-card__meta" id="membershipSummary">Checking…</p>
+            <p class="lp-account__text" id="membershipNote" hidden></p>
+            <div class="lp-account__actions">
+              <a class="lp-button" href="/subscribe" id="membershipLink">Become a member</a>
+            </div>
+          </article>
+
+          <article class="lp-card" aria-labelledby="signinTitle">
+            <h2 class="lp-card__title" id="signinTitle">Sign-in</h2>
+            <p class="lp-card__meta">Password and log out</p>
+            <p class="lp-account__text">To change your password, we'll email you a link to choose a new one.</p>
+            <div class="lp-account__actions">
+              <button class="lp-button lp-button--ghost" type="button" id="resetButton">Send password reset email</button>
+              <button class="lp-button lp-button--ghost" type="button" id="logoutButton">Log out</button>
+            </div>
+            <p class="lp-account__status" id="signinStatus" role="status" aria-live="polite"></p>
+          </article>
+        </div>
+      </div>
+    </main>
+
+    <footer class="lp-footer">
+      <div class="lp-container lp-footer__grid">
+        <p class="lp-footer__note">Educational reference only. Verify all drug information against current prescribing information, local protocols, and clinical judgment.</p>
+        <nav class="lp-footer__nav" aria-label="Footer">
+          <a href="/">Home</a>
+          <a href="/browse">Drug library</a>
+          <a href="/formulas">Formulas</a>
+          <a href="/qtc">QTc calculator</a>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>

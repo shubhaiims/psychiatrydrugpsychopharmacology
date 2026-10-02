@@ -5,6 +5,10 @@
     { "source": "/browse/", "destination": "/browse.html" },
     { "source": "/subscribe", "destination": "/subscribe.html" },
     { "source": "/subscribe/", "destination": "/subscribe.html" },
+    { "source": "/account", "destination": "/account.html" },
+    { "source": "/account/", "destination": "/account.html" },
+    { "source": "/api/account", "destination": "/api/auth/account" },
+    { "source": "/api/admin/members", "destination": "/api/auth/members" },
     { "source": "/library", "destination": "/api/pages/library" },
     { "source": "/library/", "destination": "/api/pages/library" },
     { "source": "/formulas", "destination": "/formulas.html" },
@@ -39,6 +43,18 @@
     },
     {
       "source": "/admin/login",
+      "headers": [{ "key": "Cache-Control", "value": "no-store" }]
+    },
+    {
+      "source": "/account",
+      "headers": [{ "key": "Cache-Control", "value": "no-store" }]
+    },
+    {
+      "source": "/account/",
+      "headers": [{ "key": "Cache-Control", "value": "no-store" }]
+    },
+    {
+      "source": "/account.html",
       "headers": [{ "key": "Cache-Control", "value": "no-store" }]
     },
     {
