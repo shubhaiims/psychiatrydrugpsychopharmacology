@@ -16,6 +16,7 @@ import {
   resetPassword
 } from "./auth.js";
 import { methodNotAllowed, readJsonBody, sendError, sendJson } from "./http.js";
+import { createOrder, getMembershipStatus, getPublicBillingInfo, requireMember, verifyPayment } from "./billing.js";
 import { getDashboardData } from "./dashboard.js";
 import { createNotebookSource, deleteNotebookSource, listNotebookSources, searchNotebook } from "./notebook-store.js";
 import { serveAdminPage, serveLibraryPage } from "./pages.js";
@@ -30,6 +31,8 @@ const port = Number(process.env.PORT || 3000);
 const pageRoutes = new Map([
   ["/", "index.html"],
   ["/browse", "browse.html"],
+  ["/subscribe", "subscribe.html"],
+  ["/subscribe/", "subscribe.html"],
   ["/browse/", "browse.html"],
   ["/formulas", "formulas.html"],
   ["/formulas/", "formulas.html"],
@@ -57,6 +60,7 @@ const staticFiles = new Set([
   "landing.css",
   "theme.css",
   "landing.js",
+  "subscribe.js",
   "assets/fonts/newsreader-roman.woff2",
   "assets/fonts/newsreader-italic.woff2",
   "assets/fonts/atkinson-next.woff2",
@@ -76,7 +80,7 @@ const mimeTypes = new Map([
 ]);
 
 const server = createServer(async (request, response) => {
-  setSecurityHeaders(response);
+  setSecurityHeaders(response, request.url);
   try {
     const url = new URL(request.url || "/", `http://${request.headers.host || "localhost"}`);
     if (url.pathname.startsWith("/api/")) {
@@ -169,6 +173,33 @@ async function routeApi(request, response, url) {
     return;
   }
 
+  if (url.pathname === "/api/billing/plans") {
+    if (method !== "GET") return methodNotAllowed(response, ["GET"]);
+    sendJson(response, 200, getPublicBillingInfo());
+    return;
+  }
+
+  if (url.pathname === "/api/billing/status") {
+    if (method !== "GET") return methodNotAllowed(response, ["GET"]);
+    sendJson(response, 200, await getMembershipStatus(await requireUser(request, response)));
+    return;
+  }
+
+  if (url.pathname === "/api/billing/order") {
+    if (method !== "POST") return methodNotAllowed(response, ["POST"]);
+    assertMutationRequest(request);
+    sendJson(response, 201, await createOrder(await requireUser(request, response)));
+    return;
+  }
+
+  if (url.pathname === "/api/billing/verify") {
+    if (method !== "POST") return methodNotAllowed(response, ["POST"]);
+    assertMutationRequest(request);
+    const session = await requireUser(request, response);
+    sendJson(response, 200, await verifyPayment(session, await readJsonBody(request)));
+    return;
+  }
+
   if (url.pathname === "/api/pages/library") {
     if (method !== "GET") return methodNotAllowed(response, ["GET"]);
     await serveLibraryPage(request, response);
@@ -183,7 +214,7 @@ async function routeApi(request, response, url) {
 
   if (url.pathname === "/api/drugs") {
     if (method === "GET") {
-      await requireUser(request, response);
+      await requireMember(request, response);
       sendJson(response, 200, { drugs: await listDrugs() });
       return;
     }
@@ -240,7 +271,7 @@ async function routeApi(request, response, url) {
   if (url.pathname === "/api/notebook/search") {
     if (method !== "POST") return methodNotAllowed(response, ["POST"]);
     assertMutationRequest(request);
-    await requireUser(request, response);
+    await requireMember(request, response);
     const body = await readJsonBody(request);
     sendJson(response, 200, await searchNotebook(body.query));
     return;
@@ -249,7 +280,7 @@ async function routeApi(request, response, url) {
   if (parts.length === 3 && parts[0] === "api" && parts[1] === "drugs") {
     const id = decodeURIComponent(parts[2]);
     if (method === "GET") {
-      await requireUser(request, response);
+      await requireMember(request, response);
       const drug = (await listDrugs()).find((item) => item.id === id);
       if (!drug) {
         sendJson(response, 404, { error: "Drug record not found." });
@@ -302,8 +333,14 @@ async function routeStatic(request, response, url) {
   createReadStream(filePath).pipe(response);
 }
 
-function setSecurityHeaders(response) {
-  response.setHeader("Content-Security-Policy", "default-src 'self'; base-uri 'self'; connect-src 'self'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data:; object-src 'none'; script-src 'self'; style-src 'self'");
+// Same policies as vercel.json; only the checkout page may load Razorpay
+const strictCsp = "default-src 'self'; base-uri 'self'; connect-src 'self'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data:; object-src 'none'; script-src 'self'; style-src 'self'";
+const checkoutCsp = "default-src 'self'; base-uri 'self'; connect-src 'self' https://api.razorpay.com https://lumberjack.razorpay.com; font-src 'self'; form-action 'self'; frame-ancestors 'none'; frame-src https://api.razorpay.com https://checkout.razorpay.com; img-src 'self' data: https://cdn.razorpay.com; object-src 'none'; script-src 'self' https://checkout.razorpay.com https://cdn.razorpay.com; style-src 'self' 'unsafe-inline'";
+
+function setSecurityHeaders(response, requestUrl = "/") {
+  const pathname = String(requestUrl).split("?")[0];
+  const isCheckout = ["/subscribe", "/subscribe/", "/subscribe.html"].includes(pathname);
+  response.setHeader("Content-Security-Policy", isCheckout ? checkoutCsp : strictCsp);
   response.setHeader("Permissions-Policy", "camera=(), microphone=(), geolocation=()");
   response.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
   response.setHeader("X-Content-Type-Options", "nosniff");

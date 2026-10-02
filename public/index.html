@@ -32,7 +32,7 @@
         </nav>
         <div class="lp-header__actions">
           <a class="lp-link" href="/login" data-guest>Log in</a>
-          <a class="lp-button lp-button--small" href="/register" data-guest>Create free account</a>
+          <a class="lp-button lp-button--small" href="/subscribe" data-guest>Become a member</a>
           <a class="lp-button lp-button--small" href="/library" data-member hidden>Open the library</a>
         </div>
       </div>
@@ -61,7 +61,7 @@
           </h1>
           <p class="lp-hero__lede">Clear, structured monographs for <span data-drug-count>79</span> psychiatric medicines: how they work, how to dose them, and what to watch for. Written for medical students, psychiatry trainees and clinicians.</p>
           <div class="lp-hero__actions">
-            <a class="lp-button" href="/register" data-guest>Create free account</a>
+            <a class="lp-button" href="/subscribe" data-guest>Become a member</a>
             <a class="lp-button" href="/library" data-member hidden>Open the library</a>
             <a class="lp-button lp-button--ghost" href="/browse">Browse the drug library</a>
           </div>
@@ -226,25 +226,32 @@
 
       <section class="lp-section lp-plans" id="plans" aria-labelledby="plansTitle">
         <div class="lp-container">
-          <h2 class="lp-h2" id="plansTitle">Start with a <em>free</em> account.</h2>
+          <h2 class="lp-h2" id="plansTitle">One membership, <em>everything inside.</em></h2>
           <div class="lp-cards lp-cards--two">
             <article class="lp-card lp-card--featured">
-              <h3 class="lp-card__title">Free account</h3>
-              <p class="lp-card__meta">Available now</p>
+              <h3 class="lp-card__title">Membership</h3>
+              <p class="lp-card__meta"><span data-plan-price>₹1</span> for <span data-plan-days>30</span> days</p>
               <ul class="lp-checks" role="list">
                 <li>Every drug monograph</li>
                 <li>Ask My Notes</li>
-                <li>Clinical calculators</li>
+                <li>Pay by UPI, card or netbanking</li>
               </ul>
               <div class="lp-card__links">
-                <a class="lp-button" href="/register" data-guest>Create free account</a>
-                <a class="lp-button" href="/library" data-member hidden>Open the library</a>
+                <a class="lp-button" href="/subscribe" data-guest>Become a member</a>
+                <a class="lp-button" href="/subscribe" data-member hidden>Manage membership</a>
               </div>
             </article>
             <article class="lp-card">
-              <h3 class="lp-card__title">Subscription</h3>
-              <p class="lp-card__meta">Coming soon</p>
-              <p class="lp-card__text">Paid plans are on the way. Pricing and what's included will be listed here.</p>
+              <h3 class="lp-card__title">Free tools</h3>
+              <p class="lp-card__meta">Open to everyone</p>
+              <ul class="lp-checks" role="list">
+                <li>QTc calculator</li>
+                <li>Alcohol withdrawal calculator</li>
+                <li>Drug library browser and search</li>
+              </ul>
+              <div class="lp-card__links">
+                <a class="lp-text-link" href="/formulas">Open the calculators</a>
+              </div>
             </article>
           </div>
         </div>
@@ -263,8 +270,12 @@
               <p>Medical students, psychiatry trainees and clinicians who want quick, structured answers about psychiatric medicines.</p>
             </details>
             <details>
-              <summary>What can I use without an account?</summary>
-              <p>The calculators and the drug library browser are open to everyone. Full monographs and Ask My Notes need a free account.</p>
+              <summary>What can I use without paying?</summary>
+              <p>The calculators and the drug library browser are open to everyone. Full monographs and Ask My Notes need a membership.</p>
+            </details>
+            <details>
+              <summary>How does membership work?</summary>
+              <p>Pay <span data-plan-price>₹1</span> through Razorpay by UPI, card or netbanking, and you get <span data-plan-days>30</span> days of access. Paying again adds another <span data-plan-days>30</span> days.</p>
             </details>
             <details>
               <summary>Will more drugs be added?</summary>
@@ -289,7 +300,7 @@
           <a href="/formulas">Formulas</a>
           <a href="/qtc">QTc calculator</a>
           <a href="/login">Log in</a>
-          <a href="/register">Create free account</a>
+          <a href="/subscribe">Become a member</a>
         </nav>
       </div>
     </footer>

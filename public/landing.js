@@ -16,6 +16,7 @@
   initHeader();
   initMotionToggle();
   loadLibraryStats();
+  loadPlan();
   loadSession();
 
   function initHeader() {
@@ -90,6 +91,24 @@
     link.append(label, total);
     item.append(link);
     return item;
+  }
+
+  // Price and length come from the server so they can change without editing HTML
+  async function loadPlan() {
+    try {
+      const { plan } = await getJson("/api/billing/plans");
+      if (!plan) return;
+      const amount = Number(plan.amountPaise) / 100;
+      const price = new Intl.NumberFormat("en-IN", {
+        style: "currency",
+        currency: plan.currency || "INR",
+        minimumFractionDigits: Number.isInteger(amount) ? 0 : 2
+      }).format(amount);
+      setText("[data-plan-price]", price);
+      setText("[data-plan-days]", plan.days);
+    } catch {
+      // Keep the built-in price text
+    }
   }
 
   // Signed-in visitors see a library button instead of sign-up

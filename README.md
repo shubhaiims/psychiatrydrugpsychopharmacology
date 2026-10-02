@@ -56,6 +56,17 @@ npm run dev
 
 Local storage can fall back to `server/data/drugs.json` and the ignored notebook JSON file when database credentials are absent. Authentication still requires Supabase, so protected local routes use the same identity system as production. Production fails closed instead of using local JSON when Supabase storage is missing.
 
+## Membership Payments
+
+Members pay through Razorpay Checkout on `/subscribe`. Each payment adds `MEMBERSHIP_DAYS` of access (default 30) for `MEMBERSHIP_PRICE_INR` (default 1).
+
+- Server routes: `GET /api/billing/plans`, `GET /api/billing/status`, `POST /api/billing/order`, `POST /api/billing/verify`
+- The server checks the Razorpay signature, confirms the payment with Razorpay, then calls `public.grant_membership` so each payment is counted once
+- Payments that finish after the tab closes are picked up the next time the member's status is checked
+- `PAYWALL_ENABLED=true` makes `/library`, the drug APIs and Ask My Notes members-only; admins always have access
+- Only `/subscribe` allows Razorpay in its Content-Security-Policy
+- Apply `supabase/migrations/202610020001_memberships_and_payments.sql` before turning payments on
+
 ## Database Migrations
 
 Do not run migrations automatically against production. Review and apply these files manually, in order, from the Supabase SQL Editor or an approved migration workflow:

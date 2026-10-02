@@ -1,4 +1,5 @@
-import { assertMutationRequest, requireUser } from "../../server/auth.js";
+import { assertMutationRequest } from "../../server/auth.js";
+import { requireMember } from "../../server/billing.js";
 import { methodNotAllowed, readJsonBody, sendError, sendJson } from "../../server/http.js";
 import { searchNotebook } from "../../server/notebook-store.js";
 
@@ -10,7 +11,7 @@ export default async function handler(request, response) {
 
   try {
     assertMutationRequest(request);
-    await requireUser(request, response);
+    await requireMember(request, response);
     const body = await readJsonBody(request);
     sendJson(response, 200, await searchNotebook(body.query));
   } catch (error) {

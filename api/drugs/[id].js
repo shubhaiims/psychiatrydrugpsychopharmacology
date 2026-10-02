@@ -1,4 +1,5 @@
-import { assertMutationRequest, requireAdmin, requireUser } from "../../server/auth.js";
+import { assertMutationRequest, requireAdmin } from "../../server/auth.js";
+import { requireMember } from "../../server/billing.js";
 import { deleteDrug, listDrugs, updateDrug } from "../../server/store.js";
 import { methodNotAllowed, readJsonBody, sendError, sendJson } from "../../server/http.js";
 
@@ -7,7 +8,7 @@ export default async function handler(request, response) {
 
   try {
     if (request.method === "GET") {
-      await requireUser(request, response);
+      await requireMember(request, response);
       const drug = (await listDrugs()).find((item) => item.id === id);
       if (!drug) {
         sendJson(response, 404, { error: "Drug record not found." });

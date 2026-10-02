@@ -8,6 +8,7 @@ const files = [
   "public/formulas.js",
   "public/qtc.js",
   "public/landing.js",
+  "public/subscribe.js",
   "server/index.js",
   "server/drug-model.js",
   "server/dashboard.js",
@@ -17,6 +18,7 @@ const files = [
   "server/supabase.js",
   "server/store.js",
   "server/notebook-store.js",
+  "server/billing.js",
   "api/drugs.js",
   "api/dashboard.js",
   "api/health.js",
@@ -28,9 +30,11 @@ const files = [
   "api/notebook/sources.js",
   "api/notebook/sources/[id].js",
   "api/notebook/search.js",
+  "api/billing/[action].js",
   "scripts/validate.mjs",
   "scripts/push-to-supabase.mjs",
-  "tests/auth.test.mjs"
+  "tests/auth.test.mjs",
+  "tests/billing.test.mjs"
 ];
 
 for (const file of files) {

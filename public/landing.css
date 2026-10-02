@@ -1111,3 +1111,73 @@ p {
     height: 168px;
   }
 }
+
+/* Membership page */
+
+.lp-sub {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+  gap: clamp(40px, 7vw, 112px);
+  align-items: start;
+  padding-block: 160px 120px;
+}
+
+.lp-sub-page .lp-header__actions {
+  margin-left: auto;
+}
+
+.lp-sub__card {
+  max-width: 520px;
+}
+
+.lp-sub__mode {
+  margin-bottom: 22px;
+  padding: 10px 14px;
+  border: 1px dashed rgba(196, 161, 108, 0.5);
+  border-radius: 12px;
+  color: var(--brass);
+  font-size: 0.9rem;
+}
+
+.lp-sub__state p {
+  color: var(--parchment-soft);
+}
+
+.lp-sub__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.lp-sub__fine {
+  margin: 14px 0 0;
+  font-size: 0.88rem;
+}
+
+.lp-sub__status {
+  min-height: 1.5em;
+  margin: 18px 0 0;
+  color: var(--parchment-soft);
+  font-size: 0.95rem;
+}
+
+.lp-sub__status.is-error {
+  color: #ef9f8c;
+}
+
+button.lp-button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+button.lp-button:disabled {
+  cursor: wait;
+  opacity: 0.6;
+}
+
+@media (max-width: 960px) {
+  .lp-sub {
+    grid-template-columns: minmax(0, 1fr);
+    padding-top: 120px;
+  }
+}

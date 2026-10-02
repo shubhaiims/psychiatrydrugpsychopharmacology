@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Become a member of Psychiatry Made Easy to open every drug monograph and Ask My Notes." />
+    <meta name="theme-color" content="#181512" />
+    <title>Membership | Psychiatry Made Easy</title>
+    <link rel="icon" href="/assets/psychiatry-made-easy-logo.png" />
+    <link rel="stylesheet" href="/landing.css" />
+    <script src="https://checkout.razorpay.com/v1/checkout.js" defer></script>
+    <script src="/subscribe.js" defer></script>
+  </head>
+  <body class="lp lp-sub-page">
+    <a class="lp-skip" href="#main">Skip to content</a>
+
+    <header class="lp-header is-solid">
+      <div class="lp-header__inner">
+        <a class="lp-brand" href="/" aria-label="Psychiatry Made Easy home">
+          <img src="/assets/landing/logo-mark-64.png" srcset="/assets/landing/logo-mark-64.png 1x, /assets/landing/logo-mark-128.png 2x" alt="" width="36" height="36" />
+          <span class="lp-brand__name">Psychiatry <em>Made Easy</em></span>
+        </a>
+        <div class="lp-header__actions">
+          <a class="lp-link" href="/browse">Browse the drug library</a>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="lp-container lp-sub">
+      <section class="lp-sub__intro lp-prose" aria-labelledby="subTitle">
+        <h1 class="lp-h2" id="subTitle">Become a <em>member.</em></h1>
+        <p>Membership opens every drug monograph and Ask My Notes. The calculators and the drug library browser stay free for everyone.</p>
+      </section>
+
+      <article class="lp-card lp-card--featured lp-sub__card" aria-labelledby="planName">
+        <p class="lp-sub__mode" id="modeNote" hidden>Test mode. Use Razorpay's test card or test UPI here; no real money moves.</p>
+        <h2 class="lp-card__title" id="planName">Membership</h2>
+        <p class="lp-card__meta"><span data-plan-price>₹1</span> for <span data-plan-days>30</span> days</p>
+        <ul class="lp-checks" role="list">
+          <li>Every drug monograph</li>
+          <li>Ask My Notes</li>
+          <li>Clinical calculators</li>
+        </ul>
+
+        <div class="lp-sub__state" id="stateLoading">
+          <p class="lp-muted">Checking your account…</p>
+        </div>
+
+        <div class="lp-sub__state" id="stateGuest" hidden>
+          <p>Log in or create an account first. You'll come back here to pay.</p>
+          <div class="lp-sub__actions">
+            <a class="lp-button" href="/register">Create account</a>
+            <a class="lp-button lp-button--ghost" href="/login?next=%2Fsubscribe">Log in</a>
+          </div>
+        </div>
+
+        <div class="lp-sub__state" id="stateBuy" hidden>
+          <div class="lp-sub__actions">
+            <button class="lp-button" type="button" id="payButton"><span>Pay <span data-plan-price>₹1</span></span></button>
+          </div>
+          <p class="lp-sub__fine">Paid securely through Razorpay with UPI, cards or netbanking.</p>
+        </div>
+
+        <div class="lp-sub__state" id="stateMember" hidden>
+          <p>Your membership is active until <strong id="accessUntil"></strong>.</p>
+          <div class="lp-sub__actions">
+            <a class="lp-button" href="/library">Open the library</a>
+            <button class="lp-button lp-button--ghost" type="button" id="extendButton"><span>Add <span data-plan-days>30</span> more days</span></button>
+          </div>
+        </div>
+
+        <div class="lp-sub__state" id="stateUnavailable" hidden>
+          <p>Payments aren't switched on yet. Please check back soon.</p>
+        </div>
+
+        <p class="lp-sub__status" id="payStatus" role="status" aria-live="polite"></p>
+      </article>
+    </main>
+
+    <footer class="lp-footer">
+      <div class="lp-container lp-footer__grid">
+        <p class="lp-footer__note">Educational reference only. Verify all drug information against current prescribing information, local protocols, and clinical judgment.</p>
+        <nav class="lp-footer__nav" aria-label="Footer">
+          <a href="/">Home</a>
+          <a href="/browse">Drug library</a>
+          <a href="/formulas">Formulas</a>
+          <a href="/qtc">QTc calculator</a>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>

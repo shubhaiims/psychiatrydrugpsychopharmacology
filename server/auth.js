@@ -285,7 +285,7 @@ async function fetchUser(accessToken, options = {}) {
   }
 }
 
-async function isAdminUser(userId) {
+export async function isAdminUser(userId) {
   const rows = await supabaseServiceRequest(
     `admin_users?select=user_id&user_id=eq.${encodeURIComponent(userId)}&limit=1`
   );

@@ -5,6 +5,8 @@ const requiredFiles = [
   "public/browse.html",
   "public/landing.css",
   "public/landing.js",
+  "public/subscribe.html",
+  "public/subscribe.js",
   "public/login.html",
   "public/register.html",
   "public/forgot-password.html",
@@ -25,6 +27,7 @@ const requiredFiles = [
   "supabase/migrations/202608150002_authorization_policies.sql",
   "supabase/migrations/202608150003_drop_legacy_mobile_otp.sql",
   "supabase/migrations/20260815061242_harden_public_defaults_and_indexes.sql",
+  "supabase/migrations/202610020001_memberships_and_payments.sql",
   "vercel.json",
   ".github/workflows/sync-supabase.yml"
 ];
@@ -69,12 +72,14 @@ const browserFiles = [
   "public/app.js",
   "public/admin.js",
   "public/auth.js",
-  "public/landing.js"
+  "public/landing.js",
+  "public/subscribe.html",
+  "public/subscribe.js"
 ];
 for (const file of browserFiles) {
   const browserSource = await readFile(file, "utf8");
-  if (/SUPABASE_(?:SECRET_KEY|SERVICE_ROLE_KEY)/.test(browserSource)) {
-    throw new Error(`Backend-only Supabase key name found in browser asset: ${file}`);
+  if (/SUPABASE_(?:SECRET_KEY|SERVICE_ROLE_KEY)|RAZORPAY_KEY_SECRET/.test(browserSource)) {
+    throw new Error(`Backend-only key name found in browser asset: ${file}`);
   }
 }
 

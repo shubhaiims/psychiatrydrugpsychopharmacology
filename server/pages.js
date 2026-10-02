@@ -1,5 +1,6 @@
 import { readFile } from "node:fs/promises";
-import { requireAdmin, requireUser } from "./auth.js";
+import { requireAdmin } from "./auth.js";
+import { requireMember } from "./billing.js";
 import { sendError } from "./http.js";
 
 const libraryPage = new URL("./library.html", import.meta.url);
@@ -7,9 +8,10 @@ const adminPage = new URL("./admin.html", import.meta.url);
 
 export async function serveLibraryPage(request, response) {
   return serveProtectedPage(request, response, {
-    authorize: requireUser,
+    authorize: requireMember,
     file: libraryPage,
-    loginPath: "/login?next=%2Flibrary"
+    loginPath: "/login?next=%2Flibrary",
+    paywallPath: "/subscribe"
   });
 }
 
@@ -30,6 +32,13 @@ async function serveProtectedPage(request, response, options) {
     response.setHeader("Cache-Control", "private, no-store");
     response.end(html);
   } catch (error) {
+    if (error.status === 402 && options.paywallPath) {
+      response.statusCode = 303;
+      response.setHeader("Location", options.paywallPath);
+      response.setHeader("Cache-Control", "no-store");
+      response.end();
+      return;
+    }
     if ([401, 403].includes(error.status)) {
       response.statusCode = 303;
       response.setHeader("Location", options.loginPath);
