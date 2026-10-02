@@ -1279,3 +1279,99 @@ button.lp-button:disabled {
     padding-top: 120px;
   }
 }
+
+/* Policy pages */
+
+.lp-legal {
+  padding-block: 160px 120px;
+}
+
+.lp-legal__doc {
+  max-width: 44rem;
+}
+
+.lp-legal__intro {
+  margin-bottom: 8px;
+  color: var(--parchment-soft);
+  font-size: 1.15rem;
+}
+
+.lp-legal__heading {
+  margin: 2.4em 0 0.6em;
+  font-family: var(--serif);
+  font-size: clamp(1.45rem, 2.4vw, 1.8rem);
+  font-weight: 380;
+  line-height: 1.15;
+}
+
+.lp-legal p,
+.lp-legal li {
+  color: var(--parchment-soft);
+}
+
+.lp-legal ul {
+  margin: 0 0 1.1em;
+  padding-left: 1.2em;
+}
+
+.lp-legal li {
+  margin-bottom: 0.6em;
+}
+
+.lp-legal li strong {
+  color: var(--parchment);
+}
+
+.lp-legal a {
+  color: var(--amber-hi);
+  text-underline-offset: 3px;
+}
+
+.lp-legal a:hover {
+  color: var(--parchment);
+}
+
+/* Marks details the site owner still has to fill in */
+.lp-fill {
+  padding: 0 0.3em;
+  border-radius: 4px;
+  background: rgba(228, 155, 90, 0.16);
+  color: var(--amber-hi);
+}
+
+.lp-legal__details {
+  margin: 32px 0;
+  border-top: 1px solid var(--line);
+}
+
+.lp-legal__details div {
+  display: grid;
+  grid-template-columns: minmax(0, 10rem) minmax(0, 1fr);
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.lp-legal__details dt {
+  color: var(--ash);
+  font-size: 0.92rem;
+}
+
+.lp-legal__details dd {
+  margin: 0;
+  color: var(--parchment);
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 960px) {
+  .lp-legal {
+    padding-top: 120px;
+  }
+}
+
+@media (max-width: 640px) {
+  .lp-legal__details div {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 4px;
+  }
+}

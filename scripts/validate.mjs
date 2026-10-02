@@ -9,6 +9,10 @@ const requiredFiles = [
   "public/subscribe.js",
   "public/account.html",
   "public/account.js",
+  "public/terms.html",
+  "public/privacy.html",
+  "public/refunds.html",
+  "public/contact.html",
   "public/login.html",
   "public/register.html",
   "public/forgot-password.html",
@@ -166,7 +170,11 @@ if (functionFiles.length > 12) {
 
 // Pages that run under the strict Content-Security-Policy and must stay public-safe
 const strictPages = [
-  "public/account.html"
+  "public/account.html",
+  "public/terms.html",
+  "public/privacy.html",
+  "public/refunds.html",
+  "public/contact.html"
 ];
 for (const file of strictPages) {
   const page = await readFile(file, "utf8");

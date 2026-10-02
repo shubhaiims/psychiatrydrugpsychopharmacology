@@ -15,6 +15,7 @@ The public landing page is at `/`, and the public drug-library browse page is at
 - `/library` - authenticated drug library and Ask My Notes
 - `/subscribe` - membership page with Razorpay checkout
 - `/account` - signed-in account page: name, membership status, password reset email, log out
+- `/terms`, `/privacy`, `/refunds`, `/contact` - policy pages Razorpay reviews; each has highlighted `[BRACKETED]` details for the site owner to fill in
 - `/admin/login` - separate admin login
 - `/admin` - authenticated and database-authorized Admin Drug Editor, including a read-only Members list
 
