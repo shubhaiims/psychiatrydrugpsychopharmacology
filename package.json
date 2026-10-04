@@ -5,7 +5,7 @@
   "type": "module",
   "dependencies": {
     "@vercel/functions": "3.9.11",
-    "pdf-parse": "1.1.4"
+    "pdf-parse": "2.4.5"
   },
   "engines": {
     "node": "22.x"
