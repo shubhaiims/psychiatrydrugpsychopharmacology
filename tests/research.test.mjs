@@ -28,18 +28,23 @@ test("records without a DOI fall back to PubMed and invalid records are dropped"
   assert.equal(normalizeSummary(undefined), null);
 });
 
-test("merging dedupes by id and keeps newest first", () => {
-  const old = { id: "1", title: "Old", date: "2026-01-01" };
+test("merging dedupes by id, keeps newest first and drops papers older than six months", () => {
+  const now = new Date("2026-10-04T00:00:00Z");
+  const expired = { id: "0", title: "Expired", date: "2026-03-01" };
+  const old = { id: "1", title: "Old", date: "2026-05-01" };
   const fresh = { id: "2", title: "New", date: "2026-09-01" };
-  assert.deepEqual(mergeItems([old, { ...fresh, title: "Stale" }], [fresh]).map((item) => item.title), ["New", "Old"]);
+  assert.deepEqual(mergeItems([expired, old, { ...fresh, title: "Stale" }], [fresh], now).map((item) => item.title), ["New", "Old"]);
 });
 
 test("query restricts to journal articles and excludes editorials", () => {
   const query = buildQuery();
   assert.match(query, /"JAMA Psychiatry"\[ta\]/);
   assert.match(query, /"Bipolar Disord"\[ta\]/);
-  assert.match(query, /"Psychiatry Res"\[ta\]/);
+  for (const journal of ["JAMA Psychiatry", "Lancet Psychiatry", "Am J Psychiatry", "J Psychopharmacol"]) {
+    assert.ok(query.includes(`"${journal}"[ta]`), journal);
+  }
+  assert.doesNotMatch(query, /Psychiatry Res/);
   assert.match(query, /"N Engl J Med"\[ta\]\) AND \(psychiatr/);
-  assert.doesNotMatch(query, /Lancet|BMJ/);
+  assert.doesNotMatch(query, /"Lancet"\[ta\]|BMJ|"JAMA"\[ta\]/);
   assert.match(query, /NOT \(editorial\[pt\]/);
 });

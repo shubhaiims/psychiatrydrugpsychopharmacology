@@ -106,7 +106,7 @@ Vercel preview URLs should be added deliberately. Avoid a broad wildcard unless 
 
 ## Latest Research Feed
 
-`/research` reads `public/research.json`, which `.github/workflows/update-research.yml` refreshes daily from PubMed (JAMA Psychiatry, Bipolar Disorders, Psychiatry Research, and psychiatry-topic NEJM papers). The workflow never deploys by itself: it pushes the `research-update` branch and opens a pull request, and the site updates only when you merge it. Run it once from the Actions tab (Run workflow) to fill the page for the first time. Optionally add an `NCBI_API_KEY` repository secret for higher PubMed rate limits.
+`/research` reads `public/research.json`. Every third day `.github/workflows/update-research.yml` fetches papers from the last six months from PubMed (JAMA Psychiatry, Lancet Psychiatry, American Journal of Psychiatry, Journal of Psychopharmacology, Bipolar Disorders, and psychiatry-topic NEJM papers), drops anything older than six months, and commits the file to the default branch, which Vercel deploys automatically. Run it from the Actions tab (Run workflow) to update immediately. Optionally add an `NCBI_API_KEY` repository secret for higher PubMed rate limits.
 
 ## Create the First Admin
 
