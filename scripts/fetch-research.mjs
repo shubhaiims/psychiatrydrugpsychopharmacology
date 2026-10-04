@@ -19,6 +19,15 @@ const PSYCHIATRY_JOURNALS = [
 ];
 // NEJM is general medicine, so only its psychiatry-topic papers are included.
 const GENERAL_JOURNALS = ["N Engl J Med"];
+// PubMed journal abbreviation -> name shown on the page.
+const JOURNAL_NAMES = {
+  "JAMA Psychiatry": "JAMA Psychiatry",
+  "Lancet Psychiatry": "The Lancet Psychiatry",
+  "Am J Psychiatry": "American Journal of Psychiatry",
+  "J Psychopharmacol": "Journal of Psychopharmacology",
+  "Bipolar Disord": "Bipolar Disorders",
+  "N Engl J Med": "NEJM"
+};
 const GENERAL_TOPICS = [
   "psychiatr*", "depress*", "schizophren*", "bipolar", "antidepressant*", "antipsychotic*",
   "anxiety", "ADHD", "suicid*", "psychosis", "lithium", "ketamine", "esketamine"
@@ -36,17 +45,29 @@ export function normalizeSummary(record) {
   if (!record?.uid) return null;
   const title = String(record.title || "").replace(/<[^>]*>/g, "").replace(/\s+/g, " ").trim().replace(/\.$/, "");
   const doi = (record.articleids || []).find((id) => id.idtype === "doi")?.value;
-  const date = parseDate(record.epubdate || record.sortpubdate || record.pubdate);
+  const date = publicationDate(record);
   if (!title || !date) return null;
   const authors = (record.authors || []).filter((author) => author.authtype !== "CollectiveName" || author.name).map((author) => author.name);
   return {
     id: String(record.uid),
     title,
-    journal: String(record.fulljournalname || record.source || "").trim(),
+    journal: JOURNAL_NAMES[record.source] || String(record.fulljournalname || record.source || "").trim(),
     date,
     authors: authors.length > 2 ? `${authors[0]} et al.` : authors.join(" and "),
     url: doi ? `https://doi.org/${doi}` : `https://pubmed.ncbi.nlm.nih.gov/${record.uid}/`
   };
+}
+
+// Print-issue dates can lie months in the future, so use the earliest of the
+// online, issue and PubMed-entry dates (never received/accepted dates).
+function publicationDate(record, now = new Date()) {
+  const history = (record.history || [])
+    .filter((entry) => ["entrez", "pubmed", "aheadofprint"].includes(entry.pubstatus))
+    .map((entry) => entry.date);
+  const dates = [record.epubdate, record.pubdate, record.sortpubdate, ...history].map(parseDate).filter(Boolean).sort();
+  if (!dates.length) return null;
+  const today = now.toISOString().slice(0, 10);
+  return dates[0] > today ? today : dates[0];
 }
 
 function parseDate(value) {

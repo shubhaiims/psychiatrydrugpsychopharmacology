@@ -5,7 +5,8 @@ import { buildQuery, mergeItems, normalizeSummary } from "../scripts/fetch-resea
 const record = {
   uid: "123",
   title: "Esketamine for <i>treatment-resistant</i> depression.",
-  fulljournalname: "JAMA Psychiatry",
+  source: "JAMA Psychiatry",
+  fulljournalname: "JAMA psychiatry",
   sortpubdate: "2026/09/29 00:00",
   authors: [{ name: "Doe J" }, { name: "Roe R" }, { name: "Poe P" }],
   articleids: [{ idtype: "pubmed", value: "123" }, { idtype: "doi", value: "10.1001/example" }]
@@ -20,6 +21,23 @@ test("PubMed summaries become feed items that link to the journal via DOI", () =
     authors: "Doe J et al.",
     url: "https://doi.org/10.1001/example"
   });
+});
+
+test("future print-issue dates give way to the PubMed entry date and journal names are tidied", () => {
+  const item = normalizeSummary({
+    ...record,
+    source: "Lancet Psychiatry",
+    fulljournalname: "The lancet. Psychiatry",
+    pubdate: "2026 Nov",
+    sortpubdate: "2026/11/01 00:00",
+    epubdate: "",
+    history: [
+      { pubstatus: "received", date: "2026/03/01 00:00" },
+      { pubstatus: "entrez", date: "2026/09/15 06:24" }
+    ]
+  });
+  assert.equal(item.date, "2026-09-15");
+  assert.equal(item.journal, "The Lancet Psychiatry");
 });
 
 test("records without a DOI fall back to PubMed and invalid records are dropped", () => {
