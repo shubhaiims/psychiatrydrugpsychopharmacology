@@ -5,11 +5,18 @@ import { pathToFileURL } from "node:url";
 
 const OUTPUT = new URL("../public/research.json", import.meta.url);
 const EUTILS = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils";
-const LOOKBACK_DAYS = 14;
-const MAX_NEW = 60;
-const MAX_KEPT = 120;
+// Every run re-checks the whole window, so a missed run never leaves a gap.
+const WINDOW_DAYS = 183;
+const MAX_RESULTS = 2000;
+const SUMMARY_BATCH = 200;
 
-const PSYCHIATRY_JOURNALS = ["JAMA Psychiatry", "Bipolar Disord", "Psychiatry Res"];
+const PSYCHIATRY_JOURNALS = [
+  "JAMA Psychiatry",
+  "Lancet Psychiatry",
+  "Am J Psychiatry",
+  "J Psychopharmacol",
+  "Bipolar Disord"
+];
 // NEJM is general medicine, so only its psychiatry-topic papers are included.
 const GENERAL_JOURNALS = ["N Engl J Med"];
 const GENERAL_TOPICS = [
@@ -29,7 +36,7 @@ export function normalizeSummary(record) {
   if (!record?.uid) return null;
   const title = String(record.title || "").replace(/<[^>]*>/g, "").replace(/\s+/g, " ").trim().replace(/\.$/, "");
   const doi = (record.articleids || []).find((id) => id.idtype === "doi")?.value;
-  const date = parseDate(record.sortpubdate || record.epubdate || record.pubdate);
+  const date = parseDate(record.epubdate || record.sortpubdate || record.pubdate);
   if (!title || !date) return null;
   const authors = (record.authors || []).filter((author) => author.authtype !== "CollectiveName" || author.name).map((author) => author.name);
   return {
@@ -51,17 +58,19 @@ function parseDate(value) {
   return `${match[1]}-${String(month).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
 }
 
-export function mergeItems(existing, incoming) {
+export function mergeItems(existing, incoming, now = new Date()) {
+  const cutoff = new Date(now.getTime() - WINDOW_DAYS * 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
   const byId = new Map();
   for (const item of [...existing, ...incoming]) byId.set(item.id, item);
   return [...byId.values()]
-    .sort((a, b) => b.date.localeCompare(a.date) || a.title.localeCompare(b.title))
-    .slice(0, MAX_KEPT);
+    .filter((item) => item.date >= cutoff)
+    .sort((a, b) => b.date.localeCompare(a.date) || a.title.localeCompare(b.title));
 }
 
 async function eutils(path, params) {
   const query = new URLSearchParams({ retmode: "json", tool: "psychiatry-made-easy", ...params });
   if (process.env.NCBI_API_KEY) query.set("api_key", process.env.NCBI_API_KEY);
+  await new Promise((resolve) => setTimeout(resolve, 400)); // stay under PubMed's 3 requests/second
   const response = await fetch(`${EUTILS}/${path}?${query}`, { headers: { "User-Agent": "psychiatry-made-easy-research-feed" } });
   if (!response.ok) throw new Error(`PubMed ${path} failed with status ${response.status}.`);
   return response.json();
@@ -69,14 +78,15 @@ async function eutils(path, params) {
 
 async function main() {
   const search = await eutils("esearch.fcgi", {
-    db: "pubmed", term: buildQuery(), datetype: "edat", reldate: String(LOOKBACK_DAYS),
-    retmax: String(MAX_NEW), sort: "date"
+    db: "pubmed", term: buildQuery(), datetype: "edat", reldate: String(WINDOW_DAYS),
+    retmax: String(MAX_RESULTS), sort: "date"
   });
   const ids = search.esearchresult?.idlist || [];
-  let incoming = [];
-  if (ids.length) {
-    const summary = await eutils("esummary.fcgi", { db: "pubmed", id: ids.join(",") });
-    incoming = ids.map((id) => normalizeSummary(summary.result?.[id])).filter(Boolean);
+  const incoming = [];
+  for (let start = 0; start < ids.length; start += SUMMARY_BATCH) {
+    const batch = ids.slice(start, start + SUMMARY_BATCH);
+    const summary = await eutils("esummary.fcgi", { db: "pubmed", id: batch.join(",") });
+    incoming.push(...batch.map((id) => normalizeSummary(summary.result?.[id])).filter(Boolean));
   }
 
   let existing = [];
