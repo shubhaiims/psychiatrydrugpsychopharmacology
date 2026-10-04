@@ -104,6 +104,10 @@ In Authentication settings:
 
 Vercel preview URLs should be added deliberately. Avoid a broad wildcard unless preview authentication is required and the security tradeoff has been reviewed.
 
+## Latest Research Feed
+
+`/research` reads `public/research.json`, which `.github/workflows/update-research.yml` refreshes daily from PubMed (JAMA Psychiatry, Bipolar Disorders, Psychiatry Research, and psychiatry-topic NEJM papers). The workflow never deploys by itself: it pushes the `research-update` branch and opens a pull request, and the site updates only when you merge it. Run it once from the Actions tab (Run workflow) to fill the page for the first time. Optionally add an `NCBI_API_KEY` repository secret for higher PubMed rate limits.
+
 ## Create the First Admin
 
 1. Apply all three migrations.

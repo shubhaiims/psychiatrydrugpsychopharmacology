@@ -1,0 +1,19 @@
+/* Latest Research page: editorial list layout. Uses the app theme variables. */
+.research-main { max-width: 60rem; }
+.research-hero { padding: 2.5rem 0 1.5rem; border-bottom: 1px solid var(--line-strong); }
+.research-eyebrow { margin: 0 0 .75rem; font-size: .78rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); }
+.research-hero h1 { margin: 0; font-family: "Newsreader", Georgia, serif; font-weight: 400; font-size: clamp(2.6rem, 7vw, 4.5rem); line-height: 1.05; }
+.research-lede { max-width: 40rem; margin: 1rem 0 0; font-family: "Newsreader", Georgia, serif; font-size: 1.2rem; line-height: 1.5; color: var(--muted); }
+.research-feed { padding-top: 1.25rem; }
+.research-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.research-filter input { width: 100%; max-width: 22rem; padding: .6rem .8rem; border: 1px solid var(--line-strong); border-radius: 6px; background: var(--surface); color: var(--ink); font: inherit; }
+.research-status, .research-updated { margin: 1rem 0; color: var(--muted); font-size: .9rem; }
+.research-list { list-style: none; margin: 0; padding: 0; }
+.research-item { padding: 1.4rem 0; border-top: 1px solid var(--line); }
+.research-item:first-child { border-top-color: var(--line-strong); }
+.research-item h3 { margin: 0 0 .5rem; font-family: "Newsreader", Georgia, serif; font-weight: 500; font-size: clamp(1.25rem, 3vw, 1.6rem); line-height: 1.25; }
+.research-item h3 a { color: var(--ink); text-decoration: none; }
+.research-item h3 a:hover, .research-item h3 a:focus-visible { color: var(--accent); text-decoration: underline; }
+.research-meta { margin: 0; font-size: .8rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.research-meta strong { color: var(--silver); }
+.research-authors { margin: .35rem 0 0; font-size: .92rem; color: var(--muted); }

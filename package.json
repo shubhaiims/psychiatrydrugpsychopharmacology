@@ -14,7 +14,8 @@
     "dev": "node server/index.js",
     "start": "node server/index.js",
     "build": "node scripts/check.mjs && node scripts/validate.mjs",
-    "test": "node --test tests/auth.test.mjs tests/billing.test.mjs tests/account.test.mjs tests/members.test.mjs tests/security.test.mjs tests/request-filter.test.mjs && npm run build",
+    "test": "node --test tests/auth.test.mjs tests/billing.test.mjs tests/account.test.mjs tests/members.test.mjs tests/research.test.mjs tests/security.test.mjs tests/request-filter.test.mjs && npm run build",
+    "research:update": "node scripts/fetch-research.mjs",
     "supabase:push": "node scripts/push-to-supabase.mjs"
   }
 }
