@@ -1,163 +1,83 @@
 {
-  "updated": "2026-10-04T06:14:13.056Z",
+  "updated": "2026-10-04T06:16:20.521Z",
   "source": "PubMed",
   "items": [
     {
       "id": "42817231",
       "title": "'It's a Balancing Act': A Qualitative Analysis of the Experiences of Caffeine Use in Individuals With Bipolar Disorder",
-      "journal": "Bipolar disorders",
-      "date": "2026-11-01",
+      "journal": "Bipolar Disorders",
+      "date": "2026-10-01",
       "authors": "Eden S et al.",
       "url": "https://doi.org/10.1111/bdi.70171"
     },
     {
-      "id": "42713736",
-      "title": "Association Between Lithium Use and Suicide-Related Behaviors in Bipolar Disorder: A Multicenter Study",
-      "journal": "Bipolar disorders",
-      "date": "2026-11-01",
-      "authors": "Guan X et al.",
-      "url": "https://doi.org/10.1111/bdi.70180"
-    },
-    {
-      "id": "42713711",
-      "title": "Association of Polygenic Risk Score for Suicidal Behavior With Ventral Prefrontal Morphology in Bipolar Disorder",
-      "journal": "Bipolar disorders",
-      "date": "2026-11-01",
-      "authors": "Katz Shroitman N et al.",
-      "url": "https://doi.org/10.1111/bdi.70172"
-    },
-    {
-      "id": "42811911",
-      "title": "Bipolar Disorder and Perimenopause: An Update",
-      "journal": "Bipolar disorders",
-      "date": "2026-11-01",
-      "authors": "Radosavljevic J et al.",
-      "url": "https://doi.org/10.1111/bdi.70186"
-    },
-    {
-      "id": "42765467",
-      "title": "Clinical and Biological Characterization of Bipolar Disorder Patients With Chronic Insomnia Reveals Cortisol Reductions, Elevated TNF-α, and Increased Genetic Risk for Accelerated Aging",
-      "journal": "Bipolar disorders",
-      "date": "2026-11-01",
-      "authors": "Rohr KE et al.",
-      "url": "https://doi.org/10.1111/bdi.70187"
-    },
-    {
-      "id": "42765449",
-      "title": "Comparative Effectiveness of Lithium- Vs. Valproate-Based Combinations With Atypical Antipsychotics in Preventing Rehospitalization After a First Manic Episode of Bipolar I Disorder",
-      "journal": "Bipolar disorders",
-      "date": "2026-11-01",
-      "authors": "Li PY et al.",
-      "url": "https://doi.org/10.1111/bdi.70184"
-    },
-    {
-      "id": "42817910",
-      "title": "Emotional Responses (Intensity/Valence) Fulfill RDoC Criteria but Remain Excluded From Diagnostic Classifications of Mood Disorders",
-      "journal": "Bipolar disorders",
-      "date": "2026-11-01",
-      "authors": "Henry C et al.",
-      "url": "https://doi.org/10.1111/bdi.70182"
-    },
-    {
-      "id": "42813568",
-      "title": "Irritability in the Mix: An Exploratory Study of the Role of Irritability in Characterising Mood Disorders",
-      "journal": "Bipolar disorders",
-      "date": "2026-11-01",
-      "authors": "Bell E et al.",
-      "url": "https://doi.org/10.1111/bdi.70185"
-    },
-    {
-      "id": "42755433",
-      "title": "Longer Sleep Duration Predicts Progression to Bipolar or Psychotic Disorders in Youth Accessing Early Intervention Mental Health Services",
-      "journal": "Bipolar disorders",
-      "date": "2026-11-01",
-      "authors": "Carpenter JS et al.",
-      "url": "https://doi.org/10.1111/bdi.70183"
-    },
-    {
-      "id": "42820261",
-      "title": "The Impact of Sexual Satisfaction on Marital Adjustment, Quality of Life, and Treatment Adherence in Patients Diagnosed With Bipolar Disorder and Their Spouses: A Cross-Sectional Study",
-      "journal": "Bipolar disorders",
-      "date": "2026-11-01",
-      "authors": "Demirel Z et al.",
-      "url": "https://doi.org/10.1111/bdi.70189"
-    },
-    {
-      "id": "42813562",
-      "title": "Trajectories of Cognitive Functioning in Older Age Bipolar Disorder",
-      "journal": "Bipolar disorders",
-      "date": "2026-11-01",
-      "authors": "Orhan M et al.",
-      "url": "https://doi.org/10.1111/bdi.70188"
-    },
-    {
       "id": "42816824",
       "title": "Artificial Intelligence as the Computational Framework for Adaptive Closed-Loop Neuromodulation in Psychiatry",
-      "journal": "The American journal of psychiatry",
+      "journal": "American Journal of Psychiatry",
       "date": "2026-10-01",
       "authors": "Mahmoudi B",
       "url": "https://doi.org/10.1176/appi.ajp.20260137"
     },
     {
-      "id": "42716055",
-      "title": "Association between CYP2D6 and CYP2C19 genotypes and venlafaxine treatment failure: a retrospective study on two cohorts from Norway and the UK",
-      "journal": "The lancet. Psychiatry",
-      "date": "2026-10-01",
-      "authors": "Park Y et al.",
-      "url": "https://doi.org/10.1016/S2215-0366(26)00238-5"
-    },
-    {
       "id": "42816826",
       "title": "Brain Stimulation Therapeutic Interventions in Neuropsychiatry: A Cambrian Explosion",
-      "journal": "The American journal of psychiatry",
+      "journal": "American Journal of Psychiatry",
       "date": "2026-10-01",
       "authors": "Sackeim HA and George MS",
       "url": "https://doi.org/10.1176/appi.ajp.20260691"
     },
     {
-      "id": "42716056",
-      "title": "Comparative effectiveness of mood stabiliser monotherapy versus second-generation antipsychotic monotherapy versus combination therapy for continuation and maintenance treatment after a first episode of psychotic mania in North America, Chile, and Spain: a target trial emulation using data from the BD-CAUSAL Collaboration",
-      "journal": "The lancet. Psychiatry",
-      "date": "2026-10-01",
-      "authors": "Szmulewicz AG et al.",
-      "url": "https://doi.org/10.1016/S2215-0366(26)00239-7"
-    },
-    {
       "id": "42816827",
       "title": "Connectomic Determinants of Subcallosal Cingulate Deep Brain Stimulation for Depression",
-      "journal": "The American journal of psychiatry",
+      "journal": "American Journal of Psychiatry",
       "date": "2026-10-01",
       "authors": "Song HN et al.",
       "url": "https://doi.org/10.1176/appi.ajp.20250449"
     },
     {
-      "id": "42716058",
-      "title": "Improving access to antipsychotic medications for schizophrenia in Ethiopia, Nigeria, Rwanda, and South Africa: an evidence-based global consensus",
-      "journal": "The lancet. Psychiatry",
+      "id": "42817910",
+      "title": "Emotional Responses (Intensity/Valence) Fulfill RDoC Criteria but Remain Excluded From Diagnostic Classifications of Mood Disorders",
+      "journal": "Bipolar Disorders",
       "date": "2026-10-01",
-      "authors": "Smith KA et al.",
-      "url": "https://doi.org/10.1016/S2215-0366(26)00228-2"
+      "authors": "Henry C et al.",
+      "url": "https://doi.org/10.1111/bdi.70182"
     },
     {
-      "id": "42716057",
-      "title": "The efficacy of modified psychodynamic psychotherapy for patients with schizophrenia-spectrum disorders in Germany: a prospective, single-centre, assessor-blinded, parallel-group, randomised controlled trial",
-      "journal": "The lancet. Psychiatry",
+      "id": "42820261",
+      "title": "The Impact of Sexual Satisfaction on Marital Adjustment, Quality of Life, and Treatment Adherence in Patients Diagnosed With Bipolar Disorder and Their Spouses: A Cross-Sectional Study",
+      "journal": "Bipolar Disorders",
       "date": "2026-10-01",
-      "authors": "Montag C et al.",
-      "url": "https://doi.org/10.1016/S2215-0366(26)00240-3"
+      "authors": "Demirel Z et al.",
+      "url": "https://doi.org/10.1111/bdi.70189"
+    },
+    {
+      "id": "42811911",
+      "title": "Bipolar Disorder and Perimenopause: An Update",
+      "journal": "Bipolar Disorders",
+      "date": "2026-09-30",
+      "authors": "Radosavljevic J et al.",
+      "url": "https://doi.org/10.1111/bdi.70186"
     },
     {
       "id": "42813605",
       "title": "Effects of Δ(9)-tetrahydrocannabinol on affiliative social behaviour: A systematic review of rodent studies",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-09-30",
       "authors": "Ahmed M et al.",
       "url": "https://doi.org/10.1177/02698811261478615"
     },
     {
+      "id": "42813568",
+      "title": "Irritability in the Mix: An Exploratory Study of the Role of Irritability in Characterising Mood Disorders",
+      "journal": "Bipolar Disorders",
+      "date": "2026-09-30",
+      "authors": "Bell E et al.",
+      "url": "https://doi.org/10.1111/bdi.70185"
+    },
+    {
       "id": "42814455",
       "title": "Mental Health and Substance Use Disorder Expenditures in the US",
-      "journal": "JAMA psychiatry",
+      "journal": "JAMA Psychiatry",
       "date": "2026-09-30",
       "authors": "Blanco C et al.",
       "url": "https://doi.org/10.1001/jamapsychiatry.2026.3120"
@@ -165,7 +85,7 @@
     {
       "id": "42811410",
       "title": "National Trends in Benzodiazepine Dispensing",
-      "journal": "The American journal of psychiatry",
+      "journal": "American Journal of Psychiatry",
       "date": "2026-09-30",
       "authors": "Cruz N et al.",
       "url": "https://doi.org/10.1176/appi.ajp.20251346"
@@ -173,7 +93,7 @@
     {
       "id": "42811409",
       "title": "Proteomic Signatures in Major Depressive Disorder and Depression Symptom Subtypes",
-      "journal": "The American journal of psychiatry",
+      "journal": "American Journal of Psychiatry",
       "date": "2026-09-30",
       "authors": "Watson KT et al.",
       "url": "https://doi.org/10.1176/appi.ajp.20250891"
@@ -181,7 +101,7 @@
     {
       "id": "42815510",
       "title": "Sex differences in the efficacy, acceptability, and tolerability of antipsychotics in people with acute schizophrenia: individual participant data pairwise, dose-response, and network meta-analyses",
-      "journal": "The lancet. Psychiatry",
+      "journal": "The Lancet Psychiatry",
       "date": "2026-09-30",
       "authors": "Furukawa Y et al.",
       "url": "https://doi.org/10.1016/S2215-0366(26)00280-4"
@@ -189,15 +109,23 @@
     {
       "id": "42811411",
       "title": "Shared Transcriptional Features of Layer 3 Pyramidal Neurons Projecting to the Monkey Dorsolateral Prefrontal Cortex",
-      "journal": "The American journal of psychiatry",
+      "journal": "American Journal of Psychiatry",
       "date": "2026-09-30",
       "authors": "Arion D et al.",
       "url": "https://doi.org/10.1176/appi.ajp.20251018"
     },
     {
+      "id": "42813562",
+      "title": "Trajectories of Cognitive Functioning in Older Age Bipolar Disorder",
+      "journal": "Bipolar Disorders",
+      "date": "2026-09-30",
+      "authors": "Orhan M et al.",
+      "url": "https://doi.org/10.1111/bdi.70188"
+    },
+    {
       "id": "42814430",
       "title": "Transferable Design Principles for Scalable Mental Health Systems: A Conceptual Framework Informed by Innovations Across African Contexts",
-      "journal": "JAMA psychiatry",
+      "journal": "JAMA Psychiatry",
       "date": "2026-09-30",
       "authors": "Wolthusen RPF et al.",
       "url": "https://doi.org/10.1001/jamapsychiatry.2026.3125"
@@ -205,7 +133,7 @@
     {
       "id": "42814416",
       "title": "Updating Treatment Goals for Schizophrenia",
-      "journal": "JAMA psychiatry",
+      "journal": "JAMA Psychiatry",
       "date": "2026-09-30",
       "authors": "Moghaddam B",
       "url": "https://doi.org/10.1001/jamapsychiatry.2026.2862"
@@ -213,7 +141,7 @@
     {
       "id": "42811782",
       "title": "Proper assessment of the response to a test drug needs a treatment-free control group in the experimental design",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-09-29",
       "authors": "Stanford SC et al.",
       "url": "https://doi.org/10.1177/02698811261488491"
@@ -221,7 +149,7 @@
     {
       "id": "42788679",
       "title": "Chronopharmacology and implications for the safety and efficacy of anticonvulsants, antipsychotics, and antidepressants: A systematic review",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-09-25",
       "authors": "Tan VY et al.",
       "url": "https://doi.org/10.1177/02698811261488466"
@@ -229,7 +157,7 @@
     {
       "id": "42788527",
       "title": "Early intervention with clozapine: Is there a neurobiological critical period for treatment-resistant schizophrenia?",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-09-25",
       "authors": "Krishnadas R et al.",
       "url": "https://doi.org/10.1177/02698811261488465"
@@ -237,7 +165,7 @@
     {
       "id": "42788697",
       "title": "Ketamine-enhanced psychotherapy for smoking cessation: A pilot study of feasibility, safety, and clinical outcomes",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-09-25",
       "authors": "Jones J et al.",
       "url": "https://doi.org/10.1177/02698811261488486"
@@ -245,7 +173,7 @@
     {
       "id": "42773527",
       "title": "Age-Associated Cognitive Deviations in Early-Onset Psychosis Patients and Their Siblings",
-      "journal": "The American journal of psychiatry",
+      "journal": "American Journal of Psychiatry",
       "date": "2026-09-23",
       "authors": "Mollon J et al.",
       "url": "https://doi.org/10.1176/appi.ajp.20251082"
@@ -253,7 +181,7 @@
     {
       "id": "42776552",
       "title": "Deaf and Hard-of-Hearing Competency in Psychiatric Practice",
-      "journal": "JAMA psychiatry",
+      "journal": "JAMA Psychiatry",
       "date": "2026-09-23",
       "authors": "Williams J et al.",
       "url": "https://doi.org/10.1001/jamapsychiatry.2026.2317"
@@ -261,7 +189,7 @@
     {
       "id": "42776513",
       "title": "Placental Growth Factor Trajectories During Pregnancy and Child ADHD",
-      "journal": "JAMA psychiatry",
+      "journal": "JAMA Psychiatry",
       "date": "2026-09-23",
       "authors": "Gumusoglu SB et al.",
       "url": "https://doi.org/10.1001/jamapsychiatry.2026.2336"
@@ -269,7 +197,7 @@
     {
       "id": "42776545",
       "title": "Reducing Ultraprocessed Foods From the Diets of Patients With Depression: A Pilot Crossover Trial",
-      "journal": "JAMA psychiatry",
+      "journal": "JAMA Psychiatry",
       "date": "2026-09-23",
       "authors": "Chagwedera DN et al.",
       "url": "https://doi.org/10.1001/jamapsychiatry.2026.2320"
@@ -277,7 +205,7 @@
     {
       "id": "42776542",
       "title": "Structural Brain Volumes and Delay Discounting",
-      "journal": "JAMA psychiatry",
+      "journal": "JAMA Psychiatry",
       "date": "2026-09-23",
       "authors": "Yoon BY et al.",
       "url": "https://doi.org/10.1001/jamapsychiatry.2026.2329"
@@ -285,7 +213,7 @@
     {
       "id": "42776555",
       "title": "The Next Generation of Psychiatric Research-A Special Collection by Early Career Investigators",
-      "journal": "JAMA psychiatry",
+      "journal": "JAMA Psychiatry",
       "date": "2026-09-23",
       "authors": "Brown TR",
       "url": "https://doi.org/10.1001/jamapsychiatry.2026.2653"
@@ -293,15 +221,39 @@
     {
       "id": "42768932",
       "title": "N,N-Dimethyltryptamine and harmine formulation alters transient EEG topography sequences near the peak of the psychedelic state",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-09-22",
       "authors": "Niedernhuber M et al.",
       "url": "https://doi.org/10.1177/02698811261481062"
     },
     {
+      "id": "42765467",
+      "title": "Clinical and Biological Characterization of Bipolar Disorder Patients With Chronic Insomnia Reveals Cortisol Reductions, Elevated TNF-α, and Increased Genetic Risk for Accelerated Aging",
+      "journal": "Bipolar Disorders",
+      "date": "2026-09-21",
+      "authors": "Rohr KE et al.",
+      "url": "https://doi.org/10.1111/bdi.70187"
+    },
+    {
+      "id": "42765449",
+      "title": "Comparative Effectiveness of Lithium- Vs. Valproate-Based Combinations With Atypical Antipsychotics in Preventing Rehospitalization After a First Manic Episode of Bipolar I Disorder",
+      "journal": "Bipolar Disorders",
+      "date": "2026-09-21",
+      "authors": "Li PY et al.",
+      "url": "https://doi.org/10.1111/bdi.70184"
+    },
+    {
+      "id": "42755433",
+      "title": "Longer Sleep Duration Predicts Progression to Bipolar or Psychotic Disorders in Youth Accessing Early Intervention Mental Health Services",
+      "journal": "Bipolar Disorders",
+      "date": "2026-09-18",
+      "authors": "Carpenter JS et al.",
+      "url": "https://doi.org/10.1111/bdi.70183"
+    },
+    {
       "id": "42755297",
       "title": "Validating and creating a short-form of the persisting effects questionnaire: A measure of positive and negative outcomes from psychedelic experiences",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-09-18",
       "authors": "Ehrenkranz R et al.",
       "url": "https://doi.org/10.1177/02698811261473405"
@@ -309,7 +261,7 @@
     {
       "id": "42746999",
       "title": "Adjunctive GLP-1 receptor agonists for cardiometabolic risk in antipsychotic-treated patients: A GRADE-assessed meta-analysis of randomized trials",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-09-16",
       "authors": "Moubarak ES et al.",
       "url": "https://doi.org/10.1177/02698811261478625"
@@ -317,7 +269,7 @@
     {
       "id": "42747827",
       "title": "Cannabis Commercialization as a Modifiable Public Health Exposure",
-      "journal": "JAMA psychiatry",
+      "journal": "JAMA Psychiatry",
       "date": "2026-09-16",
       "authors": "Gilman JM et al.",
       "url": "https://doi.org/10.1001/jamapsychiatry.2026.2869"
@@ -325,7 +277,7 @@
     {
       "id": "42747846",
       "title": "Mapping Clinical Diagnoses Associated With Neurodiversity and Neurodivergence in Mental Health Research: A Scoping Review",
-      "journal": "JAMA psychiatry",
+      "journal": "JAMA Psychiatry",
       "date": "2026-09-16",
       "authors": "Bellato A et al.",
       "url": "https://doi.org/10.1001/jamapsychiatry.2026.2851"
@@ -333,7 +285,7 @@
     {
       "id": "42747849",
       "title": "Structural Brain Correlates of Bulimia Nervosa Diagnosis and Symptom Severity: A Coordinated ENIGMA Eating Disorders Working Group Analysis",
-      "journal": "JAMA psychiatry",
+      "journal": "JAMA Psychiatry",
       "date": "2026-09-16",
       "authors": "Berner LA et al.",
       "url": "https://doi.org/10.1001/jamapsychiatry.2026.2842"
@@ -341,7 +293,7 @@
     {
       "id": "42747812",
       "title": "The Case for More Aggressive Masking in Psychedelic Trials",
-      "journal": "JAMA psychiatry",
+      "journal": "JAMA Psychiatry",
       "date": "2026-09-16",
       "authors": "Yang KH et al.",
       "url": "https://doi.org/10.1001/jamapsychiatry.2026.2858"
@@ -349,31 +301,71 @@
     {
       "id": "42714889",
       "title": "Angiotensin-Converting Enzyme in Patients With Early-Stage Psychosis",
-      "journal": "JAMA psychiatry",
+      "journal": "JAMA Psychiatry",
       "date": "2026-09-09",
       "authors": "Yang K et al.",
       "url": "https://doi.org/10.1001/jamapsychiatry.2026.2588"
     },
     {
+      "id": "42716055",
+      "title": "Association between CYP2D6 and CYP2C19 genotypes and venlafaxine treatment failure: a retrospective study on two cohorts from Norway and the UK",
+      "journal": "The Lancet Psychiatry",
+      "date": "2026-09-09",
+      "authors": "Park Y et al.",
+      "url": "https://doi.org/10.1016/S2215-0366(26)00238-5"
+    },
+    {
+      "id": "42713736",
+      "title": "Association Between Lithium Use and Suicide-Related Behaviors in Bipolar Disorder: A Multicenter Study",
+      "journal": "Bipolar Disorders",
+      "date": "2026-09-09",
+      "authors": "Guan X et al.",
+      "url": "https://doi.org/10.1111/bdi.70180"
+    },
+    {
+      "id": "42713711",
+      "title": "Association of Polygenic Risk Score for Suicidal Behavior With Ventral Prefrontal Morphology in Bipolar Disorder",
+      "journal": "Bipolar Disorders",
+      "date": "2026-09-09",
+      "authors": "Katz Shroitman N et al.",
+      "url": "https://doi.org/10.1111/bdi.70172"
+    },
+    {
       "id": "42714883",
       "title": "Changes in Characteristics Associated With ADHD and ASD Diagnoses Over Time",
-      "journal": "JAMA psychiatry",
+      "journal": "JAMA Psychiatry",
       "date": "2026-09-09",
       "authors": "Tarp ME et al.",
       "url": "https://doi.org/10.1001/jamapsychiatry.2026.2722"
     },
     {
+      "id": "42716056",
+      "title": "Comparative effectiveness of mood stabiliser monotherapy versus second-generation antipsychotic monotherapy versus combination therapy for continuation and maintenance treatment after a first episode of psychotic mania in North America, Chile, and Spain: a target trial emulation using data from the BD-CAUSAL Collaboration",
+      "journal": "The Lancet Psychiatry",
+      "date": "2026-09-09",
+      "authors": "Szmulewicz AG et al.",
+      "url": "https://doi.org/10.1016/S2215-0366(26)00239-7"
+    },
+    {
       "id": "42711749",
       "title": "Comparison of Long-Acting Injectable and Oral Antipsychotics in Bipolar Disorder",
-      "journal": "The American journal of psychiatry",
+      "journal": "American Journal of Psychiatry",
       "date": "2026-09-09",
       "authors": "Deng EK et al.",
       "url": "https://doi.org/10.1176/appi.ajp.20250793"
     },
     {
+      "id": "42716058",
+      "title": "Improving access to antipsychotic medications for schizophrenia in Ethiopia, Nigeria, Rwanda, and South Africa: an evidence-based global consensus",
+      "journal": "The Lancet Psychiatry",
+      "date": "2026-09-09",
+      "authors": "Smith KA et al.",
+      "url": "https://doi.org/10.1016/S2215-0366(26)00228-2"
+    },
+    {
       "id": "42714899",
       "title": "Population-Level Implications of Parental Similarity for the Prevalence and Heritability of Psychiatric Disorders",
-      "journal": "JAMA psychiatry",
+      "journal": "JAMA Psychiatry",
       "date": "2026-09-09",
       "authors": "Dehkordi SR et al.",
       "url": "https://doi.org/10.1001/jamapsychiatry.2026.2712"
@@ -381,7 +373,7 @@
     {
       "id": "42714923",
       "title": "Rebalancing Global Suicide Prevention",
-      "journal": "JAMA psychiatry",
+      "journal": "JAMA Psychiatry",
       "date": "2026-09-09",
       "authors": "Dandona R and Sagar R",
       "url": "https://doi.org/10.1001/jamapsychiatry.2026.2709"
@@ -389,15 +381,23 @@
     {
       "id": "42711747",
       "title": "Sex-Moderated and Sex-Specific Effects of Adverse Childhood Experiences on Neural Alcohol Cue Reactivity and Daily Craving in Individuals With Alcohol Use Disorder",
-      "journal": "The American journal of psychiatry",
+      "journal": "American Journal of Psychiatry",
       "date": "2026-09-09",
       "authors": "Rötzer L et al.",
       "url": "https://doi.org/10.1176/appi.ajp.20251163"
     },
     {
+      "id": "42716057",
+      "title": "The efficacy of modified psychodynamic psychotherapy for patients with schizophrenia-spectrum disorders in Germany: a prospective, single-centre, assessor-blinded, parallel-group, randomised controlled trial",
+      "journal": "The Lancet Psychiatry",
+      "date": "2026-09-09",
+      "authors": "Montag C et al.",
+      "url": "https://doi.org/10.1016/S2215-0366(26)00240-3"
+    },
+    {
       "id": "42711750",
       "title": "The Longevity of Mental Health Apps: A Survival Analysis of the Largest Mental Health App Database",
-      "journal": "The American journal of psychiatry",
+      "journal": "American Journal of Psychiatry",
       "date": "2026-09-09",
       "authors": "Herpertz J et al.",
       "url": "https://doi.org/10.1176/appi.ajp.20260155"
@@ -405,7 +405,7 @@
     {
       "id": "42706827",
       "title": "Psychedelic therapy without durable effects: A review and re-evaluation of controlled studies between 1965 and 1977",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-09-07",
       "authors": "Passie T and van Elk M",
       "url": "https://doi.org/10.1177/02698811261478606"
@@ -413,7 +413,7 @@
     {
       "id": "42704076",
       "title": "The effect of ketamine on mitochondrial bioenergetics, viability, and function: A systematic review",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-09-07",
       "authors": "Wong S et al.",
       "url": "https://doi.org/10.1177/02698811261481085"
@@ -421,7 +421,7 @@
     {
       "id": "42698232",
       "title": "Psilocybin-induced changes in electroencephalography link acute and long-term effects",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-09-04",
       "authors": "Nikolič M et al.",
       "url": "https://doi.org/10.1177/02698811261473445"
@@ -429,7 +429,7 @@
     {
       "id": "42689687",
       "title": "Safety, pharmacokinetics, and pharmacodynamics of intravenously administered deuterated N,N-dimethyltryptamine (CYB004) in healthy volunteers",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-09-03",
       "authors": "van der Heijden KV et al.",
       "url": "https://doi.org/10.1177/02698811261478616"
@@ -437,7 +437,7 @@
     {
       "id": "42684696",
       "title": "GLP-1 Receptor Agonist Prescriptions Among People With and Without Serious Mental Illness",
-      "journal": "JAMA psychiatry",
+      "journal": "JAMA Psychiatry",
       "date": "2026-09-02",
       "authors": "McGinty EE et al.",
       "url": "https://doi.org/10.1001/jamapsychiatry.2026.2667"
@@ -445,7 +445,7 @@
     {
       "id": "42684025",
       "title": "Safety, tolerability and pharmacokinetics of an NMDA receptor subunit 2B-selective negative allosteric modulator, BI 1569912: Results of three partially randomised, placebo-controlled phase I trials",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-09-02",
       "authors": "Hünnemeyer A et al.",
       "url": "https://doi.org/10.1177/02698811261481073"
@@ -453,167 +453,39 @@
     {
       "id": "42684694",
       "title": "Serial Ketamine Infusions for Treatment-Resistant Bipolar Depression: A Randomized Clinical Trial",
-      "journal": "JAMA psychiatry",
+      "journal": "JAMA Psychiatry",
       "date": "2026-09-02",
       "authors": "Orsini DK et al.",
       "url": "https://doi.org/10.1001/jamapsychiatry.2026.2658"
     },
     {
-      "id": "42657654",
-      "title": "A Shift in Trust: An Analysis of the Use of AI Chatbots Among People Living With Bipolar Disorder",
-      "journal": "Bipolar disorders",
-      "date": "2026-09-01",
-      "authors": "Bassil K et al.",
-      "url": "https://doi.org/10.1111/bdi.70176"
-    },
-    {
-      "id": "42384372",
-      "title": "Adolescent Peers' Diagnoses and Genetic Predispositions and Subsequent Risk of Mental Disorders",
-      "journal": "JAMA psychiatry",
-      "date": "2026-09-01",
-      "authors": "Alho J et al.",
-      "url": "https://doi.org/10.1001/jamapsychiatry.2026.1752"
-    },
-    {
-      "id": "42586083",
-      "title": "AI scribe functions in psychiatric practice: clinical oversight, consent, and regulation",
-      "journal": "The lancet. Psychiatry",
-      "date": "2026-09-01",
-      "authors": "Roth AS and Ayers NB",
-      "url": "https://doi.org/10.1016/S2215-0366(26)00201-4"
-    },
-    {
-      "id": "42268594",
-      "title": "Changes in Genetic Contributions to ASD and ADHD by Year of Diagnosis",
-      "journal": "JAMA psychiatry",
-      "date": "2026-09-01",
-      "authors": "LaBianca S et al.",
-      "url": "https://doi.org/10.1001/jamapsychiatry.2026.1450"
-    },
-    {
-      "id": "42568249",
-      "title": "Cortical Thickness in Middle and Older Aged Adults With Bipolar Disorder Across Six International Sites",
-      "journal": "Bipolar disorders",
-      "date": "2026-09-01",
-      "authors": "Marks R et al.",
-      "url": "https://doi.org/10.1111/bdi.70166"
-    },
-    {
-      "id": "42455552",
-      "title": "From Schedule I to the Clinic-Insights Into Psychedelic Drug Development From GHB",
-      "journal": "JAMA psychiatry",
-      "date": "2026-09-01",
-      "authors": "Barnett BS and King F 4th",
-      "url": "https://doi.org/10.1001/jamapsychiatry.2026.1901"
-    },
-    {
-      "id": "42307918",
-      "title": "Gastrointestinal Interoception and Relapse in Anorexia Nervosa",
-      "journal": "JAMA psychiatry",
-      "date": "2026-09-01",
-      "authors": "Verdonk C et al.",
-      "url": "https://doi.org/10.1001/jamapsychiatry.2026.1301"
-    },
-    {
       "id": "42687406",
       "title": "Hope as a Therapeutic Imperative for Treatment Resistant Depression",
-      "journal": "Bipolar disorders",
+      "journal": "Bipolar Disorders",
       "date": "2026-09-01",
       "authors": "Ng QX",
       "url": "https://doi.org/10.1111/bdi.70174"
     },
     {
-      "id": "42586082",
-      "title": "Incidence of systemic physical multimorbidity among people with schizophrenia-spectrum or bipolar-spectrum disorders compared with age-matched and sex-matched individuals in Queensland, Australia: a statewide, hospital cohort study",
-      "journal": "The lancet. Psychiatry",
-      "date": "2026-09-01",
-      "authors": "Halstead S et al.",
-      "url": "https://doi.org/10.1016/S2215-0366(26)00196-3"
-    },
-    {
-      "id": "42586081",
-      "title": "Inequalities in mortality following SARS-CoV-2 infection for people with severe mental illness during and following vaccination roll-out in England: a retrospective, whole-country linked cohort study",
-      "journal": "The lancet. Psychiatry",
-      "date": "2026-09-01",
-      "authors": "Chilman N et al.",
-      "url": "https://doi.org/10.1016/S2215-0366(26)00195-1"
-    },
-    {
-      "id": "42525421",
-      "title": "LLMs as Clinical Instruments-Toward Verifiable Reasoning",
-      "journal": "JAMA psychiatry",
-      "date": "2026-09-01",
-      "authors": "Paulus MP and Torous J",
-      "url": "https://doi.org/10.1001/jamapsychiatry.2026.2211"
-    },
-    {
-      "id": "42455537",
-      "title": "Lobbying Trends in Psychiatry and Psychology",
-      "journal": "JAMA psychiatry",
-      "date": "2026-09-01",
-      "authors": "Singh A et al.",
-      "url": "https://doi.org/10.1001/jamapsychiatry.2026.1921"
-    },
-    {
       "id": "42687371",
       "title": "Managing Sleep in Bipolar Disorder: An Overview of Pharmacological and Non-Pharmacological Interventions",
-      "journal": "Bipolar disorders",
+      "journal": "Bipolar Disorders",
       "date": "2026-09-01",
       "authors": "Baldini V et al.",
       "url": "https://doi.org/10.1111/bdi.70179"
     },
     {
-      "id": "42455558",
-      "title": "Mapping 2-Year Psychiatric and Neurologic Risks After Infections Across Body Systems and Age Groups",
-      "journal": "JAMA psychiatry",
-      "date": "2026-09-01",
-      "authors": "Taquet M et al.",
-      "url": "https://doi.org/10.1001/jamapsychiatry.2026.1904"
-    },
-    {
-      "id": "42340705",
-      "title": "Neurometabolites and Antipsychotic Response in Psychosis: A Mega-Analysis",
-      "journal": "JAMA psychiatry",
-      "date": "2026-09-01",
-      "authors": "King B et al.",
-      "url": "https://doi.org/10.1001/jamapsychiatry.2026.1674"
-    },
-    {
       "id": "42675563",
       "title": "New Horizons in the Development of Treatments for Substance Use Disorders",
-      "journal": "The American journal of psychiatry",
+      "journal": "American Journal of Psychiatry",
       "date": "2026-09-01",
       "authors": "Mariani JJ and Levin FR",
       "url": "https://doi.org/10.1176/appi.ajp.20260362"
     },
     {
-      "id": "42670081",
-      "title": "Optimizing Ketamine Infusion Therapy for Treatment-Resistant Bipolar Depression: Commentary on Zhou et al. (2023)",
-      "journal": "Bipolar disorders",
-      "date": "2026-09-01",
-      "authors": "Lin CC and Wei LC",
-      "url": "https://doi.org/10.1111/bdi.70177"
-    },
-    {
-      "id": "42418179",
-      "title": "Pharmacological Interventions for Weight Reduction in Patients With Schizophrenia Treated With Antipsychotics: A Systematic Review and Network Meta-Analysis",
-      "journal": "JAMA psychiatry",
-      "date": "2026-09-01",
-      "authors": "Stogios N et al.",
-      "url": "https://doi.org/10.1001/jamapsychiatry.2026.1814"
-    },
-    {
-      "id": "42578538",
-      "title": "Prescription Trends for Bipolar Disorder With and Without Comorbid Substance Use and Anxiety Disorders: A Global Bipolar Cohort Collaborative Study",
-      "journal": "Bipolar disorders",
-      "date": "2026-09-01",
-      "authors": "Yocum AK et al.",
-      "url": "https://doi.org/10.1111/bdi.70167"
-    },
-    {
       "id": "42698177",
       "title": "Psychometric Properties of the Turkish Version of the Rapid Mood Screener for Bipolar Disorder (RMS-T): A Validity and Reliability Study",
-      "journal": "Bipolar disorders",
+      "journal": "Bipolar Disorders",
       "date": "2026-09-01",
       "authors": "Sair YB et al.",
       "url": "https://doi.org/10.1111/bdi.70181"
@@ -621,87 +493,31 @@
     {
       "id": "42678081",
       "title": "Reinstatement of escitalopram and clonidine administration reverses the cessation-induced enhanced activation of rat norepinephrine and serotonin neuronal firing activity",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-09-01",
       "authors": "El Mansari M et al.",
       "url": "https://pubmed.ncbi.nlm.nih.gov/42678081/"
     },
     {
-      "id": "42657624",
-      "title": "State-Specific Segmental Abnormalities of White Matter Structure and Function in Pediatric Bipolar Disorders",
-      "journal": "Bipolar disorders",
-      "date": "2026-09-01",
-      "authors": "Chen Z et al.",
-      "url": "https://doi.org/10.1111/bdi.70175"
-    },
-    {
-      "id": "42586080",
-      "title": "Structural brain changes and clinical outcomes of patients with NMDA receptor encephalitis in Germany: a cross-sectional study",
-      "journal": "The lancet. Psychiatry",
-      "date": "2026-09-01",
-      "authors": "Krohn S et al.",
-      "url": "https://doi.org/10.1016/S2215-0366(26)00191-4"
-    },
-    {
-      "id": "42268602",
-      "title": "The 25-Year Evolution of Lithium as a Disease-Modifying Agent in Dementia: A Narrative Review",
-      "journal": "JAMA psychiatry",
-      "date": "2026-09-01",
-      "authors": "Moore GJ et al.",
-      "url": "https://doi.org/10.1001/jamapsychiatry.2026.1296"
-    },
-    {
-      "id": "42384391",
-      "title": "The Clinical Threshold for Treatment in Psychiatry",
-      "journal": "JAMA psychiatry",
-      "date": "2026-09-01",
-      "authors": "Fava GA and Guidi J",
-      "url": "https://doi.org/10.1001/jamapsychiatry.2026.1759"
-    },
-    {
-      "id": "42418192",
-      "title": "The Reinforcement Effect of Social Media Likes in Depression",
-      "journal": "JAMA psychiatry",
-      "date": "2026-09-01",
-      "authors": "Mirea DM et al.",
-      "url": "https://doi.org/10.1001/jamapsychiatry.2026.1430"
-    },
-    {
-      "id": "42576393",
-      "title": "The Relation Between Perceived Social Support, Treatment Adherence and Recovery Among Individuals Diagnosed With Bipolar Disorder",
-      "journal": "Bipolar disorders",
-      "date": "2026-09-01",
-      "authors": "Ayhan CH et al.",
-      "url": "https://doi.org/10.1111/bdi.70170"
-    },
-    {
-      "id": "42418174",
-      "title": "Toward a Pluralistic Model for the Schizophrenia Spectrum-Dopamine and Beyond",
-      "journal": "JAMA psychiatry",
-      "date": "2026-09-01",
-      "authors": "Keshavan MS et al.",
-      "url": "https://doi.org/10.1001/jamapsychiatry.2026.1684"
-    },
-    {
-      "id": "42418211",
-      "title": "War and Suicide in the US Military",
-      "journal": "JAMA psychiatry",
-      "date": "2026-09-01",
-      "authors": "Reger MA and Hoyt T",
-      "url": "https://doi.org/10.1001/jamapsychiatry.2026.1762"
-    },
-    {
       "id": "42670819",
       "title": "A novel approach for evaluating and comparing multiple antipsychotic polypharmacy in adults across specialist intellectual disability services in England and Wales: A retrospective feasibility cohort study",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-08-31",
       "authors": "Tromans SJ et al.",
       "url": "https://doi.org/10.1177/02698811261478609"
     },
     {
+      "id": "42670081",
+      "title": "Optimizing Ketamine Infusion Therapy for Treatment-Resistant Bipolar Depression: Commentary on Zhou et al. (2023)",
+      "journal": "Bipolar Disorders",
+      "date": "2026-08-31",
+      "authors": "Lin CC and Wei LC",
+      "url": "https://doi.org/10.1111/bdi.70177"
+    },
+    {
       "id": "42671902",
       "title": "Pharmacokinetics, pharmacodynamics and safety of N,N-dimethyltryptamine administered intravenously in healthy smoking and non-smoking volunteers",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-08-31",
       "authors": "van der Heijden KV et al.",
       "url": "https://doi.org/10.1177/02698811261473451"
@@ -709,7 +525,7 @@
     {
       "id": "42670231",
       "title": "Differential effects of psilocybin derivatives on fentanyl-induced conditioned place preference in male and female mice",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-08-30",
       "authors": "Lovell TN et al.",
       "url": "https://doi.org/10.1177/02698811261478613"
@@ -717,15 +533,31 @@
     {
       "id": "42668404",
       "title": "A randomized crossover trial comparing the acute physiological and psychological effects of botanical formulations of oral psilocybin, oral psilocin, and sublingual psilocin",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-08-29",
       "authors": "Tai ML et al.",
       "url": "https://doi.org/10.1177/02698811261478603"
     },
     {
+      "id": "42657654",
+      "title": "A Shift in Trust: An Analysis of the Use of AI Chatbots Among People Living With Bipolar Disorder",
+      "journal": "Bipolar Disorders",
+      "date": "2026-08-27",
+      "authors": "Bassil K et al.",
+      "url": "https://doi.org/10.1111/bdi.70176"
+    },
+    {
+      "id": "42657624",
+      "title": "State-Specific Segmental Abnormalities of White Matter Structure and Function in Pediatric Bipolar Disorders",
+      "journal": "Bipolar Disorders",
+      "date": "2026-08-27",
+      "authors": "Chen Z et al.",
+      "url": "https://doi.org/10.1111/bdi.70175"
+    },
+    {
       "id": "42646922",
       "title": "Adapting Family-Based Psychosis Care to the Digital Home",
-      "journal": "JAMA psychiatry",
+      "journal": "JAMA Psychiatry",
       "date": "2026-08-26",
       "authors": "Parikh A et al.",
       "url": "https://doi.org/10.1001/jamapsychiatry.2026.2570"
@@ -733,7 +565,7 @@
     {
       "id": "42642806",
       "title": "Association Between Age-Dependent DNA Methylation Changes at FKBP5 Enhancer Sites and Increased Cortical Gene Expression in Schizophrenia",
-      "journal": "The American journal of psychiatry",
+      "journal": "American Journal of Psychiatry",
       "date": "2026-08-26",
       "authors": "Edmond KZ et al.",
       "url": "https://doi.org/10.1176/appi.ajp.20250473"
@@ -741,7 +573,7 @@
     {
       "id": "42647034",
       "title": "Glucagon-Like Peptide 1 Receptor Agonists, Mortality, and Cardiovascular Outcomes in Serious Mental Illness",
-      "journal": "JAMA psychiatry",
+      "journal": "JAMA Psychiatry",
       "date": "2026-08-26",
       "authors": "McIntyre RS et al.",
       "url": "https://doi.org/10.1001/jamapsychiatry.2026.2574"
@@ -749,7 +581,7 @@
     {
       "id": "42642807",
       "title": "Hippocampal Dentate Gyrus Plasticity and Its Association With Dimensional Clinical Improvement Across Four Depression Treatment Interventions",
-      "journal": "The American journal of psychiatry",
+      "journal": "American Journal of Psychiatry",
       "date": "2026-08-26",
       "authors": "Takamiya A et al.",
       "url": "https://doi.org/10.1176/appi.ajp.20251330"
@@ -757,7 +589,7 @@
     {
       "id": "42648300",
       "title": "Open Dialogue versus treatment as usual for adults presenting in crisis to mental health services in England (the ODDESSI Trial): a multisite cluster-randomised trial",
-      "journal": "The lancet. Psychiatry",
+      "journal": "The Lancet Psychiatry",
       "date": "2026-08-26",
       "authors": "Pilling S et al.",
       "url": "https://doi.org/10.1016/S2215-0366(26)00229-4"
@@ -765,7 +597,7 @@
     {
       "id": "42646907",
       "title": "Potential for Genomics to Help Guide Preventive Strategies in Psychiatry",
-      "journal": "JAMA psychiatry",
+      "journal": "JAMA Psychiatry",
       "date": "2026-08-26",
       "authors": "Musliner KL et al.",
       "url": "https://doi.org/10.1001/jamapsychiatry.2026.2583"
@@ -773,7 +605,7 @@
     {
       "id": "42642808",
       "title": "The RECOVER Trial of Vagus Nerve Stimulation in Markedly Treatment-Resistant Depression: Critical Findings, Lessons Learned, and Future Directions",
-      "journal": "The American journal of psychiatry",
+      "journal": "American Journal of Psychiatry",
       "date": "2026-08-26",
       "authors": "Conway CR et al.",
       "url": "https://doi.org/10.1176/appi.ajp.20251339"
@@ -781,7 +613,7 @@
     {
       "id": "42638542",
       "title": "Benzodiazepines and GABA(A) receptor subtypes: Effects in open-field, elevated plus maze-discriminative avoidance task, and conditioned place preference in male mice",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-08-25",
       "authors": "Gundim VA et al.",
       "url": "https://doi.org/10.1177/02698811261473409"
@@ -789,7 +621,7 @@
     {
       "id": "42639976",
       "title": "Beyond head-twitch response: Acute psilocybin affects spontaneous behaviors in rats in a dose-dependent manner",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-08-25",
       "authors": "Tiwari P et al.",
       "url": "https://doi.org/10.1177/02698811261478600"
@@ -797,7 +629,7 @@
     {
       "id": "42639762",
       "title": "Dopaminergic fronto-striatal connectivity underlies schema-dependent learning",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-08-25",
       "authors": "Yousuf M et al.",
       "url": "https://doi.org/10.1177/02698811261473397"
@@ -805,7 +637,7 @@
     {
       "id": "42638533",
       "title": "Salvinorin A in humans: A systematic review of pharmacokinetics, pharmacodynamics, and safety",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-08-25",
       "authors": "Zürrer WE et al.",
       "url": "https://doi.org/10.1177/02698811261473385"
@@ -813,7 +645,7 @@
     {
       "id": "42636852",
       "title": "Relapse trajectories and antipsychotic discontinuation in schizophrenia from individual participant data of five trials from the Yale Open Data Access database: a meta-analysis",
-      "journal": "The lancet. Psychiatry",
+      "journal": "The Lancet Psychiatry",
       "date": "2026-08-24",
       "authors": "Louie K et al.",
       "url": "https://doi.org/10.1016/S2215-0366(26)00225-7"
@@ -821,7 +653,7 @@
     {
       "id": "42624816",
       "title": "From prediction to decision: prediction-based decision rules and target trial emulation in ADHD",
-      "journal": "The lancet. Psychiatry",
+      "journal": "The Lancet Psychiatry",
       "date": "2026-08-20",
       "authors": "Garcia-Argibay M et al.",
       "url": "https://doi.org/10.1016/S2215-0366(26)00227-0"
@@ -829,7 +661,7 @@
     {
       "id": "42616533",
       "title": "Does Interacting With Artificial Intelligence Cause Delusions?",
-      "journal": "JAMA psychiatry",
+      "journal": "JAMA Psychiatry",
       "date": "2026-08-19",
       "authors": "Corlett PR",
       "url": "https://doi.org/10.1001/jamapsychiatry.2026.2500"
@@ -837,7 +669,7 @@
     {
       "id": "42616538",
       "title": "Neural Markers of Reward Valuation and Impulsive Decision-Making in Mania Risk",
-      "journal": "JAMA psychiatry",
+      "journal": "JAMA Psychiatry",
       "date": "2026-08-19",
       "authors": "Raeder R et al.",
       "url": "https://doi.org/10.1001/jamapsychiatry.2026.2510"
@@ -845,7 +677,7 @@
     {
       "id": "42616551",
       "title": "Racial and Ethnic Disparities in Treatment Discontinuation in Pregnant Females With Opioid Use Disorder",
-      "journal": "JAMA psychiatry",
+      "journal": "JAMA Psychiatry",
       "date": "2026-08-19",
       "authors": "Zakoul H et al.",
       "url": "https://doi.org/10.1001/jamapsychiatry.2026.2506"
@@ -853,7 +685,7 @@
     {
       "id": "42616554",
       "title": "Suicide Risk Models Are Ready-Our Health Systems Are Not",
-      "journal": "JAMA psychiatry",
+      "journal": "JAMA Psychiatry",
       "date": "2026-08-19",
       "authors": "Xiao Y et al.",
       "url": "https://doi.org/10.1001/jamapsychiatry.2026.2397"
@@ -861,7 +693,7 @@
     {
       "id": "42616541",
       "title": "Trends in the Prevalence and Severity of Alcohol and Cannabis Use Disorders Among US Adults",
-      "journal": "JAMA psychiatry",
+      "journal": "JAMA Psychiatry",
       "date": "2026-08-19",
       "authors": "Han B et al.",
       "url": "https://doi.org/10.1001/jamapsychiatry.2026.2497"
@@ -869,7 +701,7 @@
     {
       "id": "42605589",
       "title": "Defining 'psychedelic'",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-08-17",
       "authors": "Ostrand AE et al.",
       "url": "https://doi.org/10.1177/02698811261464986"
@@ -877,7 +709,7 @@
     {
       "id": "42605574",
       "title": "Experience, plasticity, and context: Beyond single-level models of antidepressant action",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-08-17",
       "authors": "Eckert D",
       "url": "https://doi.org/10.1177/02698811261473402"
@@ -885,15 +717,23 @@
     {
       "id": "42609034",
       "title": "Psilocybin-assisted psychotherapy for substance use disorders as a complex intervention: A systematic review of efficacy, mechanisms and psychotherapeutic frameworks",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-08-17",
       "authors": "Strika-Bruneau L et al.",
       "url": "https://doi.org/10.1177/02698811261473436"
     },
     {
+      "id": "42586083",
+      "title": "AI scribe functions in psychiatric practice: clinical oversight, consent, and regulation",
+      "journal": "The Lancet Psychiatry",
+      "date": "2026-08-12",
+      "authors": "Roth AS and Ayers NB",
+      "url": "https://doi.org/10.1016/S2215-0366(26)00201-4"
+    },
+    {
       "id": "42583891",
       "title": "AUT00206, a novel and selective Kv3.1/3.2 channel modulator, restores cognitive dysfunction and negative symptoms in an animal model for schizophrenia symptomatology",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-08-12",
       "authors": "Leger M et al.",
       "url": "https://doi.org/10.1177/02698811261473459"
@@ -901,7 +741,7 @@
     {
       "id": "42584886",
       "title": "Depression and SSRI Treatment During Pregnancy-Prioritizing Maternal Mental Health",
-      "journal": "JAMA psychiatry",
+      "journal": "JAMA Psychiatry",
       "date": "2026-08-12",
       "authors": "Wisner KL et al.",
       "url": "https://doi.org/10.1001/jamapsychiatry.2026.2405"
@@ -909,7 +749,7 @@
     {
       "id": "42584904",
       "title": "Focused Ultrasound Neuromodulation in Psychiatry-Promises and Challenges",
-      "journal": "JAMA psychiatry",
+      "journal": "JAMA Psychiatry",
       "date": "2026-08-12",
       "authors": "Philip NS et al.",
       "url": "https://doi.org/10.1001/jamapsychiatry.2026.2401"
@@ -917,23 +757,39 @@
     {
       "id": "42583847",
       "title": "Impact of adjunctive dihydropyridine calcium channel blockers on mental health outcomes in people with severe mental illness: A target trial emulation in English electronic health records",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-08-12",
       "authors": "Launders N et al.",
       "url": "https://doi.org/10.1177/02698811261473408"
     },
     {
+      "id": "42586082",
+      "title": "Incidence of systemic physical multimorbidity among people with schizophrenia-spectrum or bipolar-spectrum disorders compared with age-matched and sex-matched individuals in Queensland, Australia: a statewide, hospital cohort study",
+      "journal": "The Lancet Psychiatry",
+      "date": "2026-08-12",
+      "authors": "Halstead S et al.",
+      "url": "https://doi.org/10.1016/S2215-0366(26)00196-3"
+    },
+    {
       "id": "42581396",
       "title": "Individualized Connectivity-Guided Versus Conventional Targeting of Accelerated Theta-Burst Stimulation in Depression: A Randomized, Double-Blind, Parallel-Design Trial",
-      "journal": "The American journal of psychiatry",
+      "journal": "American Journal of Psychiatry",
       "date": "2026-08-12",
       "authors": "Li M et al.",
       "url": "https://doi.org/10.1176/appi.ajp.20251084"
     },
     {
+      "id": "42586081",
+      "title": "Inequalities in mortality following SARS-CoV-2 infection for people with severe mental illness during and following vaccination roll-out in England: a retrospective, whole-country linked cohort study",
+      "journal": "The Lancet Psychiatry",
+      "date": "2026-08-12",
+      "authors": "Chilman N et al.",
+      "url": "https://doi.org/10.1016/S2215-0366(26)00195-1"
+    },
+    {
       "id": "42584881",
       "title": "Longitudinal Precision Functional Mapping in Psychiatry",
-      "journal": "JAMA psychiatry",
+      "journal": "JAMA Psychiatry",
       "date": "2026-08-12",
       "authors": "Manza P et al.",
       "url": "https://doi.org/10.1001/jamapsychiatry.2026.2393"
@@ -941,7 +797,7 @@
     {
       "id": "42584912",
       "title": "Predicting US Army Soldier Suicide-Related Behaviors at the Time of Periodic Health Assessments",
-      "journal": "JAMA psychiatry",
+      "journal": "JAMA Psychiatry",
       "date": "2026-08-12",
       "authors": "Edwards ER et al.",
       "url": "https://doi.org/10.1001/jamapsychiatry.2026.2410"
@@ -949,15 +805,23 @@
     {
       "id": "42583842",
       "title": "Psychotropic medication prescribing to children and young people mental health inpatient services: An English national study",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-08-12",
       "authors": "Branford D et al.",
       "url": "https://doi.org/10.1177/02698811261473383"
     },
     {
+      "id": "42586080",
+      "title": "Structural brain changes and clinical outcomes of patients with NMDA receptor encephalitis in Germany: a cross-sectional study",
+      "journal": "The Lancet Psychiatry",
+      "date": "2026-08-12",
+      "authors": "Krohn S et al.",
+      "url": "https://doi.org/10.1016/S2215-0366(26)00191-4"
+    },
+    {
       "id": "42583892",
       "title": "What are the clinical implications of mixed features in major depressive disorder? A VAST-D report",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-08-12",
       "authors": "Zisook S et al.",
       "url": "https://doi.org/10.1177/02698811261474121"
@@ -965,15 +829,39 @@
     {
       "id": "42581397",
       "title": "Youth Autistic Traits and Brain Activation States During Socioemotional Processing",
-      "journal": "The American journal of psychiatry",
+      "journal": "American Journal of Psychiatry",
       "date": "2026-08-12",
       "authors": "Lasch C et al.",
       "url": "https://doi.org/10.1176/appi.ajp.20251035"
     },
     {
+      "id": "42578538",
+      "title": "Prescription Trends for Bipolar Disorder With and Without Comorbid Substance Use and Anxiety Disorders: A Global Bipolar Cohort Collaborative Study",
+      "journal": "Bipolar Disorders",
+      "date": "2026-08-11",
+      "authors": "Yocum AK et al.",
+      "url": "https://doi.org/10.1111/bdi.70167"
+    },
+    {
+      "id": "42576393",
+      "title": "The Relation Between Perceived Social Support, Treatment Adherence and Recovery Among Individuals Diagnosed With Bipolar Disorder",
+      "journal": "Bipolar Disorders",
+      "date": "2026-08-11",
+      "authors": "Ayhan CH et al.",
+      "url": "https://doi.org/10.1111/bdi.70170"
+    },
+    {
+      "id": "42568249",
+      "title": "Cortical Thickness in Middle and Older Aged Adults With Bipolar Disorder Across Six International Sites",
+      "journal": "Bipolar Disorders",
+      "date": "2026-08-08",
+      "authors": "Marks R et al.",
+      "url": "https://doi.org/10.1111/bdi.70166"
+    },
+    {
       "id": "42563131",
       "title": "The occurrence and potential role of mystical experiences in MDMA-assisted therapy for PTSD: A secondary analysis",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-08-06",
       "authors": "Bostoen TPL et al.",
       "url": "https://doi.org/10.1177/02698811261464502"
@@ -981,7 +869,7 @@
     {
       "id": "42552898",
       "title": "CB1 receptor-enriched functional connectivity analysis revealed target-specific modulation by cannabidiol in early psychosis",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-08-05",
       "authors": "Lombardi G et al.",
       "url": "https://doi.org/10.1177/02698811261470456"
@@ -989,7 +877,7 @@
     {
       "id": "42555054",
       "title": "Deconstructing Social Functioning in Psychosis Risk-From Prediction to Recovery",
-      "journal": "JAMA psychiatry",
+      "journal": "JAMA Psychiatry",
       "date": "2026-08-05",
       "authors": "Carrión RE et al.",
       "url": "https://doi.org/10.1001/jamapsychiatry.2026.2226"
@@ -997,7 +885,7 @@
     {
       "id": "42557813",
       "title": "Lithium toxicity from angiotensin-converting enzyme inhibitor or angiotensin II receptor blocker co-prescription: A population-based cohort study",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-08-05",
       "authors": "Ahmadi F et al.",
       "url": "https://doi.org/10.1177/02698811261473401"
@@ -1005,7 +893,7 @@
     {
       "id": "42555011",
       "title": "Optimizing Study Design for Clinically Useful Peripheral Molecular Biomarker Discovery in Psychiatry: A Review",
-      "journal": "JAMA psychiatry",
+      "journal": "JAMA Psychiatry",
       "date": "2026-08-05",
       "authors": "Yap CX et al.",
       "url": "https://doi.org/10.1001/jamapsychiatry.2026.2299"
@@ -1013,7 +901,7 @@
     {
       "id": "42555019",
       "title": "Psychotherapy for Impact of Killing During War: A Randomized Clinical Trial",
-      "journal": "JAMA psychiatry",
+      "journal": "JAMA Psychiatry",
       "date": "2026-08-05",
       "authors": "Maguen S et al.",
       "url": "https://doi.org/10.1001/jamapsychiatry.2026.2307"
@@ -1021,7 +909,7 @@
     {
       "id": "42549822",
       "title": "A pharmacometric framework for norepinephrine transporter occupancy and dose equivalence across psychotropic medications",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-08-04",
       "authors": "Aboukaoud M et al.",
       "url": "https://doi.org/10.1177/02698811261470450"
@@ -1029,7 +917,7 @@
     {
       "id": "42546730",
       "title": "Optimising and personalising task-shared psychosocial interventions for common mental disorders: a Bayesian component network meta-analysis of individual participant data",
-      "journal": "The lancet. Psychiatry",
+      "journal": "The Lancet Psychiatry",
       "date": "2026-08-03",
       "authors": "Papola D et al.",
       "url": "https://doi.org/10.1016/S2215-0366(26)00193-8"
@@ -1037,239 +925,15 @@
     {
       "id": "42544550",
       "title": "Where is the sweet spot for psychedelic-enhanced fear extinction? An integrative quantitative synthesis of dose-effect patterns in rodent models",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-08-03",
       "authors": "Werle I et al.",
       "url": "https://doi.org/10.1177/02698811261464979"
     },
     {
-      "id": "42394293",
-      "title": "A 3-Month Follow-Up Pilot Study on Accelerated Intermittent Theta Burst Stimulation for Bipolar Depression",
-      "journal": "Bipolar disorders",
-      "date": "2026-08-01",
-      "authors": "Neuteboom D et al.",
-      "url": "https://doi.org/10.1111/bdi.70148"
-    },
-    {
-      "id": "42340690",
-      "title": "A New CMS Payment Model for AI-Delivered Behavioral Health Care",
-      "journal": "JAMA psychiatry",
-      "date": "2026-08-01",
-      "authors": "Gorrindo T et al.",
-      "url": "https://doi.org/10.1001/jamapsychiatry.2026.1681"
-    },
-    {
-      "id": "42340691",
-      "title": "Assessing Drug Efficacy After Multiple Negative Trials-Gepirone's Journey Through the FDA",
-      "journal": "JAMA psychiatry",
-      "date": "2026-08-01",
-      "authors": "Turner EH et al.",
-      "url": "https://doi.org/10.1001/jamapsychiatry.2026.1438"
-    },
-    {
-      "id": "42456704",
-      "title": "Association of GLP-1 receptor agonists with alcohol use disorder-related and substance use disorder-related hospital admissions during treatment and after discontinuation: a Swedish register-based within-individual observational study",
-      "journal": "The lancet. Psychiatry",
-      "date": "2026-08-01",
-      "authors": "Bach P et al.",
-      "url": "https://doi.org/10.1016/S2215-0366(26)00172-0"
-    },
-    {
-      "id": "42387906",
-      "title": "Biofluid Biomarkers of Cognitive Functioning in Bipolar Disorder: A Systematic Review by the Targeting Cognition and Older-Age Bipolar Disorder ISBD Task Forces",
-      "journal": "Bipolar disorders",
-      "date": "2026-08-01",
-      "authors": "Beunders AJM et al.",
-      "url": "https://doi.org/10.1111/bdi.70109"
-    },
-    {
-      "id": "42234441",
-      "title": "Brain Morphology Mediators of the Association of Childhood Trauma With Bipolar Disorder: An International ENIGMA Bipolar Disorder Working Group Study",
-      "journal": "JAMA psychiatry",
-      "date": "2026-08-01",
-      "authors": "Tozzi L et al.",
-      "url": "https://doi.org/10.1001/jamapsychiatry.2026.1183"
-    },
-    {
-      "id": "42358081",
-      "title": "Can We Improve the Prediction of Early Onset Mania and Hypomania in the Community?",
-      "journal": "Bipolar disorders",
-      "date": "2026-08-01",
-      "authors": "Scott J et al.",
-      "url": "https://doi.org/10.1111/bdi.70140"
-    },
-    {
-      "id": "42456705",
-      "title": "Characteristics of higher-education students in England who died by suspected suicide in a single academic year: a national retrospective case series study",
-      "journal": "The lancet. Psychiatry",
-      "date": "2026-08-01",
-      "authors": "Rodway C et al.",
-      "url": "https://doi.org/10.1016/S2215-0366(26)00173-2"
-    },
-    {
-      "id": "42267732",
-      "title": "Clinical and Sociodemographic Correlates of Poor Medication Adherence in People With Bipolar Disorder: A Systematic Review and Meta-Analysis",
-      "journal": "Bipolar disorders",
-      "date": "2026-08-01",
-      "authors": "Bartoli F et al.",
-      "url": "https://doi.org/10.1111/bdi.70127"
-    },
-    {
-      "id": "42286971",
-      "title": "Clinical Phenomenology of Bipolar Disorder With Substance Use Disorders: A Systematic Review",
-      "journal": "Bipolar disorders",
-      "date": "2026-08-01",
-      "authors": "Garvie S et al.",
-      "url": "https://doi.org/10.1111/bdi.70132"
-    },
-    {
-      "id": "42340706",
-      "title": "Connectivity- vs Scalp-Based Targeting of Accelerated Transcranial Magnetic Stimulation for Depression: A Randomized Clinical Trial",
-      "journal": "JAMA psychiatry",
-      "date": "2026-08-01",
-      "authors": "Taylor JJ et al.",
-      "url": "https://doi.org/10.1001/jamapsychiatry.2026.1100"
-    },
-    {
-      "id": "42324762",
-      "title": "Cross-Sectional and Longitudinal Comparison of Commonly Used Screening Tools for Bipolar Disorders",
-      "journal": "Bipolar disorders",
-      "date": "2026-08-01",
-      "authors": "Tröger A et al.",
-      "url": "https://doi.org/10.1111/bdi.70133"
-    },
-    {
-      "id": "42312868",
-      "title": "Effectiveness of Family Interventions in Bipolar Disorder: A Systematic Review",
-      "journal": "Bipolar disorders",
-      "date": "2026-08-01",
-      "authors": "Umer M et al.",
-      "url": "https://doi.org/10.1111/bdi.70135"
-    },
-    {
-      "id": "42234419",
-      "title": "Electroencephalography Microstate Instability and Clinical Outcomes in Individuals at Clinical High Risk of Psychosis",
-      "journal": "JAMA psychiatry",
-      "date": "2026-08-01",
-      "authors": "Liebrand M et al.",
-      "url": "https://doi.org/10.1001/jamapsychiatry.2026.1084"
-    },
-    {
-      "id": "42381254",
-      "title": "Enhancing Affective Cognitive Control in Bipolar Disorder Using Transcranial Alternating Current Stimulation: A Double-Blind, Randomized, Sham-Controlled Clinical Trial and Proof of Concept Study",
-      "journal": "Bipolar disorders",
-      "date": "2026-08-01",
-      "authors": "Kraft JD et al.",
-      "url": "https://doi.org/10.1111/bdi.70142"
-    },
-    {
-      "id": "42400340",
-      "title": "Epigenetic Age Accelerations and the Clinical Presentation of Bipolar Disorders: A Latent Profile Analysis in the FACE-BD Sample",
-      "journal": "Bipolar disorders",
-      "date": "2026-08-01",
-      "authors": "Spano L et al.",
-      "url": "https://doi.org/10.1111/bdi.70143"
-    },
-    {
-      "id": "42429210",
-      "title": "Essential Information About Chronobiology and Chronotherapy for the Optimal Care of People With Bipolar Disorders: An Expert Consensus",
-      "journal": "Bipolar disorders",
-      "date": "2026-08-01",
-      "authors": "Crouse JJ et al.",
-      "url": "https://doi.org/10.1111/bdi.70141"
-    },
-    {
-      "id": "42429592",
-      "title": "Establishing a Specialty Bipolar Clinic: The National Network of Depression Centers Consensus Recommendations",
-      "journal": "Bipolar disorders",
-      "date": "2026-08-01",
-      "authors": "Schneck CD et al.",
-      "url": "https://doi.org/10.1111/bdi.70154"
-    },
-    {
-      "id": "42234418",
-      "title": "Evaluating Reduced Use and Abstinence as Outcomes in Pharmacotherapy Trials for Stimulant Use Disorder: A Meta-Analysis of 12 Randomized Controlled Trials",
-      "journal": "JAMA psychiatry",
-      "date": "2026-08-01",
-      "authors": "Amin-Esmaeili M et al.",
-      "url": "https://doi.org/10.1001/jamapsychiatry.2026.1092"
-    },
-    {
-      "id": "42340097",
-      "title": "How Do Parents With Bipolar Disorder Perceive the Risk to the Next Generation? Results From a Qualitative Study",
-      "journal": "Bipolar disorders",
-      "date": "2026-08-01",
-      "authors": "Laigaard M et al.",
-      "url": "https://doi.org/10.1111/bdi.70139"
-    },
-    {
-      "id": "42464599",
-      "title": "Identifying Mood Instability and Circadian Rest-Activity Patterns Using Digital Remote Monitoring and Actigraphy in Participants at Risk for Bipolar Disorder",
-      "journal": "Bipolar disorders",
-      "date": "2026-08-01",
-      "authors": "Panchal P et al.",
-      "url": "https://doi.org/10.1111/bdi.70156"
-    },
-    {
-      "id": "42160062",
-      "title": "Interleukin 6 as a Treatment Target for Depression: A Proof-of-Concept Randomized Clinical Trial",
-      "journal": "JAMA psychiatry",
-      "date": "2026-08-01",
-      "authors": "Foley ÉM et al.",
-      "url": "https://doi.org/10.1001/jamapsychiatry.2026.1053"
-    },
-    {
-      "id": "42307044",
-      "title": "Lithium Dispensing Patterns in Dutch Youth: Prevalence, Incidence Dosages, and Duration of Use From 2011 to 2022",
-      "journal": "Bipolar disorders",
-      "date": "2026-08-01",
-      "authors": "Gangapersad RN et al.",
-      "url": "https://doi.org/10.1111/bdi.70134"
-    },
-    {
-      "id": "42126858",
-      "title": "Nationwide Transdiagnostic Age and Sex Patterns in Mental Disorder Disease Development",
-      "journal": "JAMA psychiatry",
-      "date": "2026-08-01",
-      "authors": "Wandall ENS et al.",
-      "url": "https://doi.org/10.1001/jamapsychiatry.2026.0882"
-    },
-    {
-      "id": "42466920",
-      "title": "Prospective Volumetric Changes in the Thalamus in Adolescent First Episode of Mania and Cannabis Use: A Preliminary Study",
-      "journal": "Bipolar disorders",
-      "date": "2026-08-01",
-      "authors": "Shin GJ et al.",
-      "url": "https://doi.org/10.1111/bdi.70157"
-    },
-    {
-      "id": "42381224",
-      "title": "Psychotropic Prescribing Patterns Among Bipolar-I Patients Prior to Established Bipolar-I Disorder Diagnosis",
-      "journal": "Bipolar disorders",
-      "date": "2026-08-01",
-      "authors": "Haile F et al.",
-      "url": "https://doi.org/10.1111/bdi.70137"
-    },
-    {
-      "id": "42201728",
-      "title": "Recurrent Copy Number Variants and Psychiatric Outcomes in the Context of Polygenic Scores",
-      "journal": "JAMA psychiatry",
-      "date": "2026-08-01",
-      "authors": "Vaez M et al.",
-      "url": "https://doi.org/10.1001/jamapsychiatry.2026.1064"
-    },
-    {
-      "id": "42396902",
-      "title": "Risk of Major Malformations Following First-Trimester Exposure to Cariprazine: Preliminary Data From the MGH National Pregnancy Registry for Psychiatric Medications",
-      "journal": "Bipolar disorders",
-      "date": "2026-08-01",
-      "authors": "Viguera AC et al.",
-      "url": "https://doi.org/10.1111/bdi.70138"
-    },
-    {
       "id": "42538589",
       "title": "Schizophrenia Beyond Genome-Wide Association Studies: It's About Time",
-      "journal": "The American journal of psychiatry",
+      "journal": "American Journal of Psychiatry",
       "date": "2026-08-01",
       "authors": "Pergola G and Weinberger DR",
       "url": "https://doi.org/10.1176/appi.ajp.20260566"
@@ -1277,127 +941,39 @@
     {
       "id": "42545207",
       "title": "Sedentary Behavior and Physical Activity in Individuals With Bipolar Disorder: An Evidence Synthesis and Position Statement From the ISBD Nutrition and Exercise Task Force (NExT)",
-      "journal": "Bipolar disorders",
+      "journal": "Bipolar Disorders",
       "date": "2026-08-01",
       "authors": "Lafer B et al.",
       "url": "https://doi.org/10.1111/bdi.70164"
     },
     {
-      "id": "42460641",
-      "title": "Smoking Initiation, Age at Onset of Symptoms and Suicide Attempts Among Patients With Bipolar Disorder: Comparisons With Non-Psychiatric Adults",
-      "journal": "Bipolar disorders",
-      "date": "2026-08-01",
-      "authors": "Gurpegui M et al.",
-      "url": "https://doi.org/10.1111/bdi.70149"
-    },
-    {
-      "id": "42360412",
-      "title": "Speech and Language Markers of Bipolar Disorder: Challenges and Opportunities",
-      "journal": "Bipolar disorders",
-      "date": "2026-08-01",
-      "authors": "Zaher F et al.",
-      "url": "https://doi.org/10.1111/bdi.70119"
-    },
-    {
-      "id": "42234453",
-      "title": "Stop Counting Conversions-The Clinical High Risk for Psychosis Field Needs a New North Star",
-      "journal": "JAMA psychiatry",
-      "date": "2026-08-01",
-      "authors": "Mittal VA et al.",
-      "url": "https://doi.org/10.1001/jamapsychiatry.2026.1386"
-    },
-    {
-      "id": "42201715",
-      "title": "Strategies for Establishing Clinical-Decision Thresholds in Psychiatry: A Review",
-      "journal": "JAMA psychiatry",
-      "date": "2026-08-01",
-      "authors": "Kotelnikova Y et al.",
-      "url": "https://doi.org/10.1001/jamapsychiatry.2026.1078"
-    },
-    {
-      "id": "42160045",
-      "title": "Structure of the Genetic Risks for Psychiatric Disorders in Swedish Population-Based Registries",
-      "journal": "JAMA psychiatry",
-      "date": "2026-08-01",
-      "authors": "Kendler KS et al.",
-      "url": "https://doi.org/10.1001/jamapsychiatry.2026.1047"
-    },
-    {
-      "id": "42456706",
-      "title": "Temporal course of symptom domain improvement in schizophrenia: individual participant data analysis of six antipsychotic drug trials",
-      "journal": "The lancet. Psychiatry",
-      "date": "2026-08-01",
-      "authors": "Leucht S et al.",
-      "url": "https://doi.org/10.1016/S2215-0366(26)00174-4"
-    },
-    {
-      "id": "42394339",
-      "title": "The Theory of Metabolic Jet Lag in Bipolar Disorder: A Pilot Feasibility Study Exploring the Association Between Eating Rhythm Disruption and Illness Burden Parameters",
-      "journal": "Bipolar disorders",
-      "date": "2026-08-01",
-      "authors": "Koning E et al.",
-      "url": "https://doi.org/10.1111/bdi.70146"
-    },
-    {
       "id": "42549929",
       "title": "The Toll-Like Receptor Signalling Pathway Is Altered in iPSC-Derived Cortical Networks From People With Bipolar Disorder",
-      "journal": "Bipolar disorders",
+      "journal": "Bipolar Disorders",
       "date": "2026-08-01",
       "authors": "Panizzutti B et al.",
       "url": "https://doi.org/10.1111/bdi.70169"
     },
     {
-      "id": "42402971",
-      "title": "Time Trends in Excess Mortality Among Individuals With Bipolar Disorder in Finland, 2000-2023: A Nationwide Register Study",
-      "journal": "Bipolar disorders",
-      "date": "2026-08-01",
-      "authors": "Rimmington J et al.",
-      "url": "https://doi.org/10.1111/bdi.70147"
-    },
-    {
-      "id": "42460615",
-      "title": "Towards a Safe and Effective Lithium Therapeutic Range for Older Adults With Bipolar Disorder: An ISBD Task Force Systematic Review",
-      "journal": "Bipolar disorders",
-      "date": "2026-08-01",
-      "authors": "Nunes PV et al.",
-      "url": "https://doi.org/10.1111/bdi.70151"
-    },
-    {
-      "id": "42310905",
-      "title": "Towards an Integrated Staging Model for Bipolar Disorders: An International Society for Bipolar Disorders (ISBD) Staging Task Force Consensus Report",
-      "journal": "Bipolar disorders",
-      "date": "2026-08-01",
-      "authors": "Kupka R et al.",
-      "url": "https://doi.org/10.1111/bdi.70136"
-    },
-    {
-      "id": "42340738",
-      "title": "Use and Misuse of GLP-1 Receptor Agonists Among People With Eating Disorders",
-      "journal": "JAMA psychiatry",
-      "date": "2026-08-01",
-      "authors": "Peiper NC et al.",
-      "url": "https://doi.org/10.1001/jamapsychiatry.2026.1716"
-    },
-    {
-      "id": "42304687",
-      "title": "White Matter Changes During Manic and Depressive Episodes and Phase Switching in Bipolar Disorder: A Tractography Study",
-      "journal": "Bipolar disorders",
-      "date": "2026-08-01",
-      "authors": "Delvecchio G et al.",
-      "url": "https://doi.org/10.1111/bdi.70131"
-    },
-    {
       "id": "42522066",
       "title": "Determinants of Nonspecific Response to Treatment in Randomized Controlled Trials of Major Depressive Disorder: A Narrative Review",
-      "journal": "The American journal of psychiatry",
+      "journal": "American Journal of Psychiatry",
       "date": "2026-07-29",
       "authors": "Guidetti C et al.",
       "url": "https://doi.org/10.1176/appi.ajp.20251233"
     },
     {
+      "id": "42525421",
+      "title": "LLMs as Clinical Instruments-Toward Verifiable Reasoning",
+      "journal": "JAMA Psychiatry",
+      "date": "2026-07-29",
+      "authors": "Paulus MP and Torous J",
+      "url": "https://doi.org/10.1001/jamapsychiatry.2026.2211"
+    },
+    {
       "id": "42522065",
       "title": "Oral Semaglutide for Alcohol Use Disorder: A Randomized Clinical Trial",
-      "journal": "The American journal of psychiatry",
+      "journal": "American Journal of Psychiatry",
       "date": "2026-07-29",
       "authors": "Schacht JP et al.",
       "url": "https://doi.org/10.1176/appi.ajp.20260003"
@@ -1405,7 +981,7 @@
     {
       "id": "42525395",
       "title": "Prior Sexual Violence, PTSD Symptoms, and Recovery Trajectories After New Trauma",
-      "journal": "JAMA psychiatry",
+      "journal": "JAMA Psychiatry",
       "date": "2026-07-29",
       "authors": "Mellen EJ et al.",
       "url": "https://doi.org/10.1001/jamapsychiatry.2026.2219"
@@ -1413,7 +989,7 @@
     {
       "id": "42525432",
       "title": "Trends in Urine Cotinine Concentrations Among Adolescents Who Vape Nicotine",
-      "journal": "JAMA psychiatry",
+      "journal": "JAMA Psychiatry",
       "date": "2026-07-29",
       "authors": "Levy S et al.",
       "url": "https://doi.org/10.1001/jamapsychiatry.2026.2215"
@@ -1421,7 +997,7 @@
     {
       "id": "42517422",
       "title": "The role of aripiprazole in modulating putamen and thalamus functional connectivity in early psychosis patients",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-07-28",
       "authors": "Chen C et al.",
       "url": "https://doi.org/10.1177/02698811261464518"
@@ -1429,7 +1005,7 @@
     {
       "id": "42504048",
       "title": "Mediators of treatment response in a clinical trial of naltrexone and bupropion for methamphetamine use disorder: A longitudinal mediation analysis",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-07-26",
       "authors": "Mojtabai R et al.",
       "url": "https://doi.org/10.1177/02698811261464533"
@@ -1437,7 +1013,7 @@
     {
       "id": "42495975",
       "title": "Genetic background and sex moderate the effects of adolescent nicotine exposure on adult functional neural circuits and behavior",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-07-24",
       "authors": "Ünsal HS et al.",
       "url": "https://doi.org/10.1177/02698811261464981"
@@ -1445,7 +1021,7 @@
     {
       "id": "42490582",
       "title": "No evidence for deleterious effects of psilocybin and MDMA on working memory or related neurophysiological activity in a non-clinical population: An uncontrolled exploratory study",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-07-23",
       "authors": "Bailey NW et al.",
       "url": "https://doi.org/10.1177/02698811261464991"
@@ -1453,15 +1029,31 @@
     {
       "id": "42485031",
       "title": "Medication and Procedural Abortion and Risk of Psychotropic Medication Use",
-      "journal": "JAMA psychiatry",
+      "journal": "JAMA Psychiatry",
       "date": "2026-07-22",
       "authors": "Steinberg JR et al.",
       "url": "https://doi.org/10.1001/jamapsychiatry.2025.3698"
     },
     {
+      "id": "42464599",
+      "title": "Identifying Mood Instability and Circadian Rest-Activity Patterns Using Digital Remote Monitoring and Actigraphy in Participants at Risk for Bipolar Disorder",
+      "journal": "Bipolar Disorders",
+      "date": "2026-07-17",
+      "authors": "Panchal P et al.",
+      "url": "https://doi.org/10.1111/bdi.70156"
+    },
+    {
+      "id": "42466920",
+      "title": "Prospective Volumetric Changes in the Thalamus in Adolescent First Episode of Mania and Cannabis Use: A Preliminary Study",
+      "journal": "Bipolar Disorders",
+      "date": "2026-07-17",
+      "authors": "Shin GJ et al.",
+      "url": "https://doi.org/10.1111/bdi.70157"
+    },
+    {
       "id": "42468545",
       "title": "Research priorities for metabolic interventions in severe mental illness: results of a James Lind Alliance Priority Setting Partnership",
-      "journal": "The lancet. Psychiatry",
+      "journal": "The Lancet Psychiatry",
       "date": "2026-07-17",
       "authors": "Farran D et al.",
       "url": "https://doi.org/10.1016/S2215-0366(26)00129-X"
@@ -1469,23 +1061,87 @@
     {
       "id": "42460632",
       "title": "Silence is golden: Documenting the speech production of participants and support providers in psilocybin administration sessions for the treatment of post-traumatic stress disorder",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-07-16",
       "authors": "Dougherty RF et al.",
       "url": "https://doi.org/10.1177/02698811261464988"
     },
     {
+      "id": "42460641",
+      "title": "Smoking Initiation, Age at Onset of Symptoms and Suicide Attempts Among Patients With Bipolar Disorder: Comparisons With Non-Psychiatric Adults",
+      "journal": "Bipolar Disorders",
+      "date": "2026-07-16",
+      "authors": "Gurpegui M et al.",
+      "url": "https://doi.org/10.1111/bdi.70149"
+    },
+    {
+      "id": "42460615",
+      "title": "Towards a Safe and Effective Lithium Therapeutic Range for Older Adults With Bipolar Disorder: An ISBD Task Force Systematic Review",
+      "journal": "Bipolar Disorders",
+      "date": "2026-07-16",
+      "authors": "Nunes PV et al.",
+      "url": "https://doi.org/10.1111/bdi.70151"
+    },
+    {
       "id": "42454450",
       "title": "Acute behavioural effects of low-dose cannabidiol: A randomised crossover trial in healthy volunteers",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-07-15",
       "authors": "Chester LA et al.",
       "url": "https://doi.org/10.1177/02698811261464527"
     },
     {
+      "id": "42456704",
+      "title": "Association of GLP-1 receptor agonists with alcohol use disorder-related and substance use disorder-related hospital admissions during treatment and after discontinuation: a Swedish register-based within-individual observational study",
+      "journal": "The Lancet Psychiatry",
+      "date": "2026-07-15",
+      "authors": "Bach P et al.",
+      "url": "https://doi.org/10.1016/S2215-0366(26)00172-0"
+    },
+    {
+      "id": "42456705",
+      "title": "Characteristics of higher-education students in England who died by suspected suicide in a single academic year: a national retrospective case series study",
+      "journal": "The Lancet Psychiatry",
+      "date": "2026-07-15",
+      "authors": "Rodway C et al.",
+      "url": "https://doi.org/10.1016/S2215-0366(26)00173-2"
+    },
+    {
+      "id": "42455552",
+      "title": "From Schedule I to the Clinic-Insights Into Psychedelic Drug Development From GHB",
+      "journal": "JAMA Psychiatry",
+      "date": "2026-07-15",
+      "authors": "Barnett BS and King F 4th",
+      "url": "https://doi.org/10.1001/jamapsychiatry.2026.1901"
+    },
+    {
+      "id": "42455537",
+      "title": "Lobbying Trends in Psychiatry and Psychology",
+      "journal": "JAMA Psychiatry",
+      "date": "2026-07-15",
+      "authors": "Singh A et al.",
+      "url": "https://doi.org/10.1001/jamapsychiatry.2026.1921"
+    },
+    {
+      "id": "42455558",
+      "title": "Mapping 2-Year Psychiatric and Neurologic Risks After Infections Across Body Systems and Age Groups",
+      "journal": "JAMA Psychiatry",
+      "date": "2026-07-15",
+      "authors": "Taquet M et al.",
+      "url": "https://doi.org/10.1001/jamapsychiatry.2026.1904"
+    },
+    {
+      "id": "42456706",
+      "title": "Temporal course of symptom domain improvement in schizophrenia: individual participant data analysis of six antipsychotic drug trials",
+      "journal": "The Lancet Psychiatry",
+      "date": "2026-07-15",
+      "authors": "Leucht S et al.",
+      "url": "https://doi.org/10.1016/S2215-0366(26)00174-4"
+    },
+    {
       "id": "42455529",
       "title": "The Broader Impact of Mass Shootings on Traffic Fatalities",
-      "journal": "JAMA psychiatry",
+      "journal": "JAMA Psychiatry",
       "date": "2026-07-15",
       "authors": "Patel VR et al.",
       "url": "https://doi.org/10.1001/jamapsychiatry.2026.1912"
@@ -1493,23 +1149,31 @@
     {
       "id": "42454559",
       "title": "The increasing use of cognitive enhancing drugs by those with ADHD and neurotypical individuals: Societal demands, lifestyle preferences, and ethical issues",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-07-15",
       "authors": "Sahakian BJ and Langley C",
       "url": "https://doi.org/10.1177/02698811261466620"
     },
     {
-      "id": "42438931",
-      "title": "Enhancing plasticity to treat depression and other central nervous system diseases using event-driven pharmacology",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
-      "date": "2026-07-13",
-      "authors": "Gould TD et al.",
-      "url": "https://doi.org/10.1177/02698811261456206"
+      "id": "42429210",
+      "title": "Essential Information About Chronobiology and Chronotherapy for the Optimal Care of People With Bipolar Disorders: An Expert Consensus",
+      "journal": "Bipolar Disorders",
+      "date": "2026-07-10",
+      "authors": "Crouse JJ et al.",
+      "url": "https://doi.org/10.1111/bdi.70141"
+    },
+    {
+      "id": "42429592",
+      "title": "Establishing a Specialty Bipolar Clinic: The National Network of Depression Centers Consensus Recommendations",
+      "journal": "Bipolar Disorders",
+      "date": "2026-07-10",
+      "authors": "Schneck CD et al.",
+      "url": "https://doi.org/10.1111/bdi.70154"
     },
     {
       "id": "42425118",
       "title": "Multidisciplinary research priorities for artificial intelligence in mental health: a call to action",
-      "journal": "The lancet. Psychiatry",
+      "journal": "The Lancet Psychiatry",
       "date": "2026-07-09",
       "authors": "Linardon J et al.",
       "url": "https://doi.org/10.1016/S2215-0366(26)00127-6"
@@ -1517,7 +1181,7 @@
     {
       "id": "42421344",
       "title": "Beyond symptom reduction: DMT improves anxiety, life satisfaction, and quality of life in healthy volunteers and patients with depression",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-07-08",
       "authors": "Bolcont R et al.",
       "url": "https://doi.org/10.1177/02698811261465005"
@@ -1525,7 +1189,7 @@
     {
       "id": "42415252",
       "title": "Convergent Network Localization of Brain Stimulation Targets for Trait Anxiety",
-      "journal": "The American journal of psychiatry",
+      "journal": "American Journal of Psychiatry",
       "date": "2026-07-08",
       "authors": "Siddiqi SH et al.",
       "url": "https://doi.org/10.1176/appi.ajp.20250198"
@@ -1533,199 +1197,175 @@
     {
       "id": "42415255",
       "title": "Global Prevalence of Obsessive-Compulsive and Related Disorders: A Systematic Review and Modeling Study",
-      "journal": "The American journal of psychiatry",
+      "journal": "American Journal of Psychiatry",
       "date": "2026-07-08",
       "authors": "Jeong YD et al.",
       "url": "https://doi.org/10.1176/appi.ajp.20250944"
     },
     {
+      "id": "42418179",
+      "title": "Pharmacological Interventions for Weight Reduction in Patients With Schizophrenia Treated With Antipsychotics: A Systematic Review and Network Meta-Analysis",
+      "journal": "JAMA Psychiatry",
+      "date": "2026-07-08",
+      "authors": "Stogios N et al.",
+      "url": "https://doi.org/10.1001/jamapsychiatry.2026.1814"
+    },
+    {
+      "id": "42418192",
+      "title": "The Reinforcement Effect of Social Media Likes in Depression",
+      "journal": "JAMA Psychiatry",
+      "date": "2026-07-08",
+      "authors": "Mirea DM et al.",
+      "url": "https://doi.org/10.1001/jamapsychiatry.2026.1430"
+    },
+    {
+      "id": "42418174",
+      "title": "Toward a Pluralistic Model for the Schizophrenia Spectrum-Dopamine and Beyond",
+      "journal": "JAMA Psychiatry",
+      "date": "2026-07-08",
+      "authors": "Keshavan MS et al.",
+      "url": "https://doi.org/10.1001/jamapsychiatry.2026.1684"
+    },
+    {
       "id": "42415254",
       "title": "Treatment Patterns and Barriers to Care Among U.S. Adults With Co-Occurring Substance Use Disorder and Mental Illness",
-      "journal": "The American journal of psychiatry",
+      "journal": "American Journal of Psychiatry",
       "date": "2026-07-08",
       "authors": "Lin Y et al.",
       "url": "https://doi.org/10.1176/appi.ajp.20251314"
     },
     {
+      "id": "42418211",
+      "title": "War and Suicide in the US Military",
+      "journal": "JAMA Psychiatry",
+      "date": "2026-07-08",
+      "authors": "Reger MA and Hoyt T",
+      "url": "https://doi.org/10.1001/jamapsychiatry.2026.1762"
+    },
+    {
       "id": "42413522",
       "title": "Return on investment of enhanced primary youth mental health services in a large Canadian urban centre: a retrospective cohort study",
-      "journal": "The lancet. Psychiatry",
+      "journal": "The Lancet Psychiatry",
       "date": "2026-07-07",
       "authors": "Shah JL et al.",
       "url": "https://doi.org/10.1016/S2215-0366(26)00165-3"
     },
     {
+      "id": "42402971",
+      "title": "Time Trends in Excess Mortality Among Individuals With Bipolar Disorder in Finland, 2000-2023: A Nationwide Register Study",
+      "journal": "Bipolar Disorders",
+      "date": "2026-07-06",
+      "authors": "Rimmington J et al.",
+      "url": "https://doi.org/10.1111/bdi.70147"
+    },
+    {
       "id": "42400463",
       "title": "Effects of antidepressants, anesthetics and sedatives/hypnotics on sleep-associated memory consolidation - A systematic review",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-07-04",
       "authors": "Mischke J et al.",
       "url": "https://doi.org/10.1177/02698811261456185"
     },
     {
+      "id": "42400340",
+      "title": "Epigenetic Age Accelerations and the Clinical Presentation of Bipolar Disorders: A Latent Profile Analysis in the FACE-BD Sample",
+      "journal": "Bipolar Disorders",
+      "date": "2026-07-04",
+      "authors": "Spano L et al.",
+      "url": "https://doi.org/10.1111/bdi.70143"
+    },
+    {
       "id": "42400403",
       "title": "Mental resilience is not meaningfully associated with the frequency and severity of alcohol hangover",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-07-04",
       "authors": "Schulz SE et al.",
       "url": "https://doi.org/10.1177/02698811261464990"
     },
     {
-      "id": "42126840",
-      "title": "Acute, Longer-Term, and Transdiagnostic Outcomes After Digital Interventions for Eating Disorders: A Meta-Analysis",
-      "journal": "JAMA psychiatry",
-      "date": "2026-07-01",
-      "authors": "Anderson C et al.",
-      "url": "https://doi.org/10.1001/jamapsychiatry.2026.0668"
+      "id": "42394293",
+      "title": "A 3-Month Follow-Up Pilot Study on Accelerated Intermittent Theta Burst Stimulation for Bipolar Depression",
+      "journal": "Bipolar Disorders",
+      "date": "2026-07-03",
+      "authors": "Neuteboom D et al.",
+      "url": "https://doi.org/10.1111/bdi.70148"
     },
     {
-      "id": "42090141",
-      "title": "Adjunctive Antipsychotics in Major Depressive Disorder: A Systematic Review and Network Meta-Analysis",
-      "journal": "JAMA psychiatry",
-      "date": "2026-07-01",
-      "authors": "McIntyre RS et al.",
-      "url": "https://doi.org/10.1001/jamapsychiatry.2026.0658"
+      "id": "42396902",
+      "title": "Risk of Major Malformations Following First-Trimester Exposure to Cariprazine: Preliminary Data From the MGH National Pregnancy Registry for Psychiatric Medications",
+      "journal": "Bipolar Disorders",
+      "date": "2026-07-03",
+      "authors": "Viguera AC et al.",
+      "url": "https://doi.org/10.1111/bdi.70138"
     },
     {
-      "id": "42054038",
-      "title": "Adolescent Mental Health Care and Stigma: The ARTEMIS Randomized Clinical Trial",
-      "journal": "JAMA psychiatry",
-      "date": "2026-07-01",
-      "authors": "Maulik PK et al.",
-      "url": "https://doi.org/10.1001/jamapsychiatry.2026.0603"
+      "id": "42394339",
+      "title": "The Theory of Metabolic Jet Lag in Bipolar Disorder: A Pilot Feasibility Study Exploring the Association Between Eating Rhythm Disruption and Illness Burden Parameters",
+      "journal": "Bipolar Disorders",
+      "date": "2026-07-03",
+      "authors": "Koning E et al.",
+      "url": "https://doi.org/10.1111/bdi.70146"
     },
     {
-      "id": "42018313",
-      "title": "Antipsychotic Efficacy and Safety of LB-102 in the Treatment of Adults With Acute Schizophrenia: A Randomized Clinical Trial",
-      "journal": "JAMA psychiatry",
-      "date": "2026-07-01",
-      "authors": "Eramo A et al.",
-      "url": "https://doi.org/10.1001/jamapsychiatry.2026.0428"
+      "id": "42387906",
+      "title": "Biofluid Biomarkers of Cognitive Functioning in Bipolar Disorder: A Systematic Review by the Targeting Cognition and Older-Age Bipolar Disorder ISBD Task Forces",
+      "journal": "Bipolar Disorders",
+      "date": "2026-07-02",
+      "authors": "Beunders AJM et al.",
+      "url": "https://doi.org/10.1111/bdi.70109"
     },
     {
-      "id": "41984443",
-      "title": "Blinding Integrity in Psychedelic Randomized Clinical Trials: A Systematic Review",
-      "journal": "JAMA psychiatry",
+      "id": "42384372",
+      "title": "Adolescent Peers' Diagnoses and Genetic Predispositions and Subsequent Risk of Mental Disorders",
+      "journal": "JAMA Psychiatry",
       "date": "2026-07-01",
-      "authors": "Orsini DK et al.",
-      "url": "https://doi.org/10.1001/jamapsychiatry.2026.0255"
+      "authors": "Alho J et al.",
+      "url": "https://doi.org/10.1001/jamapsychiatry.2026.1752"
     },
     {
-      "id": "42018336",
-      "title": "Dialectical Behavior Therapy vs Schema Therapy for Patients With Borderline Personality Disorder: The BOOTS Multicenter Randomized Clinical Trial",
-      "journal": "JAMA psychiatry",
+      "id": "42381254",
+      "title": "Enhancing Affective Cognitive Control in Bipolar Disorder Using Transcranial Alternating Current Stimulation: A Double-Blind, Randomized, Sham-Controlled Clinical Trial and Proof of Concept Study",
+      "journal": "Bipolar Disorders",
       "date": "2026-07-01",
-      "authors": "Wibbelink CJM et al.",
-      "url": "https://doi.org/10.1001/jamapsychiatry.2026.0418"
+      "authors": "Kraft JD et al.",
+      "url": "https://doi.org/10.1111/bdi.70142"
     },
     {
-      "id": "42090145",
-      "title": "Intermittent Theta Burst Stimulation of the Dorsomedial PFC and Expectancy-Driven Placebo Mood Effects: A Randomized Clinical Trial",
-      "journal": "JAMA psychiatry",
+      "id": "42438931",
+      "title": "Enhancing plasticity to treat depression and other central nervous system diseases using event-driven pharmacology",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-07-01",
-      "authors": "Snyder I et al.",
-      "url": "https://doi.org/10.1001/jamapsychiatry.2026.0647"
+      "authors": "Gould TD et al.",
+      "url": "https://doi.org/10.1177/02698811261456206"
     },
     {
-      "id": "42309107",
-      "title": "International cannabis policies and their association with cannabis use, cannabis use disorder, and other psychiatric disorders",
-      "journal": "The lancet. Psychiatry",
+      "id": "42381224",
+      "title": "Psychotropic Prescribing Patterns Among Bipolar-I Patients Prior to Established Bipolar-I Disorder Diagnosis",
+      "journal": "Bipolar Disorders",
       "date": "2026-07-01",
-      "authors": "Freeman TP et al.",
-      "url": "https://doi.org/10.1016/S2215-0366(26)00087-8"
-    },
-    {
-      "id": "42090166",
-      "title": "Ketamine Infusions and Rapid Reduction of Suicidal and Depressive Symptoms in Major Depressive Episode: A Systematic Review and Meta-Analysis",
-      "journal": "JAMA psychiatry",
-      "date": "2026-07-01",
-      "authors": "Shim SR et al.",
-      "url": "https://doi.org/10.1001/jamapsychiatry.2026.0612"
-    },
-    {
-      "id": "42090169",
-      "title": "Links Between Toxic Exposures and Mental Health Conditions Among US Military",
-      "journal": "JAMA psychiatry",
-      "date": "2026-07-01",
-      "authors": "Tsai J et al.",
-      "url": "https://doi.org/10.1001/jamapsychiatry.2026.0879"
-    },
-    {
-      "id": "42160071",
-      "title": "Military Sexual Trauma in the United States",
-      "journal": "JAMA psychiatry",
-      "date": "2026-07-01",
-      "authors": "Hill ML et al.",
-      "url": "https://doi.org/10.1001/jamapsychiatry.2026.1203"
-    },
-    {
-      "id": "42309105",
-      "title": "Non-specialist delivered psychosocial care after war and interpersonal violence: a systematic review and meta-analysis",
-      "journal": "The lancet. Psychiatry",
-      "date": "2026-07-01",
-      "authors": "Patel AR et al.",
-      "url": "https://doi.org/10.1016/S2215-0366(26)00123-9"
-    },
-    {
-      "id": "42309104",
-      "title": "Randomised controlled trials of psychological interventions treating common mental disorders in adults of Chinese descent: a systematic review of trial quality and credibility",
-      "journal": "The lancet. Psychiatry",
-      "date": "2026-07-01",
-      "authors": "Li S et al.",
-      "url": "https://doi.org/10.1016/S2215-0366(26)00133-1"
-    },
-    {
-      "id": "42309106",
-      "title": "Relationships between cannabis use and mental disorders: assessing the coherence of evidence from studies with different methodologies",
-      "journal": "The lancet. Psychiatry",
-      "date": "2026-07-01",
-      "authors": "Hall W et al.",
-      "url": "https://doi.org/10.1016/S2215-0366(26)00086-6"
-    },
-    {
-      "id": "42054055",
-      "title": "Semaglutide and Effort-Based Decision-Making in Major Depressive Disorder: A Randomized Clinical Trial",
-      "journal": "JAMA psychiatry",
-      "date": "2026-07-01",
-      "authors": "Gill H et al.",
-      "url": "https://doi.org/10.1001/jamapsychiatry.2026.0594"
+      "authors": "Haile F et al.",
+      "url": "https://doi.org/10.1111/bdi.70137"
     },
     {
       "id": "42380754",
       "title": "Social Determinants of Health in Psychiatric Disorders: Exciting Opportunities for Biopsychosocial Research and Clinical Care",
-      "journal": "The American journal of psychiatry",
+      "journal": "American Journal of Psychiatry",
       "date": "2026-07-01",
       "authors": "Jeste DV and Gyan E",
       "url": "https://doi.org/10.1176/appi.ajp.20260402"
     },
     {
-      "id": "42054036",
-      "title": "The Implementation of Family-Focused Mental Health Care",
-      "journal": "JAMA psychiatry",
+      "id": "42384391",
+      "title": "The Clinical Threshold for Treatment in Psychiatry",
+      "journal": "JAMA Psychiatry",
       "date": "2026-07-01",
-      "authors": "Middeldorp CM and de Nooij L",
-      "url": "https://doi.org/10.1001/jamapsychiatry.2026.0875"
-    },
-    {
-      "id": "42309103",
-      "title": "Trauma-focused therapy integrated with cognitive behavioural therapy for psychosis for people with post-traumatic stress disorder and psychosis (the STAR trial): a multicentre, pragmatic, randomised trial in the UK",
-      "journal": "The lancet. Psychiatry",
-      "date": "2026-07-01",
-      "authors": "Peters E et al.",
-      "url": "https://doi.org/10.1016/S2215-0366(26)00090-8"
-    },
-    {
-      "id": "42126863",
-      "title": "Women With Schizophrenia-Ignored and Aging",
-      "journal": "JAMA psychiatry",
-      "date": "2026-07-01",
-      "authors": "Rowland LM and Lee EE",
-      "url": "https://doi.org/10.1001/jamapsychiatry.2026.0950"
+      "authors": "Fava GA and Guidi J",
+      "url": "https://doi.org/10.1001/jamapsychiatry.2026.1759"
     },
     {
       "id": "42379205",
       "title": "Interventions to support recovery of people with psychosis in low-income and middle-income countries: a systematic review",
-      "journal": "The lancet. Psychiatry",
+      "journal": "The Lancet Psychiatry",
       "date": "2026-06-30",
       "authors": "Barber S et al.",
       "url": "https://doi.org/10.1016/S2215-0366(26)00033-7"
@@ -1733,7 +1373,7 @@
     {
       "id": "42379204",
       "title": "Psychosis, human rights, and legal frameworks: global perspectives, with a focus on low-income and middle-income countries",
-      "journal": "The lancet. Psychiatry",
+      "journal": "The Lancet Psychiatry",
       "date": "2026-06-30",
       "authors": "Gooding P et al.",
       "url": "https://doi.org/10.1016/S2215-0366(26)00156-2"
@@ -1741,7 +1381,7 @@
     {
       "id": "42365853",
       "title": "Brain lithium temporospatial kinetics in bipolar disorder: a repeated-measures (7)Li MRI study of dosing regimens in Germany",
-      "journal": "The lancet. Psychiatry",
+      "journal": "The Lancet Psychiatry",
       "date": "2026-06-28",
       "authors": "Ritter P et al.",
       "url": "https://doi.org/10.1016/S2215-0366(26)00153-7"
@@ -1749,7 +1389,7 @@
     {
       "id": "42365488",
       "title": "Classical psychedelic microdosing, mood, and cognitive function: An umbrella review with narrative synthesis",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-06-28",
       "authors": "Özaydın Y and Canlan Özaydın B",
       "url": "https://doi.org/10.1177/02698811261456196"
@@ -1757,23 +1397,39 @@
     {
       "id": "42365496",
       "title": "Psilocybin reduces fear memory and restores neuroplasticity in the hippocampus and medial prefrontal cortex",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-06-28",
       "authors": "Du Y et al.",
       "url": "https://doi.org/10.1177/02698811261453819"
     },
     {
+      "id": "42358081",
+      "title": "Can We Improve the Prediction of Early Onset Mania and Hypomania in the Community?",
+      "journal": "Bipolar Disorders",
+      "date": "2026-06-26",
+      "authors": "Scott J et al.",
+      "url": "https://doi.org/10.1111/bdi.70140"
+    },
+    {
       "id": "42362495",
       "title": "Mitochondrial dysfunction in schizophrenia and its modulation by atypical antipsychotic drugs: A randomized controlled trial",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-06-26",
       "authors": "Shaju A et al.",
       "url": "https://doi.org/10.1177/02698811261453937"
     },
     {
+      "id": "42360412",
+      "title": "Speech and Language Markers of Bipolar Disorder: Challenges and Opportunities",
+      "journal": "Bipolar Disorders",
+      "date": "2026-06-26",
+      "authors": "Zaher F et al.",
+      "url": "https://doi.org/10.1111/bdi.70119"
+    },
+    {
       "id": "42363614",
       "title": "The purpose of the psychosocial protocol in the psychedelic-assisted therapy: A scoping review",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-06-26",
       "authors": "Giaffone de Paiva Ferreira F et al.",
       "url": "https://doi.org/10.1177/02698811261453850"
@@ -1781,7 +1437,7 @@
     {
       "id": "42343879",
       "title": "Angiotensin II and angiotensin-(1-7) neurotransmissions in the medial amygdala differently control cardiovascular and anxiogenic-like responses to stress in rats",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-06-25",
       "authors": "Costa-Ferreira W et al.",
       "url": "https://doi.org/10.1177/02698811261453873"
@@ -1789,7 +1445,7 @@
     {
       "id": "42345506",
       "title": "Effects of pimavanserin, xanomeline and highly-purified plant-derived cannabidiol on MK-801-induced behaviours in mice relevant to psychosis",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-06-25",
       "authors": "Cilia J et al.",
       "url": "https://doi.org/10.1177/02698811261456216"
@@ -1797,7 +1453,7 @@
     {
       "id": "42345469",
       "title": "Pharmacokinetics and pharmacodynamics of orally administered S-ketamine in healthy participants",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-06-25",
       "authors": "van Mechelen JC et al.",
       "url": "https://doi.org/10.1177/02698811261456187"
@@ -1805,15 +1461,23 @@
     {
       "id": "42345450",
       "title": "The intersection between psychedelics and schizophrenia spectrum disorders: Reevaluating risk and therapeutic potential",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-06-25",
       "authors": "Brar PS et al.",
       "url": "https://doi.org/10.1177/02698811261456191"
     },
     {
+      "id": "42340690",
+      "title": "A New CMS Payment Model for AI-Delivered Behavioral Health Care",
+      "journal": "JAMA Psychiatry",
+      "date": "2026-06-24",
+      "authors": "Gorrindo T et al.",
+      "url": "https://doi.org/10.1001/jamapsychiatry.2026.1681"
+    },
+    {
       "id": "42343689",
       "title": "A noninvasive approach to modeling cocaine self-administration in mice",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-06-24",
       "authors": "Liu Y et al.",
       "url": "https://doi.org/10.1177/02698811261453842"
@@ -1821,15 +1485,23 @@
     {
       "id": "42337414",
       "title": "A Pragmatic SMART Study of Medication and CBT Sequencing in Pediatric Anxiety Disorders: A Randomized Clinical Trial",
-      "journal": "The American journal of psychiatry",
+      "journal": "American Journal of Psychiatry",
       "date": "2026-06-24",
       "authors": "Peterson BS et al.",
       "url": "https://doi.org/10.1176/appi.ajp.20251037"
     },
     {
+      "id": "42340691",
+      "title": "Assessing Drug Efficacy After Multiple Negative Trials-Gepirone's Journey Through the FDA",
+      "journal": "JAMA Psychiatry",
+      "date": "2026-06-24",
+      "authors": "Turner EH et al.",
+      "url": "https://doi.org/10.1001/jamapsychiatry.2026.1438"
+    },
+    {
       "id": "42337417",
       "title": "Association of Fetal Gene Regulatory Gene Deletions With Poor Cognition in Schizophrenia and Community-Based Samples",
-      "journal": "The American journal of psychiatry",
+      "journal": "American Journal of Psychiatry",
       "date": "2026-06-24",
       "authors": "Forsyth JK et al.",
       "url": "https://doi.org/10.1176/appi.ajp.20240779"
@@ -1837,15 +1509,23 @@
     {
       "id": "42337416",
       "title": "Circadian Rhythm Stabilization App to Prevent Mood Episode Recurrence in Patients With Mood Disorders: A Multicenter, Double-Blind, Sham-Controlled, Randomized Clinical Trial",
-      "journal": "The American journal of psychiatry",
+      "journal": "American Journal of Psychiatry",
       "date": "2026-06-24",
       "authors": "Yeom JW et al.",
       "url": "https://doi.org/10.1176/appi.ajp.20251008"
     },
     {
+      "id": "42340706",
+      "title": "Connectivity- vs Scalp-Based Targeting of Accelerated Transcranial Magnetic Stimulation for Depression: A Randomized Clinical Trial",
+      "journal": "JAMA Psychiatry",
+      "date": "2026-06-24",
+      "authors": "Taylor JJ et al.",
+      "url": "https://doi.org/10.1001/jamapsychiatry.2026.1100"
+    },
+    {
       "id": "42337413",
       "title": "Deadly Heat: The Association Between Ambient Temperature and Suicide in Young People in the United States",
-      "journal": "The American journal of psychiatry",
+      "journal": "American Journal of Psychiatry",
       "date": "2026-06-24",
       "authors": "Jayaraman P et al.",
       "url": "https://doi.org/10.1176/appi.ajp.20250096"
@@ -1853,7 +1533,7 @@
     {
       "id": "42339547",
       "title": "Enhanced cognitive protection through the combination of Amylovis-201, an anti-amyloidogenic agent with sigma-1 receptor agonist activity, and environmental enrichment in mice",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-06-24",
       "authors": "Menéndez Soto Del Valle R et al.",
       "url": "https://doi.org/10.1177/02698811261458343"
@@ -1861,31 +1541,71 @@
     {
       "id": "42339713",
       "title": "Evaluating the abuse liability of ketamine in the treatment of mood disorders: A systematic review",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-06-24",
       "authors": "Vasudeva S et al.",
       "url": "https://doi.org/10.1177/02698811261453814"
     },
     {
+      "id": "42340097",
+      "title": "How Do Parents With Bipolar Disorder Perceive the Risk to the Next Generation? Results From a Qualitative Study",
+      "journal": "Bipolar Disorders",
+      "date": "2026-06-24",
+      "authors": "Laigaard M et al.",
+      "url": "https://doi.org/10.1111/bdi.70139"
+    },
+    {
       "id": "42337415",
       "title": "Neurocognitive Development in Adolescent Offspring at Familial High Risk of Schizophrenia or Bipolar Disorder and a Population-Based Control Group",
-      "journal": "The American journal of psychiatry",
+      "journal": "American Journal of Psychiatry",
       "date": "2026-06-24",
       "authors": "Laursen AF et al.",
       "url": "https://doi.org/10.1176/appi.ajp.20250841"
     },
     {
+      "id": "42340705",
+      "title": "Neurometabolites and Antipsychotic Response in Psychosis: A Mega-Analysis",
+      "journal": "JAMA Psychiatry",
+      "date": "2026-06-24",
+      "authors": "King B et al.",
+      "url": "https://doi.org/10.1001/jamapsychiatry.2026.1674"
+    },
+    {
+      "id": "42340738",
+      "title": "Use and Misuse of GLP-1 Receptor Agonists Among People With Eating Disorders",
+      "journal": "JAMA Psychiatry",
+      "date": "2026-06-24",
+      "authors": "Peiper NC et al.",
+      "url": "https://doi.org/10.1001/jamapsychiatry.2026.1716"
+    },
+    {
       "id": "42334341",
       "title": "Blocking 5-HT2B receptors abolishes psilocybin's efficacy in the rat forced swim test",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-06-23",
       "authors": "Seillier L et al.",
       "url": "https://doi.org/10.1177/02698811261458349"
     },
     {
+      "id": "42324762",
+      "title": "Cross-Sectional and Longitudinal Comparison of Commonly Used Screening Tools for Bipolar Disorders",
+      "journal": "Bipolar Disorders",
+      "date": "2026-06-22",
+      "authors": "Tröger A et al.",
+      "url": "https://doi.org/10.1111/bdi.70133"
+    },
+    {
+      "id": "42312868",
+      "title": "Effectiveness of Family Interventions in Bipolar Disorder: A Systematic Review",
+      "journal": "Bipolar Disorders",
+      "date": "2026-06-18",
+      "authors": "Umer M et al.",
+      "url": "https://doi.org/10.1111/bdi.70135"
+    },
+    {
       "id": "42312633",
       "title": "Effects of glucagon-like peptide-1 receptor agonists on anthropometric and adiposity measures in patients with antipsychotic-induced weight gain: A systematic review and meta-analysis",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-06-18",
       "authors": "Lee S et al.",
       "url": "https://doi.org/10.1177/02698811261456190"
@@ -1893,7 +1613,7 @@
     {
       "id": "42312720",
       "title": "Prenatal cannabis use is associated with altered miRNA and protein expression in the developing human brain",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-06-18",
       "authors": "Ugartemendia L et al.",
       "url": "https://doi.org/10.1177/02698811261453833"
@@ -1901,47 +1621,135 @@
     {
       "id": "42312553",
       "title": "The renin angiotensin system in cognitive flexibility: Effects of single-dose losartan on task-switching in healthy volunteers",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-06-18",
       "authors": "Prasad D et al.",
       "url": "https://doi.org/10.1177/02698811261456198"
     },
     {
+      "id": "42310905",
+      "title": "Towards an Integrated Staging Model for Bipolar Disorders: An International Society for Bipolar Disorders (ISBD) Staging Task Force Consensus Report",
+      "journal": "Bipolar Disorders",
+      "date": "2026-06-18",
+      "authors": "Kupka R et al.",
+      "url": "https://doi.org/10.1111/bdi.70136"
+    },
+    {
+      "id": "42307918",
+      "title": "Gastrointestinal Interoception and Relapse in Anorexia Nervosa",
+      "journal": "JAMA Psychiatry",
+      "date": "2026-06-17",
+      "authors": "Verdonk C et al.",
+      "url": "https://doi.org/10.1001/jamapsychiatry.2026.1301"
+    },
+    {
+      "id": "42309107",
+      "title": "International cannabis policies and their association with cannabis use, cannabis use disorder, and other psychiatric disorders",
+      "journal": "The Lancet Psychiatry",
+      "date": "2026-06-17",
+      "authors": "Freeman TP et al.",
+      "url": "https://doi.org/10.1016/S2215-0366(26)00087-8"
+    },
+    {
+      "id": "42307044",
+      "title": "Lithium Dispensing Patterns in Dutch Youth: Prevalence, Incidence Dosages, and Duration of Use From 2011 to 2022",
+      "journal": "Bipolar Disorders",
+      "date": "2026-06-17",
+      "authors": "Gangapersad RN et al.",
+      "url": "https://doi.org/10.1111/bdi.70134"
+    },
+    {
+      "id": "42309105",
+      "title": "Non-specialist delivered psychosocial care after war and interpersonal violence: a systematic review and meta-analysis",
+      "journal": "The Lancet Psychiatry",
+      "date": "2026-06-17",
+      "authors": "Patel AR et al.",
+      "url": "https://doi.org/10.1016/S2215-0366(26)00123-9"
+    },
+    {
       "id": "42307965",
       "title": "Psychological Interventions Targeting Auditory Hallucinations in Persons With Psychotic Disorders: A Systematic Review and Meta-Analysis",
-      "journal": "JAMA psychiatry",
+      "journal": "JAMA Psychiatry",
       "date": "2026-06-17",
       "authors": "Fässler L et al.",
       "url": "https://doi.org/10.1001/jamapsychiatry.2026.1443"
     },
     {
+      "id": "42309104",
+      "title": "Randomised controlled trials of psychological interventions treating common mental disorders in adults of Chinese descent: a systematic review of trial quality and credibility",
+      "journal": "The Lancet Psychiatry",
+      "date": "2026-06-17",
+      "authors": "Li S et al.",
+      "url": "https://doi.org/10.1016/S2215-0366(26)00133-1"
+    },
+    {
+      "id": "42309106",
+      "title": "Relationships between cannabis use and mental disorders: assessing the coherence of evidence from studies with different methodologies",
+      "journal": "The Lancet Psychiatry",
+      "date": "2026-06-17",
+      "authors": "Hall W et al.",
+      "url": "https://doi.org/10.1016/S2215-0366(26)00086-6"
+    },
+    {
       "id": "42307922",
       "title": "Social Determinants of Health and Neurobiology Across the Schizophrenia Course: A Systematic Review",
-      "journal": "JAMA psychiatry",
+      "journal": "JAMA Psychiatry",
       "date": "2026-06-17",
       "authors": "Hua JPY and Dal Bon K",
       "url": "https://doi.org/10.1001/jamapsychiatry.2026.1312"
     },
     {
+      "id": "42309103",
+      "title": "Trauma-focused therapy integrated with cognitive behavioural therapy for psychosis for people with post-traumatic stress disorder and psychosis (the STAR trial): a multicentre, pragmatic, randomised trial in the UK",
+      "journal": "The Lancet Psychiatry",
+      "date": "2026-06-17",
+      "authors": "Peters E et al.",
+      "url": "https://doi.org/10.1016/S2215-0366(26)00090-8"
+    },
+    {
+      "id": "42304687",
+      "title": "White Matter Changes During Manic and Depressive Episodes and Phase Switching in Bipolar Disorder: A Tractography Study",
+      "journal": "Bipolar Disorders",
+      "date": "2026-06-17",
+      "authors": "Delvecchio G et al.",
+      "url": "https://doi.org/10.1111/bdi.70131"
+    },
+    {
       "id": "42300589",
       "title": "Ten practical suggestions for setting up a psychedelic study",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-06-16",
       "authors": "Caulfield A et al.",
       "url": "https://doi.org/10.1177/02698811261458350"
     },
     {
-      "id": "42269152",
-      "title": "Subretinal Gene Therapy for X-Linked Retinoschisis",
-      "journal": "The New England journal of medicine",
-      "date": "2026-06-11",
-      "authors": "Liang L et al.",
-      "url": "https://doi.org/10.1056/NEJMoa2515953"
+      "id": "42286971",
+      "title": "Clinical Phenomenology of Bipolar Disorder With Substance Use Disorders: A Systematic Review",
+      "journal": "Bipolar Disorders",
+      "date": "2026-06-13",
+      "authors": "Garvie S et al.",
+      "url": "https://doi.org/10.1111/bdi.70132"
+    },
+    {
+      "id": "42268594",
+      "title": "Changes in Genetic Contributions to ASD and ADHD by Year of Diagnosis",
+      "journal": "JAMA Psychiatry",
+      "date": "2026-06-10",
+      "authors": "LaBianca S et al.",
+      "url": "https://doi.org/10.1001/jamapsychiatry.2026.1450"
+    },
+    {
+      "id": "42267732",
+      "title": "Clinical and Sociodemographic Correlates of Poor Medication Adherence in People With Bipolar Disorder: A Systematic Review and Meta-Analysis",
+      "journal": "Bipolar Disorders",
+      "date": "2026-06-10",
+      "authors": "Bartoli F et al.",
+      "url": "https://doi.org/10.1111/bdi.70127"
     },
     {
       "id": "42265595",
       "title": "Gray Matter Iron and Neuromelanin in Psychosis: A Systematic Review and Meta-Analysis of MRI Studies",
-      "journal": "The American journal of psychiatry",
+      "journal": "American Journal of Psychiatry",
       "date": "2026-06-10",
       "authors": "Vano LJ et al.",
       "url": "https://doi.org/10.1176/appi.ajp.20251257"
@@ -1949,15 +1757,31 @@
     {
       "id": "42265596",
       "title": "Social Media Use Trajectories and Substance Use Experimentation: A Prospective Cohort Study",
-      "journal": "The American journal of psychiatry",
+      "journal": "American Journal of Psychiatry",
       "date": "2026-06-10",
       "authors": "Nagata JM et al.",
       "url": "https://doi.org/10.1176/appi.ajp.20251292"
     },
     {
+      "id": "42269152",
+      "title": "Subretinal Gene Therapy for X-Linked Retinoschisis",
+      "journal": "NEJM",
+      "date": "2026-06-10",
+      "authors": "Liang L et al.",
+      "url": "https://doi.org/10.1056/NEJMoa2515953"
+    },
+    {
+      "id": "42268602",
+      "title": "The 25-Year Evolution of Lithium as a Disease-Modifying Agent in Dementia: A Narrative Review",
+      "journal": "JAMA Psychiatry",
+      "date": "2026-06-10",
+      "authors": "Moore GJ et al.",
+      "url": "https://doi.org/10.1001/jamapsychiatry.2026.1296"
+    },
+    {
       "id": "42259329",
       "title": "Comparative effectiveness and safety of pharmacological treatments for rapid tranquilisation in emergency settings: a systematic review and individual participant data network meta-analysis",
-      "journal": "The lancet. Psychiatry",
+      "journal": "The Lancet Psychiatry",
       "date": "2026-06-08",
       "authors": "Siafis S et al.",
       "url": "https://doi.org/10.1016/S2215-0366(26)00097-0"
@@ -1965,15 +1789,23 @@
     {
       "id": "42242278",
       "title": "Interventions to prevent and reduce coercive measures in psychiatric and residential care for youth: a mixed-methods systematic review",
-      "journal": "The lancet. Psychiatry",
+      "journal": "The Lancet Psychiatry",
       "date": "2026-06-04",
       "authors": "Moell A et al.",
       "url": "https://doi.org/10.1016/S2215-0366(26)00056-8"
     },
     {
+      "id": "42234441",
+      "title": "Brain Morphology Mediators of the Association of Childhood Trauma With Bipolar Disorder: An International ENIGMA Bipolar Disorder Working Group Study",
+      "journal": "JAMA Psychiatry",
+      "date": "2026-06-03",
+      "authors": "Tozzi L et al.",
+      "url": "https://doi.org/10.1001/jamapsychiatry.2026.1183"
+    },
+    {
       "id": "42231079",
       "title": "Cognitive, Electrophysiological, and Behavioral Presentation of First-Episode Psychosis With or Without Cannabis Exposure",
-      "journal": "The American journal of psychiatry",
+      "journal": "American Journal of Psychiatry",
       "date": "2026-06-03",
       "authors": "D'Souza DC et al.",
       "url": "https://doi.org/10.1176/appi.ajp.20250726"
@@ -1981,55 +1813,63 @@
     {
       "id": "42231081",
       "title": "Convergence of TMS Sites and Lesion Locations Associated With Nicotine Addiction Improvement on a Common Brain Circuit",
-      "journal": "The American journal of psychiatry",
+      "journal": "American Journal of Psychiatry",
       "date": "2026-06-03",
       "authors": "Khosravani S et al.",
       "url": "https://doi.org/10.1176/appi.ajp.20250855"
     },
     {
+      "id": "42234419",
+      "title": "Electroencephalography Microstate Instability and Clinical Outcomes in Individuals at Clinical High Risk of Psychosis",
+      "journal": "JAMA Psychiatry",
+      "date": "2026-06-03",
+      "authors": "Liebrand M et al.",
+      "url": "https://doi.org/10.1001/jamapsychiatry.2026.1084"
+    },
+    {
+      "id": "42234418",
+      "title": "Evaluating Reduced Use and Abstinence as Outcomes in Pharmacotherapy Trials for Stimulant Use Disorder: A Meta-Analysis of 12 Randomized Controlled Trials",
+      "journal": "JAMA Psychiatry",
+      "date": "2026-06-03",
+      "authors": "Amin-Esmaeili M et al.",
+      "url": "https://doi.org/10.1001/jamapsychiatry.2026.1092"
+    },
+    {
       "id": "42231080",
       "title": "Schizophrenia in Offspring of Holocaust Survivors: Intergenerational Effects of Preconception Parental Trauma Within the Jerusalem Perinatal Study",
-      "journal": "The American journal of psychiatry",
+      "journal": "American Journal of Psychiatry",
       "date": "2026-06-03",
       "authors": "Youssim I et al.",
       "url": "https://doi.org/10.1176/appi.ajp.20241145"
     },
     {
+      "id": "42234453",
+      "title": "Stop Counting Conversions-The Clinical High Risk for Psychosis Field Needs a New North Star",
+      "journal": "JAMA Psychiatry",
+      "date": "2026-06-03",
+      "authors": "Mittal VA et al.",
+      "url": "https://doi.org/10.1001/jamapsychiatry.2026.1386"
+    },
+    {
       "id": "42249599",
       "title": "Advancing Brain and Body Vascular Imaging in Bipolar Disorder: A Report From the International Society for Bipolar Disorders Vascular Task Force",
-      "journal": "Bipolar disorders",
+      "journal": "Bipolar Disorders",
       "date": "2026-06-01",
       "authors": "Mio M et al.",
       "url": "https://doi.org/10.1111/bdi.70120"
     },
     {
-      "id": "41949840",
-      "title": "Age at First Attention-Deficit/Hyperactivity Disorder Diagnosis and Educational Outcomes",
-      "journal": "JAMA psychiatry",
-      "date": "2026-06-01",
-      "authors": "Volotinen L et al.",
-      "url": "https://doi.org/10.1001/jamapsychiatry.2026.0181"
-    },
-    {
       "id": "42219565",
       "title": "An Update on Somatic Treatments for Suicide Risk",
-      "journal": "The American journal of psychiatry",
+      "journal": "American Journal of Psychiatry",
       "date": "2026-06-01",
       "authors": "Rizk MM and Mann JJ",
       "url": "https://doi.org/10.1176/appi.ajp.20260287"
     },
     {
-      "id": "42138507",
-      "title": "Association Between Elevated Body Mass Index, Inflammation, and Cognitive Performance in Individuals With Bipolar Disorder and Healthy Controls",
-      "journal": "Bipolar disorders",
-      "date": "2026-06-01",
-      "authors": "Majd M et al.",
-      "url": "https://doi.org/10.1111/bdi.70111"
-    },
-    {
       "id": "42226466",
       "title": "Bipolar Disorder Incidence During Pregnancy and in the Postpartum Period: A Population-Based Study",
-      "journal": "Bipolar disorders",
+      "journal": "Bipolar Disorders",
       "date": "2026-06-01",
       "authors": "Bergink V et al.",
       "url": "https://doi.org/10.1111/bdi.70122"
@@ -2037,95 +1877,23 @@
     {
       "id": "42262032",
       "title": "Bipolar Disorder Psychosis Risk Predicts Cue Discrimination on the AX-Continuous Performance Task Paradigm",
-      "journal": "Bipolar disorders",
+      "journal": "Bipolar Disorders",
       "date": "2026-06-01",
       "authors": "Fiske M et al.",
       "url": "https://doi.org/10.1111/bdi.70129"
     },
     {
-      "id": "42206691",
-      "title": "Cognition Assessment in Virtual Reality (CAVIR)-Spanish Version: Validation of a Novel Virtual Reality Test for Daily-Life Cognitive Skills in Bipolar Disorder",
-      "journal": "Bipolar disorders",
-      "date": "2026-06-01",
-      "authors": "Fares-Otero NE et al.",
-      "url": "https://doi.org/10.1111/bdi.70118"
-    },
-    {
       "id": "42262059",
       "title": "Determinants of Digital Health Resource Utilization Among Individuals With Self-Reported Bipolar Disorder in Germany-A Cross-Sectional Study Based on the Andersen Model",
-      "journal": "Bipolar disorders",
+      "journal": "Bipolar Disorders",
       "date": "2026-06-01",
       "authors": "Kokwaro L et al.",
       "url": "https://doi.org/10.1111/bdi.70128"
     },
     {
-      "id": "41949829",
-      "title": "General Anesthesia and Discrete Components of Ketamine Neurophysiology",
-      "journal": "JAMA psychiatry",
-      "date": "2026-06-01",
-      "authors": "Deverett B et al.",
-      "url": "https://doi.org/10.1001/jamapsychiatry.2026.0190"
-    },
-    {
-      "id": "42144802",
-      "title": "Genetic Linkage for Bipolar Disorder to the Distal Region of Chromosome 19q: A Large Family Whole Genome Sequencing Study",
-      "journal": "Bipolar disorders",
-      "date": "2026-06-01",
-      "authors": "Wong AHC et al.",
-      "url": "https://doi.org/10.1111/bdi.70112"
-    },
-    {
-      "id": "42212480",
-      "title": "Insulin Resistance as a Mediator of Suicide Risk in Bipolar Disorder: A Neurobiological and Imaging Study",
-      "journal": "Bipolar disorders",
-      "date": "2026-06-01",
-      "authors": "Mazza E et al.",
-      "url": "https://doi.org/10.1111/bdi.70121"
-    },
-    {
-      "id": "42134364",
-      "title": "Maternal and paternal antidepressant use before and during pregnancy and offspring risk of neurodevelopmental disorders: a systematic review and meta-analysis",
-      "journal": "The lancet. Psychiatry",
-      "date": "2026-06-01",
-      "authors": "Chan JKN et al.",
-      "url": "https://doi.org/10.1016/S2215-0366(26)00089-1"
-    },
-    {
-      "id": "41949828",
-      "title": "Measurement of Posthospital Recovery Infrastructure",
-      "journal": "JAMA psychiatry",
-      "date": "2026-06-01",
-      "authors": "Lee YJ et al.",
-      "url": "https://doi.org/10.1001/jamapsychiatry.2026.0440"
-    },
-    {
-      "id": "42134365",
-      "title": "Pharmacological interventions for ADHD: a systematic review and dose-effect network meta-analysis",
-      "journal": "The lancet. Psychiatry",
-      "date": "2026-06-01",
-      "authors": "Nourredine M et al.",
-      "url": "https://doi.org/10.1016/S2215-0366(26)00091-X"
-    },
-    {
-      "id": "41984461",
-      "title": "Prior Trial Effects on Working Memory in Schizophrenia, Bipolar Disorder, and Healthy Control Individuals",
-      "journal": "JAMA psychiatry",
-      "date": "2026-06-01",
-      "authors": "Bansal S et al.",
-      "url": "https://doi.org/10.1001/jamapsychiatry.2026.0196"
-    },
-    {
-      "id": "41984438",
-      "title": "Targeting Biomarkers and the FDA's Biomarker Qualification Framework",
-      "journal": "JAMA psychiatry",
-      "date": "2026-06-01",
-      "authors": "Ekhtiari H et al.",
-      "url": "https://doi.org/10.1001/jamapsychiatry.2026.0590"
-    },
-    {
       "id": "42265849",
       "title": "The Distinct Role of Family History and Polygenic Risk Scores of Psychiatric Disorders on Lithium Response in Bipolar Disorder",
-      "journal": "Bipolar disorders",
+      "journal": "Bipolar Disorders",
       "date": "2026-06-01",
       "authors": "Ercis M et al.",
       "url": "https://doi.org/10.1111/bdi.70126"
@@ -2133,7 +1901,7 @@
     {
       "id": "42262062",
       "title": "Trends in the Use of Atypical Antipsychotics Among Children and Adolescents With Bipolar Spectrum Disorders in Korea",
-      "journal": "Bipolar disorders",
+      "journal": "Bipolar Disorders",
       "date": "2026-06-01",
       "authors": "Park KJ et al.",
       "url": "https://doi.org/10.1111/bdi.70125"
@@ -2141,23 +1909,15 @@
     {
       "id": "42237474",
       "title": "Uncovering Shared and Distinct Brain Connectome Dynamics in Working Memory Tasks Between Bipolar and Unipolar Depression",
-      "journal": "Bipolar disorders",
+      "journal": "Bipolar Disorders",
       "date": "2026-06-01",
       "authors": "Sun F et al.",
       "url": "https://doi.org/10.1111/bdi.70124"
     },
     {
-      "id": "42018314",
-      "title": "Updating Psychological Treatment During Inpatient Psychiatric Care",
-      "journal": "JAMA psychiatry",
-      "date": "2026-06-01",
-      "authors": "Kleiman EM et al.",
-      "url": "https://doi.org/10.1001/jamapsychiatry.2026.0443"
-    },
-    {
       "id": "42218644",
       "title": "Classic psychedelics and personality: An updated systematic review",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-05-31",
       "authors": "Vicentini AB et al.",
       "url": "https://doi.org/10.1177/02698811261449386"
@@ -2165,7 +1925,7 @@
     {
       "id": "42212869",
       "title": "A systematic review of the pharmacokinetics of classical serotonergic psychedelic compounds in healthy adult subjects",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-05-29",
       "authors": "Hampsey E et al.",
       "url": "https://doi.org/10.1177/02698811261453938"
@@ -2173,7 +1933,7 @@
     {
       "id": "42210730",
       "title": "Clozapine-induced neutropenia: Prevalence and associated factors",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-05-29",
       "authors": "Sandroni V et al.",
       "url": "https://doi.org/10.1177/02698811261449381"
@@ -2181,39 +1941,111 @@
     {
       "id": "42212900",
       "title": "Effects of psilocybin on sleep quality and brain microstructure in chronic cluster headache",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-05-29",
       "authors": "Brendstrup-Brix K et al.",
       "url": "https://doi.org/10.1177/02698811261449380"
     },
     {
+      "id": "42212480",
+      "title": "Insulin Resistance as a Mediator of Suicide Risk in Bipolar Disorder: A Neurobiological and Imaging Study",
+      "journal": "Bipolar Disorders",
+      "date": "2026-05-29",
+      "authors": "Mazza E et al.",
+      "url": "https://doi.org/10.1111/bdi.70121"
+    },
+    {
+      "id": "42206691",
+      "title": "Cognition Assessment in Virtual Reality (CAVIR)-Spanish Version: Validation of a Novel Virtual Reality Test for Daily-Life Cognitive Skills in Bipolar Disorder",
+      "journal": "Bipolar Disorders",
+      "date": "2026-05-28",
+      "authors": "Fares-Otero NE et al.",
+      "url": "https://doi.org/10.1111/bdi.70118"
+    },
+    {
       "id": "42202844",
       "title": "Inherent commonalities between arts-based leisure activities and psychological therapies",
-      "journal": "The lancet. Psychiatry",
+      "journal": "The Lancet Psychiatry",
       "date": "2026-05-27",
       "authors": "Fancourt D et al.",
       "url": "https://doi.org/10.1016/S2215-0366(26)00054-4"
     },
     {
+      "id": "42201728",
+      "title": "Recurrent Copy Number Variants and Psychiatric Outcomes in the Context of Polygenic Scores",
+      "journal": "JAMA Psychiatry",
+      "date": "2026-05-27",
+      "authors": "Vaez M et al.",
+      "url": "https://doi.org/10.1001/jamapsychiatry.2026.1064"
+    },
+    {
+      "id": "42201715",
+      "title": "Strategies for Establishing Clinical-Decision Thresholds in Psychiatry: A Review",
+      "journal": "JAMA Psychiatry",
+      "date": "2026-05-27",
+      "authors": "Kotelnikova Y et al.",
+      "url": "https://doi.org/10.1001/jamapsychiatry.2026.1078"
+    },
+    {
       "id": "42175700",
       "title": "Speech markers of psychological change following a psychedelic 5-MeO-DMT retreat",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-05-23",
       "authors": "Kuc J et al.",
       "url": "https://doi.org/10.1177/02698811261443690"
     },
     {
+      "id": "42160062",
+      "title": "Interleukin 6 as a Treatment Target for Depression: A Proof-of-Concept Randomized Clinical Trial",
+      "journal": "JAMA Psychiatry",
+      "date": "2026-05-20",
+      "authors": "Foley ÉM et al.",
+      "url": "https://doi.org/10.1001/jamapsychiatry.2026.1053"
+    },
+    {
+      "id": "42160071",
+      "title": "Military Sexual Trauma in the United States",
+      "journal": "JAMA Psychiatry",
+      "date": "2026-05-20",
+      "authors": "Hill ML et al.",
+      "url": "https://doi.org/10.1001/jamapsychiatry.2026.1203"
+    },
+    {
+      "id": "42160045",
+      "title": "Structure of the Genetic Risks for Psychiatric Disorders in Swedish Population-Based Registries",
+      "journal": "JAMA Psychiatry",
+      "date": "2026-05-20",
+      "authors": "Kendler KS et al.",
+      "url": "https://doi.org/10.1001/jamapsychiatry.2026.1047"
+    },
+    {
       "id": "42151794",
       "title": "Low-Dose Buprenorphine Following Ketamine Treatment for Suicidal Ideation in Major Depressive Disorder: A Randomized, Double-Blind, Placebo-Controlled Trial",
-      "journal": "The American journal of psychiatry",
+      "journal": "American Journal of Psychiatry",
       "date": "2026-05-19",
       "authors": "Tucciarone JM et al.",
       "url": "https://doi.org/10.1176/appi.ajp.20250840"
     },
     {
+      "id": "42144802",
+      "title": "Genetic Linkage for Bipolar Disorder to the Distal Region of Chromosome 19q: A Large Family Whole Genome Sequencing Study",
+      "journal": "Bipolar Disorders",
+      "date": "2026-05-18",
+      "authors": "Wong AHC et al.",
+      "url": "https://doi.org/10.1111/bdi.70112"
+    },
+    {
+      "id": "42138507",
+      "title": "Association Between Elevated Body Mass Index, Inflammation, and Cognitive Performance in Individuals With Bipolar Disorder and Healthy Controls",
+      "journal": "Bipolar Disorders",
+      "date": "2026-05-15",
+      "authors": "Majd M et al.",
+      "url": "https://doi.org/10.1111/bdi.70111"
+    },
+    {
       "id": "42138309",
       "title": "Dynamic excitatory-inhibitory differences in autistic and non-autistic adults: Evidence from a pharmacological challenge with arbaclofen",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-05-15",
       "authors": "Ellis CL et al.",
       "url": "https://doi.org/10.1177/02698811261449378"
@@ -2221,23 +2053,63 @@
     {
       "id": "42132535",
       "title": "Electrophysiological correlates of resisting craving in adults with tobacco use disorders",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-05-14",
       "authors": "Rayas-Hernandez UM et al.",
       "url": "https://doi.org/10.1177/02698811261449388"
     },
     {
+      "id": "42134364",
+      "title": "Maternal and paternal antidepressant use before and during pregnancy and offspring risk of neurodevelopmental disorders: a systematic review and meta-analysis",
+      "journal": "The Lancet Psychiatry",
+      "date": "2026-05-14",
+      "authors": "Chan JKN et al.",
+      "url": "https://doi.org/10.1016/S2215-0366(26)00089-1"
+    },
+    {
       "id": "42132544",
       "title": "Methylphenidate and manic relapse in bipolar disorders: A replication study in a nationwide claims database",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-05-14",
       "authors": "Vidal N et al.",
       "url": "https://doi.org/10.1177/02698811261443684"
     },
     {
+      "id": "42134365",
+      "title": "Pharmacological interventions for ADHD: a systematic review and dose-effect network meta-analysis",
+      "journal": "The Lancet Psychiatry",
+      "date": "2026-05-14",
+      "authors": "Nourredine M et al.",
+      "url": "https://doi.org/10.1016/S2215-0366(26)00091-X"
+    },
+    {
+      "id": "42126840",
+      "title": "Acute, Longer-Term, and Transdiagnostic Outcomes After Digital Interventions for Eating Disorders: A Meta-Analysis",
+      "journal": "JAMA Psychiatry",
+      "date": "2026-05-13",
+      "authors": "Anderson C et al.",
+      "url": "https://doi.org/10.1001/jamapsychiatry.2026.0668"
+    },
+    {
+      "id": "42126858",
+      "title": "Nationwide Transdiagnostic Age and Sex Patterns in Mental Disorder Disease Development",
+      "journal": "JAMA Psychiatry",
+      "date": "2026-05-13",
+      "authors": "Wandall ENS et al.",
+      "url": "https://doi.org/10.1001/jamapsychiatry.2026.0882"
+    },
+    {
+      "id": "42126863",
+      "title": "Women With Schizophrenia-Ignored and Aging",
+      "journal": "JAMA Psychiatry",
+      "date": "2026-05-13",
+      "authors": "Rowland LM and Lee EE",
+      "url": "https://doi.org/10.1001/jamapsychiatry.2026.0950"
+    },
+    {
       "id": "42117212",
       "title": "From monotherapy to sequential models: An updated scoping review on ibogaine's role in treatment for psychiatric disorders",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-05-12",
       "authors": "Sharma P et al.",
       "url": "https://doi.org/10.1177/02698811261443674"
@@ -2245,55 +2117,71 @@
     {
       "id": "42116740",
       "title": "Neurocognitive changes in lithium-treated older adult bipolar patients on antipsychotics",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-05-12",
       "authors": "Tsapakis EM et al.",
       "url": "https://doi.org/10.1177/02698811261443673"
     },
     {
-      "id": "42113558",
-      "title": "Associations between psychedelic use and migraine history in Swedish twins",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
-      "date": "2026-05-11",
-      "authors": "Simonsson O et al.",
-      "url": "https://doi.org/10.1177/02698811261449385"
-    },
-    {
       "id": "42104950",
       "title": "Efficacy of pharmacological and nutritional interventions for glucose dysfunction in schizophrenia-A systematic review and network meta-analysis",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-05-09",
       "authors": "Liu CI et al.",
       "url": "https://doi.org/10.1177/02698811261443680"
     },
     {
-      "id": "42097883",
-      "title": "Cardiovascular mortality and depression: A systematic review and meta-analysis of the association with antidepressant treatment and co-morbidity",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
-      "date": "2026-05-07",
-      "authors": "Costa TDS et al.",
-      "url": "https://doi.org/10.1177/02698811261433212"
-    },
-    {
       "id": "42098974",
       "title": "Oxytocin prevents ketamine-induced executive control deficits in macaque monkeys",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-05-07",
       "authors": "Rohani E et al.",
       "url": "https://doi.org/10.1177/02698811261443678"
     },
     {
+      "id": "42090141",
+      "title": "Adjunctive Antipsychotics in Major Depressive Disorder: A Systematic Review and Network Meta-Analysis",
+      "journal": "JAMA Psychiatry",
+      "date": "2026-05-06",
+      "authors": "McIntyre RS et al.",
+      "url": "https://doi.org/10.1001/jamapsychiatry.2026.0658"
+    },
+    {
       "id": "42087328",
       "title": "Clinical and Cognitive Outcomes Comparing Right Unilateral Ultrabrief Electroconvulsive Therapy Versus Magnetic Seizure Therapy for Bipolar Depression: The CORRECT-BD Trial",
-      "journal": "The American journal of psychiatry",
+      "journal": "American Journal of Psychiatry",
       "date": "2026-05-06",
       "authors": "Blumberger DM et al.",
       "url": "https://doi.org/10.1176/appi.ajp.20250955"
     },
     {
+      "id": "42090145",
+      "title": "Intermittent Theta Burst Stimulation of the Dorsomedial PFC and Expectancy-Driven Placebo Mood Effects: A Randomized Clinical Trial",
+      "journal": "JAMA Psychiatry",
+      "date": "2026-05-06",
+      "authors": "Snyder I et al.",
+      "url": "https://doi.org/10.1001/jamapsychiatry.2026.0647"
+    },
+    {
+      "id": "42090166",
+      "title": "Ketamine Infusions and Rapid Reduction of Suicidal and Depressive Symptoms in Major Depressive Episode: A Systematic Review and Meta-Analysis",
+      "journal": "JAMA Psychiatry",
+      "date": "2026-05-06",
+      "authors": "Shim SR et al.",
+      "url": "https://doi.org/10.1001/jamapsychiatry.2026.0612"
+    },
+    {
+      "id": "42090169",
+      "title": "Links Between Toxic Exposures and Mental Health Conditions Among US Military",
+      "journal": "JAMA Psychiatry",
+      "date": "2026-05-06",
+      "authors": "Tsai J et al.",
+      "url": "https://doi.org/10.1001/jamapsychiatry.2026.0879"
+    },
+    {
       "id": "42080339",
       "title": "Effects of benzodiazepines on saccadic eye movements: A systematic review and meta-analysis",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-05-04",
       "authors": "Schmidt PM et al.",
       "url": "https://doi.org/10.1177/02698811261436602"
@@ -2301,55 +2189,63 @@
     {
       "id": "42068196",
       "title": "5-HT(1A) receptor blockade potentiates the subjective effects of DMT",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-05-02",
       "authors": "Zahid Z et al.",
       "url": "https://doi.org/10.1177/02698811261443696"
     },
     {
+      "id": "42113558",
+      "title": "Associations between psychedelic use and migraine history in Swedish twins",
+      "journal": "Journal of Psychopharmacology",
+      "date": "2026-05-01",
+      "authors": "Simonsson O et al.",
+      "url": "https://doi.org/10.1177/02698811261449385"
+    },
+    {
       "id": "42068187",
       "title": "Effects of psychedelic use on authoritarian attitudes revisited",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
-      "date": "2026-05-02",
+      "journal": "Journal of Psychopharmacology",
+      "date": "2026-05-01",
       "authors": "Simonsson O et al.",
       "url": "https://doi.org/10.1177/02698811261443677"
     },
     {
-      "id": "41997695",
-      "title": "Confirmatory efficacy and safety trial of magnetic seizure therapy versus right unilateral ultra-brief electroconvulsive therapy in depression (CREST-MST): a randomised, double-blind, non-inferiority trial in Canada and the USA",
-      "journal": "The lancet. Psychiatry",
-      "date": "2026-05-01",
-      "authors": "Blumberger DM et al.",
-      "url": "https://doi.org/10.1016/S2215-0366(26)00060-X"
-    },
-    {
-      "id": "41997696",
-      "title": "Harnessing placebo effects and mitigating nocebo effects: implications for clinical practice in psychiatry and medicine",
-      "journal": "The lancet. Psychiatry",
-      "date": "2026-05-01",
-      "authors": "Burke MJ et al.",
-      "url": "https://doi.org/10.1016/S2215-0366(25)00340-2"
-    },
-    {
-      "id": "41997697",
-      "title": "Measuring and appraising placebo effects in clinical trials: contemporary challenges and approaches in psychiatry",
-      "journal": "The lancet. Psychiatry",
-      "date": "2026-05-01",
-      "authors": "Taylor JJ et al.",
-      "url": "https://doi.org/10.1016/S2215-0366(26)00018-0"
-    },
-    {
       "id": "42070579",
       "title": "The global prevalence of major depressive disorder during the peripartum period: a systematic review and meta-regression",
-      "journal": "The lancet. Psychiatry",
+      "journal": "The Lancet Psychiatry",
       "date": "2026-04-30",
       "authors": "Ferrari AJ et al.",
       "url": "https://doi.org/10.1016/S2215-0366(26)00085-4"
     },
     {
+      "id": "42054038",
+      "title": "Adolescent Mental Health Care and Stigma: The ARTEMIS Randomized Clinical Trial",
+      "journal": "JAMA Psychiatry",
+      "date": "2026-04-29",
+      "authors": "Maulik PK et al.",
+      "url": "https://doi.org/10.1001/jamapsychiatry.2026.0603"
+    },
+    {
+      "id": "42054055",
+      "title": "Semaglutide and Effort-Based Decision-Making in Major Depressive Disorder: A Randomized Clinical Trial",
+      "journal": "JAMA Psychiatry",
+      "date": "2026-04-29",
+      "authors": "Gill H et al.",
+      "url": "https://doi.org/10.1001/jamapsychiatry.2026.0594"
+    },
+    {
+      "id": "42054036",
+      "title": "The Implementation of Family-Focused Mental Health Care",
+      "journal": "JAMA Psychiatry",
+      "date": "2026-04-29",
+      "authors": "Middeldorp CM and de Nooij L",
+      "url": "https://doi.org/10.1001/jamapsychiatry.2026.0875"
+    },
+    {
       "id": "42032882",
       "title": "Preliminary evidence that serum interleukin-6 is a candidate biomarker of response to esketamine in treatment-resistant depression",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-04-24",
       "authors": "Colizzi M et al.",
       "url": "https://doi.org/10.1177/02698811261443676"
@@ -2357,31 +2253,79 @@
     {
       "id": "42032844",
       "title": "The effects of the PDE4 inhibitor roflumilast on cognitive performance after a cerebrovascular accident: a double-blind randomized placebo-controlled trial with an open label extension (ROSTMEMA)",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-04-24",
       "authors": "Kerckhoffs J et al.",
       "url": "https://doi.org/10.1177/02698811261436581"
     },
     {
+      "id": "42018313",
+      "title": "Antipsychotic Efficacy and Safety of LB-102 in the Treatment of Adults With Acute Schizophrenia: A Randomized Clinical Trial",
+      "journal": "JAMA Psychiatry",
+      "date": "2026-04-22",
+      "authors": "Eramo A et al.",
+      "url": "https://doi.org/10.1001/jamapsychiatry.2026.0428"
+    },
+    {
+      "id": "42018336",
+      "title": "Dialectical Behavior Therapy vs Schema Therapy for Patients With Borderline Personality Disorder: The BOOTS Multicenter Randomized Clinical Trial",
+      "journal": "JAMA Psychiatry",
+      "date": "2026-04-22",
+      "authors": "Wibbelink CJM et al.",
+      "url": "https://doi.org/10.1001/jamapsychiatry.2026.0418"
+    },
+    {
       "id": "42014962",
       "title": "Transcriptional Profiles of Somatostatin and Parvalbumin Interneuron Subtypes in the Human Dorsolateral Prefrontal Cortex: Implications for Schizophrenia",
-      "journal": "The American journal of psychiatry",
+      "journal": "American Journal of Psychiatry",
       "date": "2026-04-22",
       "authors": "Enwright JF III, et al.",
       "url": "https://doi.org/10.1176/appi.ajp.20250355"
     },
     {
+      "id": "42018314",
+      "title": "Updating Psychological Treatment During Inpatient Psychiatric Care",
+      "journal": "JAMA Psychiatry",
+      "date": "2026-04-22",
+      "authors": "Kleiman EM et al.",
+      "url": "https://doi.org/10.1001/jamapsychiatry.2026.0443"
+    },
+    {
+      "id": "41997695",
+      "title": "Confirmatory efficacy and safety trial of magnetic seizure therapy versus right unilateral ultra-brief electroconvulsive therapy in depression (CREST-MST): a randomised, double-blind, non-inferiority trial in Canada and the USA",
+      "journal": "The Lancet Psychiatry",
+      "date": "2026-04-17",
+      "authors": "Blumberger DM et al.",
+      "url": "https://doi.org/10.1016/S2215-0366(26)00060-X"
+    },
+    {
       "id": "41992094",
       "title": "Envisioning Cannabinoid CB1 Receptor Biased Signaling as a Therapeutic Target for Schizophrenia",
-      "journal": "The American journal of psychiatry",
+      "journal": "American Journal of Psychiatry",
       "date": "2026-04-17",
       "authors": "Ku SH et al.",
       "url": "https://doi.org/10.1176/appi.ajp.20250886"
     },
     {
+      "id": "41997696",
+      "title": "Harnessing placebo effects and mitigating nocebo effects: implications for clinical practice in psychiatry and medicine",
+      "journal": "The Lancet Psychiatry",
+      "date": "2026-04-17",
+      "authors": "Burke MJ et al.",
+      "url": "https://doi.org/10.1016/S2215-0366(25)00340-2"
+    },
+    {
+      "id": "41997697",
+      "title": "Measuring and appraising placebo effects in clinical trials: contemporary challenges and approaches in psychiatry",
+      "journal": "The Lancet Psychiatry",
+      "date": "2026-04-17",
+      "authors": "Taylor JJ et al.",
+      "url": "https://doi.org/10.1016/S2215-0366(26)00018-0"
+    },
+    {
       "id": "41992095",
       "title": "The Comparative Efficacy of Noninvasive Brain Stimulation for Suicidal Ideation: A Network Meta-Analysis",
-      "journal": "The American journal of psychiatry",
+      "journal": "American Journal of Psychiatry",
       "date": "2026-04-17",
       "authors": "Traynor JM et al.",
       "url": "https://doi.org/10.1176/appi.ajp.20250753"
@@ -2389,7 +2333,7 @@
     {
       "id": "41988667",
       "title": "Comparison of average time-to-relapse following ECT versus ketamine - A systematic review",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-04-16",
       "authors": "Chang M et al.",
       "url": "https://doi.org/10.1177/02698811261430502"
@@ -2397,7 +2341,7 @@
     {
       "id": "41988789",
       "title": "Mismatch negativity in patients with bipolar affective disorder: a systematic review and meta-analysis",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-04-16",
       "authors": "Caulfield A et al.",
       "url": "https://doi.org/10.1177/02698811261436604"
@@ -2405,15 +2349,39 @@
     {
       "id": "41989154",
       "title": "Substance use predictors of arrest and self-reported criminal behavior in the United States: The role of psychedelics and rarely used drugs",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-04-16",
       "authors": "Norris JJ",
       "url": "https://doi.org/10.1177/02698811261436577"
     },
     {
+      "id": "41984443",
+      "title": "Blinding Integrity in Psychedelic Randomized Clinical Trials: A Systematic Review",
+      "journal": "JAMA Psychiatry",
+      "date": "2026-04-15",
+      "authors": "Orsini DK et al.",
+      "url": "https://doi.org/10.1001/jamapsychiatry.2026.0255"
+    },
+    {
+      "id": "41984461",
+      "title": "Prior Trial Effects on Working Memory in Schizophrenia, Bipolar Disorder, and Healthy Control Individuals",
+      "journal": "JAMA Psychiatry",
+      "date": "2026-04-15",
+      "authors": "Bansal S et al.",
+      "url": "https://doi.org/10.1001/jamapsychiatry.2026.0196"
+    },
+    {
+      "id": "41984438",
+      "title": "Targeting Biomarkers and the FDA's Biomarker Qualification Framework",
+      "journal": "JAMA Psychiatry",
+      "date": "2026-04-15",
+      "authors": "Ekhtiari H et al.",
+      "url": "https://doi.org/10.1001/jamapsychiatry.2026.0590"
+    },
+    {
       "id": "41967021",
       "title": "Efficacy of N, N-dimethyltryptamine (DMT) psychedelic therapy for substance misuse: A systematic review and meta-analysis",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-04-12",
       "authors": "Wallace LM et al.",
       "url": "https://doi.org/10.1177/02698811261430518"
@@ -2421,23 +2389,47 @@
     {
       "id": "41969016",
       "title": "Screening-to-intervention pathway for child anxiety problems alongside usual school practice versus usual school practice only (iCATSi2i): a cluster-randomised, controlled trial in primary schools in England",
-      "journal": "The lancet. Psychiatry",
+      "journal": "The Lancet Psychiatry",
       "date": "2026-04-09",
       "authors": "Reardon T et al.",
       "url": "https://doi.org/10.1016/S2215-0366(26)00064-7"
     },
     {
+      "id": "41949840",
+      "title": "Age at First Attention-Deficit/Hyperactivity Disorder Diagnosis and Educational Outcomes",
+      "journal": "JAMA Psychiatry",
+      "date": "2026-04-08",
+      "authors": "Volotinen L et al.",
+      "url": "https://doi.org/10.1001/jamapsychiatry.2026.0181"
+    },
+    {
       "id": "41948975",
       "title": "Cannabidiol for psychotic disorders: A meta-analysis of randomized controlled trials",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-04-08",
       "authors": "Marchi M et al.",
       "url": "https://doi.org/10.1177/02698811261430501"
     },
     {
+      "id": "41949829",
+      "title": "General Anesthesia and Discrete Components of Ketamine Neurophysiology",
+      "journal": "JAMA Psychiatry",
+      "date": "2026-04-08",
+      "authors": "Deverett B et al.",
+      "url": "https://doi.org/10.1001/jamapsychiatry.2026.0190"
+    },
+    {
+      "id": "41949828",
+      "title": "Measurement of Posthospital Recovery Infrastructure",
+      "journal": "JAMA Psychiatry",
+      "date": "2026-04-08",
+      "authors": "Lee YJ et al.",
+      "url": "https://doi.org/10.1001/jamapsychiatry.2026.0440"
+    },
+    {
       "id": "41962559",
       "title": "Clozapine rechallenge after neutropenia: a retrospective cohort study in the UK",
-      "journal": "The lancet. Psychiatry",
+      "journal": "The Lancet Psychiatry",
       "date": "2026-04-07",
       "authors": "Oloyede E et al.",
       "url": "https://doi.org/10.1016/S2215-0366(26)00061-1"
@@ -2445,7 +2437,7 @@
     {
       "id": "41944521",
       "title": "Nathan S. Kline: From the first treatments of psychosis and depression, a 70-year legacy of a pioneer of psychopharmacology",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-04-07",
       "authors": "Junkes L et al.",
       "url": "https://doi.org/10.1177/02698811261436582"
@@ -2453,7 +2445,7 @@
     {
       "id": "41943478",
       "title": "The impact of antidepressant use on MDMA fatalities: A matched case-control study using a post-mortem database",
-      "journal": "Journal of psychopharmacology (Oxford, England)",
+      "journal": "Journal of Psychopharmacology",
       "date": "2026-04-06",
       "authors": "Rock KL et al.",
       "url": "https://doi.org/10.1177/02698811261436573"
