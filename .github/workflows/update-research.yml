@@ -1,0 +1,48 @@
+name: Update Latest Research
+
+# Prepares the refreshed feed on a separate branch and opens a pull request.
+# Nothing is deployed until a person merges that pull request.
+on:
+  schedule:
+    - cron: "17 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: update-research
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Fetch recent papers from PubMed
+        run: node scripts/fetch-research.mjs
+        env:
+          NCBI_API_KEY: ${{ secrets.NCBI_API_KEY }}
+      - name: Push update branch and open a pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if git diff --quiet -- public/research.json; then
+            echo "No changes."
+            exit 0
+          fi
+          git config user.name "research-bot"
+          git config user.email "research-bot@users.noreply.github.com"
+          git checkout -B research-update
+          git add public/research.json
+          git commit -m "Update latest research feed [vercel skip]"
+          git push --force origin research-update
+          if [ -z "$(gh pr list --head research-update --state open --json number --jq '.[0].number')" ]; then
+            gh pr create --base "${{ github.event.repository.default_branch }}" --head research-update \
+              --title "Update latest research feed" \
+              --body "Automated PubMed refresh of public/research.json. Merging this deploys the new articles."
+          fi

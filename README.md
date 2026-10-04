@@ -94,15 +94,19 @@ The migrations are idempotent and do not truncate, replace, or delete drug rows.
 In Authentication settings:
 
 1. Enable the Email provider and email/password signups.
-2. Require email confirmation for new accounts.
+2. Turn on **Confirm email** (Authentication > Providers > Email). The server also refuses to start a session, or serve any protected route, for a user whose `email_confirmed_at` is empty, so access stays gated even if this setting is switched off by mistake.
 3. Set the Site URL to the production origin, for example `https://your-domain.example`.
 4. Add exact redirect URLs for `https://your-domain.example/login` and `https://your-domain.example/reset-password`.
 5. Add `http://localhost:3000/login` and `http://localhost:3000/reset-password` for local testing.
 6. Set a minimum password length of at least 8 characters and enable leaked-password protection when available.
 7. Review Auth rate limits. CAPTCHA requires a corresponding browser challenge integration before it is enabled.
-8. Configure custom SMTP before production email confirmation and password recovery. Supabase's default mail service is intended only for limited testing.
+8. Configure custom SMTP (Authentication > Emails > SMTP Settings) before production. Supabase's built-in mailer allows only about 2 auth emails per hour project-wide, so signup confirmation stops for everyone after that. Use any provider (Resend, Brevo, Amazon SES, Postmark, Gmail Workspace SMTP), verify your sending domain (SPF/DKIM), then raise **Rate Limits > Emails sent per hour** to match, for example 30 to 100.
 
 Vercel preview URLs should be added deliberately. Avoid a broad wildcard unless preview authentication is required and the security tradeoff has been reviewed.
+
+## Latest Research Feed
+
+`/research` reads `public/research.json`, which `.github/workflows/update-research.yml` refreshes daily from PubMed (JAMA Psychiatry, Bipolar Disorders, Psychiatry Research, and psychiatry-topic NEJM papers). The workflow never deploys by itself: it pushes the `research-update` branch and opens a pull request, and the site updates only when you merge it. Run it once from the Actions tab (Run workflow) to fill the page for the first time. Optionally add an `NCBI_API_KEY` repository secret for higher PubMed rate limits.
 
 ## Create the First Admin
 

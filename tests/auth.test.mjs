@@ -116,6 +116,45 @@ test("registration reports Supabase email rate limits clearly", async () => {
   );
 });
 
+test("registration never opens a session for an unconfirmed email", async () => {
+  global.fetch = async () => {
+    const session = authSession();
+    delete session.user.email_confirmed_at;
+    return jsonResponse(200, session);
+  };
+
+  const output = response();
+  const result = await registerUser({
+    fullName: "Test User",
+    email: "user@example.com",
+    password: "correct-password",
+    confirmPassword: "correct-password"
+  }, request(), output);
+
+  assert.equal(result.requiresEmailConfirmation, true);
+  assert.equal(output.getHeader("Set-Cookie"), undefined);
+});
+
+test("login and protected access reject users without a confirmed email", async () => {
+  const unconfirmed = authSession();
+  delete unconfirmed.user.email_confirmed_at;
+  global.fetch = async (url) => {
+    if (String(url).includes("/auth/v1/token")) return jsonResponse(200, unconfirmed);
+    if (String(url).includes("/auth/v1/logout")) return jsonResponse(204, null);
+    if (String(url).includes("/auth/v1/user")) return jsonResponse(200, unconfirmed.user);
+    throw new Error(`Unexpected URL: ${url}`);
+  };
+
+  await assert.rejects(
+    loginUser({ email: "user@example.com", password: "correct-password" }, request(), response()),
+    (error) => error.status === 403 && /confirm your email/i.test(error.message)
+  );
+  await assert.rejects(
+    requireUser(request({ cookie: "pme_access=access-token" }), response()),
+    (error) => error.status === 403
+  );
+});
+
 test("member login stores Supabase tokens only in secure server cookies", async () => {
   process.env.SUPABASE_URL = "https://project.supabase.co/rest/v1";
   const calls = [];
@@ -266,6 +305,7 @@ function authSession() {
     user: {
       id: "11111111-1111-4111-8111-111111111111",
       email: "user@example.com",
+      email_confirmed_at: "2026-01-01T00:00:00Z",
       user_metadata: { full_name: "Test User" }
     }
   };
