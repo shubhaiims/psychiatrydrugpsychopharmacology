@@ -6,6 +6,6 @@ export default function middleware(request) {
 }
 
 export const config = {
-  runtime: "nodejs",
+  runtime: "edge",
   matcher: ["/((?!assets/|api/drugs(?:/|$)|api/notebook/sources(?:/|$)).*)"]
 };

@@ -32,7 +32,8 @@ Git deployments; configure branch protection/required checks in GitHub.
 
 ## Layer 3: Deployment Request Filter
 
-Vercel routing middleware runs before normal route handling. It rejects private
+Vercel Edge routing middleware runs before normal route handling without adding
+a Node serverless function to the Hobby-plan function count. It rejects private
 configuration/repository/backend paths (including encoded probes), cross-site API
 mutations, unsupported API methods, non-JSON mutation bodies and oversized declared
 sensitive request bodies. It makes no database or payment-provider calls.
