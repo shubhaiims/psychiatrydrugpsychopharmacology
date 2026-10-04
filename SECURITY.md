@@ -47,6 +47,31 @@ This filter does not provide a new distributed network rate limiter or replace a
 managed WAF. Custom WAF configuration could not be activated through the connected
 Vercel API (configuration-not-found response); no custom firewall rules are claimed.
 
+## Layer 4: Attack Signatures, Account Lockout and Browser Isolation
+
+The edge request filter also rejects, with 403 and a `request_blocked` log entry
+(category and path only, never query strings): known attack-tool user agents
+(sqlmap, Nikto, Nuclei, WPScan, gobuster and similar), CMS/server probes this
+site never serves (WordPress, PHP, phpMyAdmin, cgi-bin, .aws/.ssh/.htaccess,
+backup/archive/config/log/SQL files), path traversal, and query strings carrying
+script tags, javascript: URLs, inline event handlers, SQL injection, time-delay
+SQL, Log4Shell (`${jndi:`) or ../ traversal payloads, after up to three rounds of
+URL decoding. URLs over 2048 characters get 414. Real visitors are unaffected;
+user agents can be faked, so this stops automated scanning, not a determined attacker.
+
+Per-account limits complement the per-IP limits: 10 sign-in attempts per email
+per 15 minutes (user and admin login) and 5 password-reset requests per email per
+hour, counted through the same shared consume_security_limit store (keys are
+SHA-256 hashes; no email is stored). This stops password guessing spread across
+many IP addresses. Trade-off: someone flooding an address can delay that
+person's sign-in for up to 15 minutes; password reset still works.
+
+Pages also send Cross-Origin-Opener-Policy (same-origin; same-origin-allow-popups
+on checkout so Razorpay payment windows work), Cross-Origin-Resource-Policy
+same-origin, Origin-Agent-Cluster, X-Permitted-Cross-Domain-Policies none, and a
+wider Permissions-Policy that disables USB, serial, HID, Bluetooth, MIDI, screen
+capture and Topics in addition to camera, microphone and geolocation.
+
 ## Deployment
 
 Apply the security_layers migration before deploying the app. Rate limiting fails

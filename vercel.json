@@ -70,23 +70,28 @@
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" },
+        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=(), usb=(), serial=(), hid=(), bluetooth=(), midi=(), display-capture=(), browsing-topics=()" },
         { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
         { "key": "Strict-Transport-Security", "value": "max-age=31536000; includeSubDomains" },
         { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "DENY" }
+        { "key": "X-Frame-Options", "value": "DENY" },
+        { "key": "Cross-Origin-Resource-Policy", "value": "same-origin" },
+        { "key": "X-Permitted-Cross-Domain-Policies", "value": "none" },
+        { "key": "Origin-Agent-Cluster", "value": "?1" }
       ]
     },
     {
       "source": "/((?!subscribe).*)",
       "headers": [
-        { "key": "Content-Security-Policy", "value": "default-src 'self'; base-uri 'self'; connect-src 'self'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data:; object-src 'none'; script-src 'self'; style-src 'self'" }
+        { "key": "Content-Security-Policy", "value": "default-src 'self'; base-uri 'self'; connect-src 'self'; font-src 'self'; form-action 'self'; frame-ancestors 'none'; img-src 'self' data:; object-src 'none'; script-src 'self'; style-src 'self'" },
+        { "key": "Cross-Origin-Opener-Policy", "value": "same-origin" }
       ]
     },
     {
       "source": "/subscribe",
       "headers": [
         { "key": "Content-Security-Policy", "value": "default-src 'self'; base-uri 'self'; connect-src 'self' https://api.razorpay.com https://lumberjack.razorpay.com; font-src 'self'; form-action 'self'; frame-ancestors 'none'; frame-src https://api.razorpay.com https://checkout.razorpay.com; img-src 'self' data: https://cdn.razorpay.com; object-src 'none'; script-src 'self' https://checkout.razorpay.com https://cdn.razorpay.com; style-src 'self' 'unsafe-inline'" },
+        { "key": "Cross-Origin-Opener-Policy", "value": "same-origin-allow-popups" },
         { "key": "Cache-Control", "value": "no-store" }
       ]
     },
@@ -94,6 +99,7 @@
       "source": "/subscribe/",
       "headers": [
         { "key": "Content-Security-Policy", "value": "default-src 'self'; base-uri 'self'; connect-src 'self' https://api.razorpay.com https://lumberjack.razorpay.com; font-src 'self'; form-action 'self'; frame-ancestors 'none'; frame-src https://api.razorpay.com https://checkout.razorpay.com; img-src 'self' data: https://cdn.razorpay.com; object-src 'none'; script-src 'self' https://checkout.razorpay.com https://cdn.razorpay.com; style-src 'self' 'unsafe-inline'" },
+        { "key": "Cross-Origin-Opener-Policy", "value": "same-origin-allow-popups" },
         { "key": "Cache-Control", "value": "no-store" }
       ]
     },
@@ -101,6 +107,7 @@
       "source": "/subscribe.html",
       "headers": [
         { "key": "Content-Security-Policy", "value": "default-src 'self'; base-uri 'self'; connect-src 'self' https://api.razorpay.com https://lumberjack.razorpay.com; font-src 'self'; form-action 'self'; frame-ancestors 'none'; frame-src https://api.razorpay.com https://checkout.razorpay.com; img-src 'self' data: https://cdn.razorpay.com; object-src 'none'; script-src 'self' https://checkout.razorpay.com https://cdn.razorpay.com; style-src 'self' 'unsafe-inline'" },
+        { "key": "Cross-Origin-Opener-Policy", "value": "same-origin-allow-popups" },
         { "key": "Cache-Control", "value": "no-store" }
       ]
     }

@@ -37,26 +37,7 @@ export async function guardRequest(request) {
     throw httpError(413, "Request body is too large.");
   }
   const key = createHash("sha256").update(`${policy.scope}|${clientAddress(request)}`).digest("hex");
-  let result;
-  if (isHostedProduction()) {
-    try {
-      result = await supabaseServiceRequest("rpc/consume_security_limit", {
-        method: "POST",
-        body: { p_key: key, p_limit: policy.limit, p_seconds: policy.seconds }
-      });
-    } catch {
-      throw httpError(503, "Security checks are temporarily unavailable. Please try again.");
-    }
-  } else {
-    const now = Date.now();
-    for (const [bucketKey, bucket] of localBuckets) {
-      if (bucket.until <= now) localBuckets.delete(bucketKey);
-    }
-    const bucket = localBuckets.get(key) || { count: 0, until: now + policy.seconds * 1000 };
-    bucket.count += 1;
-    localBuckets.set(key, bucket);
-    result = { allowed: bucket.count <= policy.limit, retry_after: Math.max(1, Math.ceil((bucket.until - now) / 1000)) };
-  }
+  const result = await consumeLimit(key, policy.limit, policy.seconds);
   if (result?.allowed !== true) {
     console.warn(JSON.stringify({ event: "request_rate_limited", scope: policy.scope, client: key }));
     const error = httpError(429, "Too many requests. Please wait before trying again.");
@@ -64,4 +45,45 @@ export async function guardRequest(request) {
     throw error;
   }
   checked.add(request);
+}
+
+// Layer 4: per-account limits stop password guessing and reset-email flooding
+// spread across many IP addresses, which the per-IP limits above cannot see.
+const accountPolicies = {
+  login: { limit: 10, seconds: 900, message: "Too many sign-in attempts for this account. Please wait 15 minutes or reset your password." },
+  reset: { limit: 5, seconds: 3600, message: "Too many password reset requests for this account. Please wait an hour and check your inbox." }
+};
+
+export async function guardAccount(kind, email) {
+  const policy = accountPolicies[kind];
+  if (!policy) throw new Error(`Unknown account limit: ${kind}`);
+  const key = createHash("sha256").update(`account-${kind}|${String(email).toLowerCase()}`).digest("hex");
+  const result = await consumeLimit(key, policy.limit, policy.seconds);
+  if (result?.allowed !== true) {
+    console.warn(JSON.stringify({ event: "account_rate_limited", kind, account: key }));
+    const error = httpError(429, policy.message);
+    error.retryAfter = Number(result?.retry_after) || policy.seconds;
+    throw error;
+  }
+}
+
+async function consumeLimit(key, limit, seconds) {
+  if (isHostedProduction()) {
+    try {
+      return await supabaseServiceRequest("rpc/consume_security_limit", {
+        method: "POST",
+        body: { p_key: key, p_limit: limit, p_seconds: seconds }
+      });
+    } catch {
+      throw httpError(503, "Security checks are temporarily unavailable. Please try again.");
+    }
+  }
+  const now = Date.now();
+  for (const [bucketKey, bucket] of localBuckets) {
+    if (bucket.until <= now) localBuckets.delete(bucketKey);
+  }
+  const bucket = localBuckets.get(key) || { count: 0, until: now + seconds * 1000 };
+  bucket.count += 1;
+  localBuckets.set(key, bucket);
+  return { allowed: bucket.count <= limit, retry_after: Math.max(1, Math.ceil((bucket.until - now) / 1000)) };
 }

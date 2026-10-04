@@ -80,3 +80,13 @@ test("hosted requests use the shared counter and obey its denial", async () => {
     }
   }
 });
+test("per-account login limit applies across many IP addresses", async () => {
+  process.env.NODE_ENV = "test";
+  delete process.env.VERCEL;
+  const { guardAccount } = await import("../server/security.js");
+  for (let i = 0; i < 10; i++) await guardAccount("login", "victim@example.com");
+  await assert.rejects(guardAccount("login", "VICTIM@example.com"), error => error.status === 429 && error.retryAfter > 0);
+  await guardAccount("login", "someone-else@example.com");
+  for (let i = 0; i < 5; i++) await guardAccount("reset", "reset@example.com");
+  await assert.rejects(guardAccount("reset", "reset@example.com"), error => error.status === 429);
+});
