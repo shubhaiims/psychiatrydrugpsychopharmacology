@@ -1,6 +1,11 @@
 import { spawnSync } from "node:child_process";
 
 const files = [
+  "middleware.js",
+  "security/request-filter.js",
+  "server/security.js",
+  "tests/security.test.mjs",
+  "tests/request-filter.test.mjs",
   "public/app.js",
   "public/admin.js",
   "public/auth.js",

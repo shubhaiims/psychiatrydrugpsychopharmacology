@@ -30,6 +30,22 @@ push/PR CI runs test/build and dependency vulnerability checks; Dependabot propo
 dependency and workflow updates. CI failures do not automatically prevent Vercel
 Git deployments; configure branch protection/required checks in GitHub.
 
+## Layer 3: Deployment Request Filter
+
+Vercel routing middleware runs before normal route handling. It rejects private
+configuration/repository/backend paths (including encoded probes), cross-site API
+mutations, unsupported API methods, non-JSON mutation bodies and oversized declared
+sensitive request bodies. It makes no database or payment-provider calls.
+The local Node server applies the same filter for consistency.
+
+Drug and notebook-source upload routes bypass middleware so its platform body
+limit does not reduce their existing upload limits. Those routes retain layers
+1 and 2. Static assets under /assets also bypass middleware to reduce compute.
+Content-Length checks are early screening; layer 1 still checks actual body size.
+This filter does not provide a new distributed network rate limiter or replace a
+managed WAF. Custom WAF configuration could not be activated through the connected
+Vercel API (configuration-not-found response); no custom firewall rules are claimed.
+
 ## Deployment
 
 Apply the security_layers migration before deploying the app. Rate limiting fails

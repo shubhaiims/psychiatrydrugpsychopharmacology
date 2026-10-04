@@ -2,6 +2,7 @@ import { createReadStream, readFileSync } from "node:fs";
 import { createServer } from "node:http";
 import { dirname, extname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { filterRequest } from "../security/request-filter.js";
 import {
   assertMutationRequest,
   establishRedirectSession,
@@ -96,6 +97,18 @@ const server = createServer(async (request, response) => {
   setSecurityHeaders(response, request.url);
   try {
     const url = new URL(request.url || "/", `http://${request.headers.host || "localhost"}`);
+    if (!/^\/api\/(?:drugs|notebook\/sources)(?:\/|$)/.test(url.pathname)) {
+      const rejection = filterRequest({
+        url: url.href,
+        method: request.method,
+        headers: new Headers(request.headers)
+      }, process.env.APP_ORIGIN);
+      if (rejection) {
+        response.writeHead(rejection.status, Object.fromEntries(rejection.headers));
+        response.end(await rejection.text());
+        return;
+      }
+    }
     if (url.pathname.startsWith("/api/")) {
       await routeApi(request, response, url);
       return;
