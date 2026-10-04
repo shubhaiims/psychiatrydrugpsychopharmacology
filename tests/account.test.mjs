@@ -10,7 +10,7 @@ const keys = [
   "RAZORPAY_KEY_ID", "RAZORPAY_KEY_SECRET"
 ];
 const originalEnvironment = Object.fromEntries(keys.map((key) => [key, process.env[key]]));
-const user = { id: "11111111-1111-4111-8111-111111111111", email: "member@example.com", user_metadata: { full_name: "Test Member" } };
+const user = { id: "11111111-1111-4111-8111-111111111111", email: "member@example.com", email_confirmed_at: "2026-01-01T00:00:00Z", user_metadata: { full_name: "Test Member" } };
 
 beforeEach(() => {
   process.env.APP_ORIGIN = "http://localhost:3000";

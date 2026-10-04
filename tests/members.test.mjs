@@ -6,7 +6,7 @@ import { listMembers } from "../server/members.js";
 const originalFetch = global.fetch;
 const keys = ["APP_ORIGIN", "NODE_ENV", "VERCEL", "SUPABASE_URL", "SUPABASE_PUBLISHABLE_KEY", "SUPABASE_SECRET_KEY"];
 const originalEnvironment = Object.fromEntries(keys.map((key) => [key, process.env[key]]));
-const admin = { id: "22222222-2222-4222-8222-222222222222", email: "owner@example.com", user_metadata: { full_name: "Site Owner" } };
+const admin = { id: "22222222-2222-4222-8222-222222222222", email: "owner@example.com", email_confirmed_at: "2026-01-01T00:00:00Z", user_metadata: { full_name: "Site Owner" } };
 const profiles = [
   { id: "33333333-3333-4333-8333-333333333333", email: "new@example.com", full_name: "Newest Person", created_at: "2026-10-01T10:00:00Z" },
   { id: "44444444-4444-4444-8444-444444444444", email: "paid@example.com", full_name: "Paid Member", created_at: "2026-09-01T10:00:00Z" },

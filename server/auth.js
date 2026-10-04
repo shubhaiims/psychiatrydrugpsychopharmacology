@@ -13,6 +13,18 @@ const REFRESH_COOKIE = "pme_refresh";
 const CSRF_COOKIE = "pme_csrf";
 const refreshCookieLifetimeSeconds = 30 * 24 * 60 * 60;
 
+const EMAIL_NOT_CONFIRMED_MESSAGE = "Confirm your email address before logging in.";
+
+export function isEmailConfirmed(user) {
+  return Boolean(user?.email_confirmed_at || user?.confirmed_at);
+}
+
+function assertEmailConfirmed(user) {
+  if (!isEmailConfirmed(user)) {
+    throw httpError(403, EMAIL_NOT_CONFIRMED_MESSAGE);
+  }
+}
+
 export function isAuthConfigured() {
   return hasSupabaseAuthConfig();
 }
@@ -39,14 +51,16 @@ export async function registerUser(input, request, response) {
     throw mapRegistrationError(error);
   }
 
+  // Only start a session when Supabase reports the address as already confirmed.
   const session = normalizeSession(data);
-  if (session) {
+  const confirmed = Boolean(session) && isEmailConfirmed(data.user || session.user);
+  if (confirmed) {
     setSessionCookies(request, response, session);
   }
 
   return {
     ok: true,
-    requiresEmailConfirmation: !session,
+    requiresEmailConfirmation: !confirmed,
     user: toPublicUser(data.user || session?.user)
   };
 }
@@ -68,7 +82,7 @@ export async function loginUser(input, request, response, options = {}) {
     });
   } catch (error) {
     if (/email not confirmed/i.test(String(error.message || ""))) {
-      throw httpError(403, "Confirm your email address before logging in.");
+      throw httpError(403, EMAIL_NOT_CONFIRMED_MESSAGE);
     }
     if ([400, 401].includes(error.supabaseStatus || error.status)) {
       console.warn(JSON.stringify({ event: "login_failed", admin: Boolean(options.adminOnly) }));
@@ -83,6 +97,10 @@ export async function loginUser(input, request, response, options = {}) {
   }
 
   const user = data.user || session.user || await fetchUser(session.accessToken);
+  if (!isEmailConfirmed(user)) {
+    await revokeAccessToken(session.accessToken);
+    throw httpError(403, EMAIL_NOT_CONFIRMED_MESSAGE);
+  }
   const admin = await isAdminUser(user.id);
   if (options.adminOnly && !admin) {
     await revokeAccessToken(session.accessToken);
@@ -127,6 +145,7 @@ export async function establishRedirectSession(input, request, response) {
   }
 
   const user = await fetchUser(accessToken);
+  assertEmailConfirmed(user);
   const admin = await isAdminUser(user.id);
   setSessionCookies(request, response, {
     accessToken,
@@ -200,6 +219,7 @@ export async function requireUser(request, response) {
   if (accessToken) {
     const user = await fetchUser(accessToken, { allowUnauthorized: true });
     if (user) {
+      assertEmailConfirmed(user);
       return { accessToken, user };
     }
   }
@@ -230,6 +250,10 @@ export async function requireUser(request, response) {
     throw httpError(401, "Your session has expired. Log in again.");
   }
   const user = refreshed.user || session.user || await fetchUser(session.accessToken);
+  if (!isEmailConfirmed(user)) {
+    clearSessionCookies(request, response);
+    throw httpError(403, EMAIL_NOT_CONFIRMED_MESSAGE);
+  }
   setSessionCookies(request, response, { ...session, user });
   return { accessToken: session.accessToken, user };
 }
