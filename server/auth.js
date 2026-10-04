@@ -1,6 +1,6 @@
 import { randomBytes, timingSafeEqual } from "node:crypto";
 import { httpError } from "./drug-model.js";
-import { guardRequest } from "./security.js";
+import { guardAccount, guardRequest } from "./security.js";
 import {
   hasSupabaseAuthConfig,
   isHostedProduction,
@@ -73,6 +73,7 @@ export async function loginUser(input, request, response, options = {}) {
   if (!password) {
     throw httpError(400, "Enter your password.");
   }
+  await guardAccount("login", email);
 
   let data;
   try {
@@ -122,6 +123,7 @@ export async function requestPasswordReset(input, request) {
   assertSameOrigin(request);
   const email = normalizeEmail(input.email);
   const redirectTo = `${getApplicationOrigin(request)}/reset-password`;
+  await guardAccount("reset", email);
 
   await supabaseAuthRequest(`recover?redirect_to=${encodeURIComponent(redirectTo)}`, {
     method: "POST",

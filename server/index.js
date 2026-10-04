@@ -390,10 +390,14 @@ function setSecurityHeaders(response, requestUrl = "/") {
   const pathname = String(requestUrl).split("?")[0];
   const isCheckout = ["/subscribe", "/subscribe/", "/subscribe.html"].includes(pathname);
   response.setHeader("Content-Security-Policy", isCheckout ? checkoutCsp : strictCsp);
-  response.setHeader("Permissions-Policy", "camera=(), microphone=(), geolocation=()");
+  response.setHeader("Cross-Origin-Opener-Policy", isCheckout ? "same-origin-allow-popups" : "same-origin");
+  response.setHeader("Cross-Origin-Resource-Policy", "same-origin");
+  response.setHeader("Origin-Agent-Cluster", "?1");
+  response.setHeader("Permissions-Policy", "camera=(), microphone=(), geolocation=(), usb=(), serial=(), hid=(), bluetooth=(), midi=(), display-capture=(), browsing-topics=()");
   response.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
   response.setHeader("X-Content-Type-Options", "nosniff");
   response.setHeader("X-Frame-Options", "DENY");
+  response.setHeader("X-Permitted-Cross-Domain-Policies", "none");
 }
 
 function loadDotEnv(filePath) {
