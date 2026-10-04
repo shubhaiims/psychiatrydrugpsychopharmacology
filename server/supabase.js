@@ -79,7 +79,7 @@ export async function supabaseServiceRequest(path, options = {}) {
 async function requestJson(url, options, kind) {
   let response;
   try {
-    response = await fetch(url, options);
+    response = await fetch(url, { ...options, signal: AbortSignal.timeout(15000) });
   } catch (error) {
     const wrapped = httpError(502, `Unable to reach the Supabase ${kind} service.`);
     wrapped.cause = error;

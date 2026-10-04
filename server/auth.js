@@ -1,5 +1,6 @@
 import { randomBytes, timingSafeEqual } from "node:crypto";
 import { httpError } from "./drug-model.js";
+import { guardRequest } from "./security.js";
 import {
   hasSupabaseAuthConfig,
   isHostedProduction,
@@ -70,6 +71,7 @@ export async function loginUser(input, request, response, options = {}) {
       throw httpError(403, "Confirm your email address before logging in.");
     }
     if ([400, 401].includes(error.supabaseStatus || error.status)) {
+      console.warn(JSON.stringify({ event: "login_failed", admin: Boolean(options.adminOnly) }));
       throw httpError(401, "Invalid email or password.");
     }
     throw error;
@@ -89,6 +91,7 @@ export async function loginUser(input, request, response, options = {}) {
   }
 
   setSessionCookies(request, response, session);
+  console.info(JSON.stringify({ event: "login_succeeded", userId: user.id, admin }));
   return {
     ok: true,
     role: admin ? "admin" : "user",
@@ -157,6 +160,7 @@ export async function resetPassword(input, request, response) {
 }
 
 export async function logoutUser(request, response) {
+  await guardRequest(request);
   assertMutationRequest(request, { allowMissingCsrf: true });
   const accessToken = readCookie(request, ACCESS_COOKIE);
   const refreshToken = readCookie(request, REFRESH_COOKIE);
@@ -190,6 +194,7 @@ export async function getCurrentUser(request, response) {
 }
 
 export async function requireUser(request, response) {
+  await guardRequest(request);
   assertAuthConfigured();
   const accessToken = readCookie(request, ACCESS_COOKIE);
   if (accessToken) {

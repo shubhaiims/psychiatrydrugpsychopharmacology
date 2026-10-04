@@ -109,7 +109,7 @@ test("verified captured payments grant membership through the database function"
       return json(200, [{ order_id: "order_ABC123", amount_paise: 100, currency: "INR", status: "created" }]);
     }
     if (url === "https://api.razorpay.com/v1/payments/pay_XYZ789") {
-      return json(200, { id: "pay_XYZ789", order_id: "order_ABC123", amount: 100, status: "captured" });
+      return json(200, { id: "pay_XYZ789", order_id: "order_ABC123", amount: 100, currency: "INR", status: "captured" });
     }
     if (url.endsWith("/rest/v1/rpc/grant_membership")) return json(200, "2026-11-01T00:00:00Z");
     if (url.includes("/rest/v1/payments?select=order_id") && url.includes("status=eq.created")) return json(200, []);
@@ -137,6 +137,22 @@ test("a payment for a different amount is refused", async () => {
     verifyPayment({ user }, { razorpay_order_id: "order_ABC123", razorpay_payment_id: "pay_XYZ789", razorpay_signature: sign("order_ABC123", "pay_XYZ789") }),
     (error) => error.status === 400 && /does not match/.test(error.message)
   );
+});
+
+test("a payment in a different currency cannot grant membership", async () => {
+  let granted = false;
+  global.fetch = async (url) => {
+    url = String(url);
+    if (url.includes("/rpc/grant_membership")) granted = true;
+    if (url.includes("/rest/v1/payments")) return json(200, [{ order_id: "order_ABC123", amount_paise: 100, currency: "INR", status: "created" }]);
+    if (url.includes("api.razorpay.com/v1/payments/")) return json(200, { id: "pay_XYZ789", order_id: "order_ABC123", amount: 100, currency: "USD", status: "captured" });
+    throw new Error("Unexpected service call");
+  };
+  await assert.rejects(verifyPayment({ user }, {
+    razorpay_order_id: "order_ABC123", razorpay_payment_id: "pay_XYZ789",
+    razorpay_signature: sign("order_ABC123", "pay_XYZ789")
+  }), error => error.status === 400);
+  assert.equal(granted, false);
 });
 
 test("with the paywall off, signed-in users keep library access", async () => {

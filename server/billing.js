@@ -179,7 +179,7 @@ async function findPayment(userId, orderId) {
 async function confirmWithRazorpay(record, paymentId) {
   if (record.status === "paid") return;
   let payment = await razorpayRequest(`payments/${encodeURIComponent(paymentId)}`);
-  if (payment.order_id !== record.order_id || Number(payment.amount) !== Number(record.amount_paise)) {
+  if (payment.order_id !== record.order_id || Number(payment.amount) !== Number(record.amount_paise) || payment.currency !== record.currency) {
     throw httpError(400, "The payment does not match this order.");
   }
   if (payment.status === "authorized") {
@@ -187,6 +187,9 @@ async function confirmWithRazorpay(record, paymentId) {
       method: "POST",
       body: { amount: record.amount_paise, currency: record.currency }
     });
+  }
+  if (payment.order_id !== record.order_id || Number(payment.amount) !== Number(record.amount_paise) || payment.currency !== record.currency) {
+    throw httpError(400, "The payment does not match this order.");
   }
   if (payment.status !== "captured") {
     throw httpError(402, "The payment has not completed yet.");
@@ -210,7 +213,7 @@ async function reconcilePendingPayments(userId) {
   for (const record of Array.isArray(pending) ? pending : []) {
     try {
       const result = await razorpayRequest(`orders/${encodeURIComponent(record.order_id)}/payments`);
-      const captured = (result.items || []).find((item) => item.status === "captured" && Number(item.amount) === Number(record.amount_paise));
+      const captured = (result.items || []).find((item) => item.status === "captured" && item.order_id === record.order_id && item.currency === record.currency && Number(item.amount) === Number(record.amount_paise));
       if (captured) await grantMembership(record.order_id, captured.id);
     } catch (error) {
       console.error("Payment reconcile failed.", error);
@@ -223,6 +226,7 @@ async function razorpayRequest(path, options = {}) {
   let response;
   try {
     response = await fetch(`${razorpayApi}/${path}`, {
+      signal: AbortSignal.timeout(15000),
       method: options.method || "GET",
       headers: {
         Authorization: `Basic ${Buffer.from(`${keyId}:${keySecret}`).toString("base64")}`,

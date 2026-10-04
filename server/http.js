@@ -1,24 +1,27 @@
 import { httpError } from "./drug-model.js";
-
-const bodyLimitBytes = 12 * 1024 * 1024;
+import { guardRequest, requestPolicy } from "./security.js";
 
 export async function readJsonBody(request) {
+  await guardRequest(request);
+  const bodyLimitBytes = requestPolicy(request).bodyBytes;
   if (request.body && typeof request.body === "object" && !isReadable(request.body)) {
+    if (Buffer.byteLength(JSON.stringify(request.body)) > bodyLimitBytes) throw httpError(413, "Request body is too large.");
     return request.body;
   }
 
   if (typeof request.body === "string") {
+    if (Buffer.byteLength(request.body) > bodyLimitBytes) throw httpError(413, "Request body is too large.");
     return parseJson(request.body);
   }
 
   let size = 0;
   const chunks = [];
   for await (const chunk of request) {
-    size += chunk.length;
+    size += Buffer.byteLength(chunk);
     if (size > bodyLimitBytes) {
       throw httpError(413, "Request body is too large.");
     }
-    chunks.push(chunk);
+    chunks.push(Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk));
   }
 
   const text = Buffer.concat(chunks).toString("utf8").trim();
@@ -36,8 +39,9 @@ export function sendJson(response, status, payload) {
 export function sendError(response, error) {
   const status = error.status || 500;
   if (status >= 500) {
-    console.error(error);
+    console.error(JSON.stringify({ event: "server_error", status, code: error.supabaseCode || "internal" }));
   }
+  if (error.retryAfter) response.setHeader("Retry-After", String(error.retryAfter));
   sendJson(response, status, { error: status >= 500 ? "Internal server error." : error.message });
 }
 
