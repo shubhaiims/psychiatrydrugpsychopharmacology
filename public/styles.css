@@ -665,6 +665,13 @@ a:focus-visible {
   letter-spacing: 0;
 }
 
+.brand-logo {
+  width: 46px;
+  height: 46px;
+  flex: 0 0 auto;
+  object-fit: contain;
+}
+
 .brand-name,
 .brand-subtitle {
   display: block;
