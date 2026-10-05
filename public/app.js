@@ -214,7 +214,6 @@
         <div>
           <p class="eyebrow">${escapeHtml(drug.medicationGroup || "Psychopharmacology")}</p>
           <h1 class="detail-title">${escapeHtml(drug.name)}</h1>
-          <p class="detail-subtitle">${escapeHtml(formatBrands(drug.brands))}</p>
         </div>
         <div class="tag-row">
           ${tag(`Target ${drug.targetDose || "not added"}`)}
@@ -352,7 +351,6 @@
     return {
       id: String(drug.id || "").trim(),
       name: String(drug.name || "").trim(),
-      brands: arrayFrom(drug.brands),
       medicationGroup: textField(drug.medicationGroup || drug.category),
       classification: textField(drug.classification || drug.className),
       targetDose: textField(drug.targetDose),
@@ -386,11 +384,6 @@
   function textField(value) {
     if (Array.isArray(value)) return value.map((item) => String(item || "").trimEnd()).filter((item) => item.trim()).join("\n");
     return String(value || "").trim();
-  }
-
-  function formatBrands(brands) {
-    const items = arrayFrom(brands);
-    return items.length ? items.join(", ") : "No brand names added";
   }
 
   function tag(value) {

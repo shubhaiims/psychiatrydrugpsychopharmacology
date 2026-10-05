@@ -15,7 +15,6 @@ function toDashboardDrug(drug = {}) {
   return {
     id: String(drug.id || ""),
     name: String(drug.name || ""),
-    brands: Array.isArray(drug.brands) ? drug.brands.map(String).filter(Boolean) : [],
     medicationGroup: String(drug.medicationGroup || ""),
     classification: String(drug.classification || "")
   };
