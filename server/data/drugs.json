@@ -2,7 +2,6 @@
   {
     "id": "sertraline",
     "name": "Sertraline",
-    "brands": [],
     "medicationGroup": "Antidepressants",
     "classification": [
       "* Sertraline is classically categorized as a **Selective Serotonin Reuptake Inhibitor (SSRI)**.",
@@ -408,10 +407,6 @@
   {
     "id": "fluoxetine",
     "name": "Fluoxetine",
-    "brands": [
-      "Sarafem",
-      "Symbyax (with olanzapine)"
-    ],
     "medicationGroup": "Antidepressants",
     "classification": [
       "* Fluoxetine is classically categorized as a **Selective Serotonin Reuptake Inhibitor (SSRI)**.",
@@ -813,7 +808,6 @@
   {
     "id": "escitalopram",
     "name": "Escitalopram",
-    "brands": [],
     "medicationGroup": "Antidepressants",
     "classification": [
       "* Escitalopram is classically categorized as a **Selective Serotonin Reuptake Inhibitor (SSRI)**.",
@@ -1168,7 +1162,6 @@
   {
     "id": "fluvoxamine",
     "name": "Fluvoxamine",
-    "brands": [],
     "medicationGroup": "Antidepressants",
     "classification": [
       "* Fluvoxamine is classically categorized as a **Selective Serotonin Reuptake Inhibitor (SSRI)**.",
@@ -1533,9 +1526,6 @@
   {
     "id": "brexanolone",
     "name": "Brexanolone",
-    "brands": [
-      "Zulresso"
-    ],
     "medicationGroup": "Antidepressants",
     "classification": [
       "* Brexanolone is marketed as **Zulresso**.",
@@ -1777,7 +1767,6 @@
   {
     "id": "venlafaxine",
     "name": "Venlafaxine",
-    "brands": [],
     "medicationGroup": "Antidepressants",
     "classification": [
       "* Venlafaxine is classically categorized as a **Serotonin-Norepinephrine Reuptake Inhibitor (SNRI)**.",
@@ -2163,7 +2152,6 @@
   {
     "id": "desvenlafaxine",
     "name": "Desvenlafaxine",
-    "brands": [],
     "medicationGroup": "Antidepressants",
     "classification": [
       "* Desvenlafaxine is a **synthetic antidepressant**.",
@@ -2487,12 +2475,6 @@
   {
     "id": "bupropion",
     "name": "Bupropion",
-    "brands": [
-      "Zyban",
-      "Contrave (with naltrexone)",
-      "Auvelity (with dextromethorphan)",
-      "Aplenzin"
-    ],
     "medicationGroup": "Antidepressants",
     "classification": [
       "* Bupropion is classically categorized as a **Norepinephrine-Dopamine Reuptake Inhibitor (NDRI)**.",
@@ -2916,7 +2898,6 @@
   {
     "id": "citalopram",
     "name": "Citalopram",
-    "brands": [],
     "medicationGroup": "Antidepressants",
     "classification": [
       "* Citalopram is classically categorized as a **Selective Serotonin Reuptake Inhibitor (SSRI)**.",
@@ -3346,7 +3327,6 @@
   {
     "id": "dextromethorphan-bupropion",
     "name": "Dextromethorphan/Bupropion",
-    "brands": [],
     "medicationGroup": "Antidepressants",
     "classification": [
       "* It is a fixed-dose combination of two older medications:",
@@ -3658,9 +3638,6 @@
   {
     "id": "duloxetine",
     "name": "Duloxetine",
-    "brands": [
-      "Drizalma Sprinkle"
-    ],
     "medicationGroup": "Antidepressants",
     "classification": [
       "* Duloxetine is classically categorized as a **Serotonin-Norepinephrine Reuptake Inhibitor (SNRI)**.",
@@ -4083,7 +4060,6 @@
   {
     "id": "esketamine",
     "name": "Esketamine",
-    "brands": [],
     "medicationGroup": "Antidepressants",
     "classification": [
       "* It is the purified:",
@@ -4363,7 +4339,6 @@
   {
     "id": "levomilnacipran",
     "name": "Levomilnacipran",
-    "brands": [],
     "medicationGroup": "Antidepressants",
     "classification": [
       "* Levomilnacipran is classically categorized as a **Serotonin-Norepinephrine Reuptake Inhibitor (SNRI)**.",
@@ -4706,7 +4681,6 @@
   {
     "id": "mirtazapine",
     "name": "Mirtazapine",
-    "brands": [],
     "medicationGroup": "Antidepressants",
     "classification": [
       "* Mirtazapine is classically categorized as a **Noradrenergic and Specific Serotonergic Antidepressant (NaSSA)**.",
@@ -5112,9 +5086,6 @@
   {
     "id": "paroxetine",
     "name": "Paroxetine",
-    "brands": [
-      "Brisdelle"
-    ],
     "medicationGroup": "Antidepressants",
     "classification": [
       "* Paroxetine is classically categorized as a **Selective Serotonin Reuptake Inhibitor (SSRI)**.",
@@ -5560,9 +5531,6 @@
   {
     "id": "nefazodone",
     "name": "Nefazodone",
-    "brands": [
-      "Serzone"
-    ],
     "medicationGroup": "Antidepressants",
     "classification": [
       "* Nefazodone was formerly marketed as:",
@@ -6003,9 +5971,6 @@
   {
     "id": "trazodone",
     "name": "Trazodone",
-    "brands": [
-      "Oleptro"
-    ],
     "medicationGroup": "Antidepressants",
     "classification": [
       "* Trazodone is classically categorized as a **Serotonin Antagonist and Reuptake Inhibitor (SARI)**.",
@@ -6438,7 +6403,6 @@
   {
     "id": "vortioxetine",
     "name": "Vortioxetine",
-    "brands": [],
     "medicationGroup": "Antidepressants",
     "classification": [
       "* Under the **Neuroscience-based Nomenclature (NbN)**, vortioxetine is classified within the:",
@@ -6915,7 +6879,6 @@
   {
     "id": "vilazodone",
     "name": "Vilazodone",
-    "brands": [],
     "medicationGroup": "Antidepressants",
     "classification": [
       "* Under the **Neuroscience-based Nomenclature (NbN)**, vilazodone is classified within the:",
@@ -7379,7 +7342,6 @@
   {
     "id": "zuranolone",
     "name": "Zuranolone",
-    "brands": [],
     "medicationGroup": "Antidepressants",
     "classification": [
       "* Zuranolone is a:",
@@ -7661,7 +7623,6 @@
   {
     "id": "haloperidol",
     "name": "Haloperidol",
-    "brands": [],
     "medicationGroup": "Antipsychotics",
     "classification": [
       "* Haloperidol is classically categorized as a:",
@@ -8161,7 +8122,6 @@
   {
     "id": "aripiprazole",
     "name": "Aripiprazole",
-    "brands": [],
     "medicationGroup": "Antipsychotics",
     "classification": [
       "* Aripiprazole is classically categorized as a:",
@@ -8582,7 +8542,6 @@
   {
     "id": "risperidone",
     "name": "Risperidone",
-    "brands": [],
     "medicationGroup": "Antipsychotics",
     "classification": [
       "* Risperidone is classically categorized as a:",
@@ -9092,7 +9051,6 @@
   {
     "id": "asenapine",
     "name": "Asenapine",
-    "brands": [],
     "medicationGroup": "Antipsychotics",
     "classification": [
       "* It is classically categorized as a:",
@@ -9566,7 +9524,6 @@
   {
     "id": "brexpiprazole",
     "name": "Brexpiprazole",
-    "brands": [],
     "medicationGroup": "Antipsychotics",
     "classification": [
       "* It is classically categorized as:",
@@ -10008,7 +9965,6 @@
   {
     "id": "cariprazine",
     "name": "Cariprazine",
-    "brands": [],
     "medicationGroup": "Antipsychotics",
     "classification": [
       "* Under the **Neuroscience-based Nomenclature (NbN)**, cariprazine is classified within the pharmacological domains of:",
@@ -10421,7 +10377,6 @@
   {
     "id": "chlorpromazine",
     "name": "Chlorpromazine",
-    "brands": [],
     "medicationGroup": "Antipsychotics",
     "classification": [
       "* Chlorpromazine is classically categorized as a:",
@@ -10829,7 +10784,6 @@
   {
     "id": "clozapine",
     "name": "Clozapine",
-    "brands": [],
     "medicationGroup": "Antipsychotics",
     "classification": [
       "* Clozapine is a:",
@@ -11322,7 +11276,6 @@
   {
     "id": "olanzapine",
     "name": "Olanzapine",
-    "brands": [],
     "medicationGroup": "Antipsychotics",
     "classification": [
       "* Olanzapine is classically categorized as a:",
@@ -11901,7 +11854,6 @@
   {
     "id": "fluphenazine",
     "name": "Fluphenazine",
-    "brands": [],
     "medicationGroup": "Antipsychotics",
     "classification": [
       "* Fluphenazine is classically categorized as a:",
@@ -12329,7 +12281,6 @@
   {
     "id": "amisulpride",
     "name": "Amisulpride",
-    "brands": [],
     "medicationGroup": "Antipsychotics",
     "classification": [
       "* Amisulpride is classically categorized as a:",
@@ -12658,7 +12609,6 @@
   {
     "id": "sulpiride",
     "name": "Sulpiride",
-    "brands": [],
     "medicationGroup": "Antipsychotics",
     "classification": [
       "* Under the **Neuroscience-based Nomenclature (NbN)**, sulpiride is classified within the pharmacological domain of:",
@@ -12991,7 +12941,6 @@
   {
     "id": "iloperidone",
     "name": "Iloperidone",
-    "brands": [],
     "medicationGroup": "Antipsychotics",
     "classification": [
       "* Iloperidone is categorized as a:",
@@ -13396,7 +13345,6 @@
   {
     "id": "loxapine",
     "name": "Loxapine",
-    "brands": [],
     "medicationGroup": "Antipsychotics",
     "classification": [
       "* Loxapine is classically categorized as a:",
@@ -13760,7 +13708,6 @@
   {
     "id": "lumateperone",
     "name": "Lumateperone",
-    "brands": [],
     "medicationGroup": "Antipsychotics",
     "classification": [
       "* Classically, it is categorized as:",
@@ -14150,7 +14097,6 @@
   {
     "id": "lurasidone",
     "name": "Lurasidone",
-    "brands": [],
     "medicationGroup": "Antipsychotics",
     "classification": [
       "* Under the **Neuroscience-based Nomenclature (NbN)**, lurasidone is classified within the pharmacological domains of:",
@@ -14579,7 +14525,6 @@
   {
     "id": "molindone",
     "name": "Molindone",
-    "brands": [],
     "medicationGroup": "Antipsychotics",
     "classification": [
       "* Molindone is classically categorized as a:",
@@ -14843,7 +14788,6 @@
   {
     "id": "paliperidone",
     "name": "Paliperidone",
-    "brands": [],
     "medicationGroup": "Antipsychotics",
     "classification": [
       "* Paliperidone is classically categorized as a:",
@@ -15268,7 +15212,6 @@
   {
     "id": "perphenazine",
     "name": "Perphenazine",
-    "brands": [],
     "medicationGroup": "Antipsychotics",
     "classification": [
       "* Perphenazine is classically categorized as a:",
@@ -15617,9 +15560,6 @@
   {
     "id": "pimavanserin",
     "name": "Pimavanserin",
-    "brands": [
-      "Nuplazid"
-    ],
     "medicationGroup": "Antipsychotics",
     "classification": [
       "* Under the **Neuroscience-based Nomenclature (NbN)**, pimavanserin is classified within the pharmacological domain of:",
@@ -15973,7 +15913,6 @@
   {
     "id": "quetiapine",
     "name": "Quetiapine",
-    "brands": [],
     "medicationGroup": "Antipsychotics",
     "classification": [
       "* Quetiapine is a:",
@@ -16442,7 +16381,6 @@
   {
     "id": "thioridazine",
     "name": "Thioridazine",
-    "brands": [],
     "medicationGroup": "Antipsychotics",
     "classification": [
       "* Thioridazine is classically categorized as a:",
@@ -16805,9 +16743,6 @@
   {
     "id": "thiothixene",
     "name": "Thiothixene",
-    "brands": [
-      "Navane"
-    ],
     "medicationGroup": "Antipsychotics",
     "classification": [
       "* Thiothixene is marketed under the brand name:",
@@ -17146,7 +17081,6 @@
   {
     "id": "trifluoperazine",
     "name": "Trifluoperazine",
-    "brands": [],
     "medicationGroup": "Antipsychotics",
     "classification": [
       "* It is classically categorized as a:",
@@ -17462,9 +17396,6 @@
   {
     "id": "ziprasidone",
     "name": "Ziprasidone",
-    "brands": [
-      "Geodon"
-    ],
     "medicationGroup": "Antipsychotics",
     "classification": [
       "* Under the **Neuroscience-based Nomenclature (NbN)**, ziprasidone is classified within the pharmacological domains of:",
@@ -17928,7 +17859,6 @@
   {
     "id": "blonanserin",
     "name": "Blonanserin",
-    "brands": [],
     "medicationGroup": "Antipsychotics",
     "classification": [
       "* Under the **Neuroscience-based Nomenclature (NbN)**, blonanserin is classified within the pharmacological domains of:",
@@ -18247,7 +18177,6 @@
   {
     "id": "zuclopenthixol",
     "name": "Zuclopenthixol",
-    "brands": [],
     "medicationGroup": "Antipsychotics",
     "classification": [
       "* Zuclopenthixol is classically categorized as a:",
@@ -18622,18 +18551,6 @@
   {
     "id": "amphetamines",
     "name": "Amphetamines",
-    "brands": [
-      "Adderall",
-      "Dexedrine",
-      "Evekeo",
-      "Zenzedi",
-      "Adderall XR",
-      "Mydayis",
-      "Adzenys XR-ODT",
-      "Dyanavel XR",
-      "Vyvanse",
-      "Xelstrym"
-    ],
     "medicationGroup": "ADHD medications",
     "classification": [
       "* Under the **Neuroscience-based Nomenclature (NbN)**, amphetamines are classified as:",
@@ -19110,7 +19027,6 @@
   {
     "id": "atomoxetine",
     "name": "Atomoxetine",
-    "brands": [],
     "medicationGroup": "ADHD medications",
     "classification": [
       "* Under the **Neuroscience-based Nomenclature (NbN)**, atomoxetine is classified as a:",
@@ -19474,10 +19390,6 @@
   {
     "id": "clonidine",
     "name": "Clonidine",
-    "brands": [
-      "Kapvay",
-      "Duraclon"
-    ],
     "medicationGroup": "ADHD medications",
     "classification": [
       "* Under the **Neuroscience-based Nomenclature (NbN)**, clonidine is classified as:",
@@ -19919,10 +19831,6 @@
   {
     "id": "guanfacine",
     "name": "Guanfacine",
-    "brands": [
-      "Tenex",
-      "Intuniv"
-    ],
     "medicationGroup": "ADHD medications",
     "classification": [
       "* Under the **Neuroscience-based Nomenclature (NbN)**, guanfacine is classified within the pharmacologic domain of norepinephrine as a:",
@@ -20285,7 +20193,6 @@
   {
     "id": "aducanumab",
     "name": "Aducanumab",
-    "brands": [],
     "medicationGroup": "Dementia medications",
     "classification": [
       "### Generic Name",
@@ -20490,7 +20397,6 @@
   {
     "id": "benzgalantamine",
     "name": "Benzgalantamine",
-    "brands": [],
     "medicationGroup": "Dementia medications",
     "classification": [
       "### Neuroscience-Based Nomenclature (NbN)",
@@ -20756,15 +20662,10 @@
     ],
     "lastReviewed": "2026-08-23",
     "updatedAt": "2026-08-23"
-  },  {
+  },
+  {
     "id": "donepezil",
     "name": "Donepezil",
-    "brands": [
-      "Aricept",
-      "Aricept ODT",
-      "Adlarity",
-      "Namzaric"
-    ],
     "medicationGroup": "Dementia medications",
     "classification": [
       "### Neuroscience-Based Nomenclature",
@@ -21141,7 +21042,6 @@
   {
     "id": "donanemab",
     "name": "Donanemab",
-    "brands": [],
     "medicationGroup": "Dementia medications",
     "classification": [
       "### Generic Name",
@@ -21350,11 +21250,6 @@
   {
     "id": "galantamine",
     "name": "Galantamine",
-    "brands": [
-      "Razadyne",
-      "Razadyne ER",
-      "Zunveyl"
-    ],
     "medicationGroup": "Dementia medications",
     "classification": [
       "### Neuroscience-Based Nomenclature",
@@ -21704,9 +21599,6 @@
   {
     "id": "lecanemab",
     "name": "Lecanemab",
-    "brands": [
-      "Iqlik"
-    ],
     "medicationGroup": "Dementia medications",
     "classification": [
       "### Generic Name",
@@ -21932,7 +21824,6 @@
   {
     "id": "memantine",
     "name": "Memantine",
-    "brands": [],
     "medicationGroup": "Dementia medications",
     "classification": [
       "### Neuroscience-Based Nomenclature (NbN)",
@@ -22252,10 +22143,10 @@
     ],
     "lastReviewed": "2026-08-23",
     "updatedAt": "2026-08-23"
-  },  {
+  },
+  {
     "id": "rivastigmine",
     "name": "Rivastigmine",
-    "brands": [],
     "medicationGroup": "Dementia medications",
     "classification": [
       "### Neuroscience-Based Nomenclature",
@@ -22617,20 +22508,6 @@
   {
     "id": "methylphenidate",
     "name": "Methylphenidate",
-    "brands": [
-      "Ritalin",
-      "Methylin",
-      "Concerta",
-      "Ritalin LA",
-      "Metadate CD",
-      "Aptensio XR",
-      "QuilliChew ER",
-      "Quillivant XR",
-      "Jornay PM",
-      "Adhansia XR",
-      "Cotempla XR-ODT",
-      "Daytrana"
-    ],
     "medicationGroup": "ADHD medications",
     "classification": [
       "* Under the **Neuroscience-based Nomenclature (NbN)**, methylphenidate is classified within the pharmacological domains of dopamine and norepinephrine as a:",
@@ -22983,11 +22860,6 @@
   {
     "id": "dexmethylphenidate",
     "name": "Dexmethylphenidate",
-    "brands": [
-      "Focalin",
-      "Focalin XR",
-      "Azstarys"
-    ],
     "medicationGroup": "ADHD medications",
     "classification": [
       "* Under the **Neuroscience-based Nomenclature (NbN)**, dexmethylphenidate is classified within the pharmacological domains of dopamine and norepinephrine as a:",
@@ -23273,9 +23145,6 @@
   {
     "id": "methamphetamine",
     "name": "Methamphetamine",
-    "brands": [
-      "Desoxyn"
-    ],
     "medicationGroup": "ADHD medications",
     "classification": [
       "* Methamphetamine, marketed medically under the brand name **Desoxyn**, is classified as a:",
@@ -23569,7 +23438,6 @@
   {
     "id": "alprazolam",
     "name": "Alprazolam",
-    "brands": [],
     "medicationGroup": "Anxiolytic and hypnotic medications",
     "classification": [
       "### Chemical and Structural Class",
@@ -24115,11 +23983,6 @@
   {
     "id": "carbamazepine",
     "name": "Carbamazepine",
-    "brands": [
-      "Tegretol XR",
-      "Equetro",
-      "Carbatrol"
-    ],
     "medicationGroup": "Mood stabilizers and Anticonvulsants",
     "classification": [
       "### Neuroscience-Based Nomenclature (NbN)",
@@ -24558,12 +24421,10 @@
     ],
     "lastReviewed": "2026-08-23",
     "updatedAt": "2026-08-23"
-  },  {
+  },
+  {
     "id": "chlordiazepoxide",
     "name": "Chlordiazepoxide",
-    "brands": [
-      "Librium"
-    ],
     "medicationGroup": "Anxiolytic and hypnotic medications",
     "classification": [
       "### Neuroscience-Based Nomenclature",
@@ -24968,10 +24829,6 @@
   {
     "id": "clobazam",
     "name": "Clobazam",
-    "brands": [
-      "Onfi",
-      "Sympazan"
-    ],
     "medicationGroup": "Anxiolytic and hypnotic medications",
     "classification": [
       "### Neuroscience-Based Nomenclature",
@@ -25321,7 +25178,6 @@
   {
     "id": "clonazepam",
     "name": "Clonazepam",
-    "brands": [],
     "medicationGroup": "Anxiolytic and hypnotic medications",
     "classification": [
       "### Chemical and Structural Class",
@@ -25698,7 +25554,6 @@
   {
     "id": "diazepam",
     "name": "Diazepam",
-    "brands": [],
     "medicationGroup": "Anxiolytic and hypnotic medications",
     "classification": [
       "### Chemical and Structural Class",
@@ -26259,9 +26114,6 @@
   {
     "id": "eszopiclone",
     "name": "Eszopiclone",
-    "brands": [
-      "Lunesta"
-    ],
     "medicationGroup": "Anxiolytic and hypnotic medications",
     "classification": [
       "### Neuroscience-Based Nomenclature",
@@ -26571,9 +26423,6 @@
   {
     "id": "flunitrazepam",
     "name": "Flunitrazepam",
-    "brands": [
-      "Rohypnol"
-    ],
     "medicationGroup": "Anxiolytic and hypnotic medications",
     "classification": [
       "### Neuroscience-Based Nomenclature",
@@ -26893,9 +26742,6 @@
   {
     "id": "flurazepam",
     "name": "Flurazepam",
-    "brands": [
-      "Dalmane"
-    ],
     "medicationGroup": "Anxiolytic and hypnotic medications",
     "classification": [
       "### Chemical and Structural Classification",
@@ -27368,10 +27214,6 @@
   {
     "id": "lorazepam",
     "name": "Lorazepam",
-    "brands": [
-      "Ativan",
-      "Loreev XR"
-    ],
     "medicationGroup": "Anxiolytic and hypnotic medications",
     "classification": [
       "### Chemical and Structural Classification",
@@ -27885,10 +27727,6 @@
   {
     "id": "midazolam",
     "name": "Midazolam",
-    "brands": [
-      "Nayzilam",
-      "Seizalam"
-    ],
     "medicationGroup": "Anxiolytic and hypnotic medications",
     "classification": [
       "### Neuroscience-Based Nomenclature",
@@ -28226,9 +28064,6 @@
   {
     "id": "nitrazepam",
     "name": "Nitrazepam",
-    "brands": [
-      "Mogadon"
-    ],
     "medicationGroup": "Anxiolytic and hypnotic medications",
     "classification": [
       "### Neuroscience-Based Nomenclature",
@@ -28613,7 +28448,6 @@
   {
     "id": "oxazepam",
     "name": "Oxazepam",
-    "brands": [],
     "medicationGroup": "Anxiolytic and hypnotic medications",
     "classification": [
       "### Neuroscience-Based Nomenclature",
@@ -28896,7 +28730,6 @@
   {
     "id": "temazepam",
     "name": "Temazepam",
-    "brands": [],
     "medicationGroup": "Anxiolytic and hypnotic medications",
     "classification": [
       "### Neuroscience-Based Nomenclature",
@@ -29115,9 +28948,6 @@
   {
     "id": "triazolam",
     "name": "Triazolam",
-    "brands": [
-      "Halcion"
-    ],
     "medicationGroup": "Anxiolytic and hypnotic medications",
     "classification": [
       "### Chemical and Structural Classification",
@@ -29453,9 +29283,6 @@
   {
     "id": "zaleplon",
     "name": "Zaleplon",
-    "brands": [
-      "Sonata"
-    ],
     "medicationGroup": "Anxiolytic and hypnotic medications",
     "classification": [
       "### Neuroscience-Based Nomenclature",
@@ -29773,13 +29600,6 @@
   {
     "id": "zolpidem",
     "name": "Zolpidem",
-    "brands": [
-      "Ambien",
-      "Ambien CR",
-      "Edluar",
-      "Intermezzo",
-      "Zolpimist"
-    ],
     "medicationGroup": "Anxiolytic and hypnotic medications",
     "classification": [
       "### Neuroscience-Based Nomenclature",

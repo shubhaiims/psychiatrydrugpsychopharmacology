@@ -163,7 +163,7 @@
     const lowered = query.toLowerCase();
     const results = drugs
       .filter((drug) => {
-        const haystack = [drug.name, drug.medicationGroup, drug.classification, ...(drug.brands || [])].join(" ").toLowerCase();
+        const haystack = [drug.name, drug.medicationGroup, drug.classification].join(" ").toLowerCase();
         return haystack.includes(lowered);
       })
       .sort((first, second) => first.name.localeCompare(second.name))
@@ -193,7 +193,6 @@
     return collection.map((drug) => ({
       id: String(drug.id || ""),
       name: String(drug.name || ""),
-      brands: Array.isArray(drug.brands) ? drug.brands : [],
       medicationGroup: String(drug.medicationGroup || ""),
       classification: String(drug.classification || "")
     })).filter((drug) => drug.id && drug.name);

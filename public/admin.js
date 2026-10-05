@@ -40,7 +40,6 @@
     saveDrugButton: document.querySelector("#saveDrugButton"),
     fields: {
       name: document.querySelector("#fieldName"),
-      brands: document.querySelector("#fieldBrands"),
       medicationGroup: document.querySelector("#fieldMedicationGroup"),
       classification: document.querySelector("#fieldClassification"),
       riskLevel: document.querySelector("#fieldRisk"),
@@ -414,7 +413,6 @@
     els.editDrugId.value = drug.id || "";
     els.editorHeading.textContent = drug.id ? `Edit ${drug.name}` : "Create drug";
     els.fields.name.value = drug.name || "";
-    els.fields.brands.value = arrayFrom(drug.brands).join(", ");
     els.fields.medicationGroup.value = drug.medicationGroup || "";
     els.fields.classification.value = drug.classification || "";
     els.fields.riskLevel.value = drug.riskLevel || "standard";
@@ -437,7 +435,6 @@
     return normalizeDrug({
       id: els.editDrugId.value,
       name: els.fields.name.value.trim(),
-      brands: splitComma(els.fields.brands.value),
       medicationGroup: els.fields.medicationGroup.value,
       classification: els.fields.classification.value.trim(),
       riskLevel: els.fields.riskLevel.value,
@@ -466,7 +463,6 @@
     return {
       id: "",
       name: "",
-      brands: [],
       medicationGroup: "",
       classification: "",
       riskLevel: "standard",
@@ -545,7 +541,6 @@
     return {
       id: String(drug.id || "").trim(),
       name: String(drug.name || "").trim(),
-      brands: arrayFrom(drug.brands),
       medicationGroup: medicationGroups.includes(drug.medicationGroup || drug.category) ? drug.medicationGroup || drug.category : "",
       classification: textField(drug.classification || drug.className),
       riskLevel: ["standard", "watch", "high"].includes(drug.riskLevel) ? drug.riskLevel : "standard",
@@ -574,13 +569,6 @@
       return value.split(",").map((item) => item.trim()).filter(Boolean);
     }
     return [];
-  }
-
-  function splitComma(value) {
-    return String(value || "")
-      .split(",")
-      .map((item) => item.trim())
-      .filter(Boolean);
   }
 
   function textField(value) {

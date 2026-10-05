@@ -36,7 +36,6 @@ export function normalizeDrug(input = {}, options = {}) {
   return {
     id,
     name,
-    brands: toArray(input.brands),
     medicationGroup: medicationGroups.includes(input.medicationGroup || input.category)
       ? input.medicationGroup || input.category
       : "",
