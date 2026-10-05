@@ -1,0 +1,759 @@
+{
+  "description": "Adverse-effect topics for /adverse-effects. IDs are permanent: never rename one, because drug pages link to them. exampleDrugs are illustrative; per-drug risk ratings (high/moderate/low) belong on each drug record and generate the full ranking.",
+  "systems": [
+    {
+      "id": "metabolic-endocrine",
+      "name": "Metabolic and endocrine"
+    },
+    {
+      "id": "cardiovascular",
+      "name": "Cardiovascular"
+    },
+    {
+      "id": "neurological-movement",
+      "name": "Neurological and movement"
+    },
+    {
+      "id": "psychiatric-behavioral",
+      "name": "Psychiatric and behavioural"
+    },
+    {
+      "id": "blood-skin-immune",
+      "name": "Blood, skin and immune"
+    },
+    {
+      "id": "gut-liver-anticholinergic",
+      "name": "Gut, liver and anticholinergic"
+    },
+    {
+      "id": "breathing-sexual-pregnancy",
+      "name": "Breathing, sexual function and pregnancy"
+    },
+    {
+      "id": "class-warning",
+      "name": "Class-wide warnings"
+    }
+  ],
+  "tiers": {
+    "1": "Write first: high-yield for exams and high clinical stakes",
+    "2": "Write second",
+    "3": "Write later"
+  },
+  "topics": [
+    {
+      "id": "weight-gain",
+      "name": "Weight gain",
+      "system": "metabolic-endocrine",
+      "tier": 1,
+      "exampleDrugs": [
+        "olanzapine",
+        "clozapine",
+        "quetiapine",
+        "mirtazapine"
+      ]
+    },
+    {
+      "id": "hyperglycemia-diabetes",
+      "name": "Hyperglycaemia and diabetes",
+      "system": "metabolic-endocrine",
+      "tier": 1,
+      "exampleDrugs": [
+        "clozapine",
+        "olanzapine",
+        "quetiapine"
+      ]
+    },
+    {
+      "id": "dyslipidemia",
+      "name": "Dyslipidaemia",
+      "system": "metabolic-endocrine",
+      "tier": 2,
+      "exampleDrugs": [
+        "clozapine",
+        "olanzapine",
+        "quetiapine"
+      ]
+    },
+    {
+      "id": "hyperprolactinemia",
+      "name": "Hyperprolactinaemia",
+      "system": "metabolic-endocrine",
+      "tier": 1,
+      "exampleDrugs": [
+        "amisulpride",
+        "sulpiride",
+        "risperidone",
+        "paliperidone",
+        "haloperidol"
+      ]
+    },
+    {
+      "id": "hyponatremia-siadh",
+      "name": "Hyponatraemia (SIADH)",
+      "system": "metabolic-endocrine",
+      "tier": 1,
+      "exampleDrugs": [
+        "sertraline",
+        "fluoxetine",
+        "escitalopram",
+        "citalopram",
+        "paroxetine",
+        "fluvoxamine",
+        "venlafaxine",
+        "desvenlafaxine",
+        "duloxetine",
+        "levomilnacipran",
+        "carbamazepine"
+      ]
+    },
+    {
+      "id": "appetite-growth",
+      "name": "Appetite loss and growth suppression",
+      "system": "metabolic-endocrine",
+      "tier": 3,
+      "exampleDrugs": [
+        "amphetamines",
+        "methylphenidate",
+        "dexmethylphenidate",
+        "atomoxetine"
+      ]
+    },
+    {
+      "id": "qtc-prolongation",
+      "name": "QTc prolongation",
+      "system": "cardiovascular",
+      "tier": 1,
+      "exampleDrugs": [
+        "citalopram",
+        "escitalopram",
+        "thioridazine",
+        "ziprasidone",
+        "haloperidol",
+        "iloperidone"
+      ],
+      "note": "Link to the QTc calculator at /qtc and back."
+    },
+    {
+      "id": "orthostatic-hypotension",
+      "name": "Orthostatic hypotension",
+      "system": "cardiovascular",
+      "tier": 1,
+      "exampleDrugs": [
+        "clozapine",
+        "quetiapine",
+        "iloperidone",
+        "chlorpromazine",
+        "trazodone"
+      ]
+    },
+    {
+      "id": "tachycardia-hypertension",
+      "name": "Tachycardia and raised blood pressure",
+      "system": "cardiovascular",
+      "tier": 2,
+      "exampleDrugs": [
+        "amphetamines",
+        "methylphenidate",
+        "dexmethylphenidate",
+        "methamphetamine",
+        "venlafaxine",
+        "atomoxetine",
+        "clozapine"
+      ]
+    },
+    {
+      "id": "bradycardia-syncope",
+      "name": "Bradycardia and syncope",
+      "system": "cardiovascular",
+      "tier": 2,
+      "exampleDrugs": [
+        "donepezil",
+        "rivastigmine",
+        "galantamine",
+        "benzgalantamine",
+        "clonidine",
+        "guanfacine"
+      ]
+    },
+    {
+      "id": "rebound-hypertension",
+      "name": "Rebound hypertension on stopping",
+      "system": "cardiovascular",
+      "tier": 2,
+      "exampleDrugs": [
+        "clonidine",
+        "guanfacine"
+      ]
+    },
+    {
+      "id": "acute-dystonia",
+      "name": "Acute dystonia",
+      "system": "neurological-movement",
+      "tier": 1,
+      "exampleDrugs": [
+        "haloperidol",
+        "fluphenazine",
+        "trifluoperazine",
+        "zuclopenthixol"
+      ]
+    },
+    {
+      "id": "akathisia",
+      "name": "Akathisia",
+      "system": "neurological-movement",
+      "tier": 1,
+      "exampleDrugs": [
+        "aripiprazole",
+        "cariprazine",
+        "lurasidone",
+        "haloperidol"
+      ]
+    },
+    {
+      "id": "parkinsonism",
+      "name": "Drug-induced parkinsonism",
+      "system": "neurological-movement",
+      "tier": 2,
+      "exampleDrugs": [
+        "haloperidol",
+        "fluphenazine",
+        "chlorpromazine",
+        "perphenazine",
+        "trifluoperazine",
+        "thiothixene",
+        "zuclopenthixol",
+        "risperidone"
+      ]
+    },
+    {
+      "id": "tardive-dyskinesia",
+      "name": "Tardive dyskinesia",
+      "system": "neurological-movement",
+      "tier": 1,
+      "exampleDrugs": [
+        "haloperidol",
+        "fluphenazine",
+        "chlorpromazine",
+        "perphenazine",
+        "trifluoperazine",
+        "thiothixene",
+        "zuclopenthixol",
+        "risperidone",
+        "aripiprazole"
+      ],
+      "note": "Applies to all antipsychotics; highest with first-generation drugs."
+    },
+    {
+      "id": "nms",
+      "name": "Neuroleptic malignant syndrome",
+      "system": "neurological-movement",
+      "tier": 1,
+      "exampleDrugs": [
+        "haloperidol",
+        "fluphenazine",
+        "chlorpromazine",
+        "perphenazine",
+        "trifluoperazine",
+        "thiothixene",
+        "zuclopenthixol",
+        "risperidone",
+        "olanzapine",
+        "clozapine"
+      ],
+      "note": "Applies to all antipsychotics."
+    },
+    {
+      "id": "serotonin-syndrome",
+      "name": "Serotonin syndrome",
+      "system": "neurological-movement",
+      "tier": 1,
+      "exampleDrugs": [
+        "sertraline",
+        "fluoxetine",
+        "escitalopram",
+        "citalopram",
+        "paroxetine",
+        "fluvoxamine",
+        "venlafaxine",
+        "desvenlafaxine",
+        "duloxetine",
+        "levomilnacipran",
+        "dextromethorphan-bupropion",
+        "vortioxetine",
+        "vilazodone"
+      ]
+    },
+    {
+      "id": "seizure-threshold",
+      "name": "Lowered seizure threshold",
+      "system": "neurological-movement",
+      "tier": 1,
+      "exampleDrugs": [
+        "clozapine",
+        "bupropion",
+        "chlorpromazine"
+      ]
+    },
+    {
+      "id": "sedation",
+      "name": "Sedation",
+      "system": "neurological-movement",
+      "tier": 2,
+      "exampleDrugs": [
+        "alprazolam",
+        "chlordiazepoxide",
+        "clobazam",
+        "clonazepam",
+        "zolpidem",
+        "zaleplon",
+        "eszopiclone",
+        "clozapine",
+        "quetiapine",
+        "mirtazapine",
+        "trazodone"
+      ]
+    },
+    {
+      "id": "cognitive-impairment-amnesia",
+      "name": "Cognitive impairment and amnesia",
+      "system": "neurological-movement",
+      "tier": 2,
+      "exampleDrugs": [
+        "lorazepam",
+        "triazolam",
+        "midazolam",
+        "zolpidem"
+      ]
+    },
+    {
+      "id": "complex-sleep-behaviors",
+      "name": "Complex sleep behaviours",
+      "system": "neurological-movement",
+      "tier": 2,
+      "exampleDrugs": [
+        "zolpidem",
+        "zaleplon",
+        "eszopiclone"
+      ]
+    },
+    {
+      "id": "falls-elderly",
+      "name": "Falls in older adults",
+      "system": "neurological-movement",
+      "tier": 2,
+      "exampleDrugs": [
+        "diazepam",
+        "lorazepam",
+        "zolpidem",
+        "quetiapine",
+        "clozapine"
+      ]
+    },
+    {
+      "id": "aria",
+      "name": "Amyloid-related imaging abnormalities (ARIA)",
+      "system": "neurological-movement",
+      "tier": 1,
+      "exampleDrugs": [
+        "lecanemab",
+        "donanemab",
+        "aducanumab"
+      ]
+    },
+    {
+      "id": "suicidality-young",
+      "name": "Suicidality in young people",
+      "system": "psychiatric-behavioral",
+      "tier": 1,
+      "exampleDrugs": [
+        "sertraline",
+        "fluoxetine",
+        "escitalopram",
+        "fluvoxamine",
+        "brexanolone",
+        "venlafaxine",
+        "desvenlafaxine",
+        "bupropion",
+        "citalopram",
+        "dextromethorphan-bupropion",
+        "duloxetine",
+        "esketamine",
+        "levomilnacipran",
+        "mirtazapine",
+        "paroxetine",
+        "nefazodone",
+        "trazodone",
+        "vortioxetine",
+        "vilazodone",
+        "zuranolone",
+        "atomoxetine"
+      ],
+      "note": "Class-wide antidepressant warning; atomoxetine carries a similar warning."
+    },
+    {
+      "id": "discontinuation-syndrome",
+      "name": "Antidepressant discontinuation syndrome",
+      "system": "psychiatric-behavioral",
+      "tier": 1,
+      "exampleDrugs": [
+        "paroxetine",
+        "venlafaxine",
+        "duloxetine",
+        "desvenlafaxine"
+      ]
+    },
+    {
+      "id": "dependence-withdrawal",
+      "name": "Dependence and withdrawal",
+      "system": "psychiatric-behavioral",
+      "tier": 1,
+      "exampleDrugs": [
+        "alprazolam",
+        "chlordiazepoxide",
+        "clobazam",
+        "clonazepam",
+        "diazepam",
+        "flunitrazepam",
+        "flurazepam",
+        "lorazepam",
+        "midazolam",
+        "nitrazepam",
+        "oxazepam",
+        "temazepam",
+        "triazolam",
+        "zolpidem",
+        "zaleplon",
+        "eszopiclone",
+        "amphetamines",
+        "methylphenidate",
+        "dexmethylphenidate",
+        "methamphetamine"
+      ]
+    },
+    {
+      "id": "manic-switch",
+      "name": "Antidepressant-induced mania",
+      "system": "psychiatric-behavioral",
+      "tier": 2,
+      "exampleDrugs": [
+        "sertraline",
+        "fluoxetine",
+        "escitalopram",
+        "citalopram",
+        "paroxetine",
+        "fluvoxamine",
+        "venlafaxine",
+        "desvenlafaxine",
+        "duloxetine",
+        "levomilnacipran",
+        "bupropion"
+      ]
+    },
+    {
+      "id": "misuse-diversion",
+      "name": "Misuse and diversion",
+      "system": "psychiatric-behavioral",
+      "tier": 3,
+      "exampleDrugs": [
+        "amphetamines",
+        "methylphenidate",
+        "dexmethylphenidate",
+        "methamphetamine",
+        "alprazolam",
+        "flunitrazepam",
+        "esketamine"
+      ]
+    },
+    {
+      "id": "stimulant-psychosis",
+      "name": "Stimulant-induced psychosis",
+      "system": "psychiatric-behavioral",
+      "tier": 3,
+      "exampleDrugs": [
+        "amphetamines",
+        "methylphenidate",
+        "dexmethylphenidate",
+        "methamphetamine"
+      ]
+    },
+    {
+      "id": "impulse-control",
+      "name": "Impulse-control problems",
+      "system": "psychiatric-behavioral",
+      "tier": 3,
+      "exampleDrugs": [
+        "aripiprazole",
+        "brexpiprazole"
+      ]
+    },
+    {
+      "id": "activation-insomnia",
+      "name": "Activation and insomnia",
+      "system": "psychiatric-behavioral",
+      "tier": 3,
+      "exampleDrugs": [
+        "fluoxetine",
+        "sertraline",
+        "bupropion",
+        "amphetamines",
+        "methylphenidate"
+      ]
+    },
+    {
+      "id": "neutropenia-agranulocytosis",
+      "name": "Neutropenia and agranulocytosis",
+      "system": "blood-skin-immune",
+      "tier": 1,
+      "exampleDrugs": [
+        "clozapine",
+        "carbamazepine",
+        "chlorpromazine"
+      ]
+    },
+    {
+      "id": "serious-skin-reactions",
+      "name": "SJS/TEN and DRESS",
+      "system": "blood-skin-immune",
+      "tier": 1,
+      "exampleDrugs": [
+        "carbamazepine"
+      ],
+      "note": "HLA-B*15:02 screening before carbamazepine in at-risk ancestry. Lamotrigine joins when added."
+    },
+    {
+      "id": "bleeding-risk",
+      "name": "Bleeding risk",
+      "system": "blood-skin-immune",
+      "tier": 2,
+      "exampleDrugs": [
+        "sertraline",
+        "fluoxetine",
+        "escitalopram",
+        "citalopram",
+        "paroxetine",
+        "fluvoxamine",
+        "venlafaxine",
+        "desvenlafaxine",
+        "duloxetine",
+        "levomilnacipran"
+      ],
+      "note": "Higher with NSAIDs, antiplatelets and anticoagulants."
+    },
+    {
+      "id": "anticholinergic",
+      "name": "Anticholinergic effects",
+      "system": "gut-liver-anticholinergic",
+      "tier": 1,
+      "exampleDrugs": [
+        "clozapine",
+        "olanzapine",
+        "chlorpromazine",
+        "paroxetine",
+        "thioridazine"
+      ],
+      "note": "Dry mouth, constipation, urinary retention, blurred vision, confusion."
+    },
+    {
+      "id": "hepatotoxicity",
+      "name": "Hepatotoxicity",
+      "system": "gut-liver-anticholinergic",
+      "tier": 2,
+      "exampleDrugs": [
+        "nefazodone",
+        "carbamazepine",
+        "duloxetine",
+        "atomoxetine"
+      ]
+    },
+    {
+      "id": "sialorrhea",
+      "name": "Hypersalivation",
+      "system": "gut-liver-anticholinergic",
+      "tier": 3,
+      "exampleDrugs": [
+        "clozapine"
+      ],
+      "note": "Kept as a topic because it is a common exam and management question despite one main culprit."
+    },
+    {
+      "id": "nausea-gi",
+      "name": "Nausea and GI upset",
+      "system": "gut-liver-anticholinergic",
+      "tier": 3,
+      "exampleDrugs": [
+        "sertraline",
+        "fluoxetine",
+        "escitalopram",
+        "donepezil",
+        "rivastigmine",
+        "galantamine"
+      ]
+    },
+    {
+      "id": "respiratory-depression",
+      "name": "Respiratory depression",
+      "system": "breathing-sexual-pregnancy",
+      "tier": 1,
+      "exampleDrugs": [
+        "alprazolam",
+        "chlordiazepoxide",
+        "clobazam",
+        "clonazepam",
+        "midazolam",
+        "olanzapine"
+      ],
+      "note": "Especially benzodiazepines with opioids, and IM olanzapine with a parenteral benzodiazepine."
+    },
+    {
+      "id": "sexual-dysfunction",
+      "name": "Sexual dysfunction",
+      "system": "breathing-sexual-pregnancy",
+      "tier": 1,
+      "exampleDrugs": [
+        "sertraline",
+        "fluoxetine",
+        "escitalopram",
+        "citalopram",
+        "paroxetine",
+        "fluvoxamine",
+        "venlafaxine",
+        "desvenlafaxine",
+        "duloxetine",
+        "levomilnacipran",
+        "risperidone",
+        "amisulpride"
+      ]
+    },
+    {
+      "id": "priapism",
+      "name": "Priapism",
+      "system": "breathing-sexual-pregnancy",
+      "tier": 2,
+      "exampleDrugs": [
+        "trazodone",
+        "chlorpromazine",
+        "risperidone",
+        "quetiapine"
+      ]
+    },
+    {
+      "id": "teratogenicity",
+      "name": "Teratogenicity",
+      "system": "breathing-sexual-pregnancy",
+      "tier": 1,
+      "exampleDrugs": [
+        "carbamazepine"
+      ],
+      "note": "Valproate joins when added."
+    },
+    {
+      "id": "neonatal-adaptation",
+      "name": "Neonatal adaptation and withdrawal",
+      "system": "breathing-sexual-pregnancy",
+      "tier": 2,
+      "exampleDrugs": [
+        "sertraline",
+        "fluoxetine",
+        "escitalopram",
+        "citalopram",
+        "paroxetine",
+        "fluvoxamine",
+        "venlafaxine",
+        "desvenlafaxine",
+        "haloperidol",
+        "olanzapine",
+        "risperidone"
+      ]
+    },
+    {
+      "id": "dementia-mortality",
+      "name": "Increased mortality in dementia",
+      "system": "class-warning",
+      "tier": 1,
+      "exampleDrugs": [
+        "haloperidol",
+        "aripiprazole",
+        "risperidone",
+        "asenapine",
+        "brexpiprazole",
+        "cariprazine",
+        "chlorpromazine",
+        "clozapine",
+        "olanzapine",
+        "fluphenazine",
+        "amisulpride",
+        "sulpiride",
+        "iloperidone",
+        "loxapine",
+        "lumateperone",
+        "lurasidone",
+        "molindone",
+        "paliperidone",
+        "perphenazine",
+        "pimavanserin",
+        "quetiapine",
+        "thioridazine",
+        "thiothixene",
+        "trifluoperazine",
+        "ziprasidone",
+        "blonanserin",
+        "zuclopenthixol"
+      ],
+      "note": "Class-wide antipsychotic warning."
+    }
+  ],
+  "drugPageOnly": [
+    {
+      "effect": "GI hypomotility, myocarditis, cardiomyopathy",
+      "drug": "clozapine",
+      "reason": "One drug only; teach as a clozapine safety section."
+    },
+    {
+      "effect": "Post-injection delirium/sedation syndrome",
+      "drug": "olanzapine",
+      "reason": "One drug, one formulation."
+    },
+    {
+      "effect": "Dissociation",
+      "drug": "esketamine",
+      "reason": "One drug."
+    },
+    {
+      "effect": "Liver failure",
+      "drug": "nefazodone",
+      "reason": "Covered on the drug page; the hepatotoxicity topic links to it."
+    }
+  ],
+  "plannedWithNewDrugs": [
+    {
+      "id": "lithium-toxicity",
+      "name": "Lithium toxicity",
+      "system": "metabolic-endocrine",
+      "when": "Lithium is added"
+    },
+    {
+      "id": "renal-impairment",
+      "name": "Renal impairment and nephrogenic diabetes insipidus",
+      "system": "metabolic-endocrine",
+      "when": "Lithium is added"
+    },
+    {
+      "id": "thyroid-dysfunction",
+      "name": "Thyroid dysfunction",
+      "system": "metabolic-endocrine",
+      "when": "Lithium is added"
+    },
+    {
+      "id": "pancreatitis",
+      "name": "Pancreatitis",
+      "system": "gut-liver-anticholinergic",
+      "when": "Valproate is added"
+    },
+    {
+      "id": "hyperammonemia",
+      "name": "Hyperammonaemia",
+      "system": "metabolic-endocrine",
+      "when": "Valproate is added"
+    }
+  ]
+}

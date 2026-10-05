@@ -29,6 +29,7 @@ const requiredFiles = [
   "server/members.js",
   "api/health.js",
   "server/data/drugs.json",
+  "server/data/adverse-effects.json",
   "supabase/schema.sql",
   "supabase/migrations/202608150000_existing_storage_schema.sql",
   "supabase/migrations/202608150001_auth_profiles_and_admins.sql",
@@ -67,6 +68,32 @@ for (const drug of drugs) {
     throw new Error(`Duplicate drug id found: ${drug.id}`);
   }
   ids.add(drug.id);
+}
+
+const adverseEffects = JSON.parse(await readFile("server/data/adverse-effects.json", "utf8"));
+const systemIds = new Set(adverseEffects.systems.map((system) => system.id));
+const topicIds = new Set();
+for (const topic of adverseEffects.topics) {
+  if (!/^[a-z0-9]+(-[a-z0-9]+)*$/.test(topic.id)) {
+    throw new Error(`Adverse-effect id must be lowercase words joined by hyphens: ${topic.id}`);
+  }
+  if (topicIds.has(topic.id)) {
+    throw new Error(`Duplicate adverse-effect id found: ${topic.id}`);
+  }
+  topicIds.add(topic.id);
+  if (!topic.name || !systemIds.has(topic.system) || ![1, 2, 3].includes(topic.tier)) {
+    throw new Error(`Adverse-effect topic ${topic.id} needs a name, a known system and tier 1-3.`);
+  }
+  for (const drugId of topic.exampleDrugs) {
+    if (!ids.has(drugId)) {
+      throw new Error(`Adverse-effect topic ${topic.id} references unknown drug id: ${drugId}`);
+    }
+  }
+}
+for (const entry of adverseEffects.drugPageOnly) {
+  if (!ids.has(entry.drug)) {
+    throw new Error(`Drug-page-only adverse effect references unknown drug id: ${entry.drug}`);
+  }
 }
 
 const browserFiles = [
