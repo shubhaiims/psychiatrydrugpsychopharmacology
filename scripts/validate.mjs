@@ -104,16 +104,18 @@ for (const file of topicFiles) {
   }
   const ratedDrugs = new Set();
   for (const rating of topic.drugRatings || []) {
-    if (!ids.has(rating.drug)) {
-      throw new Error(`${file} rates unknown drug id: ${rating.drug}`);
+    // Library drugs are referenced by id; drugs outside the library carry a plain name.
+    if (rating.drug ? !ids.has(rating.drug) : !rating.name) {
+      throw new Error(`${file} rates unknown drug id: ${rating.drug || "(missing name)"}`);
     }
     if (!Object.hasOwn(topic.ratingScale || {}, rating.rating)) {
       throw new Error(`${file} uses a rating not in its ratingScale: ${rating.rating}`);
     }
-    if (ratedDrugs.has(rating.drug)) {
-      throw new Error(`${file} rates ${rating.drug} more than once.`);
+    const ratedKey = rating.drug || rating.name;
+    if (ratedDrugs.has(ratedKey)) {
+      throw new Error(`${file} rates ${ratedKey} more than once.`);
     }
-    ratedDrugs.add(rating.drug);
+    ratedDrugs.add(ratedKey);
   }
 }
 

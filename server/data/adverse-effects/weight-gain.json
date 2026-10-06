@@ -5,778 +5,725 @@
   "lastReviewed": null,
   "reviewer": null,
   "markers": "Text in [verify] still needs checking against the source. Remove the tag once checked.",
-  "sections": {
-    "clinic": [
-      "keyPoints",
-      "clinicalFeatures",
-      "riskFactors",
-      "drugsImplicated",
-      "monitoring",
-      "management"
-    ],
-    "learn": [
-      "mechanism",
-      "differentialDiagnosis",
-      "keyEvidence",
-      "examPearls",
-      "selfTest",
-      "references"
-    ]
-  },
-  "redFlags": null,
   "keyPoints": [
-    "Weight gain is fastest in the **first 4–12 weeks**. A **≥5% gain in the first month** predicts substantial long-term gain, so act early.",
-    "**H1 + 5-HT2C blockade** is the strongest receptor predictor. Clozapine, olanzapine and mirtazapine block both.",
-    "**Metformin** has the strongest evidence for prevention and treatment. Start it alongside clozapine or olanzapine.",
-    "**Monitor everyone:** weight, waist, BP, glucose/HbA1c and lipids, at baseline and on a fixed schedule."
+    "About **three-quarters** of people with psychosis have **overweight or obesity**, and up to **80%** in a first episode gain **≥7%** of body weight within a year [1].",
+    "**Choice of antipsychotic** is the most important risk factor. Clozapine and olanzapine carry the highest risk [2,1].",
+    "Give **diet and exercise** advice to everyone **from the day of prescribing** [3,1].",
+    "**Metformin:** start with olanzapine or clozapine; with quetiapine, risperidone or paliperidone if there is a cardiometabolic risk factor or age 10–25; with **any** antipsychotic if weight rises **>3% in the first year** [1]."
   ],
   "clinicalFeatures": {
-    "definition": "Clinically significant weight gain is a rise of **≥7% from baseline body weight**, the threshold used in CATIE and CAFE.",
+    "definition": "Clinically significant weight gain is a rise of **≥7% from baseline body weight** [1]. Weight gain comes from more calorie intake, more appetite and a slower metabolism [3].",
     "course": {
-      "onset": "Steepest in **weeks 4–12**; can continue for a year or more",
-      "doseRelated": "Weakly; drug choice matters more than dose [verify]",
-      "reversible": "Partly, after switching or adding treatment"
+      "onset": "Rapid in the **first weeks**; the first year is critical [1]",
+      "driver": "**Choice of drug**, the strongest baseline factor [1]",
+      "reversible": "Partly. Switching drug gives about **−1.5 kg** on average [1]"
     },
-    "consequences": "Metabolic syndrome, type 2 diabetes, dyslipidaemia, fatty liver disease and cardiovascular disease. Also harms self-image and is a leading reason patients stop medication.",
-    "bodySize": [
+    "consequences": "Obesity doubles the risk of all-cause death, coronary heart disease, stroke and type 2 diabetes. Each 1 kg gained raises cardiovascular risk by about 3.1%. Weight gain is a leading cause of distress, and people with obesity are 2.5 times more likely to stop their medicine [1].",
+    "thresholds": [
       {
-        "measure": "BMI, obesity",
-        "general": "≥30 kg/m²",
-        "asian": "≥27.5 kg/m² (WHO Asian action point); ≥25 in Indian consensus [verify]"
+        "measure": "BMI, ethnicity",
+        "value": "Use a lower BMI threshold (**>23**) for South Asian, Chinese, Black African and African-Caribbean people [1]"
       },
       {
-        "measure": "BMI, overweight",
-        "general": "25–29.9 kg/m²",
-        "asian": "≥23 kg/m² (WHO Asian action point)"
+        "measure": "Central adiposity",
+        "value": "Waist-to-height ratio **≥0.5** [4]"
       },
       {
-        "measure": "Waist circumference (IDF)",
-        "general": "Europid ≥94 cm men / ≥80 cm women",
-        "asian": "South Asian ≥90 cm men / ≥80 cm women"
-      },
-      {
-        "measure": "Waist circumference (US ATP III)",
-        "general": ">102 cm men / >88 cm women",
-        "asian": "Use IDF ethnic cut-offs"
-      }
-    ],
-    "labs": [
-      {
-        "test": "Fasting glucose, diabetes",
-        "si": "≥7.0 mmol/L",
-        "conventional": "≥126 mg/dL"
-      },
-      {
-        "test": "Fasting glucose, impaired (ADA)",
-        "si": "5.6–6.9 mmol/L",
-        "conventional": "100–125 mg/dL"
-      },
-      {
-        "test": "HbA1c, diabetes",
-        "si": "≥48 mmol/mol",
-        "conventional": "≥6.5%"
-      },
-      {
-        "test": "HbA1c, prediabetes",
-        "si": "ADA 39–47 mmol/mol; UK (NICE) 42–47 mmol/mol",
-        "conventional": "ADA 5.7–6.4%; UK 6.0–6.4%"
-      },
-      {
-        "test": "Triglycerides (metabolic syndrome)",
-        "si": "≥1.7 mmol/L",
-        "conventional": "≥150 mg/dL"
-      },
-      {
-        "test": "HDL (metabolic syndrome)",
-        "si": "<1.0 mmol/L men; <1.3 mmol/L women",
-        "conventional": "<40 mg/dL men; <50 mg/dL women"
+        "measure": "Prediabetes",
+        "value": "HbA1c **42–47 mmol/mol** (6.0–6.4%) or fasting glucose **6.1–6.9 mmol/L** (110–125 mg/dL) [1]"
       }
     ]
   },
   "riskFactors": [
-    "Children, adolescents and young adults",
-    "First episode, or little or no previous antipsychotic exposure",
-    "Low baseline BMI (more room to gain)",
-    "Rapid early gain: ≥5% in the first month",
-    "Personal or family history of obesity, diabetes or cardiovascular disease",
-    "Using a high-risk drug, or combining several weight-promoting drugs"
+    "**Choice of antipsychotic:** the most important non-genetic factor [1]",
+    "**Younger age:** children and adolescents gain up to twice as much as adults [1]",
+    "**First episode or antipsychotic-naive:** 3–4 times more weight gain [1]",
+    "**Low or normal baseline BMI** [1]",
+    "**Early gain in weight or BMI:** the strongest predictor of long-term gain [1]",
+    "**Increased appetite early in treatment** [1]"
   ],
   "drugsImplicated": {
-    "ratingScale": {
-      "high": "High",
-      "moderate": "Moderate",
-      "low": "Low",
-      "minimal": "Minimal or weight-neutral",
-      "loss": "Weight loss more likely"
-    },
-    "notInLibrary": "Also relevant but not yet in the library: TCAs (amitriptyline, doxepin, imipramine) and phenelzine (high); valproate (high); lithium and zotepine (moderate); lamotrigine (neutral); topiramate and zonisamide (weight loss)."
+    "note": "Antipsychotics [2]; other drugs [3]. Drugs not shown are not rated in these sources.",
+    "groupNote": "First-generation antipsychotics other than chlorpromazine and haloperidol have little individual data; they are rated moderate as a group [2]."
   },
   "ratingScale": {
     "high": "High",
     "moderate": "Moderate",
     "low": "Low",
-    "minimal": "Minimal or weight-neutral",
-    "loss": "Weight loss more likely"
+    "minimal": "Weight-neutral",
+    "loss": "Weight loss"
   },
   "drugRatings": [
     {
-      "drug": "clozapine",
-      "rating": "high"
+      "rating": "high",
+      "source": 2,
+      "drug": "clozapine"
     },
     {
-      "drug": "olanzapine",
-      "rating": "high"
+      "rating": "high",
+      "source": 2,
+      "drug": "olanzapine"
     },
     {
-      "drug": "chlorpromazine",
-      "rating": "high"
-    },
-    {
-      "drug": "thioridazine",
-      "rating": "high"
-    },
-    {
-      "drug": "mirtazapine",
-      "rating": "high"
-    },
-    {
-      "drug": "quetiapine",
-      "rating": "moderate"
-    },
-    {
-      "drug": "risperidone",
-      "rating": "moderate"
-    },
-    {
-      "drug": "paliperidone",
-      "rating": "moderate"
-    },
-    {
-      "drug": "iloperidone",
-      "rating": "moderate"
-    },
-    {
-      "drug": "paroxetine",
-      "rating": "moderate"
-    },
-    {
-      "drug": "zuclopenthixol",
       "rating": "moderate",
-      "verify": true
+      "source": 2,
+      "drug": "chlorpromazine"
     },
     {
-      "drug": "carbamazepine",
       "rating": "moderate",
-      "verify": true
+      "source": 2,
+      "drug": "iloperidone"
     },
     {
-      "drug": "asenapine",
-      "rating": "low"
+      "rating": "moderate",
+      "source": 2,
+      "drug": "haloperidol"
     },
     {
-      "drug": "brexpiprazole",
-      "rating": "low"
+      "rating": "moderate",
+      "source": 2,
+      "drug": "quetiapine"
     },
     {
-      "drug": "cariprazine",
-      "rating": "low"
+      "rating": "moderate",
+      "source": 2,
+      "drug": "paliperidone"
     },
     {
-      "drug": "amisulpride",
-      "rating": "low"
+      "rating": "moderate",
+      "source": 2,
+      "drug": "risperidone"
     },
     {
-      "drug": "haloperidol",
-      "rating": "low"
-    },
-    {
-      "drug": "perphenazine",
-      "rating": "low"
-    },
-    {
-      "drug": "sertraline",
-      "rating": "low"
-    },
-    {
-      "drug": "citalopram",
-      "rating": "low"
-    },
-    {
-      "drug": "escitalopram",
-      "rating": "low"
-    },
-    {
-      "drug": "fluoxetine",
-      "rating": "low"
-    },
-    {
-      "drug": "sulpiride",
-      "rating": "low",
-      "verify": true
-    },
-    {
-      "drug": "loxapine",
-      "rating": "low",
-      "verify": true
-    },
-    {
-      "drug": "thiothixene",
-      "rating": "low",
-      "verify": true
-    },
-    {
-      "drug": "trifluoperazine",
-      "rating": "low",
-      "verify": true
-    },
-    {
-      "drug": "blonanserin",
-      "rating": "low",
-      "verify": true
-    },
-    {
-      "drug": "pimavanserin",
-      "rating": "low",
-      "verify": true
-    },
-    {
-      "drug": "fluvoxamine",
-      "rating": "low",
-      "verify": true
-    },
-    {
-      "drug": "venlafaxine",
-      "rating": "low",
-      "verify": true
-    },
-    {
-      "drug": "desvenlafaxine",
-      "rating": "low",
-      "verify": true
-    },
-    {
-      "drug": "duloxetine",
-      "rating": "low",
-      "verify": true
-    },
-    {
-      "drug": "levomilnacipran",
-      "rating": "low",
-      "verify": true
-    },
-    {
-      "drug": "trazodone",
-      "rating": "low",
-      "verify": true
-    },
-    {
-      "drug": "guanfacine",
-      "rating": "low",
-      "verify": true
-    },
-    {
-      "drug": "aripiprazole",
-      "rating": "minimal"
-    },
-    {
-      "drug": "ziprasidone",
-      "rating": "minimal"
-    },
-    {
-      "drug": "lurasidone",
-      "rating": "minimal"
-    },
-    {
-      "drug": "lumateperone",
-      "rating": "minimal"
-    },
-    {
+      "rating": "moderate",
+      "source": 2,
       "drug": "fluphenazine",
-      "rating": "minimal"
+      "group": "FGA"
     },
     {
-      "drug": "vortioxetine",
-      "rating": "minimal"
+      "rating": "moderate",
+      "source": 2,
+      "drug": "perphenazine",
+      "group": "FGA"
     },
     {
-      "drug": "vilazodone",
-      "rating": "minimal"
+      "rating": "moderate",
+      "source": 2,
+      "drug": "thioridazine",
+      "group": "FGA"
     },
     {
-      "drug": "memantine",
-      "rating": "minimal"
+      "rating": "moderate",
+      "source": 2,
+      "drug": "thiothixene",
+      "group": "FGA"
     },
     {
+      "rating": "moderate",
+      "source": 2,
+      "drug": "zuclopenthixol",
+      "group": "FGA"
+    },
+    {
+      "rating": "moderate",
+      "source": 2,
+      "drug": "loxapine",
+      "group": "FGA"
+    },
+    {
+      "rating": "moderate",
+      "source": 2,
       "drug": "molindone",
+      "group": "FGA"
+    },
+    {
+      "rating": "moderate",
+      "source": 2,
+      "name": "Sertindole"
+    },
+    {
+      "rating": "low",
+      "source": 2,
+      "drug": "amisulpride"
+    },
+    {
+      "rating": "low",
+      "source": 2,
+      "drug": "aripiprazole"
+    },
+    {
+      "rating": "low",
+      "source": 2,
+      "drug": "asenapine"
+    },
+    {
+      "rating": "low",
+      "source": 2,
+      "drug": "brexpiprazole"
+    },
+    {
+      "rating": "low",
+      "source": 2,
+      "drug": "cariprazine"
+    },
+    {
+      "rating": "low",
+      "source": 2,
+      "drug": "lumateperone"
+    },
+    {
+      "rating": "low",
+      "source": 2,
+      "drug": "lurasidone"
+    },
+    {
+      "rating": "low",
+      "source": 2,
+      "drug": "sulpiride"
+    },
+    {
+      "rating": "low",
+      "source": 2,
+      "drug": "trifluoperazine"
+    },
+    {
+      "rating": "low",
+      "source": 2,
+      "drug": "ziprasidone"
+    },
+    {
+      "rating": "moderate",
+      "source": 3,
+      "drug": "paroxetine"
+    },
+    {
+      "rating": "moderate",
+      "source": 3,
+      "drug": "carbamazepine"
+    },
+    {
+      "rating": "moderate",
+      "source": 3,
+      "name": "Divalproex"
+    },
+    {
+      "rating": "moderate",
+      "source": 3,
+      "name": "Lithium"
+    },
+    {
+      "rating": "low",
+      "source": 3,
+      "drug": "mirtazapine"
+    },
+    {
+      "rating": "low",
+      "source": 3,
+      "drug": "trazodone"
+    },
+    {
+      "rating": "low",
+      "source": 3,
+      "drug": "fluoxetine"
+    },
+    {
+      "rating": "low",
+      "source": 3,
+      "drug": "citalopram"
+    },
+    {
+      "rating": "low",
+      "source": 3,
+      "drug": "escitalopram"
+    },
+    {
+      "rating": "low",
+      "source": 3,
+      "drug": "sertraline"
+    },
+    {
+      "rating": "low",
+      "source": 3,
+      "drug": "duloxetine"
+    },
+    {
+      "rating": "low",
+      "source": 3,
+      "name": "Imipramine"
+    },
+    {
+      "rating": "low",
+      "source": 3,
+      "name": "Amitriptyline"
+    },
+    {
       "rating": "minimal",
-      "verify": true
+      "source": 3,
+      "drug": "fluvoxamine"
     },
     {
-      "drug": "nefazodone",
       "rating": "minimal",
-      "verify": true
+      "source": 3,
+      "drug": "venlafaxine"
     },
     {
-      "drug": "dextromethorphan-bupropion",
       "rating": "minimal",
-      "verify": true
+      "source": 3,
+      "name": "Lamotrigine"
     },
     {
-      "drug": "esketamine",
-      "rating": "minimal",
-      "verify": true
-    },
-    {
-      "drug": "brexanolone",
-      "rating": "minimal",
-      "verify": true
-    },
-    {
-      "drug": "zuranolone",
-      "rating": "minimal",
-      "verify": true
-    },
-    {
-      "drug": "clonidine",
-      "rating": "minimal",
-      "verify": true
-    },
-    {
-      "drug": "lecanemab",
-      "rating": "minimal",
-      "verify": true
-    },
-    {
-      "drug": "donanemab",
-      "rating": "minimal",
-      "verify": true
-    },
-    {
-      "drug": "aducanumab",
-      "rating": "minimal",
-      "verify": true
-    },
-    {
-      "drug": "alprazolam",
-      "rating": "minimal",
-      "verify": true
-    },
-    {
-      "drug": "chlordiazepoxide",
-      "rating": "minimal",
-      "verify": true
-    },
-    {
-      "drug": "clobazam",
-      "rating": "minimal",
-      "verify": true
-    },
-    {
-      "drug": "clonazepam",
-      "rating": "minimal",
-      "verify": true
-    },
-    {
-      "drug": "diazepam",
-      "rating": "minimal",
-      "verify": true
-    },
-    {
-      "drug": "eszopiclone",
-      "rating": "minimal",
-      "verify": true
-    },
-    {
-      "drug": "flunitrazepam",
-      "rating": "minimal",
-      "verify": true
-    },
-    {
-      "drug": "flurazepam",
-      "rating": "minimal",
-      "verify": true
-    },
-    {
-      "drug": "lorazepam",
-      "rating": "minimal",
-      "verify": true
-    },
-    {
-      "drug": "midazolam",
-      "rating": "minimal",
-      "verify": true
-    },
-    {
-      "drug": "nitrazepam",
-      "rating": "minimal",
-      "verify": true
-    },
-    {
-      "drug": "oxazepam",
-      "rating": "minimal",
-      "verify": true
-    },
-    {
-      "drug": "temazepam",
-      "rating": "minimal",
-      "verify": true
-    },
-    {
-      "drug": "triazolam",
-      "rating": "minimal",
-      "verify": true
-    },
-    {
-      "drug": "zaleplon",
-      "rating": "minimal",
-      "verify": true
-    },
-    {
-      "drug": "zolpidem",
-      "rating": "minimal",
-      "verify": true
-    },
-    {
-      "drug": "bupropion",
-      "rating": "loss"
-    },
-    {
-      "drug": "amphetamines",
-      "rating": "loss"
-    },
-    {
-      "drug": "methylphenidate",
-      "rating": "loss"
-    },
-    {
-      "drug": "dexmethylphenidate",
-      "rating": "loss"
-    },
-    {
-      "drug": "methamphetamine",
-      "rating": "loss"
-    },
-    {
-      "drug": "atomoxetine",
-      "rating": "loss"
-    },
-    {
-      "drug": "donepezil",
-      "rating": "loss"
-    },
-    {
-      "drug": "rivastigmine",
-      "rating": "loss"
-    },
-    {
-      "drug": "galantamine",
-      "rating": "loss"
-    },
-    {
-      "drug": "benzgalantamine",
       "rating": "loss",
-      "verify": true
+      "source": 3,
+      "drug": "bupropion"
+    },
+    {
+      "rating": "loss",
+      "source": 3,
+      "name": "Topiramate"
+    },
+    {
+      "rating": "loss",
+      "source": 3,
+      "name": "Zonisamide"
     }
   ],
   "monitoring": {
-    "source": "ADA/APA consensus 2004",
-    "columns": [
-      "Baseline",
-      "4 wk",
-      "8 wk",
-      "12 wk",
-      "Quarterly",
-      "Annually"
-    ],
+    "sources": {
+      "maudsley": "Maudsley [2]",
+      "adaapa": "ADA/APA [5]"
+    },
     "rows": [
       {
-        "check": "Personal & family history",
-        "marks": [
-          1,
-          0,
-          0,
-          0,
-          0,
-          1
-        ]
-      },
-      {
-        "check": "Weight / BMI",
-        "marks": [
-          1,
-          1,
-          1,
-          1,
-          1,
-          0
-        ]
-      },
-      {
-        "check": "Waist circumference",
-        "marks": [
-          1,
-          0,
-          0,
-          0,
-          0,
-          1
-        ]
+        "check": "Weight, BMI, waist",
+        "maudsley": "Baseline, frequently for 3 months, then yearly. Clozapine, olanzapine: 3-monthly in year 1.",
+        "adaapa": "Baseline, 4, 8 and 12 weeks, then quarterly. Waist: baseline, then yearly."
       },
       {
         "check": "Blood pressure",
-        "marks": [
-          1,
-          0,
-          0,
-          1,
-          0,
-          1
-        ]
+        "maudsley": "Baseline, then frequently during titration and dose changes.",
+        "adaapa": "Baseline, 12 weeks, then yearly."
       },
       {
-        "check": "Fasting glucose (HbA1c*)",
-        "marks": [
-          1,
-          0,
-          0,
-          1,
-          0,
-          1
-        ]
+        "check": "Fasting glucose or HbA1c",
+        "maudsley": "Baseline, 4–6 months, then yearly. Clozapine, olanzapine, chlorpromazine: baseline, 1 month, then 4–6-monthly.",
+        "adaapa": "Baseline, 12 weeks, then yearly."
       },
       {
         "check": "Fasting lipids",
-        "marks": [
-          1,
-          0,
-          0,
-          1,
-          0,
-          2
-        ]
+        "maudsley": "Baseline, 3 months, then yearly. Clozapine, olanzapine: 3-monthly in year 1.",
+        "adaapa": "Baseline, 12 weeks, then every 5 years if normal."
       }
     ],
-    "notes": [
-      "*The 2004 consensus specifies fasting glucose. HbA1c is now commonly used alongside or instead, but it is not part of the original schedule.",
-      "Lipids: the consensus says every 5 years if normal. Many services check annually.",
-      "Check glucose and lipids at 12 weeks even if weight is stable. Metabolic change can start before weight changes."
-    ]
+    "ifAbnormal": "If results are abnormal: lifestyle advice, consider changing the antipsychotic, and start a statin or refer as needed [2]."
   },
   "management": {
     "steps": [
       {
-        "step": "Always",
+        "step": "Everyone",
         "items": [
-          "Diet, exercise and behavioural support from the start of treatment.",
-          "Review the whole regimen for weight-promoting drugs."
+          "Give **diet and exercise** advice when prescribing, and continue it throughout [3,1].",
+          "Choose the **lowest-risk antipsychotic** that suits the patient, especially if BMI is already raised [3,1].",
+          "Avoid other **weight-promoting medicines** where possible [4]."
         ]
       },
       {
-        "step": "Switch if clinically possible",
+        "step": "Decide on metformin",
         "items": [
-          "Move to a lower-risk agent: **aripiprazole, ziprasidone, lurasidone**, or **bupropion** for depression.",
-          "Weigh the risk of relapse. In CAMP, switching to aripiprazole led to more weight loss but **more patients stopped treatment** than in the stay group. For patients stable on clozapine, switching is rarely right.",
-          "**Adjunctive aripiprazole** (5–15 mg/day) added to clozapine produces modest weight loss."
+          "Use the **flowchart** below at the start of an antipsychotic or a switch [1]."
         ]
       },
       {
-        "step": "Add metformin",
+        "step": "Review the antipsychotic",
         "items": [
-          "**When to start (Carolan 2024 guideline):** with any high-risk antipsychotic (olanzapine, clozapine); with a medium-risk antipsychotic (quetiapine, risperidone, paliperidone) if the patient has a cardiometabolic risk factor, is **aged 10–25**, or has BMI 25–30; and with **any** antipsychotic if weight rises **>3% in the first year**.",
-          "Dosing and safety: see **Metformin** below."
+          "**Switching** or lowering the dose: about **−1.5 kg** (95% CI −2.03 to −0.98) versus staying on the same drug. Clinical significance is uncertain, and switching is not possible for some, e.g. on clozapine [1].",
+          "**Adjunctive aripiprazole** (5–15 mg/day) added to clozapine gives modest weight loss [6]."
+        ]
+      },
+      {
+        "step": "Treat obesity",
+        "items": [
+          "Match treatment to **BMI class** and offer an **FDA-approved obesity medication** where indicated (below) [3,4]."
         ]
       }
     ],
-    "subsections": {
-      "metformin": {
-        "titration": [
-          {
-            "week": "1",
-            "dose": "500 mg once daily with breakfast"
-          },
-          {
-            "week": "2",
-            "dose": "500 mg twice daily with meals"
-          },
-          {
-            "week": "3",
-            "dose": "500 mg morning + 1000 mg evening"
-          },
-          {
-            "week": "4 onward",
-            "dose": "1000 mg twice daily (range 1000–2000 mg/day)"
-          }
-        ],
-        "titrationNote": "Extended-release tablets taken with food reduce nausea and diarrhoea.",
-        "safety": [
-          "Check **eGFR** before starting. **eGFR <30: contraindicated.**",
-          "**eGFR 30–45:** US label: do not start. UK label: start at a reduced dose, maximum 1000 mg/day, and review. **eGFR 45–59:** UK maximum 2000 mg/day.",
-          "Check **vitamin B12** periodically on long-term treatment.",
-          "Avoid in **harmful or excessive alcohol use** and in conditions that predispose to lactic acidosis.",
-          "**Children and adolescents:** metformin is licensed for type 2 diabetes from age 10. Dose per local paediatric guidance. [verify]"
-        ],
-        "effect": "Starting metformin with the antipsychotic reduced weight gain by about **4 kg** versus control. In established gain, mean loss was about **3.3 kg** versus placebo, with improved insulin resistance."
-      },
-      "otherOptions": [
+    "flowchart": {
+      "appliesTo": "At the start of an antipsychotic, or a switch from one to another [1]",
+      "groups": [
         {
-          "option": "GLP-1 receptor agonists",
-          "notes": "**Liraglutide** (up to 3 mg/day): −5.3 kg versus placebo in clozapine- or olanzapine-treated patients (RCT). Evidence for **semaglutide** is growing. Watch for GI effects."
+          "risk": "High risk",
+          "drugs": "Olanzapine, clozapine (not first line)",
+          "condition": "No extra criteria",
+          "action": "Start metformin with the antipsychotic"
         },
         {
-          "option": "Olanzapine + samidorphan",
-          "notes": "ENLIGHTEN-2: **17.8% vs 29.8%** gained ≥10% body weight at 24 weeks, versus olanzapine alone. Contraindicated with opioids. Not available in all regions."
+          "risk": "Medium risk",
+          "drugs": "Quetiapine, paliperidone, risperidone",
+          "condition": "Any of: hypertension, dyslipidaemia, diabetes, prediabetes, BMI >25 (adjust for ethnicity), or age 10–25",
+          "action": "Start metformin with the antipsychotic"
         },
         {
-          "option": "Topiramate",
-          "notes": "50–200 mg/day. Reduces weight; cognitive slowing and paraesthesia limit use."
+          "risk": "Lower risk",
+          "drugs": "All other antipsychotics",
+          "condition": ">3% weight gain at any time in the first year (60 kg → 1.8 kg; 70 kg → 2.1 kg; 80 kg → 2.4 kg; 90 kg → 2.7 kg). Young people: >3% outside their growth trajectory.",
+          "action": "Start metformin"
         },
         {
-          "option": "Naltrexone/bupropion",
-          "notes": "Licensed for obesity; little data specifically in drug-induced weight gain."
-        },
-        {
-          "option": "Orlistat",
-          "notes": "Weak evidence in this population. GI side effects limit adherence."
-        },
-        {
-          "option": "Bariatric surgery",
-          "notes": "2022 ASMBS/IFSO: recommended at **BMI ≥35**; consider at **30–34.9** with metabolic disease. Asian populations: lower thresholds, with surgery offered from **BMI ≥27.5**. [verify] Psychiatric illness does not exclude referral. Re-check lithium levels and other drug dosing afterwards, because absorption changes."
+          "risk": "Established obesity",
+          "drugs": "Any antipsychotic",
+          "condition": "BMI ≥30, or 27–30 with hypertension, dyslipidaemia, diabetes, prediabetes or obstructive sleep apnoea",
+          "action": "Start a GLP-1 agonist; metformin if not possible"
         }
+      ],
+      "always": "Diet and exercise for everyone, continued alongside metformin [1]."
+    },
+    "metformin": {
+      "effect": "Prevents about **3–4 kg** of gain when started with the antipsychotic; about **3 kg** loss in established gain [1].",
+      "howItWorks": "Lowers appetite and liver glucose output and improves insulin response. It does not stimulate insulin secretion, so it does not cause hypoglycaemia [1].",
+      "before": "Check **renal function (eGFR)** [1].",
+      "titration": [
+        {
+          "week": "1",
+          "morning": "500 mg",
+          "evening": "—"
+        },
+        {
+          "week": "2",
+          "morning": "500 mg",
+          "evening": "500 mg"
+        },
+        {
+          "week": "4",
+          "morning": "1 g",
+          "evening": "500 mg"
+        },
+        {
+          "week": "6",
+          "morning": "1 g",
+          "evening": "1 g"
+        }
+      ],
+      "tips": [
+        "Take with or after food. Target **1–2 g/day** [1].",
+        "Check efficacy at weeks 2 and 4 [1].",
+        "If GI side effects persist, use **slow-release once daily** [1].",
+        "**eGFR 30–44:** maximum **1 g/day** [1]."
+      ],
+      "sideEffects": [
+        {
+          "frequency": "Under 1 in 10",
+          "effects": "Transient nausea, vomiting, diarrhoea, abdominal pain, loss of appetite; vitamin B12 deficiency"
+        },
+        {
+          "frequency": "Under 1 in 100",
+          "effects": "Taste disturbance"
+        },
+        {
+          "frequency": "Under 1 in 10,000",
+          "effects": "Lactic acidosis; abnormal liver tests or hepatitis; skin reactions"
+        }
+      ],
+      "avoid": [
+        "Acute metabolic acidosis",
+        "Severe renal failure (**eGFR <30**)",
+        "Hepatic insufficiency",
+        "Acute physical illness, or harmful alcohol use (**AUDIT ≥8**)"
+      ],
+      "monitor": [
+        "Weight and BMI",
+        "Symptoms of lactic acidosis: breathlessness, muscle cramps, abdominal pain, hypothermia, weakness",
+        "Liver tests and HbA1c **yearly**",
+        "Renal function **yearly**; 6-monthly if over 75 or on NSAIDs, ACE inhibitors, ARBs or diuretics",
+        "Vitamin B12 **yearly**; 6-monthly if vegan, after bariatric surgery, on a PPI or colchicine, older, or with malabsorption"
+      ],
+      "stop": [
+        "Suspected lactic acidosis, or risk of it: dehydration, acute alcohol intoxication, decompensated heart failure, respiratory failure, recent MI, shock, severe infection",
+        "Before or at iodinated contrast; restart at least **48 h** after",
+        "eGFR falls below **30**",
+        "BMI below **20**",
+        "**Sick-day rule:** stop if systemically unwell, restart when well",
+        "The antipsychotic is stopped"
+      ],
+      "cite": "[1]"
+    },
+    "obesityMedications": {
+      "intro": "FDA-approved obesity medications, with lifestyle change. Weight loss shown is beyond placebo [4].",
+      "rows": [
+        {
+          "drug": "Tirzepatide",
+          "loss": "16.2%",
+          "dose": "2.5 mg → 15 mg weekly (SC)",
+          "avoid": "Severe GI disease; personal or family history of medullary thyroid carcinoma or MEN2. Reduces oral contraceptive efficacy."
+        },
+        {
+          "drug": "Semaglutide",
+          "loss": "11.9%",
+          "dose": "0.25 mg → 2.4 mg weekly (SC)",
+          "avoid": "Severe GI disease; personal or family history of medullary thyroid carcinoma or MEN2"
+        },
+        {
+          "drug": "Phentermine-topiramate",
+          "loss": "8.8%",
+          "dose": "3.75/23 mg → 15/92 mg daily",
+          "avoid": "Cardiovascular disease, uncontrolled hypertension, glaucoma, hyperthyroidism"
+        },
+        {
+          "drug": "Naltrexone-bupropion",
+          "loss": "4.8%",
+          "dose": "8/90 mg tablets → 2 tablets twice daily",
+          "avoid": "Uncontrolled hypertension, seizures, glaucoma, eating disorders, substance use disorder, chronic opioid use"
+        },
+        {
+          "drug": "Liraglutide",
+          "loss": "4.5%",
+          "dose": "0.6 mg → 3.0 mg daily (SC)",
+          "avoid": "Severe GI disease; personal or family history of medullary thyroid carcinoma or MEN2"
+        },
+        {
+          "drug": "Phentermine",
+          "loss": "3.6%",
+          "dose": "Up to 37.5 mg daily",
+          "avoid": "Cardiovascular disease, uncontrolled hypertension, glaucoma, hyperthyroidism, substance use disorder, agitated states"
+        },
+        {
+          "drug": "Orlistat",
+          "loss": "3.1%",
+          "dose": "120 mg three times daily",
+          "avoid": "Malabsorption, cholestasis"
+        }
+      ],
+      "goals": [
+        "**≥5%** sustained loss gives meaningful health benefit; **≥10%** for most obesity-related diseases; **≥15%** in some [4].",
+        "Follow up **monthly for 3 months**, then **3-monthly** in year 1, then **6-monthly** [4].",
+        "If **≥5%** is lost by 3 months, continue long term; stopping usually leads to regain [4].",
+        "Not in pregnancy, when trying to conceive, or when breastfeeding [4].",
+        "GLP-1 agonists in people with overweight or obesity, including antipsychotic-induced: about **−6 kg** (95% CI −10.8 to −1.36) [1]."
       ]
+    },
+    "otherOptions": [
+      {
+        "option": "Olanzapine + samidorphan",
+        "notes": "≥10% weight gain in **17.8% vs 29.8%** on olanzapine alone at 24 weeks [7]."
+      }
+    ],
+    "bmiClasses": {
+      "rows": [
+        {
+          "cls": "Underweight",
+          "bmi": "<18.5",
+          "treatment": "Nutrition or eating disorder treatment"
+        },
+        {
+          "cls": "Normal",
+          "bmi": "18.5–24.9",
+          "treatment": "Maintenance"
+        },
+        {
+          "cls": "Overweight",
+          "bmi": "25–29.9",
+          "treatment": "Behavioural weight management"
+        },
+        {
+          "cls": "Obese class I",
+          "bmi": "30–34.9",
+          "treatment": "Behavioural + medical weight management"
+        },
+        {
+          "cls": "Obese class II",
+          "bmi": "35–39.9 (with comorbidities)",
+          "treatment": "Behavioural + medical weight management, or behavioural management + surgery"
+        },
+        {
+          "cls": "Obese class III",
+          "bmi": ">40",
+          "treatment": "Behavioural weight management + surgery"
+        }
+      ],
+      "cite": "[3]"
     }
   },
-  "mechanism": [
-    {
-      "level": "Central",
-      "mechanism": "**H1 antagonism** in the hypothalamus",
-      "effect": "Less satiety, more appetite, sedation and less activity. Activates hypothalamic AMPK. Strongest single receptor predictor."
-    },
-    {
-      "level": "Central",
-      "mechanism": "**5-HT2C antagonism** in the arcuate nucleus",
-      "effect": "Loss of serotonergic appetite suppression, so more food intake."
-    },
-    {
-      "level": "Central",
-      "mechanism": "**H1 + 5-HT2C combined**",
-      "effect": "Largest effect: **clozapine, olanzapine, mirtazapine**. Quetiapine acts mainly through H1 (weak 5-HT2C blockade)."
-    },
-    {
-      "level": "Hypothalamic circuits",
-      "mechanism": "Less POMC/α-MSH → MC4R signalling; relative dominance of NPY/AgRP",
-      "effect": "Increased hunger."
-    },
-    {
-      "level": "Hypothalamic circuits",
-      "mechanism": "Rising leptin with central leptin resistance",
-      "effect": "Satiety feedback fails."
-    },
-    {
-      "level": "Peripheral",
-      "mechanism": "**M3 blockade** on pancreatic β-cells (clozapine, olanzapine)",
-      "effect": "Impaired glucose-stimulated insulin secretion."
-    },
-    {
-      "level": "Peripheral",
-      "mechanism": "Direct effects on insulin sensitivity in muscle, liver and fat",
-      "effect": "Insulin resistance and raised triglycerides, **sometimes before weight gain**. Rare early DKA or HHS reported with clozapine and olanzapine."
-    },
-    {
-      "level": "Gut",
-      "mechanism": "Antipsychotic-associated dysbiosis",
-      "effect": "Altered energy harvest. Evidence is mostly preclinical."
-    }
-  ],
+  "mechanism": {
+    "intro": "Clozapine, olanzapine, quetiapine and mirtazapine block both **H1 and 5-HT2C** receptors [3]. Quetiapine's 5-HT2C blockade comes mainly from its active metabolite, norquetiapine. [verify]",
+    "diagrams": [
+      {
+        "title": "Appetite: H1 and 5-HT2C blockade",
+        "cite": "[3]",
+        "start": "Psychotropic with H1 and/or 5-HT2C blocking activity",
+        "branches": [
+          {
+            "head": "H1 blockade",
+            "items": [
+              "Less central satiety signalling",
+              "More hypothalamic AMPK activity, which promotes feeding",
+              "Sedation, so less spontaneous activity"
+            ]
+          },
+          {
+            "head": "5-HT2C blockade",
+            "items": [
+              "Weaker appetite suppression through POMC neurons"
+            ]
+          }
+        ],
+        "join": [
+          "More hunger and food intake, less energy spent on movement",
+          "Sustained energy surplus",
+          "More fat storage → weight gain"
+        ]
+      },
+      {
+        "title": "Leptin resistance",
+        "cite": "[3]",
+        "context": "Normally, leptin from fat cells activates POMC/CART neurons (α-MSH → MC4 receptors → less appetite) and inhibits NPY/AgRP neurons (less hunger).",
+        "start": "Psychotropic exposure and increasing body fat",
+        "startUncertain": true,
+        "branches": [
+          {
+            "head": "Reduced hypothalamic response to leptin: leptin resistance",
+            "items": [
+              "POMC satiety pathway under-activated",
+              "NPY/AgRP hunger pathway under-suppressed"
+            ]
+          }
+        ],
+        "join": [
+          "Weaker satiety and persistent hunger",
+          "More food intake → further fat gain, which worsens leptin resistance"
+        ]
+      },
+      {
+        "title": "Peripheral metabolic effects",
+        "cite": "[3]",
+        "start": "Certain antipsychotics, particularly clozapine and olanzapine",
+        "branches": [
+          {
+            "head": "Pancreatic β-cell M3 blockade",
+            "items": [
+              "Less acetylcholine-driven insulin secretion",
+              "Weaker insulin response"
+            ]
+          },
+          {
+            "head": "Weight-independent loss of insulin sensitivity",
+            "items": [
+              "Muscle, liver and fat respond less to insulin; worsened by rising body fat"
+            ]
+          },
+          {
+            "head": "Altered lipid handling",
+            "uncertain": true,
+            "items": [
+              "Dyslipidaemia, including raised triglycerides"
+            ]
+          }
+        ],
+        "join": [
+          "Poorer glucose control → hyperglycaemia and diabetes risk, sometimes before weight changes"
+        ]
+      },
+      {
+        "title": "Gut microbiome",
+        "cite": "[8]",
+        "note": "Evidence is mostly from animal studies.",
+        "start": "Antipsychotic exposure → gut dysbiosis",
+        "branches": [
+          {
+            "head": "Altered microbial metabolites, including short-chain fatty acids",
+            "uncertain": true
+          },
+          {
+            "head": "Altered gut–brain signalling",
+            "uncertain": true
+          },
+          {
+            "head": "Possible change in energy extracted from food",
+            "uncertain": true
+          }
+        ],
+        "join": [
+          "Changes in metabolism and appetite regulation",
+          "More energy available for storage → weight gain"
+        ],
+        "joinUncertain": true
+      }
+    ],
+    "metformin": "Metformin may also reduce antipsychotic-induced metabolic dysfunction through the gut–brain axis; this evidence is emerging [3]."
+  },
   "differentialDiagnosis": [
-    "**Hypothyroidism**, including lithium-induced: check TSH.",
-    "**Cushing's syndrome** or **corticosteroid** treatment.",
-    "**Pregnancy.**",
-    "**Fluid retention or oedema** rather than fat gain.",
-    "**Polycystic ovary syndrome**, including valproate-associated.",
-    "**Recovery of appetite** as depression or psychosis improves.",
-    "**Lifestyle change:** inactivity, diet, **stopping smoking**, alcohol.",
-    "**Other weight-promoting drugs:** insulin, sulfonylureas, beta-blockers."
+    "**Hypothyroidism:** check TSH [4]",
+    "**Pregnancy:** pregnancy test where relevant [4]",
+    "**Other weight-promoting medicines:** insulin, sulfonylureas, pioglitazone, beta-blockers, glucocorticoids, progestogen contraception, sedating antihistamines [4]",
+    "**Cushing's syndrome**",
+    "**Fluid retention** rather than fat gain",
+    "**Recovery of appetite** as depression or psychosis improves",
+    "**Lifestyle change:** less activity, diet, stopping smoking, alcohol"
   ],
   "keyEvidence": [
     {
-      "study": "De Hert 2011",
-      "finding": "People with severe mental illness die **10–20 years earlier**, largely from cardiometabolic disease. Obesity affects about **45–55%** of people with schizophrenia, 1.5–2 times the general-population rate.",
-      "tag": "World Psychiatry 2011"
-    },
-    {
       "study": "Allison 1999",
-      "finding": "Mean gain at **10 weeks**: clozapine ~4.5 kg, olanzapine ~4.2 kg, risperidone ~2.1 kg, haloperidol ~1.1 kg, ziprasidone ~0.04 kg.",
-      "tag": "Am J Psychiatry 1999"
+      "finding": "Mean gain at **10 weeks**: clozapine ~4.5 kg, olanzapine ~4.2 kg, risperidone ~2.1 kg, haloperidol ~1.1 kg, ziprasidone ~0.04 kg [9]."
     },
     {
       "study": "CATIE",
-      "finding": "**30% on olanzapine** gained ≥7% of body weight during the trial (up to 18 months), versus 7–16% on the other drugs.",
-      "tag": "NEJM 2005"
+      "finding": "**30% on olanzapine** gained ≥7% of body weight, versus 7–16% on the other drugs [10]."
     },
     {
       "study": "CAFE",
-      "finding": "Early psychosis: ≥7% gain at 52 weeks in **80% (olanzapine), 58% (risperidone), 50% (quetiapine)**.",
-      "tag": "Am J Psychiatry 2007"
+      "finding": "Early psychosis, 52 weeks: ≥7% gain in **80%** on olanzapine, **58%** on risperidone, **50%** on quetiapine [11]."
     },
     {
-      "study": "CAMP",
-      "finding": "Switching to aripiprazole: more weight loss than staying, but more treatment discontinuation.",
-      "tag": "Am J Psychiatry 2011"
+      "study": "Metformin, 4 RCTs",
+      "finding": "Started with risperidone or olanzapine: **−4.03 kg** (95% CI −5.78 to −2.28); low certainty [1]."
     },
     {
-      "study": "Huhn 2019; Pillinger 2020",
-      "finding": "Network meta-analyses ranking antipsychotics on weight and metabolic effects.",
-      "tag": "Lancet 2019 · Lancet Psychiatry 2020"
+      "study": "Metformin, 14 RCTs",
+      "finding": "Started with an antipsychotic: **−3.12 kg** (95% CI −4.22 to −2.01); very low certainty [1]."
+    },
+    {
+      "study": "Metformin with clozapine",
+      "finding": "Cohort of 396: **−3.14 kg** at 6 months and **−5.38 kg** at 12 months; low certainty [1]."
     }
   ],
   "examPearls": [
-    "Clinically significant weight gain = **≥7% of baseline weight**.",
-    "**H1 + 5-HT2C** blockade predicts weight gain: clozapine, olanzapine, mirtazapine.",
-    "**Bupropion** is the only antidepressant consistently linked to weight loss.",
-    "**Samidorphan** is an opioid antagonist, so olanzapine-samidorphan is contraindicated with opioids.",
-    "Cholinesterase inhibitors and stimulants tend to cause **weight loss**, not gain.",
-    "Metabolic changes (insulin resistance, triglycerides) can appear **before** weight gain."
+    "Clinically significant weight gain is **≥7% of baseline weight** [1].",
+    "**H1 + 5-HT2C** blockers cause the most gain: clozapine, olanzapine, quetiapine, mirtazapine [3].",
+    "**Bupropion** may be the only antidepressant that causes weight loss [3].",
+    "**Paroxetine** causes the most gain among SSRIs; TCAs and MAOIs cause more than SSRIs [3].",
+    "Among mood stabilisers, **divalproex, carbamazepine and lithium** cause the most gain; lamotrigine is weight-neutral; topiramate and zonisamide cause weight loss [3].",
+    "Insulin resistance can develop **independently of weight gain** [3]."
   ],
   "selfTest": {
-    "question": "A 22-year-old starts olanzapine 10 mg for first-episode psychosis. Four weeks later they have gained 6% of baseline weight. What is the best next step?",
+    "question": "A 70 kg man starts aripiprazole for schizophrenia. He has no cardiometabolic risk factors. Four months later he weighs 72.6 kg. What is the best next step?",
     "options": [
       {
-        "text": "Recheck at 12 weeks; early gain usually settles",
+        "text": "Recheck at 12 months; aripiprazole is low risk",
         "correct": false
       },
       {
-        "text": "Lifestyle support and start metformin; consider a lower-risk antipsychotic",
+        "text": "Start metformin and continue diet and exercise advice",
         "correct": true
       },
       {
-        "text": "Start topiramate as first-line treatment",
+        "text": "Start a GLP-1 agonist",
         "correct": false
       },
       {
-        "text": "Stop olanzapine abruptly",
+        "text": "Stop aripiprazole abruptly",
         "correct": false
       }
     ],
-    "explanation": "A ≥5% gain in the first month predicts substantial long-term gain, and the patient is young and on a high-risk drug. The 2024 guideline supports metformin here, alongside lifestyle support and a review of whether a lower-risk antipsychotic is suitable."
+    "explanation": "He has gained 2.6 kg (3.7%), more than the >3% threshold (2.1 kg at 70 kg) in the first year, so the guideline recommends metformin even with a lower-risk antipsychotic. His BMI does not meet the GLP-1 criteria [1]."
   },
   "references": [
-    "De Hert M, et al. Physical illness in patients with severe mental disorders. I. World Psychiatry. 2011;10:52–77.",
-    "Allison DB, et al. Antipsychotic-induced weight gain: a comprehensive research synthesis. Am J Psychiatry. 1999;156:1686–96.",
-    "McEvoy JP, et al. Efficacy and tolerability of olanzapine, quetiapine, and risperidone in the treatment of early psychosis: a randomized, double-blind 52-week comparison (CAFE). Am J Psychiatry. 2007;164:1050–60.",
-    "Lieberman JA, et al. Effectiveness of antipsychotic drugs in patients with chronic schizophrenia (CATIE). N Engl J Med. 2005;353:1209–23.",
-    "Huhn M, et al. Comparative efficacy and tolerability of 32 oral antipsychotics for the acute treatment of adults with multi-episode schizophrenia. Lancet. 2019;394:939–51.",
-    "Pillinger T, et al. Comparative effects of 18 antipsychotics on metabolic function. Lancet Psychiatry. 2020;7:64–77.",
-    "Kim SF, et al. Antipsychotic drug-induced weight gain mediated by histamine H1 receptor-linked activation of hypothalamic AMP-kinase. Proc Natl Acad Sci USA. 2007;104:3456–9.",
-    "Serretti A, Mandelli L. Antidepressants and body weight. J Clin Psychiatry. 2010;71:1259–72.",
-    "American Diabetes Association, et al. Consensus development conference on antipsychotic drugs and obesity and diabetes. Diabetes Care. 2004;27:596–601.",
-    "Vandenberghe F, et al. Importance of early weight changes to predict long-term weight gain during psychotropic drug treatment. J Clin Psychiatry. 2015;76:e1417–23. [verify pages]",
-    "Stroup TS, et al. A randomized trial examining the effectiveness of switching from olanzapine, quetiapine, or risperidone to aripiprazole (CAMP). Am J Psychiatry. 2011;168:947–56.",
-    "Fleischhacker WW, et al. Weight change on aripiprazole–clozapine combination. Int J Neuropsychopharmacol. 2010;13:1115–25.",
-    "de Silva VA, et al. Metformin in prevention and treatment of antipsychotic induced weight gain: a systematic review and meta-analysis. BMC Psychiatry. 2016;16:341.",
-    "Carolan A, et al. Metformin for the prevention of antipsychotic-induced weight gain: guideline development and consensus validation. Schizophr Bull. 2025;51(5). Published online December 2024. [verify pages]",
-    "Larsen JR, et al. Effect of liraglutide treatment on prediabetes and overweight or obesity in clozapine- or olanzapine-treated patients. JAMA Psychiatry. 2017;74:719–28.",
-    "Correll CU, et al. Combination of olanzapine and samidorphan for the treatment of schizophrenia (ENLIGHTEN-2). Am J Psychiatry. 2020;177:1168–78.",
-    "WHO Expert Consultation. Appropriate body-mass index for Asian populations and its implications for policy and intervention strategies. Lancet. 2004;363:157–63.",
-    "Eisenberg D, et al. 2022 ASMBS and IFSO indications for metabolic and bariatric surgery. Surg Obes Relat Dis. 2022;18:1345–56. [verify pages]"
+    "Carolan A, Hynes-Ryan C, Agarwal SM, et al. Metformin for the prevention of antipsychotic-induced weight gain: guideline development and consensus validation. Schizophr Bull. 2025;51(5):1193–1205. doi:10.1093/schbul/sbae205",
+    "Taylor DM, Barnes TRE, Young AH. The Maudsley Prescribing Guidelines in Psychiatry. 15th ed. Wiley-Blackwell. Tables 1.6 and 1.31. [verify year and pages]",
+    "Kaplan & Sadock's Comprehensive Textbook of Psychiatry. 11th ed. Chapter 27.4, including Tables 27.4-2 and 27.4-5. [verify chapter title, authors and pages]",
+    "American Diabetes Association Professional Practice Committee for Obesity. Pharmacologic treatment of obesity in adults: Standards of Care in Overweight and Obesity. Diabetes Obes Cardiometab CARE. 2026;1:5–36. doi:10.2337/dci25-0008",
+    "American Diabetes Association, American Psychiatric Association, American Association of Clinical Endocrinologists, North American Association for the Study of Obesity. Consensus development conference on antipsychotic drugs and obesity and diabetes. Diabetes Care. 2004;27:596–601.",
+    "Fleischhacker WW, Heikkinen ME, Olié JP, et al. Effects of adjunctive treatment with aripiprazole on body weight and clinical efficacy in schizophrenia patients treated with clozapine. Int J Neuropsychopharmacol. 2010;13:1115–25.",
+    "Correll CU, Newcomer JW, Silverman B, et al. Effects of olanzapine combined with samidorphan on weight gain in schizophrenia: a 24-week phase 3 study (ENLIGHTEN-2). Am J Psychiatry. 2020;177:1168–78.",
+    "Morgan AP, Crowley JJ, Nonneman RJ, et al. The antipsychotic olanzapine interacts with the gut microbiome to cause weight gain in mouse. PLoS One. 2014;9(12):e115225.",
+    "Allison DB, Mentore JL, Heo M, et al. Antipsychotic-induced weight gain: a comprehensive research synthesis. Am J Psychiatry. 1999;156:1686–96.",
+    "Lieberman JA, Stroup TS, McEvoy JP, et al. Effectiveness of antipsychotic drugs in patients with chronic schizophrenia (CATIE). N Engl J Med. 2005;353:1209–23.",
+    "McEvoy JP, Lieberman JA, Perkins DO, et al. Efficacy and tolerability of olanzapine, quetiapine, and risperidone in the treatment of early psychosis: a randomized, double-blind 52-week comparison (CAFE). Am J Psychiatry. 2007;164:1050–60."
   ]
 }
