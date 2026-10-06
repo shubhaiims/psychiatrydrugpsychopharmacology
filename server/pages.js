@@ -19,9 +19,13 @@ export async function serveLibraryPage(request, response) {
   });
 }
 
+// Public while the section is being built; to move it behind the paywall,
+// set authorize back to requireMember (login and paywall paths are kept for that).
+const ADVERSE_EFFECTS_PUBLIC = true;
+
 export async function serveAdverseEffectsPage(request, response) {
   return serveProtectedPage(request, response, {
-    authorize: requireMember,
+    authorize: ADVERSE_EFFECTS_PUBLIC ? async () => {} : requireMember,
     file: adverseEffectsPage,
     loginPath: "/login?next=%2Fadverse-effects",
     paywallPath: "/subscribe",

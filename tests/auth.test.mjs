@@ -249,14 +249,15 @@ test("protected library page redirects anonymous users to user login", async () 
   assert.equal(output.ended, true);
 });
 
-test("protected adverse-effects page redirects anonymous users to user login", async () => {
+test("adverse-effects page is open to anonymous users while in preview", async () => {
   const output = response();
+  output.end = function (body = "") { this.body = String(body); this.ended = true; };
 
   await serveAdverseEffectsPage(request(), output);
 
-  assert.equal(output.statusCode, 303);
-  assert.equal(output.getHeader("Location"), "/login?next=%2Fadverse-effects");
-  assert.equal(output.ended, true);
+  assert.equal(output.statusCode, 200);
+  assert.match(output.body, /id="aeData"/);
+  assert.match(output.body, /<meta name="robots" content="noindex, nofollow" \/>/);
 });
 
 test("admin page redirects signed-in non-admin users to admin login", async () => {
