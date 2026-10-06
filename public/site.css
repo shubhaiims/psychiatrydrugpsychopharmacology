@@ -39,6 +39,7 @@ body.dashboard-page {
 /* Sidebar: quieter type, accent rule for the active item instead of a filled block */
 body.dashboard-page .dashboard-sidebar { background: var(--ed-sunk); border-right: 1px solid var(--ed-rule); padding: 20px 14px; min-height: 100vh; }
 body.dashboard-page .dashboard-sidebar__brand { padding: 4px 8px 20px; border-bottom: 1px solid var(--ed-rule); margin-bottom: 14px; }
+body.browse-page .dashboard-sidebar__brand { text-decoration: none; }
 body.dashboard-page .dashboard-brand-name { font: 500 17px/1.15 var(--ed-serif); color: var(--ed-ink); letter-spacing: -0.005em; }
 body.dashboard-page .dashboard-brand-name em { color: var(--ed-accent); font-style: italic; }
 body.dashboard-page .dashboard-nav-item {
@@ -187,6 +188,32 @@ body.library-page .notebook-search-header p { color: var(--ed-muted); }
 body.library-page .primary-button { border-radius: 999px; background: var(--ed-accent); color: var(--ed-accent-ink); border: 1px solid var(--ed-accent); font: 600 14px/1 var(--ed-sans); padding: 13px 22px; box-shadow: none; }
 body.library-page .notebook-answer { border: 0; border-left: 2px solid var(--ed-accent); border-radius: 0; background: var(--ed-accent-wash); }
 body.library-page .site-footer { border-top: 1px solid var(--ed-rule); color: var(--ed-faint); font-size: 13px; text-align: center; padding: 28px 16px 40px; background: transparent; }
+
+@media (max-width: 1023px) {
+  body.browse-page .dashboard-sidebar {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    min-height: 0;
+    margin-top: var(--dashboard-topbar-height);
+    transform: none;
+    border-right: 0;
+    border-bottom: 1px solid var(--ed-rule);
+  }
+  body.browse-page .dashboard-sidebar__brand { display: none; }
+  body.browse-page .dashboard-sidebar__nav {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    overflow: visible;
+  }
+  body.browse-page .dashboard-sidebar__footer {
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 12px;
+    padding-top: 8px;
+  }
+  body.browse-page .dashboard-main { padding-top: 32px; }
+}
 
 @media (max-width: 900px) {
   body.library-page .workspace { grid-template-columns: minmax(0, 1fr); gap: 28px; }

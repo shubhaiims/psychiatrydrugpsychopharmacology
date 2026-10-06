@@ -11,17 +11,17 @@
     <link rel="stylesheet" href="/site.css" />
     <script src="/home.js" defer></script>
   </head>
-  <body class="dashboard-page">
+  <body class="dashboard-page browse-page">
     <a class="dashboard-skip-link" href="#main">Skip to content</a>
 
     <aside class="dashboard-sidebar" id="sidebar" aria-label="Primary navigation">
-      <div class="dashboard-sidebar__brand">
+      <a href="/" class="dashboard-sidebar__brand" aria-label="Psychiatry Made Easy home">
         <img src="/assets/psychiatry-made-easy-logo.png" alt="" class="dashboard-brand-mark" />
         <span class="dashboard-brand-name">Psychiatry <em>Made Easy</em></span>
-      </div>
+      </a>
 
       <nav class="dashboard-sidebar__nav">
-        <a href="/browse" class="dashboard-nav-item is-active">Home</a>
+        <a href="/" class="dashboard-nav-item">Home</a>
 
         <div class="dashboard-nav-group">
           <div class="dashboard-nav-split">
@@ -62,12 +62,8 @@
         <a href="#disclaimerBanner" class="dashboard-nav-item dashboard-nav-item--muted">Disclaimer</a>
       </div>
     </aside>
-    <div class="dashboard-sidebar-scrim" id="sidebarScrim" hidden></div>
 
     <header class="dashboard-topbar">
-      <button class="dashboard-icon-btn dashboard-topbar__menu" id="menuBtn" type="button" aria-label="Open menu" aria-controls="sidebar" aria-expanded="false">
-        <span class="dashboard-menu-icon" aria-hidden="true"></span>
-      </button>
       <a href="/" class="dashboard-topbar__brand" aria-label="Psychiatry Made Easy home">
         <img src="/assets/psychiatry-made-easy-logo.png" alt="" class="dashboard-brand-mark" />
       </a>
