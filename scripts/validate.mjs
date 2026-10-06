@@ -96,6 +96,29 @@ for (const entry of adverseEffects.drugPageOnly) {
   }
 }
 
+const topicFiles = (await readdir("server/data/adverse-effects")).filter((file) => file.endsWith(".json"));
+for (const file of topicFiles) {
+  const topic = JSON.parse(await readFile(`server/data/adverse-effects/${file}`, "utf8"));
+  if (`${topic.id}.json` !== file || !topicIds.has(topic.id)) {
+    throw new Error(`Adverse-effect content file ${file} must be named after a topic id in adverse-effects.json.`);
+  }
+  const ratedDrugs = new Set();
+  for (const rating of topic.drugRatings || []) {
+    // Library drugs are referenced by id; drugs outside the library carry a plain name.
+    if (rating.drug ? !ids.has(rating.drug) : !rating.name) {
+      throw new Error(`${file} rates unknown drug id: ${rating.drug || "(missing name)"}`);
+    }
+    if (!Object.hasOwn(topic.ratingScale || {}, rating.rating)) {
+      throw new Error(`${file} uses a rating not in its ratingScale: ${rating.rating}`);
+    }
+    const ratedKey = rating.drug || rating.name;
+    if (ratedDrugs.has(ratedKey)) {
+      throw new Error(`${file} rates ${ratedKey} more than once.`);
+    }
+    ratedDrugs.add(ratedKey);
+  }
+}
+
 const browserFiles = [
   "public/index.html",
   "public/browse.html",
