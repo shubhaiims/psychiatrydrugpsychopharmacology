@@ -8,6 +8,7 @@
     <link rel="icon" href="/assets/psychiatry-made-easy-logo.png" />
     <link rel="stylesheet" href="/styles.css" />
     <link rel="stylesheet" href="/theme.css" />
+    <link rel="stylesheet" href="/site.css" />
     <script src="/home.js" defer></script>
   </head>
   <body class="dashboard-page">
@@ -85,10 +86,27 @@
 
     <main class="dashboard-main" id="main">
       <section class="library-browse" aria-labelledby="browseHead">
+        <p class="home-eyebrow">Psychopharmacology reference</p>
         <h1 id="browseHead">Browse the drug library</h1>
         <p>Search by drug name above, or choose a medication class.</p>
         <div class="dashboard-chip-grid" id="classChips">
           <a class="dashboard-chip dashboard-chip--all" href="/library">All drugs</a>
+        </div>
+      </section>
+
+      <section class="ae-browse" aria-labelledby="aeBrowseHead">
+        <h2 id="aeBrowseHead">Browse adverse effects</h2>
+        <p>Organised by body system, from recognition to management.</p>
+        <div class="dashboard-chip-grid">
+          <a class="dashboard-chip" href="/adverse-effects#sys-metabolic-endocrine">Metabolic and endocrine</a>
+          <a class="dashboard-chip" href="/adverse-effects#sys-cardiovascular">Cardiovascular</a>
+          <a class="dashboard-chip" href="/adverse-effects#sys-neurological-movement">Neurological and movement</a>
+          <a class="dashboard-chip" href="/adverse-effects#sys-psychiatric-behavioral">Psychiatric and behavioural</a>
+          <a class="dashboard-chip" href="/adverse-effects#sys-blood-skin-immune">Blood, skin and immune</a>
+          <a class="dashboard-chip" href="/adverse-effects#sys-gut-liver-anticholinergic">Gut, liver and anticholinergic</a>
+          <a class="dashboard-chip" href="/adverse-effects#sys-breathing-sexual-pregnancy">Breathing, sexual function and pregnancy</a>
+          <a class="dashboard-chip" href="/adverse-effects#sys-class-warning">Class-wide warnings</a>
+          <a class="dashboard-chip dashboard-chip--all" href="/adverse-effects">All adverse effects</a>
         </div>
       </section>
 

@@ -26,6 +26,7 @@ const requiredFiles = [
   "server/adverse-effects.html",
   "public/adverse-effects.js",
   "public/adverse-effects.css",
+  "public/site.css",
   "server/admin.html",
   "server/index.js",
   "server/account.js",
