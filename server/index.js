@@ -33,6 +33,8 @@ loadDotEnv(resolve(rootDir, ".env"));
 const port = Number(process.env.PORT || 3000);
 const pageRoutes = new Map([
   ["/", "index.html"],
+  ["/search", "search.html"],
+  ["/search/", "search.html"],
   ["/browse", "browse.html"],
   ["/subscribe", "subscribe.html"],
   ["/subscribe/", "subscribe.html"],
@@ -81,6 +83,9 @@ const staticFiles = new Set([
   "landing.css",
   "theme.css",
   "landing.js",
+  "search.js",
+  "search-index.js",
+  "search.css",
   "subscribe.js",
   "account.js",
   "assets/fonts/newsreader-roman.woff2",

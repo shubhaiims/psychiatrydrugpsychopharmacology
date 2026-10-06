@@ -56,10 +56,13 @@
           <div class="lp-hero__light"></div>
           <div class="lp-hero__veil"></div>
         </div>
-        <div class="lp-search" role="search" aria-label="Site search">
-          <input id="siteSearch" type="search" placeholder="Search anything" aria-label="Search anything" autocomplete="off" aria-controls="siteSearchResults" />
-          <div id="siteSearchResults" class="lp-search__results" aria-label="Search results" hidden></div>
-        </div>
+    <form class="lp-search" action="/search" method="get" role="search" aria-label="Site search">
+      <input id="siteSearch" name="q" type="search" placeholder="Search anything" aria-label="Search anything" autocomplete="off" maxlength="200" required />
+      <button class="lp-search__submit" type="submit" aria-label="Search" title="Search">
+        <!-- Lucide Search icon (ISC license). -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      </button>
+    </form>
         <div class="lp-container lp-hero__content">
           <h1 class="lp-hero__title" id="heroTitle">
             <span class="lp-word">Psycho&shy;pharmacology,</span>

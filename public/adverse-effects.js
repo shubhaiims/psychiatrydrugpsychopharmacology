@@ -353,6 +353,11 @@
     let saved = "clinic";
     try { if (localStorage.getItem(MODE_KEY) === "learn") saved = "learn"; } catch { /* storage unavailable */ }
     setMode(saved, false);
+    const initialTarget = document.getElementById(window.location.hash.slice(1));
+    if (initialTarget && main.contains(initialTarget)) {
+      if (learn.contains(initialTarget)) openLearn();
+      window.requestAnimationFrame(() => initialTarget.scrollIntoView({ block: "start" }));
+    }
     buttons.forEach((b) => b.addEventListener("click", () => setMode(b.dataset.mode, true)));
     document.getElementById("aeGateOpen").addEventListener("click", () => {
       openLearn();

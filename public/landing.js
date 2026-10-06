@@ -6,18 +6,6 @@
   const motionToggle = document.querySelector("#motionToggle");
   const classList = document.querySelector("#classList");
   const motionKey = "pme_motion_paused";
-  const searchInput = document.querySelector("#siteSearch");
-  const searchResults = document.querySelector("#siteSearchResults");
-  let searchItems = [
-    { name: "Drug library", detail: "Medicines and monographs", href: "/browse" },
-    { name: "Alcohol withdrawal dose calculator", detail: "Benzodiazepine formulas", href: "/formulas" },
-    { name: "QTc calculator", detail: "Clinical tools", href: "/qtc" },
-    { name: "Membership plans", detail: "Subscription and pricing", href: "/subscribe" },
-    { name: "Account", detail: "Login and membership", href: "/account" }
-  ];
-  let searchLoading = false;
-  let searchLoaded = false;
-
   // Friendlier names for stored class labels
   const classLabels = {
     "Anxiolytic and hypnotic medications": "Anxiolytics and hypnotics",
@@ -25,103 +13,10 @@
   };
 
   initHeader();
-  initSearch();
   initMotionToggle();
   loadLibraryStats();
   loadPlan();
   loadSession();
-
-  function initSearch() {
-    if (!searchInput || !searchResults) return;
-    searchInput.addEventListener("input", renderSearch);
-    searchInput.addEventListener("focus", () => { loadSearchContent(); renderSearch(); });
-    searchInput.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") searchResults.hidden = true;
-      if (["ArrowDown", "Enter"].includes(event.key) && !searchResults.hidden) {
-        const first = searchResults.querySelector("a");
-        if (!first) return;
-        event.preventDefault();
-        if (event.key === "Enter") window.location.assign(first.href);
-        else first.focus();
-      }
-    });
-    document.addEventListener("click", (event) => {
-      if (!event.target.closest(".lp-search")) searchResults.hidden = true;
-    });
-    searchResults.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") {
-        searchInput.focus();
-        searchResults.hidden = true;
-      }
-    });
-  }
-
-  function renderSearch() {
-    if (!searchInput || !searchResults) return;
-    const query = searchInput.value.trim().toLowerCase();
-    searchResults.replaceChildren();
-    searchResults.hidden = !query;
-    if (!query) return;
-    const words = query.split(/\s+/);
-    const matches = searchItems.filter((item) => {
-      const text = `${item.name} ${item.detail} ${item.text || ""}`.toLowerCase();
-      return words.every((word) => text.includes(word));
-    }).sort((a, b) => Number(b.name.toLowerCase().includes(query)) - Number(a.name.toLowerCase().includes(query))).slice(0, 12);
-    for (const item of matches) {
-      const link = document.createElement("a");
-      link.href = item.href;
-      const name = document.createElement("span");
-      name.textContent = item.name;
-      const detail = document.createElement("small");
-      detail.textContent = item.detail;
-      link.append(name, detail);
-      searchResults.append(link);
-    }
-    if (!matches.length) {
-      const message = document.createElement("p");
-      message.textContent = searchLoading ? "Searching..." : "No results found.";
-      searchResults.append(message);
-    }
-  }
-
-  async function loadSearchContent() {
-    if (searchLoaded || searchLoading) return;
-    searchLoading = true;
-    const pages = [
-      ["/", "Psychiatry Made Easy"], ["/formulas", "Alcohol withdrawal dose calculator"],
-      ["/qtc", "QTc calculator"], ["/browse", "Drug library"],
-      ["/subscribe", "Membership plans"], ["/terms", "Terms"],
-      ["/privacy", "Privacy"], ["/refunds", "Refunds"], ["/contact", "Contact"],
-      ["/adverse-effects", "Adverse effects"]
-    ];
-    await Promise.allSettled([
-      ...pages.map(async ([href, name]) => {
-        const response = await fetch(href, { credentials: "same-origin" });
-        if (!response.ok || new URL(response.url).pathname !== href) return;
-        const page = new DOMParser().parseFromString(await response.text(), "text/html");
-        const embeddedContent = page.querySelector("#aeData")?.textContent || "";
-        page.querySelectorAll("script, style, nav, header, footer").forEach((node) => node.remove());
-        const item = searchItems.find((entry) => entry.href === href);
-        const text = `${page.querySelector("main")?.textContent || page.body.textContent} ${embeddedContent}`;
-        if (item) item.text = text;
-        else searchItems.push({ name, href, detail: "Website page", text });
-      }),
-      (async () => {
-        // This existing endpoint enforces membership; private content stays private.
-        const data = await getJson("/api/drugs");
-        for (const drug of data.drugs || []) {
-          const href = `/library?drug=${encodeURIComponent(drug.id)}`;
-          const item = searchItems.find((entry) => entry.href === href);
-          const text = Object.values(drug).join(" ");
-          if (item) item.text = text;
-          else searchItems.push({ name: drug.name, detail: drug.medicationGroup, href, text });
-        }
-      })()
-    ]);
-    searchLoading = false;
-    searchLoaded = true;
-    renderSearch();
-  }
 
   function initHeader() {
     if (!header) return;
@@ -159,13 +54,6 @@
       const data = await getJson("/api/dashboard");
       const drugs = Array.isArray(data.drugs) ? data.drugs.filter((drug) => drug && drug.id && drug.name) : [];
       if (!drugs.length) return;
-      searchItems = searchItems.concat(drugs.filter((drug) => !searchItems.some((item) => item.href === `/library?drug=${encodeURIComponent(drug.id)}`)).map((drug) => ({
-        name: String(drug.name),
-        detail: drug.medicationGroup || "Drug monograph",
-        text: String(drug.classification || ""),
-        href: `/library?drug=${encodeURIComponent(drug.id)}`
-      })));
-      renderSearch();
 
       const counts = new Map();
       for (const drug of drugs) {

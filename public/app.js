@@ -108,6 +108,10 @@
     } finally {
       loading = false;
       render();
+      const anchor = window.location.hash.slice(1);
+      if (sections.some(section => anchor === `section-${section.key}`)) {
+        window.requestAnimationFrame(() => document.getElementById(anchor)?.scrollIntoView({ block: "start" }));
+      }
     }
   }
 

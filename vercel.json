@@ -4,6 +4,8 @@
     "api/pages/[page].js": { "includeFiles": "server/{adverse-effects.html,data/adverse-effects.json,data/adverse-effects/**}" }
   },
   "rewrites": [
+    { "source": "/search", "destination": "/search.html" },
+    { "source": "/search/", "destination": "/search.html" },
     { "source": "/browse", "destination": "/browse.html" },
     { "source": "/browse/", "destination": "/browse.html" },
     { "source": "/subscribe", "destination": "/subscribe.html" },
