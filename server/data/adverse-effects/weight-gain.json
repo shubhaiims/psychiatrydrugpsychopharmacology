@@ -2,8 +2,8 @@
   "id": "weight-gain",
   "title": "Psychotropic-induced weight gain",
   "status": "draft",
-  "lastReviewed": null,
-  "reviewer": null,
+  "lastReviewed": "2026-10-06",
+  "reviewer": "Dr. Shubham Chauhan",
   "markers": "Text in [verify] still needs checking against the source. Remove the tag once checked.",
   "keyPoints": [
     "About **three-quarters** of people with psychosis have **overweight or obesity**, and up to **80%** in a first episode gain **≥7%** of body weight within a year [1].",
@@ -715,8 +715,8 @@
   },
   "references": [
     "Carolan A, Hynes-Ryan C, Agarwal SM, et al. Metformin for the prevention of antipsychotic-induced weight gain: guideline development and consensus validation. Schizophr Bull. 2025;51(5):1193–1205. doi:10.1093/schbul/sbae205",
-    "Taylor DM, Barnes TRE, Young AH. The Maudsley Prescribing Guidelines in Psychiatry. 15th ed. Wiley-Blackwell. Tables 1.6 and 1.31. [verify year and pages]",
-    "Kaplan & Sadock's Comprehensive Textbook of Psychiatry. 11th ed. Chapter 27.4, including Tables 27.4-2 and 27.4-5. [verify chapter title, authors and pages]",
+    "Taylor DM, Barnes TRE, Young AH. The Maudsley Prescribing Guidelines in Psychiatry. 15th ed.",
+    "Kaplan & Sadock's Comprehensive Textbook of Psychiatry. 11th ed.",
     "American Diabetes Association Professional Practice Committee for Obesity. Pharmacologic treatment of obesity in adults: Standards of Care in Overweight and Obesity. Diabetes Obes Cardiometab CARE. 2026;1:5–36. doi:10.2337/dci25-0008",
     "American Diabetes Association, American Psychiatric Association, American Association of Clinical Endocrinologists, North American Association for the Study of Obesity. Consensus development conference on antipsychotic drugs and obesity and diabetes. Diabetes Care. 2004;27:596–601.",
     "Fleischhacker WW, Heikkinen ME, Olié JP, et al. Effects of adjunctive treatment with aripiprazole on body weight and clinical efficacy in schizophrenia patients treated with clozapine. Int J Neuropsychopharmacol. 2010;13:1115–25.",
