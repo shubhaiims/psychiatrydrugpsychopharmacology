@@ -1,5 +1,8 @@
 {
   "version": 2,
+  "functions": {
+    "api/pages/[page].js": { "includeFiles": "server/{adverse-effects.html,data/adverse-effects.json,data/adverse-effects/**}" }
+  },
   "rewrites": [
     { "source": "/browse", "destination": "/browse.html" },
     { "source": "/browse/", "destination": "/browse.html" },
@@ -19,6 +22,8 @@
     { "source": "/api/admin/members", "destination": "/api/auth/members" },
     { "source": "/library", "destination": "/api/pages/library" },
     { "source": "/library/", "destination": "/api/pages/library" },
+    { "source": "/adverse-effects", "destination": "/api/pages/adverse-effects" },
+    { "source": "/adverse-effects/", "destination": "/api/pages/adverse-effects" },
     { "source": "/formulas", "destination": "/formulas.html" },
     { "source": "/formulas/", "destination": "/formulas.html" },
     { "source": "/research", "destination": "/research.html" },

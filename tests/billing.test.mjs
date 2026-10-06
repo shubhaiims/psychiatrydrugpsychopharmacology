@@ -9,7 +9,7 @@ import {
   requireMember,
   verifyPayment
 } from "../server/billing.js";
-import { serveLibraryPage } from "../server/pages.js";
+import { serveAdverseEffectsPage, serveLibraryPage } from "../server/pages.js";
 
 const originalFetch = global.fetch;
 const keys = [
@@ -159,6 +159,30 @@ test("with the paywall off, signed-in users keep library access", async () => {
   global.fetch = sessionFetch({ admin: false, accessUntil: null });
   const session = await requireMember(signedInRequest(), response());
   assert.equal(session.user.id, user.id);
+});
+
+test("signed-in users get the adverse-effects index and requested topic embedded", async () => {
+  global.fetch = sessionFetch({ admin: false, accessUntil: null });
+  const res = response();
+  await serveAdverseEffectsPage({ ...signedInRequest(), url: "/adverse-effects?topic=weight-gain" }, res);
+  assert.equal(res.statusCode, 200);
+  const data = JSON.parse(res.body.match(/<script type="application\/json" id="aeData">([\s\S]*?)<\/script>/)[1]);
+  assert.ok(data.systems.length > 0);
+  assert.ok(data.topics.some((topic) => topic.id === "weight-gain" && topic.published));
+  assert.equal(data.topic.id, "weight-gain");
+  assert.doesNotMatch(res.body.match(/id="aeData">([\s\S]*?)<\/script>/)[1], /</);
+});
+
+test("unknown or malformed adverse-effect topics fall back to the index", async () => {
+  global.fetch = sessionFetch({ admin: false, accessUntil: null });
+  for (const topic of ["not-a-topic", "../drugs", "WEIGHT-GAIN"]) {
+    const res = response();
+    await serveAdverseEffectsPage({ ...signedInRequest(), url: `/adverse-effects?topic=${encodeURIComponent(topic)}` }, res);
+    assert.equal(res.statusCode, 200);
+    const data = JSON.parse(res.body.match(/id="aeData">([\s\S]*?)<\/script>/)[1]);
+    assert.equal(data.topic, undefined, topic);
+    assert.equal(data.notFound, true, topic);
+  }
 });
 
 test("with the paywall on, non-members are sent to the membership page", async () => {

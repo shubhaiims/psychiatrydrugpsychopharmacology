@@ -22,7 +22,7 @@ import { createOrder, getMembershipStatus, getPublicBillingInfo, requireMember, 
 import { getDashboardData } from "./dashboard.js";
 import { listMembers } from "./members.js";
 import { createNotebookSource, deleteNotebookSource, listNotebookSources, searchNotebook } from "./notebook-store.js";
-import { serveAdminPage, serveLibraryPage } from "./pages.js";
+import { serveAdminPage, serveAdverseEffectsPage, serveLibraryPage } from "./pages.js";
 import { createDrug, deleteDrug, hasSupabaseConfig, listDrugs, replaceDrugs, updateDrug } from "./store.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -70,6 +70,8 @@ const staticFiles = new Set([
   "qtc.html",
   "qtc.js",
   "app.js",
+  "adverse-effects.css",
+  "adverse-effects.js",
   "admin.js",
   "auth.js",
   "assets/psychiatry-made-easy-logo.png",
@@ -255,6 +257,12 @@ async function routeApi(request, response, url) {
     return;
   }
 
+  if (url.pathname === "/api/pages/adverse-effects") {
+    if (method !== "GET") return methodNotAllowed(response, ["GET"]);
+    await serveAdverseEffectsPage(request, response);
+    return;
+  }
+
   if (url.pathname === "/api/admin/page") {
     if (method !== "GET") return methodNotAllowed(response, ["GET"]);
     await serveAdminPage(request, response);
@@ -361,6 +369,10 @@ async function routeApi(request, response, url) {
 async function routeStatic(request, response, url) {
   if (["/library", "/library/"].includes(url.pathname)) {
     await serveLibraryPage(request, response);
+    return;
+  }
+  if (["/adverse-effects", "/adverse-effects/"].includes(url.pathname)) {
+    await serveAdverseEffectsPage(request, response);
     return;
   }
   if (["/admin", "/admin/", "/admin/index.html"].includes(url.pathname)) {
