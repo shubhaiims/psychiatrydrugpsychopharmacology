@@ -12,7 +12,6 @@
     { name: "Drug library", detail: "Medicines and monographs", href: "/browse" },
     { name: "Alcohol withdrawal dose calculator", detail: "Benzodiazepine formulas", href: "/formulas" },
     { name: "QTc calculator", detail: "Clinical tools", href: "/qtc" },
-    { name: "Latest Research", detail: "Articles and updates", href: "/research" },
     { name: "Membership plans", detail: "Subscription and pricing", href: "/subscribe" },
     { name: "Account", detail: "Login and membership", href: "/account" }
   ];
@@ -107,12 +106,6 @@
         if (item) item.text = text;
         else searchItems.push({ name, href, detail: "Website page", text });
       }),
-      (async () => {
-        const data = await getJson("/research.json");
-        for (const article of data.items || []) {
-          searchItems.push({ name: article.title, detail: article.journal, text: Object.values(article).join(" "), href: "/research" });
-        }
-      })(),
       (async () => {
         // This existing endpoint enforces membership; private content stays private.
         const data = await getJson("/api/drugs");
