@@ -215,10 +215,10 @@
           <p class="eyebrow">${escapeHtml(drug.medicationGroup || "Psychopharmacology")}</p>
           <h1 class="detail-title">${escapeHtml(drug.name)}</h1>
         </div>
-        <div class="tag-row">
-          ${tag(`Target ${drug.targetDose || "not added"}`)}
-          ${tag(`Maximum ${drug.maximumDose || "not added"}`)}
-        </div>
+        <dl class="dose-strip">
+          <div><dt>Target dose</dt><dd>${escapeHtml(drug.targetDose || "Not added")}</dd></div>
+          <div><dt>Maximum dose</dt><dd>${escapeHtml(drug.maximumDose || "Not added")}</dd></div>
+        </dl>
       </div>
       <div class="detail-grid">
         ${sections.map((section) => renderSection(section, drug)).join("")}
@@ -384,10 +384,6 @@
   function textField(value) {
     if (Array.isArray(value)) return value.map((item) => String(item || "").trimEnd()).filter((item) => item.trim()).join("\n");
     return String(value || "").trim();
-  }
-
-  function tag(value) {
-    return `<span class="tag">${escapeHtml(value)}</span>`;
   }
 
   function formatInline(value) {

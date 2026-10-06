@@ -106,7 +106,8 @@ strong { font-weight: 700; color: var(--ink); }
 }
 .ae-search input::placeholder { color: var(--faint); }
 .ae-search input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-wash); }
-.ae-search svg { position: absolute; left: 16px; bottom: 16px; color: var(--faint); pointer-events: none; }
+.ae-search__field { position: relative; }
+.ae-search svg { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--faint); pointer-events: none; }
 .ae-stats { margin: 14px 0 0; color: var(--faint); font-size: 13px; font-variant-numeric: tabular-nums; }
 
 .ae-jump { display: flex; flex-wrap: wrap; gap: 8px; padding: 22px 0; border-bottom: 1px solid var(--rule); }

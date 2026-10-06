@@ -71,6 +71,7 @@ const staticFiles = new Set([
   "qtc.js",
   "app.js",
   "adverse-effects.css",
+  "site.css",
   "adverse-effects.js",
   "admin.js",
   "auth.js",

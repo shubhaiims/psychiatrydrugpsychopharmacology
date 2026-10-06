@@ -98,9 +98,9 @@
     main.innerHTML =
       '<header class="ae-hero"><div><p class="ae-eyebrow">Clinical reference</p><h1 class="ae-title">Adverse effects</h1>' +
       '<p class="ae-lead">Organised by body system. Each topic covers recognition, the drugs implicated, monitoring and management, with the mechanism and evidence behind it.</p></div>' +
-      '<div class="ae-search"><label for="aeSearch">Find an adverse effect</label>' +
+      '<div class="ae-search"><label for="aeSearch">Find an adverse effect</label><div class="ae-search__field">' +
       '<svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="6.5" stroke="currentColor" stroke-width="1.6"/><path d="m14 14 4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>' +
-      '<input id="aeSearch" type="search" placeholder="e.g. weight gain, QTc, prolactin" autocomplete="off" spellcheck="false" />' +
+      '<input id="aeSearch" type="search" placeholder="e.g. weight gain, QTc, prolactin" autocomplete="off" spellcheck="false" /></div>' +
       `<p class="ae-stats">${data.topics.length} topics across ${systems.length} body systems · ${published} available</p></div></header>` +
       (data.notFound ? '<p class="ae-notice">That topic is not available yet. Choose another from the list below.</p>' : "") +
       `<nav class="ae-jump" aria-label="Body systems">${jump}</nav>` +
@@ -185,7 +185,7 @@
 
   function keyPoints(t) {
     return '<section class="ae-keypoints" id="keypoints" aria-labelledby="keypoints-h"><h2 id="keypoints-h">Key points</h2><ol>' +
-      t.keyPoints.map((k) => `<li>${md(k)}</li>`).join("") + "</ol></section>";
+      t.keyPoints.map((k) => `<li><span>${md(k)}</span></li>`).join("") + "</ol></section>";
   }
 
   function features(t) {
