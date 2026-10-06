@@ -7,7 +7,7 @@ import {
   requireAdmin,
   requireUser
 } from "../server/auth.js";
-import { serveAdminPage, serveLibraryPage } from "../server/pages.js";
+import { serveAdminPage, serveAdverseEffectsPage, serveLibraryPage } from "../server/pages.js";
 import { supabaseServiceRequest } from "../server/supabase.js";
 
 const originalFetch = global.fetch;
@@ -246,6 +246,16 @@ test("protected library page redirects anonymous users to user login", async () 
 
   assert.equal(output.statusCode, 303);
   assert.equal(output.getHeader("Location"), "/login?next=%2Flibrary");
+  assert.equal(output.ended, true);
+});
+
+test("protected adverse-effects page redirects anonymous users to user login", async () => {
+  const output = response();
+
+  await serveAdverseEffectsPage(request(), output);
+
+  assert.equal(output.statusCode, 303);
+  assert.equal(output.getHeader("Location"), "/login?next=%2Fadverse-effects");
   assert.equal(output.ended, true);
 });
 
