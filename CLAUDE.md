@@ -9,7 +9,7 @@ These rules apply to all drug and adverse-effect content in this repository.
 - No brand names. Use generic names only.
 - Cite with numbered references in the text, e.g. [1] or [2,3], and give one numbered reference list at the bottom of each adverse-effect topic or drug page.
 - Every number needs a source. Anything not yet checked is marked [verify] until the user confirms it.
-- Cite books by authors (where known), title and edition only. No page numbers, chapters or years for books.
+- Cite books by authors or editors, title, edition, publisher and year. No page numbers or chapters.
 
 ## Sources the user has chosen
 - Antipsychotic weight-gain ratings: The Maudsley Prescribing Guidelines in Psychiatry, 15th ed. (Taylor, Barnes, Young), Table 1.31.

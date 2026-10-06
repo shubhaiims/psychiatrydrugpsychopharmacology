@@ -46,6 +46,11 @@
     "note": "Antipsychotics [2]; other drugs [3]. Drugs not shown are not rated in these sources.",
     "groupNote": "First-generation antipsychotics other than chlorpromazine and haloperidol have little individual data; they are rated moderate as a group [2]."
   },
+  "drugClasses": {
+    "antipsychotics": "Antipsychotics",
+    "antidepressants": "Antidepressants",
+    "moodStabilisers": "Mood stabilisers and anticonvulsants"
+  },
   "ratingScale": {
     "high": "High",
     "moderate": "Moderate",
@@ -57,234 +62,279 @@
     {
       "rating": "high",
       "source": 2,
-      "drug": "clozapine"
+      "drug": "clozapine",
+      "class": "antipsychotics"
     },
     {
       "rating": "high",
       "source": 2,
-      "drug": "olanzapine"
+      "drug": "olanzapine",
+      "class": "antipsychotics"
     },
     {
       "rating": "moderate",
       "source": 2,
-      "drug": "chlorpromazine"
+      "drug": "chlorpromazine",
+      "class": "antipsychotics"
     },
     {
       "rating": "moderate",
       "source": 2,
-      "drug": "iloperidone"
+      "drug": "iloperidone",
+      "class": "antipsychotics"
     },
     {
       "rating": "moderate",
       "source": 2,
-      "drug": "haloperidol"
+      "drug": "haloperidol",
+      "class": "antipsychotics"
     },
     {
       "rating": "moderate",
       "source": 2,
-      "drug": "quetiapine"
+      "drug": "quetiapine",
+      "class": "antipsychotics"
     },
     {
       "rating": "moderate",
       "source": 2,
-      "drug": "paliperidone"
+      "drug": "paliperidone",
+      "class": "antipsychotics"
     },
     {
       "rating": "moderate",
       "source": 2,
-      "drug": "risperidone"
+      "drug": "risperidone",
+      "class": "antipsychotics"
     },
     {
       "rating": "moderate",
       "source": 2,
       "drug": "fluphenazine",
-      "group": "FGA"
+      "group": "FGA",
+      "class": "antipsychotics"
     },
     {
       "rating": "moderate",
       "source": 2,
       "drug": "perphenazine",
-      "group": "FGA"
+      "group": "FGA",
+      "class": "antipsychotics"
     },
     {
       "rating": "moderate",
       "source": 2,
       "drug": "thioridazine",
-      "group": "FGA"
+      "group": "FGA",
+      "class": "antipsychotics"
     },
     {
       "rating": "moderate",
       "source": 2,
       "drug": "thiothixene",
-      "group": "FGA"
+      "group": "FGA",
+      "class": "antipsychotics"
     },
     {
       "rating": "moderate",
       "source": 2,
       "drug": "zuclopenthixol",
-      "group": "FGA"
+      "group": "FGA",
+      "class": "antipsychotics"
     },
     {
       "rating": "moderate",
       "source": 2,
       "drug": "loxapine",
-      "group": "FGA"
+      "group": "FGA",
+      "class": "antipsychotics"
     },
     {
       "rating": "moderate",
       "source": 2,
       "drug": "molindone",
-      "group": "FGA"
+      "group": "FGA",
+      "class": "antipsychotics"
     },
     {
       "rating": "moderate",
       "source": 2,
-      "name": "Sertindole"
+      "name": "Sertindole",
+      "class": "antipsychotics"
     },
     {
       "rating": "low",
       "source": 2,
-      "drug": "amisulpride"
+      "drug": "amisulpride",
+      "class": "antipsychotics"
     },
     {
       "rating": "low",
       "source": 2,
-      "drug": "aripiprazole"
+      "drug": "aripiprazole",
+      "class": "antipsychotics"
     },
     {
       "rating": "low",
       "source": 2,
-      "drug": "asenapine"
+      "drug": "asenapine",
+      "class": "antipsychotics"
     },
     {
       "rating": "low",
       "source": 2,
-      "drug": "brexpiprazole"
+      "drug": "brexpiprazole",
+      "class": "antipsychotics"
     },
     {
       "rating": "low",
       "source": 2,
-      "drug": "cariprazine"
+      "drug": "cariprazine",
+      "class": "antipsychotics"
     },
     {
       "rating": "low",
       "source": 2,
-      "drug": "lumateperone"
+      "drug": "lumateperone",
+      "class": "antipsychotics"
     },
     {
       "rating": "low",
       "source": 2,
-      "drug": "lurasidone"
+      "drug": "lurasidone",
+      "class": "antipsychotics"
     },
     {
       "rating": "low",
       "source": 2,
-      "drug": "sulpiride"
+      "drug": "sulpiride",
+      "class": "antipsychotics"
     },
     {
       "rating": "low",
       "source": 2,
-      "drug": "trifluoperazine"
+      "drug": "trifluoperazine",
+      "class": "antipsychotics"
     },
     {
       "rating": "low",
       "source": 2,
-      "drug": "ziprasidone"
+      "drug": "ziprasidone",
+      "class": "antipsychotics"
     },
     {
       "rating": "moderate",
       "source": 3,
-      "drug": "paroxetine"
+      "drug": "paroxetine",
+      "class": "antidepressants"
     },
     {
       "rating": "moderate",
       "source": 3,
-      "drug": "carbamazepine"
+      "drug": "carbamazepine",
+      "class": "moodStabilisers"
     },
     {
       "rating": "moderate",
       "source": 3,
-      "name": "Divalproex"
+      "name": "Divalproex",
+      "class": "moodStabilisers"
     },
     {
       "rating": "moderate",
       "source": 3,
-      "name": "Lithium"
+      "name": "Lithium",
+      "class": "moodStabilisers"
     },
     {
       "rating": "low",
       "source": 3,
-      "drug": "mirtazapine"
+      "drug": "mirtazapine",
+      "class": "antidepressants"
     },
     {
       "rating": "low",
       "source": 3,
-      "drug": "trazodone"
+      "drug": "trazodone",
+      "class": "antidepressants"
     },
     {
       "rating": "low",
       "source": 3,
-      "drug": "fluoxetine"
+      "drug": "fluoxetine",
+      "class": "antidepressants"
     },
     {
       "rating": "low",
       "source": 3,
-      "drug": "citalopram"
+      "drug": "citalopram",
+      "class": "antidepressants"
     },
     {
       "rating": "low",
       "source": 3,
-      "drug": "escitalopram"
+      "drug": "escitalopram",
+      "class": "antidepressants"
     },
     {
       "rating": "low",
       "source": 3,
-      "drug": "sertraline"
+      "drug": "sertraline",
+      "class": "antidepressants"
     },
     {
       "rating": "low",
       "source": 3,
-      "drug": "duloxetine"
+      "drug": "duloxetine",
+      "class": "antidepressants"
     },
     {
       "rating": "low",
       "source": 3,
-      "name": "Imipramine"
+      "name": "Imipramine",
+      "class": "antidepressants"
     },
     {
       "rating": "low",
       "source": 3,
-      "name": "Amitriptyline"
+      "name": "Amitriptyline",
+      "class": "antidepressants"
     },
     {
       "rating": "minimal",
       "source": 3,
-      "drug": "fluvoxamine"
+      "drug": "fluvoxamine",
+      "class": "antidepressants"
     },
     {
       "rating": "minimal",
       "source": 3,
-      "drug": "venlafaxine"
+      "drug": "venlafaxine",
+      "class": "antidepressants"
     },
     {
       "rating": "minimal",
       "source": 3,
-      "name": "Lamotrigine"
+      "name": "Lamotrigine",
+      "class": "moodStabilisers"
     },
     {
       "rating": "loss",
       "source": 3,
-      "drug": "bupropion"
+      "drug": "bupropion",
+      "class": "antidepressants"
     },
     {
       "rating": "loss",
       "source": 3,
-      "name": "Topiramate"
+      "name": "Topiramate",
+      "class": "moodStabilisers"
     },
     {
       "rating": "loss",
       "source": 3,
-      "name": "Zonisamide"
+      "name": "Zonisamide",
+      "class": "moodStabilisers"
     }
   ],
   "monitoring": {
@@ -542,7 +592,7 @@
     }
   },
   "mechanism": {
-    "intro": "Clozapine, olanzapine, quetiapine and mirtazapine block both **H1 and 5-HT2C** receptors [3]. Quetiapine's 5-HT2C blockade comes mainly from its active metabolite, norquetiapine. [verify]",
+    "intro": "Clozapine, olanzapine, quetiapine and mirtazapine block both **H1 and 5-HT2C** receptors [3].",
     "diagrams": [
       {
         "title": "Appetite: H1 and 5-HT2C blockade",
@@ -716,7 +766,7 @@
   "references": [
     "Carolan A, Hynes-Ryan C, Agarwal SM, et al. Metformin for the prevention of antipsychotic-induced weight gain: guideline development and consensus validation. Schizophr Bull. 2025;51(5):1193–1205. doi:10.1093/schbul/sbae205",
     "Taylor DM, Barnes TRE, Young AH. The Maudsley Prescribing Guidelines in Psychiatry. 15th ed.",
-    "Kaplan & Sadock's Comprehensive Textbook of Psychiatry. 11th ed.",
+    "Boland R, Verduin ML, eds. Kaplan & Sadock's Comprehensive Textbook of Psychiatry. 11th ed. Wolters Kluwer; 2024.",
     "American Diabetes Association Professional Practice Committee for Obesity. Pharmacologic treatment of obesity in adults: Standards of Care in Overweight and Obesity. Diabetes Obes Cardiometab CARE. 2026;1:5–36. doi:10.2337/dci25-0008",
     "American Diabetes Association, American Psychiatric Association, American Association of Clinical Endocrinologists, North American Association for the Study of Obesity. Consensus development conference on antipsychotic drugs and obesity and diabetes. Diabetes Care. 2004;27:596–601.",
     "Fleischhacker WW, Heikkinen ME, Olié JP, et al. Effects of adjunctive treatment with aripiprazole on body weight and clinical efficacy in schizophrenia patients treated with clozapine. Int J Neuropsychopharmacol. 2010;13:1115–25.",
