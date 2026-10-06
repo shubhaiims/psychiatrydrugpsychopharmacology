@@ -5,15 +5,40 @@
   "lastReviewed": null,
   "reviewer": null,
   "markers": "Text in [verify] still needs checking against the source. Remove the tag once checked.",
+  "sections": {
+    "clinic": [
+      "keyPoints",
+      "clinicalFeatures",
+      "riskFactors",
+      "drugsImplicated",
+      "monitoring",
+      "management"
+    ],
+    "learn": [
+      "mechanism",
+      "differentialDiagnosis",
+      "keyEvidence",
+      "examPearls",
+      "selfTest",
+      "references"
+    ]
+  },
+  "redFlags": null,
   "keyPoints": [
     "Weight gain is fastest in the **first 4–12 weeks**. A **≥5% gain in the first month** predicts substantial long-term gain, so act early.",
     "**H1 + 5-HT2C blockade** is the strongest receptor predictor. Clozapine, olanzapine and mirtazapine block both.",
     "**Metformin** has the strongest evidence for prevention and treatment. Start it alongside clozapine or olanzapine.",
     "**Monitor everyone:** weight, waist, BP, glucose/HbA1c and lipids, at baseline and on a fixed schedule."
   ],
-  "definition": {
-    "text": "Clinically significant weight gain is a rise of **≥7% from baseline body weight**, the threshold used in CATIE and CAFE. An early gain of **≥5% in the first month** is the main warning sign.",
-    "thresholds": [
+  "clinicalFeatures": {
+    "definition": "Clinically significant weight gain is a rise of **≥7% from baseline body weight**, the threshold used in CATIE and CAFE.",
+    "course": {
+      "onset": "Steepest in **weeks 4–12**; can continue for a year or more",
+      "doseRelated": "Weakly; drug choice matters more than dose [verify]",
+      "reversible": "Partly, after switching or adding treatment"
+    },
+    "consequences": "Metabolic syndrome, type 2 diabetes, dyslipidaemia, fatty liver disease and cardiovascular disease. Also harms self-image and is a leading reason patients stop medication.",
+    "bodySize": [
       {
         "measure": "BMI, obesity",
         "general": "≥30 kg/m²",
@@ -35,7 +60,7 @@
         "asian": "Use IDF ethnic cut-offs"
       }
     ],
-    "labThresholds": [
+    "labs": [
       {
         "test": "Fasting glucose, diabetes",
         "si": "≥7.0 mmol/L",
@@ -68,11 +93,6 @@
       }
     ]
   },
-  "whyItMatters": [
-    "People with severe mental illness die 10–20 years earlier than the general population, and cardiometabolic disease is a leading cause. Obesity affects roughly **45–55%** of people with schizophrenia, about 1.5–2 times the general-population rate.",
-    "In the CAFE trial of early psychosis, **80% on olanzapine, 58% on risperidone and 50% on quetiapine** gained ≥7% of baseline weight within 52 weeks.",
-    "Weight gain leads to metabolic syndrome, type 2 diabetes, dyslipidaemia, fatty liver disease and cardiovascular disease. It also harms self-image and quality of life, and it is a leading reason patients stop their medication."
-  ],
   "riskFactors": [
     "Children, adolescents and young adults",
     "First episode, or little or no previous antipsychotic exposure",
@@ -81,6 +101,23 @@
     "Personal or family history of obesity, diabetes or cardiovascular disease",
     "Using a high-risk drug, or combining several weight-promoting drugs"
   ],
+  "drugsImplicated": {
+    "ratingScale": {
+      "high": "High",
+      "moderate": "Moderate",
+      "low": "Low",
+      "minimal": "Minimal or weight-neutral",
+      "loss": "Weight loss more likely"
+    },
+    "notInLibrary": "Also relevant but not yet in the library: TCAs (amitriptyline, doxepin, imipramine) and phenelzine (high); valproate (high); lithium and zotepine (moderate); lamotrigine (neutral); topiramate and zonisamide (weight loss)."
+  },
+  "ratingScale": {
+    "high": "High",
+    "moderate": "Moderate",
+    "low": "Low",
+    "minimal": "Minimal or weight-neutral",
+    "loss": "Weight loss more likely"
+  },
   "drugRatings": [
     {
       "drug": "clozapine",
@@ -441,14 +478,6 @@
       "verify": true
     }
   ],
-  "ratingScale": {
-    "high": "High",
-    "moderate": "Moderate",
-    "low": "Low",
-    "minimal": "Minimal or weight-neutral",
-    "loss": "Weight loss more likely"
-  },
-  "notInLibrary": "Also relevant but not yet in the library: TCAs (amitriptyline, doxepin, imipramine) and phenelzine (high); valproate (high); lithium and zotepine (moderate); lamotrigine (neutral); topiramate and zonisamide (weight loss).",
   "monitoring": {
     "source": "ADA/APA consensus 2004",
     "columns": [
@@ -533,84 +562,89 @@
       "Check glucose and lipids at 12 weeks even if weight is stable. Metabolic change can start before weight changes."
     ]
   },
-  "management": [
-    {
-      "step": "Always",
-      "items": [
-        "Diet, exercise and behavioural support from the start of treatment.",
-        "Review the whole regimen for weight-promoting drugs."
-      ]
-    },
-    {
-      "step": "Switch if clinically possible",
-      "items": [
-        "Move to a lower-risk agent: **aripiprazole, ziprasidone, lurasidone**, or **bupropion** for depression.",
-        "Weigh the risk of relapse. In CAMP, switching to aripiprazole led to more weight loss but **more patients stopped treatment** than in the stay group. For patients stable on clozapine, switching is rarely right.",
-        "**Adjunctive aripiprazole** (5–15 mg/day) added to clozapine produces modest weight loss."
-      ]
-    },
-    {
-      "step": "Add metformin",
-      "items": [
-        "**When to start (Carolan 2024 guideline):** with any high-risk antipsychotic (olanzapine, clozapine); with a medium-risk antipsychotic (quetiapine, risperidone, paliperidone) if the patient has a cardiometabolic risk factor, is **aged 10–25**, or has BMI 25–30; and with **any** antipsychotic if weight rises **>3% in the first year**.",
-        "**Effect:** starting metformin with the antipsychotic reduced weight gain by about **4 kg** versus control. In established gain, mean loss was about **3.3 kg** versus placebo, with improved insulin resistance."
-      ]
-    }
-  ],
-  "metformin": {
-    "titration": [
+  "management": {
+    "steps": [
       {
-        "week": "1",
-        "dose": "500 mg once daily with breakfast"
+        "step": "Always",
+        "items": [
+          "Diet, exercise and behavioural support from the start of treatment.",
+          "Review the whole regimen for weight-promoting drugs."
+        ]
       },
       {
-        "week": "2",
-        "dose": "500 mg twice daily with meals"
+        "step": "Switch if clinically possible",
+        "items": [
+          "Move to a lower-risk agent: **aripiprazole, ziprasidone, lurasidone**, or **bupropion** for depression.",
+          "Weigh the risk of relapse. In CAMP, switching to aripiprazole led to more weight loss but **more patients stopped treatment** than in the stay group. For patients stable on clozapine, switching is rarely right.",
+          "**Adjunctive aripiprazole** (5–15 mg/day) added to clozapine produces modest weight loss."
+        ]
       },
       {
-        "week": "3",
-        "dose": "500 mg morning + 1000 mg evening"
-      },
-      {
-        "week": "4 onward",
-        "dose": "1000 mg twice daily (range 1000–2000 mg/day)"
+        "step": "Add metformin",
+        "items": [
+          "**When to start (Carolan 2024 guideline):** with any high-risk antipsychotic (olanzapine, clozapine); with a medium-risk antipsychotic (quetiapine, risperidone, paliperidone) if the patient has a cardiometabolic risk factor, is **aged 10–25**, or has BMI 25–30; and with **any** antipsychotic if weight rises **>3% in the first year**.",
+          "Dosing and safety: see **Metformin** below."
+        ]
       }
     ],
-    "titrationNote": "Extended-release tablets taken with food reduce nausea and diarrhoea.",
-    "safety": [
-      "Check **eGFR** before starting. **eGFR <30: contraindicated.**",
-      "**eGFR 30–45:** US label: do not start. UK label: start at a reduced dose, maximum 1000 mg/day, and review. **eGFR 45–59:** UK maximum 2000 mg/day.",
-      "Check **vitamin B12** periodically on long-term treatment.",
-      "Avoid in **harmful or excessive alcohol use** and in conditions that predispose to lactic acidosis.",
-      "**Children and adolescents:** metformin is licensed for type 2 diabetes from age 10. Dose per local paediatric guidance. [verify]"
-    ]
-  },
-  "otherOptions": [
-    {
-      "option": "GLP-1 receptor agonists",
-      "notes": "**Liraglutide** (up to 3 mg/day): −5.3 kg versus placebo in clozapine- or olanzapine-treated patients (RCT). Evidence for **semaglutide** is growing. Watch for GI effects."
-    },
-    {
-      "option": "Olanzapine + samidorphan",
-      "notes": "ENLIGHTEN-2: **17.8% vs 29.8%** gained ≥10% body weight at 24 weeks, versus olanzapine alone. Contraindicated with opioids. Not available in all regions."
-    },
-    {
-      "option": "Topiramate",
-      "notes": "50–200 mg/day. Reduces weight; cognitive slowing and paraesthesia limit use."
-    },
-    {
-      "option": "Naltrexone/bupropion",
-      "notes": "Licensed for obesity; little data specifically in drug-induced weight gain."
-    },
-    {
-      "option": "Orlistat",
-      "notes": "Weak evidence in this population. GI side effects limit adherence."
-    },
-    {
-      "option": "Bariatric surgery",
-      "notes": "2022 ASMBS/IFSO: recommended at **BMI ≥35**; consider at **30–34.9** with metabolic disease. Asian populations: lower thresholds, with surgery offered from **BMI ≥27.5**. [verify] Psychiatric illness does not exclude referral. Re-check lithium levels and other drug dosing afterwards, because absorption changes."
+    "subsections": {
+      "metformin": {
+        "titration": [
+          {
+            "week": "1",
+            "dose": "500 mg once daily with breakfast"
+          },
+          {
+            "week": "2",
+            "dose": "500 mg twice daily with meals"
+          },
+          {
+            "week": "3",
+            "dose": "500 mg morning + 1000 mg evening"
+          },
+          {
+            "week": "4 onward",
+            "dose": "1000 mg twice daily (range 1000–2000 mg/day)"
+          }
+        ],
+        "titrationNote": "Extended-release tablets taken with food reduce nausea and diarrhoea.",
+        "safety": [
+          "Check **eGFR** before starting. **eGFR <30: contraindicated.**",
+          "**eGFR 30–45:** US label: do not start. UK label: start at a reduced dose, maximum 1000 mg/day, and review. **eGFR 45–59:** UK maximum 2000 mg/day.",
+          "Check **vitamin B12** periodically on long-term treatment.",
+          "Avoid in **harmful or excessive alcohol use** and in conditions that predispose to lactic acidosis.",
+          "**Children and adolescents:** metformin is licensed for type 2 diabetes from age 10. Dose per local paediatric guidance. [verify]"
+        ],
+        "effect": "Starting metformin with the antipsychotic reduced weight gain by about **4 kg** versus control. In established gain, mean loss was about **3.3 kg** versus placebo, with improved insulin resistance."
+      },
+      "otherOptions": [
+        {
+          "option": "GLP-1 receptor agonists",
+          "notes": "**Liraglutide** (up to 3 mg/day): −5.3 kg versus placebo in clozapine- or olanzapine-treated patients (RCT). Evidence for **semaglutide** is growing. Watch for GI effects."
+        },
+        {
+          "option": "Olanzapine + samidorphan",
+          "notes": "ENLIGHTEN-2: **17.8% vs 29.8%** gained ≥10% body weight at 24 weeks, versus olanzapine alone. Contraindicated with opioids. Not available in all regions."
+        },
+        {
+          "option": "Topiramate",
+          "notes": "50–200 mg/day. Reduces weight; cognitive slowing and paraesthesia limit use."
+        },
+        {
+          "option": "Naltrexone/bupropion",
+          "notes": "Licensed for obesity; little data specifically in drug-induced weight gain."
+        },
+        {
+          "option": "Orlistat",
+          "notes": "Weak evidence in this population. GI side effects limit adherence."
+        },
+        {
+          "option": "Bariatric surgery",
+          "notes": "2022 ASMBS/IFSO: recommended at **BMI ≥35**; consider at **30–34.9** with metabolic disease. Asian populations: lower thresholds, with surgery offered from **BMI ≥27.5**. [verify] Psychiatric illness does not exclude referral. Re-check lithium levels and other drug dosing afterwards, because absorption changes."
+        }
+      ]
     }
-  ],
+  },
   "mechanism": [
     {
       "level": "Central",
@@ -653,7 +687,22 @@
       "effect": "Altered energy harvest. Evidence is mostly preclinical."
     }
   ],
-  "evidence": [
+  "differentialDiagnosis": [
+    "**Hypothyroidism**, including lithium-induced: check TSH.",
+    "**Cushing's syndrome** or **corticosteroid** treatment.",
+    "**Pregnancy.**",
+    "**Fluid retention or oedema** rather than fat gain.",
+    "**Polycystic ovary syndrome**, including valproate-associated.",
+    "**Recovery of appetite** as depression or psychosis improves.",
+    "**Lifestyle change:** inactivity, diet, **stopping smoking**, alcohol.",
+    "**Other weight-promoting drugs:** insulin, sulfonylureas, beta-blockers."
+  ],
+  "keyEvidence": [
+    {
+      "study": "De Hert 2011",
+      "finding": "People with severe mental illness die **10–20 years earlier**, largely from cardiometabolic disease. Obesity affects about **45–55%** of people with schizophrenia, 1.5–2 times the general-population rate.",
+      "tag": "World Psychiatry 2011"
+    },
     {
       "study": "Allison 1999",
       "finding": "Mean gain at **10 weeks**: clozapine ~4.5 kg, olanzapine ~4.2 kg, risperidone ~2.1 kg, haloperidol ~1.1 kg, ziprasidone ~0.04 kg.",
