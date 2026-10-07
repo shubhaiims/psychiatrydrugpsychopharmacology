@@ -17,3 +17,4 @@ These rules apply to all drug and adverse-effect content in this repository.
 - Approach to antipsychotic-induced weight gain and metformin: Carolan et al., Schizophr Bull 2025;51(5):1193-1205.
 - Obesity medications, goals and follow-up: ADA Standards of Care in Overweight and Obesity, Diabetes Obes Cardiometab CARE 2026;1:5-36.
 - QT prolongation (antipsychotic QTc effect, risk factors, non-psychotropic QT drugs, management by QTc): The Maudsley Prescribing Guidelines in Psychiatry, 15th ed. (Taylor, Barnes, Young), Tables 1.35-1.38.
+- QT prolongation (antidepressant and other psychotropic QTc effect, prescribing, ECG screening, monitoring, referral): Taylor, Gaughran, Pillinger. The Maudsley Practice Guidelines for Physical Health Conditions in Psychiatry. Wiley-Blackwell; 2020. Table 3.1, Boxes 3.4-3.5.

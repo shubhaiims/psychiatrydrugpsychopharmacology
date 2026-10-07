@@ -2,17 +2,64 @@
   "id": "qtc-prolongation",
   "title": "QTc prolongation",
   "status": "draft",
-  "draftNote": "Content collected from the user, not yet written up. Kept outside server/data/adverse-effects/ so it is not published. Source tables: Maudsley 15th ed. Tables 1.35-1.38.",
+  "draftNote": "Content collected from the user, not yet written up. Kept outside server/data/adverse-effects/ so it is not published. Source [1]: Maudsley Prescribing Guidelines 15th ed., Tables 1.35-1.38. Source [2]: Maudsley Practice Guidelines for Physical Health Conditions, Table 3.1, Boxes 3.4-3.5 and the QT chapter text.",
   "drugRatings": {
     "source": 1,
-    "scale": ["none", "low", "moderate", "high", "unknown"],
-    "labels": { "none": "No effect", "low": "Low effect", "moderate": "Moderate effect", "high": "High effect", "unknown": "Unknown effect" },
+    "scale": [
+      "none",
+      "low",
+      "moderate",
+      "high",
+      "unknown"
+    ],
+    "labels": {
+      "none": "No effect",
+      "low": "Low effect",
+      "moderate": "Moderate effect",
+      "high": "High effect",
+      "unknown": "Unknown effect"
+    },
     "antipsychotics": {
-      "none": ["brexpiprazole", "cariprazine", "lurasidone", "lumateperone"],
-      "low": ["aripiprazole", "asenapine", "clozapine", "flupentixol", "fluphenazine", "perphenazine", "prochlorperazine", "olanzapine", "paliperidone", "risperidone", "sulpiride", "zuclopenthixol"],
-      "moderate": ["amisulpride", "chlorpromazine", "haloperidol", "iloperidone", "levomepromazine", "melperone", "pimavanserin", "quetiapine", "ziprasidone"],
-      "high": ["pimozide", "sertindole"],
-      "unknown": ["loxapine", "pipotiazine", "trifluoperazine"]
+      "none": [
+        "brexpiprazole",
+        "cariprazine",
+        "lurasidone",
+        "lumateperone"
+      ],
+      "low": [
+        "aripiprazole",
+        "asenapine",
+        "clozapine",
+        "flupentixol",
+        "fluphenazine",
+        "perphenazine",
+        "prochlorperazine",
+        "olanzapine",
+        "paliperidone",
+        "risperidone",
+        "sulpiride",
+        "zuclopenthixol"
+      ],
+      "moderate": [
+        "amisulpride",
+        "chlorpromazine",
+        "haloperidol",
+        "iloperidone",
+        "levomepromazine",
+        "melperone",
+        "pimavanserin",
+        "quetiapine",
+        "ziprasidone"
+      ],
+      "high": [
+        "pimozide",
+        "sertindole"
+      ],
+      "unknown": [
+        "loxapine",
+        "pipotiazine",
+        "trifluoperazine"
+      ]
     },
     "footnotes": {
       "lumateperone": "Limited clinical experience; an association with QT prolongation may emerge.",
@@ -24,9 +71,35 @@
   "riskFactors": {
     "source": 1,
     "groups": [
-      { "group": "Cardiac", "items": ["Long QT syndrome", "Bradycardia", "Ischaemic heart disease", "Myocarditis", "Myocardial infarction", "Left ventricular hypertrophy"] },
-      { "group": "Metabolic", "items": ["Hypokalaemia", "Hypomagnesaemia", "Hypocalcaemia"] },
-      { "group": "Others", "items": ["Extreme physical exertion", "Stress or shock", "Anorexia nervosa", "Extremes of age: children and elderly may be more susceptible to QT changes", "Female sex"] }
+      {
+        "group": "Cardiac",
+        "items": [
+          "Long QT syndrome",
+          "Bradycardia",
+          "Ischaemic heart disease",
+          "Myocarditis",
+          "Myocardial infarction",
+          "Left ventricular hypertrophy"
+        ]
+      },
+      {
+        "group": "Metabolic",
+        "items": [
+          "Hypokalaemia",
+          "Hypomagnesaemia",
+          "Hypocalcaemia"
+        ]
+      },
+      {
+        "group": "Others",
+        "items": [
+          "Extreme physical exertion",
+          "Stress or shock",
+          "Anorexia nervosa",
+          "Extremes of age: children and elderly may be more susceptible to QT changes",
+          "Female sex"
+        ]
+      }
     ],
     "note": "Hypokalaemia-related QTc prolongation is more common in acute psychotic admissions. Physical and genetic factors (cardiac potassium channels, CYP enzyme function) may not be found on routine examination but probably predispose to arrhythmia."
   },
@@ -34,10 +107,48 @@
     "source": 1,
     "note": "Not a complete list.",
     "groups": [
-      { "group": "Antibiotics", "items": ["Erythromycin", "Clarithromycin", "Ampicillin", "Co-trimoxazole", "Pentamidine"], "extra": "Some quinolones affect QTc; see the manufacturer's information." },
-      { "group": "Antimalarials", "items": ["Chloroquine", "Mefloquine", "Quinine"] },
-      { "group": "Antiarrhythmics", "items": ["Quinidine", "Disopyramide", "Procainamide", "Sotalol", "Amiodarone", "Bretylium"] },
-      { "group": "Others", "items": ["Amantadine", "Ciclosporin", "Diphenhydramine", "Hydroxyzine", "Methadone", "Nicardipine", "Tamoxifen"] }
+      {
+        "group": "Antibiotics",
+        "items": [
+          "Erythromycin",
+          "Clarithromycin",
+          "Ampicillin",
+          "Co-trimoxazole",
+          "Pentamidine"
+        ],
+        "extra": "Some quinolones affect QTc; see the manufacturer's information."
+      },
+      {
+        "group": "Antimalarials",
+        "items": [
+          "Chloroquine",
+          "Mefloquine",
+          "Quinine"
+        ]
+      },
+      {
+        "group": "Antiarrhythmics",
+        "items": [
+          "Quinidine",
+          "Disopyramide",
+          "Procainamide",
+          "Sotalol",
+          "Amiodarone",
+          "Bretylium"
+        ]
+      },
+      {
+        "group": "Others",
+        "items": [
+          "Amantadine",
+          "Ciclosporin",
+          "Diphenhydramine",
+          "Hydroxyzine",
+          "Methadone",
+          "Nicardipine",
+          "Tamoxifen"
+        ]
+      }
     ],
     "after": "Beta-2 agonists and sympathomimetics may provoke TdP in patients with a prolonged QTc."
   },
@@ -45,13 +156,218 @@
     "source": 1,
     "appliesTo": "Patients taking antipsychotics",
     "rows": [
-      { "qtc": "<440 ms (men) or <470 ms (women)", "action": "None, unless T-wave morphology is abnormal", "cardiology": "Consider if in doubt" },
-      { "qtc": ">440 ms (men) or >470 ms (women) but <500 ms", "action": "Consider reducing the dose or switching to a drug of lower effect; repeat ECG", "cardiology": "Consider" },
-      { "qtc": ">500 ms", "action": "Repeat ECG. Stop the suspected causative drug(s) and switch to a drug of lower effect", "cardiology": "Immediately" },
-      { "qtc": "Abnormal T-wave morphology", "action": "Review treatment. Consider reducing the dose or switching to a drug of lower effect", "cardiology": "Immediately" }
+      {
+        "qtc": "<440 ms (men) or <470 ms (women)",
+        "action": "None, unless T-wave morphology is abnormal",
+        "cardiology": "Consider if in doubt"
+      },
+      {
+        "qtc": ">440 ms (men) or >470 ms (women) but <500 ms",
+        "action": "Consider reducing the dose or switching to a drug of lower effect; repeat ECG",
+        "cardiology": "Consider"
+      },
+      {
+        "qtc": ">500 ms",
+        "action": "Repeat ECG. Stop the suspected causative drug(s) and switch to a drug of lower effect",
+        "cardiology": "Immediately"
+      },
+      {
+        "qtc": "Abnormal T-wave morphology",
+        "action": "Review treatment. Consider reducing the dose or switching to a drug of lower effect",
+        "cardiology": "Immediately"
+      }
     ]
   },
   "references": [
-    "Taylor DM, Barnes TRE, Young AH. The Maudsley Prescribing Guidelines in Psychiatry. 15th ed. Wiley-Blackwell; 2025."
+    "Taylor DM, Barnes TRE, Young AH. The Maudsley Prescribing Guidelines in Psychiatry. 15th ed. Wiley-Blackwell; 2025.",
+    "Taylor DM, Gaughran F, Pillinger T. The Maudsley Practice Guidelines for Physical Health Conditions in Psychiatry. Wiley-Blackwell; 2020."
+  ],
+  "psychotropicEffects": {
+    "source": 2,
+    "definitions": {
+      "high": "Significant average QTc prolongation at therapeutic doses (usually >20 ms)",
+      "moderate": "Moderate average QTc prolongation at therapeutic doses (10-20 ms)",
+      "low": "Severe QTc prolongation only in overdose, or small average increases (<10 ms)",
+      "none": "No known QTc prolongation at therapeutic doses or in overdose"
+    },
+    "antipsychotics": {
+      "none": [
+        "brexpiprazole",
+        "cariprazine",
+        "lurasidone"
+      ],
+      "low": [
+        "aripiprazole",
+        "asenapine",
+        "clozapine",
+        "flupentixol",
+        "fluphenazine",
+        "loxapine",
+        "olanzapine",
+        "paliperidone",
+        "perphenazine",
+        "prochlorperazine",
+        "risperidone",
+        "sulpiride"
+      ],
+      "moderate": [
+        "amisulpride",
+        "chlorpromazine",
+        "haloperidol",
+        "iloperidone",
+        "levomepromazine",
+        "melperone",
+        "quetiapine",
+        "ziprasidone"
+      ],
+      "high": [
+        "Any intravenous antipsychotic",
+        "pimozide",
+        "sertindole",
+        "Any drug or combination of drugs used in doses exceeding the recommended maximum"
+      ],
+      "unknown": [
+        "pipotiazine",
+        "trifluoperazine",
+        "zuclopenthixol"
+      ]
+    },
+    "antidepressants": {
+      "none": [
+        "paroxetine",
+        "fluvoxamine",
+        "sertraline"
+      ],
+      "low": [
+        "fluoxetine",
+        "venlafaxine",
+        "bupropion",
+        "duloxetine",
+        "mirtazapine",
+        "amitriptyline",
+        "trazodone"
+      ],
+      "moderate": [
+        "citalopram",
+        "escitalopram",
+        "clomipramine",
+        "trimipramine",
+        "nortriptyline",
+        "imipramine"
+      ]
+    },
+    "others": {
+      "none": [
+        "carbamazepine",
+        "valproate",
+        "lamotrigine",
+        "benzodiazepines",
+        "gabapentin",
+        "pregabalin"
+      ],
+      "low": [
+        "buprenorphine",
+        "lithium",
+        "promethazine",
+        "memantine",
+        "galantamine"
+      ],
+      "moderate": [
+        "methadone (especially >100 mg/day)"
+      ]
+    },
+    "cyp450Inhibitors": [
+      "paroxetine",
+      "fluvoxamine",
+      "sertraline",
+      "fluoxetine"
+    ],
+    "cyp450Note": "P450 inhibitor, so may prolong QTc when combined with another QTc-prolonging drug."
+  },
+  "prescribing": {
+    "source": 2,
+    "intro": "High-quality evidence and consensus on prescribing and monitoring QTc-prolonging drugs are lacking.",
+    "considerations": [
+      "Avoid QTc-prolonging medication where possible.",
+      "Avoid combining QTc-prolonging drugs; the effect is likely additive.",
+      "Use the lowest effective dose and avoid drugs with significant metabolic interactions; QTc prolongation is likely dose-dependent.",
+      "Assess cardiac risk (personal and family history, cardiac symptoms, cardiovascular risk factors) before starting any drug with moderate or high QTc effect.",
+      "Consider an ECG before starting any QTc-prolonging drug; repeat at steady state or if cardiovascular risk factors are present.",
+      "Consider consulting a cardiologist before starting a QTc-prolonging drug if there are cardiovascular risk factors or symptoms suggesting arrhythmia."
+    ]
+  },
+  "ecgScreening": {
+    "source": 2,
+    "originNote": "Box 3.4 summarises NICE guidance. Per site rules, show the criteria without naming the country-specific body.",
+    "before": "Offer a screening ECG before starting an antipsychotic known to prolong QTc if:",
+    "criteria": [
+      "Specified in the drug's product information",
+      "A cardiovascular risk factor is found on history or examination (e.g. hypertension)",
+      "Personal history of cardiovascular disease",
+      "The patient is an inpatient or being admitted"
+    ],
+    "repeat": "Consider repeating the ECG once the therapeutic dose is reached, then yearly."
+  },
+  "approach": {
+    "source": 2,
+    "prescribingScreeningMonitoring": [
+      "Avoid QTc-prolonging medication if possible",
+      "Use the lowest effective dose",
+      "Avoid polypharmacy",
+      "Assess cardiovascular risk and consider a screening ECG",
+      "Consult a cardiologist if in doubt"
+    ],
+    "assessment": [
+      "Screen for symptoms of arrhythmia",
+      "Identify pharmacological and non-pharmacological causes",
+      "Assess cardiovascular risk",
+      "Bloods plus ECG (with or without 24-hour tape or echocardiogram)"
+    ],
+    "management": [
+      "Consider stopping or reducing the dose of offending drugs",
+      "Address non-pharmacological risk factors",
+      "Monitor proactively",
+      "Refer to a cardiologist if: >500 ms or >60 ms increase; history suggesting arrhythmia; prior cardiac event; unable to stop or reduce the medication"
+    ]
+  },
+  "initialManagement": {
+    "source": 2,
+    "rationalising": [
+      "Weigh the risk of continuing treatment (QTc prolongation) against the risk of changing it (deterioration in mental state).",
+      "Where possible, stop or reduce the dose of the QTc-prolonging drug, particularly when QTc is >500 ms.",
+      "Consider changing to a treatment with lower QTc risk.",
+      "When in doubt, discuss with cardiology."
+    ],
+    "nonPharmacological": {
+      "note": "Likely to be done by medical colleagues rather than psychiatrists.",
+      "items": [
+        "Replace electrolytes.",
+        "Optimise cardiovascular risk (hypertension, hypercholesterolaemia, hyperlipidaemia, diabetes, smoking cessation, lifestyle advice).",
+        "Optimise other relevant medical conditions (e.g. thyroid disease, heart failure)."
+      ]
+    },
+    "monitoring": [
+      "Repeat ECG 1-2 weeks after any significant dose change.",
+      "Then monitor every 6-12 months."
+    ]
+  },
+  "referral": {
+    "source": 2,
+    "immediate": [
+      "QTc >500 ms, or a rise of >60 ms since starting the QTc-prolonging drug",
+      "New unexplained cardiac symptoms plus QTc >440 ms (men) or >470 ms (women)",
+      "History suggesting arrhythmia"
+    ],
+    "discussBeforeStarting": [
+      "Cardiovascular disease",
+      "Other significant non-pharmacological risk factors",
+      "Already taking a QTc-prolonging drug"
+    ]
+  },
+  "sourceConflicts": [
+    "Loxapine: unknown [1] vs low [2].",
+    "Zuclopenthixol: low [1] vs unknown [2].",
+    "Lumateperone (no effect) and pimavanserin (moderate) appear only in [1].",
+    "[2] adds 'any intravenous antipsychotic' and 'any drug or combination above the maximum dose' as high effect."
   ]
 }
