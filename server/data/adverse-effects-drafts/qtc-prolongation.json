@@ -1,0 +1,57 @@
+{
+  "id": "qtc-prolongation",
+  "title": "QTc prolongation",
+  "status": "draft",
+  "draftNote": "Content collected from the user, not yet written up. Kept outside server/data/adverse-effects/ so it is not published. Source tables: Maudsley 15th ed. Tables 1.35-1.38.",
+  "drugRatings": {
+    "source": 1,
+    "scale": ["none", "low", "moderate", "high", "unknown"],
+    "labels": { "none": "No effect", "low": "Low effect", "moderate": "Moderate effect", "high": "High effect", "unknown": "Unknown effect" },
+    "antipsychotics": {
+      "none": ["brexpiprazole", "cariprazine", "lurasidone", "lumateperone"],
+      "low": ["aripiprazole", "asenapine", "clozapine", "flupentixol", "fluphenazine", "perphenazine", "prochlorperazine", "olanzapine", "paliperidone", "risperidone", "sulpiride", "zuclopenthixol"],
+      "moderate": ["amisulpride", "chlorpromazine", "haloperidol", "iloperidone", "levomepromazine", "melperone", "pimavanserin", "quetiapine", "ziprasidone"],
+      "high": ["pimozide", "sertindole"],
+      "unknown": ["loxapine", "pipotiazine", "trifluoperazine"]
+    },
+    "footnotes": {
+      "lumateperone": "Limited clinical experience; an association with QT prolongation may emerge.",
+      "aripiprazole": "One case of torsades de pointes (TdP) and two of QT prolongation reported, and an association with TdP in database studies. Healthy-volunteer data suggest QTc prolongation of about 8 ms. May increase QT dispersion. Low-dose aripiprazole added to another antipsychotic has no effect on QT.",
+      "olanzapine": "Isolated cases of QTc prolongation; acts on the cardiac IKr channel. Other data suggest no effect on QTc.",
+      "amisulpride": "TdP common in overdose; strong association with TdP at clinical doses."
+    }
+  },
+  "riskFactors": {
+    "source": 1,
+    "groups": [
+      { "group": "Cardiac", "items": ["Long QT syndrome", "Bradycardia", "Ischaemic heart disease", "Myocarditis", "Myocardial infarction", "Left ventricular hypertrophy"] },
+      { "group": "Metabolic", "items": ["Hypokalaemia", "Hypomagnesaemia", "Hypocalcaemia"] },
+      { "group": "Others", "items": ["Extreme physical exertion", "Stress or shock", "Anorexia nervosa", "Extremes of age: children and elderly may be more susceptible to QT changes", "Female sex"] }
+    ],
+    "note": "Hypokalaemia-related QTc prolongation is more common in acute psychotic admissions. Physical and genetic factors (cardiac potassium channels, CYP enzyme function) may not be found on routine examination but probably predispose to arrhythmia."
+  },
+  "nonPsychotropics": {
+    "source": 1,
+    "note": "Not a complete list.",
+    "groups": [
+      { "group": "Antibiotics", "items": ["Erythromycin", "Clarithromycin", "Ampicillin", "Co-trimoxazole", "Pentamidine"], "extra": "Some quinolones affect QTc; see the manufacturer's information." },
+      { "group": "Antimalarials", "items": ["Chloroquine", "Mefloquine", "Quinine"] },
+      { "group": "Antiarrhythmics", "items": ["Quinidine", "Disopyramide", "Procainamide", "Sotalol", "Amiodarone", "Bretylium"] },
+      { "group": "Others", "items": ["Amantadine", "Ciclosporin", "Diphenhydramine", "Hydroxyzine", "Methadone", "Nicardipine", "Tamoxifen"] }
+    ],
+    "after": "Beta-2 agonists and sympathomimetics may provoke TdP in patients with a prolonged QTc."
+  },
+  "management": {
+    "source": 1,
+    "appliesTo": "Patients taking antipsychotics",
+    "rows": [
+      { "qtc": "<440 ms (men) or <470 ms (women)", "action": "None, unless T-wave morphology is abnormal", "cardiology": "Consider if in doubt" },
+      { "qtc": ">440 ms (men) or >470 ms (women) but <500 ms", "action": "Consider reducing the dose or switching to a drug of lower effect; repeat ECG", "cardiology": "Consider" },
+      { "qtc": ">500 ms", "action": "Repeat ECG. Stop the suspected causative drug(s) and switch to a drug of lower effect", "cardiology": "Immediately" },
+      { "qtc": "Abnormal T-wave morphology", "action": "Review treatment. Consider reducing the dose or switching to a drug of lower effect", "cardiology": "Immediately" }
+    ]
+  },
+  "references": [
+    "Taylor DM, Barnes TRE, Young AH. The Maudsley Prescribing Guidelines in Psychiatry. 15th ed. Wiley-Blackwell; 2025."
+  ]
+}
