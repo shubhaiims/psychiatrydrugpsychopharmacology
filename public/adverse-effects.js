@@ -16,17 +16,17 @@
   }
 
   const MODE_KEY = "pme-ae-mode";
-  const RISK_ORDER = ["high", "moderate", "low", "minimal", "loss"];
   const ARROW = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10m-4-4 4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
   function esc(value) {
     return String(value ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
   }
 
-  // Inline markup used in content files: **bold** and numbered citations [1] or [1,2].
+  // Inline markup used in content files: **bold**, site links [text](/path) or [text](#section) and numbered citations [1] or [1,2].
   function md(value) {
     return esc(value)
       .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+      .replace(/\[([^\]]+)\]\((\/[^)\s]*|#[\w-]+)\)/g, '<a href="$2">$1</a>')
       .replace(/\[(\d+(?:,\d+)*)\]/g, (match, nums) =>
         '<sup class="cite">[' + nums.split(",").map((n) => `<a href="#ref-${n}" aria-label="Reference ${n}">${n}</a>`).join(",") + "]</sup>");
   }
@@ -135,7 +135,8 @@
       ? new Date(`${t.lastReviewed}T00:00:00`).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })
       : "";
 
-    const clinic = [
+    const isBlocks = Array.isArray(t.sections);
+    const clinic = isBlocks ? [["keypoints", "Key points"], ...t.sections.filter((x) => x.part !== "learn").map((x) => [x.id, x.title])] : [
       ["keypoints", "Key points"],
       ["features", "Clinical features"],
       ["risk", "Risk factors"],
@@ -143,7 +144,8 @@
       ["monitoring", "Monitoring"],
       ["management", "Management"]
     ];
-    const learn = [
+    const learnSections = isBlocks ? t.sections.filter((x) => x.part === "learn") : [];
+    const learn = isBlocks ? [...learnSections.map((x) => [x.id, x.title]), ...(t.selfTest ? [["selftest", "Self-test"]] : [])] : [
       ["mechanism", "Mechanism"],
       ["differential", "Differential diagnosis"],
       ["evidence", "Key evidence"],
@@ -171,16 +173,51 @@
       `<nav class="ae-rail" aria-label="On this page"><div><h2>Use it</h2>${rail(clinic)}</div><div id="aeRailLearn"><h2>Understand it</h2>${rail(learn, true)}</div>` +
       `<div><h2>Sources</h2><ul><li><a href="#references">References</a></li></ul></div></nav>` +
       '<article class="ae-content">' +
-      keyPoints(t) + features(t) + risk(t) + drugs(t) + monitoring(t) + management(t) +
+      keyPoints(t) + (isBlocks ? t.sections.filter((x) => x.part !== "learn").map((x) => blockSection(x, t)).join("")
+        : features(t) + risk(t) + drugs(t) + monitoring(t) + management(t)) +
       '<div class="ae-divider">Understand it</div>' +
       '<div class="ae-gate" id="aeGate"><div><strong>Mechanism, evidence and exam preparation</strong>' +
-      '<p>Mechanism, differential diagnosis, key evidence, exam pearls and a self-test.</p></div>' +
+      `<p>${esc(isBlocks ? learn.map(([, label]) => label).join(", ") : "Mechanism, differential diagnosis, key evidence, exam pearls and a self-test")}.</p></div>` +
       '<button type="button" class="ae-btn" id="aeGateOpen">Show these sections</button></div>' +
-      '<div id="aeLearn">' + mechanism(t) + differential(t) + evidence(t) + exam(t) + selfTest(t) + "</div>" +
+      '<div id="aeLearn">' + (isBlocks ? learnSections.map((x) => blockSection(x, t)).join("") + (t.selfTest ? selfTest(t) : "")
+        : mechanism(t) + differential(t) + evidence(t) + exam(t) + selfTest(t)) + "</div>" +
       references(t) +
       "</article></div>";
 
-    wireTopic();
+    wireTopic(learn[0] ? learn[0][0] : "");
+  }
+
+  // ===== Block-based topics =====
+  // Newer topics list their sections in order ("part": "learn" puts a section under Understand it);
+  // each section is a list of simple blocks, so a topic needs no topic-specific code.
+  function blockSection(x, t) {
+    return section(x.id, x.title, x.sub || "", x.blocks.map((b) => block(b, t)).join(""));
+  }
+
+  function block(b, t) {
+    if (b.p) return `<p>${md(b.p)}</p>`;
+    if (b.h3) return `<h3 class="ae-h3"${b.id ? ` id="${esc(b.id)}"` : ""}>${md(b.h3)}</h3>`;
+    if (b.h4) return `<p class="ae-h4">${md(b.h4)}</p>`;
+    if (b.list) return list(b.list, b.plain);
+    if (b.table) return table(b.table.head, b.table.rows, b.table.stack !== false);
+    if (b.note) return `<p class="ae-note">${md(b.note)}</p>`;
+    if (b.callout) return `<p class="ae-callout">${md(b.callout)}</p>`;
+    if (b.facts) return '<div class="ae-facts">' + b.facts.map((f) => `<div><span>${esc(f.label)}</span>${md(f.text)}</div>`).join("") + "</div>";
+    if (b.steps) return '<ol class="ae-steps">' + b.steps.map((st) =>
+      `<li><div><h3>${esc(st.step)}</h3>${list(st.items, true)}</div></li>`).join("") + "</ol>";
+    if (b.cols) return `<div class="ae-cols${b.cols.length === 3 ? " ae-cols--3" : ""}">` +
+      b.cols.map((col) => `<div>${col.map((c) => block(c, t)).join("")}</div>`).join("") + "</div>";
+    if (b.chains) return '<div class="ae-diagrams">' + b.chains.map(chain).join("") + "</div>";
+    if (b.drugs) return drugTiers(t);
+    return "";
+  }
+
+  // A straight-line diagram: each step leads to the next.
+  function chain(c) {
+    const last = c.steps.length - 1;
+    return `<figure class="ae-diagram"><figcaption>${esc(c.title)} ${md(c.cite || "")}</figcaption><p class="ae-dctx"></p>` +
+      c.steps.map((step, i) => (i ? '<div class="ae-arrow" aria-hidden="true"></div>' : "") +
+        `<div class="ae-node${i === 0 ? " ae-node--start" : i === last ? " ae-node--end" : ""}">${md(step)}</div>`).join("") + "</figure>";
   }
 
   function keyPoints(t) {
@@ -206,27 +243,32 @@
   }
 
   function drugs(t) {
+    const body = drugTiers(t);
+    const notes = t.drugsImplicated || {};
+    return section("drugs", "Drugs implicated", notes.note || "",
+      body + `<p class="ae-note">Underlined drugs open their library page; grey names are not in the library.` +
+      (notes.groupNote ? ` G: ${md(notes.groupNote)}` : "") + "</p>");
+  }
+
+  // Ratings grouped by drug class, in the order of the topic's rating scale.
+  function drugTiers(t) {
     const classes = t.drugClasses || {};
-    const body = Object.keys(classes).map((cls) => {
+    return Object.keys(classes).map((cls) => {
       const inClass = t.drugRatings.filter((r) => r.class === cls);
       if (!inClass.length) return "";
-      const tiers = RISK_ORDER.map((level) => {
+      const tiers = Object.keys(t.ratingScale).map((level) => {
         const items = inClass.filter((r) => r.rating === level);
         if (!items.length) return "";
         const names = items.map((r) => {
-          const group = r.group ? '<sup title="Rated as a group">G</sup>' : "";
+          const group = (r.group ? '<sup title="Rated as a group">G</sup>' : "") + (r.mark ? `<sup>${esc(r.mark)}</sup>` : "");
           return r.drug
             ? `<a class="ae-drug" href="/library?drug=${encodeURIComponent(r.drug)}">${esc(titleCase(r.drug))}${group}</a>`
             : `<span class="ae-drug ae-drug--out">${esc(r.name)}</span>`;
         }).join("");
         return `<div class="ae-tier"><div class="ae-tier__label"><i class="ae-dot ae-dot--${level}"></i>${esc(t.ratingScale[level])}</div><div class="ae-tier__drugs">${names}</div></div>`;
       }).join("");
-      return `<div class="ae-class"><h3>${esc(classes[cls])}</h3>${tiers}</div>`;
+      return `<div class="ae-class"><h3>${md(classes[cls])}</h3>${tiers}</div>`;
     }).join("");
-    const notes = t.drugsImplicated || {};
-    return section("drugs", "Drugs implicated", notes.note || "",
-      body + `<p class="ae-note">Underlined drugs open their library page; grey names are not in the library.` +
-      (notes.groupNote ? ` G: ${md(notes.groupNote)}` : "") + "</p>");
   }
 
   function monitoring(t) {
@@ -321,7 +363,7 @@
       '<ol class="ae-refs">' + t.references.map((r, i) => `<li id="ref-${i + 1}">${md(r)}</li>`).join("") + "</ol></section>";
   }
 
-  function wireTopic() {
+  function wireTopic(firstLearnId) {
     const learn = document.getElementById("aeLearn");
     const gate = document.getElementById("aeGate");
     const hint = document.getElementById("aeModeHint");
@@ -358,10 +400,15 @@
       if (learn.contains(initialTarget)) openLearn();
       window.requestAnimationFrame(() => initialTarget.scrollIntoView({ block: "start" }));
     }
-    buttons.forEach((b) => b.addEventListener("click", () => setMode(b.dataset.mode, true)));
+    // Clicking Clinic or Learn also jumps to the start of that part of the page.
+    buttons.forEach((b) => b.addEventListener("click", () => {
+      setMode(b.dataset.mode, true);
+      const target = b.dataset.mode === "learn" ? document.getElementById(firstLearnId || "mechanism") : document.getElementById("keypoints");
+      target?.scrollIntoView({ block: "start", behavior: "smooth" });
+    }));
     document.getElementById("aeGateOpen").addEventListener("click", () => {
       openLearn();
-      document.getElementById("mechanism").scrollIntoView({ block: "start" });
+      document.getElementById(firstLearnId || "mechanism")?.scrollIntoView({ block: "start" });
     });
 
     // Links into folded sections open them first.
@@ -377,7 +424,7 @@
     });
 
     const quiz = document.getElementById("aeQuiz");
-    quiz.addEventListener("click", (event) => {
+    quiz?.addEventListener("click", (event) => {
       const choice = event.target.closest("button");
       if (!choice) return;
       quiz.querySelectorAll("button").forEach((b) => {

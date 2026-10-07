@@ -201,6 +201,8 @@ strong { font-weight: 700; color: var(--ink); }
 .ae-dot--low { background: var(--risk-low); }
 .ae-dot--minimal { background: var(--risk-minimal); }
 .ae-dot--loss { background: var(--risk-loss); }
+.ae-dot--none { background: var(--risk-minimal); }
+.ae-dot--unknown { box-shadow: inset 0 0 0 1.5px var(--faint); }
 .ae-tier__drugs { display: flex; flex-wrap: wrap; gap: 6px 18px; }
 .ae-drug { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule-strong); font-size: 15px; padding-bottom: 1px; transition: border-color .15s, color .15s; }
 a.ae-drug:hover { color: var(--link); border-bottom-color: var(--link); }
