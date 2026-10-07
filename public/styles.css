@@ -2338,18 +2338,7 @@ button,
   --qtc-muted: var(--dashboard-muted);
   --qtc-line: var(--dashboard-border);
   --qtc-bg-soft: var(--dashboard-surface-2);
-  min-height: 100vh;
-  margin-left: var(--dashboard-sidebar-width);
-  padding-top: var(--dashboard-topbar-height);
-  background: var(--dashboard-bg);
   color: var(--qtc-ink);
-  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
-}
-
-.qtc-tool__wrap {
-  width: min(1080px, 100%);
-  margin: 0 auto;
-  padding: 34px 40px 56px;
 }
 
 .qtc-tool__head {
@@ -2357,15 +2346,14 @@ button,
   justify-content: space-between;
   align-items: flex-start;
   gap: 18px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid var(--qtc-line);
+  margin-bottom: 24px;
 }
 
 .qtc-tool__head h1 {
-  margin: 0 0 8px;
+  margin: 0 0 4px;
   color: var(--dashboard-text);
-  font-size: 29px;
-  font-weight: 800;
+  font-size: 26px;
+  font-weight: 700;
   letter-spacing: 0;
   line-height: 1.15;
 }
@@ -2374,8 +2362,7 @@ button,
   max-width: 78ch;
   margin: 0;
   color: var(--qtc-muted);
-  font-size: 19px;
-  line-height: 1.55;
+  font-size: 14.5px;
 }
 
 .qtc-tool__actions {
@@ -2384,8 +2371,8 @@ button,
 }
 
 .qtc-icon-btn {
-  width: 50px;
-  min-height: 50px;
+  width: 44px;
+  min-height: 44px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -2406,7 +2393,7 @@ button,
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 0;
-  margin: 20px 0 22px;
+  margin: 0 0 14px;
   overflow: hidden;
   border: 1px solid var(--qtc-line);
   border-radius: 8px;
@@ -2419,18 +2406,17 @@ button,
 
 .qtc-acc__btn {
   width: 100%;
-  min-height: 48px;
+  min-height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 12px 16px;
+  padding: 10px 16px;
   border: 0;
   background: var(--dashboard-surface);
   color: var(--qtc-ink);
   cursor: pointer;
   font: inherit;
-  font-size: 16px;
   font-weight: 700;
 }
 
@@ -2450,60 +2436,64 @@ button,
   padding: 6px 18px 16px;
   border-top: 1px solid var(--qtc-line);
   color: var(--qtc-muted);
-  font-size: 15px;
   line-height: 1.55;
 }
 
 .qtc-tool__form {
-  margin-top: 8px;
+  display: grid;
+  gap: 18px;
 }
 
 .qtc-row {
   display: grid;
-  grid-template-columns: minmax(180px, 0.9fr) minmax(360px, 1fr);
-  gap: 28px;
-  align-items: start;
-  padding: 20px 0;
-  border-bottom: 1px solid var(--qtc-line);
+  gap: 7px;
 }
 
 .qtc-row__label {
-  padding-top: 12px;
-  color: var(--qtc-ink);
-  font-size: 20px;
-  line-height: 1.3;
+  color: var(--dashboard-muted);
+  font-size: 0.77rem;
+  font-weight: 850;
+  letter-spacing: 0.04em;
+  line-height: 1.35;
+  text-transform: uppercase;
 }
 
 .qtc-listbox {
   width: 100%;
-  max-width: 516px;
-  margin-left: auto;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   overflow: hidden;
   border: 1px solid var(--qtc-line);
-  border-radius: 8px;
+  border-radius: 9px;
   box-shadow: 0 2px 5px rgba(15, 23, 42, 0.12);
 }
 
 .qtc-listbox__opt {
-  min-height: 49px;
+  min-height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 11px 16px;
-  border-bottom: 1px solid var(--qtc-line);
+  padding: 8px 10px;
+  border-right: 1px solid var(--qtc-line);
   background: var(--dashboard-surface);
   color: var(--qtc-ink);
   cursor: pointer;
-  font-size: 16px;
   font-weight: 700;
 }
 
 .qtc-listbox__opt:last-child {
-  border-bottom: 0;
+  border-right: 0;
+}
+
+.qtc-listbox__opt,
+.qtc-seg__opt {
+  position: relative;
 }
 
 .qtc-listbox__opt input,
 .qtc-seg__opt input {
+  width: 1px;
+  height: 1px;
   position: absolute;
   opacity: 0;
   pointer-events: none;
@@ -2518,26 +2508,23 @@ button,
 
 .qtc-field {
   width: 100%;
-  max-width: 516px;
-  min-height: 53px;
+  min-height: 44px;
   display: flex;
-  margin-left: auto;
   overflow: hidden;
   border: 1px solid var(--qtc-line);
-  border-radius: 10px;
+  border-radius: 9px;
   background: var(--dashboard-surface-2);
 }
 
 .qtc-field input {
   min-width: 0;
   flex: 1;
-  min-height: 53px;
-  padding: 12px 15px;
+  min-height: 44px;
+  padding: 0 12px;
   border: 0;
   background: var(--dashboard-surface-2);
   color: var(--qtc-ink);
   font: inherit;
-  font-size: 20px;
 }
 
 .qtc-field input:focus {
@@ -2559,7 +2546,7 @@ button,
   border-left: 1px solid var(--qtc-line);
   background: var(--dashboard-surface);
   color: var(--qtc-ink);
-  font-size: 17px;
+  font: inherit;
   font-weight: 700;
   white-space: nowrap;
 }
@@ -2577,13 +2564,11 @@ button,
 
 .qtc-seg {
   width: 100%;
-  max-width: 516px;
-  min-height: 53px;
+  min-height: 44px;
   display: flex;
-  margin-left: auto;
   overflow: hidden;
   border: 1px solid var(--qtc-line);
-  border-radius: 10px;
+  border-radius: 9px;
   box-shadow: 0 2px 5px rgba(15, 23, 42, 0.1);
 }
 
@@ -2592,13 +2577,12 @@ button,
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 12px;
+  padding: 8px 12px;
   border-right: 1px solid var(--qtc-line);
   background: var(--dashboard-surface);
   color: var(--qtc-ink);
   cursor: pointer;
-  font-size: 17px;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .qtc-seg__opt:last-child {
@@ -2606,16 +2590,14 @@ button,
 }
 
 .qtc-help {
-  max-width: 516px;
-  margin: 8px 0 0 auto;
+  margin: 8px 0 0;
   color: var(--qtc-muted);
-  font-size: 17px;
+  font-size: 0.88rem;
   line-height: 1.5;
 }
 
 .qtc-error {
-  max-width: 516px;
-  margin: 8px 0 0 auto;
+  margin: 8px 0 0;
   color: #ff8a80;
   font-size: 14px;
   font-weight: 700;
@@ -2626,8 +2608,8 @@ button,
   justify-content: space-between;
   align-items: center;
   gap: 18px;
-  margin-top: 24px;
-  padding: 22px 22px;
+  margin-top: 14px;
+  padding: 16px 18px;
   border-radius: 8px;
   background: var(--qtc-green);
   color: #0a0e13;
@@ -2635,14 +2617,14 @@ button,
 }
 
 .qtc-result__label {
-  font-size: 38px;
+  font-size: 1.5rem;
   font-weight: 800;
   line-height: 1;
 }
 
 .qtc-result__value {
   color: #2d1804;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 800;
   line-height: 1.35;
   text-align: right;
@@ -2650,7 +2632,7 @@ button,
 
 .qtc-result__value strong {
   color: #0a0e13;
-  font-size: 22px;
+  font-size: 1.15rem;
 }
 
 .qtc-result__note {
@@ -2666,7 +2648,7 @@ button,
 
 .qtc-tabs {
   display: flex;
-  margin-top: 20px;
+  margin-top: 14px;
   overflow: hidden;
   border: 1px solid var(--qtc-line);
   border-radius: 8px;
@@ -2675,16 +2657,15 @@ button,
 
 .qtc-tab {
   flex: 1;
-  min-height: 50px;
-  padding: 12px;
+  min-height: 44px;
+  padding: 10px 12px;
   border: 0;
   border-right: 1px solid var(--qtc-line);
   background: var(--dashboard-surface);
   color: var(--qtc-muted);
   cursor: pointer;
   font: inherit;
-  font-size: 16px;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 .qtc-tab:last-child {
@@ -2697,20 +2678,19 @@ button,
 }
 
 .qtc-panel {
-  margin-top: 20px;
-  padding: 24px 22px;
-  border: 2px solid var(--qtc-green);
-  border-radius: 8px;
+  margin-top: 14px;
+  padding: 18px;
+  border: 1px solid var(--qtc-green);
+  border-radius: var(--dashboard-radius);
   background: var(--dashboard-surface);
   color: var(--qtc-ink);
-  font-size: 20px;
   line-height: 1.55;
 }
 
 .qtc-panel h3 {
-  margin: 0 0 12px;
+  margin: 0 0 10px;
   color: var(--dashboard-accent);
-  font-size: 24px;
+  font-size: 0.95rem;
   letter-spacing: 0.02em;
   line-height: 1.2;
   text-transform: uppercase;
@@ -2730,7 +2710,7 @@ button,
 }
 
 .qtc-ecg {
-  margin: 24px 0 0;
+  margin: 14px 0 0;
   padding: 12px;
   overflow: hidden;
   border-top: 1px solid var(--qtc-line);
@@ -2757,38 +2737,25 @@ button,
   background: var(--dashboard-bg);
 }
 
-@media (max-width: 1023px) {
-  .qtc-tool {
-    margin-left: 0;
-  }
-
-  .qtc-tool__wrap {
-    padding-right: 20px;
-    padding-left: 20px;
-  }
-}
-
 @media (max-width: 720px) {
-  .qtc-tool__wrap {
-    padding-top: 24px;
-  }
-
   .qtc-tool__head,
   .qtc-result {
     align-items: flex-start;
     flex-direction: column;
   }
 
-  .qtc-tool__sub,
-  .qtc-row__label,
-  .qtc-help,
-  .qtc-panel {
-    font-size: 16px;
+  .qtc-tool__accordions,
+  .qtc-listbox {
+    grid-template-columns: 1fr;
   }
 
-  .qtc-tool__accordions,
-  .qtc-row {
-    grid-template-columns: 1fr;
+  .qtc-listbox__opt {
+    border-right: 0;
+    border-bottom: 1px solid var(--qtc-line);
+  }
+
+  .qtc-listbox__opt:last-child {
+    border-bottom: 0;
   }
 
   .qtc-acc + .qtc-acc {
@@ -2796,25 +2763,8 @@ button,
     border-left: 0;
   }
 
-  .qtc-row {
-    gap: 8px;
-  }
-
-  .qtc-row__label {
-    padding-top: 0;
-  }
-
-  .qtc-listbox,
-  .qtc-field,
-  .qtc-seg,
-  .qtc-help,
-  .qtc-error {
-    max-width: none;
-    margin-left: 0;
-  }
-
   .qtc-result__label {
-    font-size: 32px;
+    font-size: 1.35rem;
   }
 
   .qtc-result__value {
