@@ -88,6 +88,7 @@ const staticFiles = new Set([
   // Landing page assets
   "landing.css",
   "theme.css",
+  "typography.css",
   "landing.js",
   "search.js",
   "search-index.js",
