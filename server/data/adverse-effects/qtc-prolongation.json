@@ -1,0 +1,807 @@
+{
+  "id": "qtc-prolongation",
+  "title": "QTc prolongation",
+  "summary": "Which psychotropics prolong the QTc interval, who is at risk, when to do an ECG, and what to do at each QTc level.",
+  "status": "draft",
+  "lastReviewed": "2026-10-07",
+  "reviewer": "Dr. Shubham Chauhan",
+  "keyPoints": [
+    "Most QT-prolonging drugs block the cardiac **IKr (hERG) potassium channel**. The danger is **torsades de pointes**, which can cause syncope or sudden death [3].",
+    "**QTc >500 ms**, or a **rise of >60 ms** since starting the drug, needs action now: repeat the ECG, stop or switch the suspected drug, and refer to cardiology [1,2].",
+    "Highest effect: **pimozide, sertindole**, any **intravenous** antipsychotic, and doses above the maximum. **Citalopram, escitalopram**, several tricyclics and **methadone** have a moderate effect [1,2].",
+    "**Prevent it:** avoid combining QTc-prolonging drugs, use the lowest effective dose, and correct potassium, magnesium and calcium [1,2].",
+    "QTc is an **imperfect guide** to risk: the same QTc change carries different risk with different drugs and patients [1,3]."
+  ],
+  "sections": [
+    {
+      "id": "features",
+      "title": "Clinical features",
+      "blocks": [
+        {
+          "p": "The QT interval runs from the start of the QRS complex to the end of the T wave: the total time for ventricular depolarisation and repolarisation [3]. Correct it for heart rate with the [QTc calculator](/qtc)."
+        },
+        {
+          "table": {
+            "head": [
+              "QTc",
+              "Meaning"
+            ],
+            "rows": [
+              [
+                "<440 ms (men) or <470 ms (women)",
+                "Normal [1]"
+              ],
+              [
+                ">440 ms (men) or >470 ms (women)",
+                "Prolonged [1]"
+              ],
+              [
+                ">500 ms",
+                "Substantially higher risk of torsades de pointes; act promptly [1,3]"
+              ]
+            ]
+          }
+        },
+        {
+          "h3": "Torsades de pointes (TdP)"
+        },
+        {
+          "p": "A polymorphic ventricular tachycardia linked to prolonged repolarisation. On the ECG, the QRS complexes seem to twist around the isoelectric line [3]."
+        },
+        {
+          "facts": [
+            {
+              "label": "Symptoms",
+              "text": "Palpitations, dizziness, presyncope or syncope, cardiac arrest [3]"
+            },
+            {
+              "label": "Course",
+              "text": "May stop on its own, recur, or progress to ventricular fibrillation and sudden death [3]"
+            },
+            {
+              "label": "Not inevitable",
+              "text": "Risk also depends on the drug, electrolytes, heart disease and bradycardia [3]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "risk",
+      "title": "Risk factors",
+      "blocks": [
+        {
+          "table": {
+            "head": [
+              "Group",
+              "Risk factors"
+            ],
+            "rows": [
+              [
+                "Cardiac",
+                "Long QT syndrome, bradycardia, ischaemic heart disease, myocarditis, myocardial infarction, left ventricular hypertrophy [1]"
+              ],
+              [
+                "Metabolic",
+                "Hypokalaemia, hypomagnesaemia, hypocalcaemia [1]"
+              ],
+              [
+                "Other",
+                "Extreme physical exertion, stress or shock, anorexia nervosa, children and older people, female sex [1]"
+              ],
+              [
+                "Drugs",
+                "Other QTc-prolonging drugs, high doses, and drugs that raise the level of a QTc-prolonging drug [1,2]"
+              ]
+            ]
+          }
+        },
+        {
+          "note": "Hypokalaemia-related QTc prolongation is more common in acute psychotic admissions. Genetic factors (cardiac potassium channels, CYP enzymes) may not show on routine examination but probably add risk [1]."
+        }
+      ]
+    },
+    {
+      "id": "drugs",
+      "title": "Drugs implicated",
+      "sub": "Antipsychotics [1]; antidepressants and other psychotropics [2]. Drugs not shown are not rated in these sources.",
+      "blocks": [
+        {
+          "table": {
+            "head": [
+              "Effect",
+              "Meaning"
+            ],
+            "rows": [
+              [
+                "High",
+                "Large average QTc rise, usually **>20 ms** at normal doses [1,2]"
+              ],
+              [
+                "Moderate",
+                "Average rise **>10 ms** at normal doses, or ECG monitoring officially recommended in some situations [1,2]"
+              ],
+              [
+                "Low",
+                "Severe prolongation only in overdose, or small average rises **<10 ms** [1,2]"
+              ],
+              [
+                "No effect",
+                "No prolongation reported at normal doses or in overdose [1,2]"
+              ]
+            ]
+          }
+        },
+        {
+          "drugs": true
+        },
+        {
+          "note": "Underlined drugs open their library page; grey names are not in the library. * Limited experience; an association may emerge [1]. † One case of TdP, two of QT prolongation and a database association with TdP; about **8 ms** QTc rise in healthy volunteers; low doses added to another antipsychotic have no effect [1]. ‡ Isolated cases; acts on the IKr channel; other data show no QTc effect [1]. § TdP common in overdose; strong association with TdP at clinical doses [1]. ¶ Inhibits P450, so may prolong QTc when combined with another QTc-prolonging drug [2]."
+        },
+        {
+          "note": "Effect on QTc does not always equal risk of TdP or sudden death: ziprasidone has a moderate QTc effect but little evidence of cardiac toxicity. Ratings are approximate, and differences between antipsychotics rarely reach statistical significance [1]."
+        },
+        {
+          "h3": "Other drugs that prolong QTc",
+          "id": "other-drugs"
+        },
+        {
+          "table": {
+            "head": [
+              "Group",
+              "Drugs"
+            ],
+            "rows": [
+              [
+                "Antibiotics",
+                "Erythromycin, clarithromycin, ampicillin, co-trimoxazole, pentamidine; some quinolones [1]"
+              ],
+              [
+                "Antimalarials",
+                "Chloroquine, mefloquine, quinine [1]"
+              ],
+              [
+                "Antiarrhythmics",
+                "Quinidine, disopyramide, procainamide, sotalol, amiodarone, bretylium [1]"
+              ],
+              [
+                "Others",
+                "Amantadine, ciclosporin, diphenhydramine, hydroxyzine, methadone, nicardipine, tamoxifen [1]"
+              ]
+            ]
+          }
+        },
+        {
+          "note": "Not a complete list. Beta-2 agonists and sympathomimetics may provoke TdP when QTc is already prolonged [1]."
+        }
+      ]
+    },
+    {
+      "id": "monitoring",
+      "title": "Monitoring",
+      "blocks": [
+        {
+          "table": {
+            "head": [
+              "When",
+              "ECG"
+            ],
+            "rows": [
+              [
+                "Before an antipsychotic known to prolong QTc",
+                "Offer if the product information requires it, a cardiovascular risk factor is found (e.g. hypertension), there is a history of cardiovascular disease, or the patient is an inpatient or being admitted [2]"
+              ],
+              [
+                "Before any other QTc-prolonging drug",
+                "Consider [2]"
+              ],
+              [
+                "At steady state or the therapeutic dose",
+                "Repeat [2]"
+              ],
+              [
+                "After a significant dose change",
+                "Repeat within **1–2 weeks** [2]"
+              ],
+              [
+                "Long term",
+                "Every **6–12 months** [2]"
+              ]
+            ]
+          }
+        },
+        {
+          "note": "Check potassium, magnesium and calcium alongside the ECG [1,2]."
+        }
+      ]
+    },
+    {
+      "id": "management",
+      "title": "Management",
+      "sub": "In order",
+      "blocks": [
+        {
+          "steps": [
+            {
+              "step": "Before prescribing",
+              "items": [
+                "Avoid QTc-prolonging drugs where possible, and avoid combining them: effects are likely additive [2].",
+                "Use the lowest effective dose and avoid drugs with significant metabolic interactions; QTc prolongation is likely dose-dependent [2].",
+                "Assess cardiac risk (personal and family history, symptoms, cardiovascular risk factors) before any moderate- or high-effect drug [2].",
+                "Discuss with cardiology first if there is cardiovascular disease, another significant risk factor, a current QTc-prolonging drug, or symptoms suggesting arrhythmia [2]."
+              ]
+            },
+            {
+              "step": "If QTc is prolonged: assess",
+              "items": [
+                "Ask about symptoms of arrhythmia [2].",
+                "Look for drug and non-drug causes, and assess cardiovascular risk [2].",
+                "Bloods and ECG, with or without a 24-hour tape or echocardiogram [2]."
+              ]
+            },
+            {
+              "step": "Act on the QTc",
+              "items": [
+                "Use the table below [1,2]."
+              ]
+            },
+            {
+              "step": "Alongside any change",
+              "items": [
+                "Weigh the risk of continuing (QTc) against the risk of changing (relapse) [2].",
+                "Replace electrolytes; optimise cardiovascular risk and conditions such as thyroid disease or heart failure, usually with medical colleagues [2]."
+              ]
+            }
+          ]
+        },
+        {
+          "h3": "Action by QTc",
+          "id": "action"
+        },
+        {
+          "table": {
+            "head": [
+              "QTc",
+              "Action",
+              "Cardiology"
+            ],
+            "rows": [
+              [
+                "<440 ms (men) or <470 ms (women)",
+                "None, unless T-wave shape is abnormal [1]",
+                "If in doubt [1]"
+              ],
+              [
+                ">440 ms (men) or >470 ms (women), but <500 ms",
+                "Consider a lower dose or a lower-effect drug; repeat ECG [1]",
+                "Consider [1]"
+              ],
+              [
+                ">500 ms, or a rise of >60 ms since starting the drug",
+                "Repeat ECG; stop the suspected drug(s) and switch to a lower-effect drug [1,2]",
+                "**Immediately** [1,2]"
+              ],
+              [
+                "Abnormal T-wave shape",
+                "Review treatment; consider a lower dose or a lower-effect drug [1]",
+                "**Immediately** [1]"
+              ]
+            ]
+          }
+        },
+        {
+          "callout": "Also refer to cardiology if there are new unexplained cardiac symptoms with QTc >440 ms (men) or >470 ms (women), a history suggesting arrhythmia, a previous cardiac event, or the drug cannot be stopped or reduced [2]."
+        }
+      ]
+    },
+    {
+      "id": "mechanism",
+      "title": "Mechanism",
+      "part": "learn",
+      "blocks": [
+        {
+          "p": "Most drugs that cause acquired QT prolongation block the rapid delayed rectifier potassium current, **IKr**, carried by channels encoded by **KCNH2 (hERG)**. This is a cardiac ion-channel effect, not a synaptic one [3]."
+        },
+        {
+          "chains": [
+            {
+              "title": "From channel block to long QT",
+              "cite": "[3]",
+              "steps": [
+                "Drug blocks IKr (hERG) channels",
+                "Less outward potassium current",
+                "Ventricular repolarisation is delayed",
+                "Longer action potential",
+                "Longer QT interval"
+              ]
+            },
+            {
+              "title": "From long QT to torsades",
+              "cite": "[3]",
+              "steps": [
+                "Longer action potential",
+                "Early after-depolarisations (phase 2 or 3) cause premature beats: the trigger",
+                "Uneven repolarisation across the ventricles: the substrate",
+                "Trigger plus substrate: torsades de pointes"
+              ]
+            }
+          ]
+        },
+        {
+          "h3": "The ventricular action potential",
+          "id": "phases"
+        },
+        {
+          "table": {
+            "head": [
+              "Phase",
+              "What happens"
+            ],
+            "rows": [
+              [
+                "0",
+                "Rapid depolarisation, mainly sodium influx [3]"
+              ],
+              [
+                "1",
+                "Initial repolarisation [3]"
+              ],
+              [
+                "2",
+                "Plateau: inward calcium balanced by outward potassium [3]"
+              ],
+              [
+                "3",
+                "Final repolarisation, mainly potassium efflux [3]"
+              ]
+            ]
+          }
+        },
+        {
+          "note": "The QT broadly spans phases 0–3. Depolarisation happens in phase 0 only [3]."
+        }
+      ]
+    },
+    {
+      "id": "qtc-risk",
+      "title": "QTc and arrhythmia risk",
+      "part": "learn",
+      "blocks": [
+        {
+          "list": [
+            "QTc prolongation is an imperfect surrogate for TdP [3].",
+            "The same QTc rise does not carry the same TdP risk across drugs or patients [3].",
+            "In congenital long QT, TdP risk rises by about **5–7%** (relative) for each extra **10 ms** of QTc [3]. This is not a validated risk calculator for psychotropics.",
+            "QTc ratings are mostly based on Bazett's correction, and QTc measurement is imprecise [1]."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exam",
+      "title": "Exam pearls",
+      "part": "learn",
+      "blocks": [
+        {
+          "list": [
+            "**hERG** is the old name for **KCNH2**, the gene for the IKr potassium channel [3].",
+            "Ventricular depolarisation is **phase 0** only; phases 1–2 are not depolarisation [3].",
+            "TdP: QRS complexes **twist around the isoelectric line**; it can degenerate into ventricular fibrillation [3].",
+            "**Ziprasidone**: moderate QTc effect but little evidence of cardiac toxicity [1].",
+            "**Amisulpride**: TdP common in overdose [1].",
+            "**Paroxetine, fluvoxamine, sertraline**: no QTc effect of their own, but P450 inhibition can raise levels of another QTc-prolonging drug [2]."
+          ]
+        }
+      ]
+    }
+  ],
+  "drugClasses": {
+    "antipsychotics": "Antipsychotics [1]",
+    "antidepressants": "Antidepressants [2]",
+    "others": "Other psychotropics [2]"
+  },
+  "ratingScale": {
+    "high": "High effect",
+    "moderate": "Moderate effect",
+    "low": "Low effect",
+    "none": "No effect",
+    "unknown": "Unknown"
+  },
+  "drugRatings": [
+    {
+      "name": "Pimozide",
+      "rating": "high",
+      "source": 1,
+      "class": "antipsychotics"
+    },
+    {
+      "name": "Sertindole",
+      "rating": "high",
+      "source": 1,
+      "class": "antipsychotics"
+    },
+    {
+      "name": "Any intravenous antipsychotic",
+      "rating": "high",
+      "source": 2,
+      "class": "antipsychotics"
+    },
+    {
+      "name": "Any drug or combination above the maximum dose",
+      "rating": "high",
+      "source": 2,
+      "class": "antipsychotics"
+    },
+    {
+      "drug": "amisulpride",
+      "rating": "moderate",
+      "source": 1,
+      "class": "antipsychotics",
+      "mark": "§"
+    },
+    {
+      "drug": "chlorpromazine",
+      "rating": "moderate",
+      "source": 1,
+      "class": "antipsychotics"
+    },
+    {
+      "drug": "haloperidol",
+      "rating": "moderate",
+      "source": 1,
+      "class": "antipsychotics"
+    },
+    {
+      "drug": "iloperidone",
+      "rating": "moderate",
+      "source": 1,
+      "class": "antipsychotics"
+    },
+    {
+      "name": "Levomepromazine",
+      "rating": "moderate",
+      "source": 1,
+      "class": "antipsychotics"
+    },
+    {
+      "name": "Melperone",
+      "rating": "moderate",
+      "source": 1,
+      "class": "antipsychotics"
+    },
+    {
+      "drug": "pimavanserin",
+      "rating": "moderate",
+      "source": 1,
+      "class": "antipsychotics"
+    },
+    {
+      "drug": "quetiapine",
+      "rating": "moderate",
+      "source": 1,
+      "class": "antipsychotics"
+    },
+    {
+      "drug": "ziprasidone",
+      "rating": "moderate",
+      "source": 1,
+      "class": "antipsychotics"
+    },
+    {
+      "drug": "aripiprazole",
+      "rating": "low",
+      "source": 1,
+      "class": "antipsychotics",
+      "mark": "†"
+    },
+    {
+      "drug": "asenapine",
+      "rating": "low",
+      "source": 1,
+      "class": "antipsychotics"
+    },
+    {
+      "drug": "clozapine",
+      "rating": "low",
+      "source": 1,
+      "class": "antipsychotics"
+    },
+    {
+      "name": "Flupentixol",
+      "rating": "low",
+      "source": 1,
+      "class": "antipsychotics"
+    },
+    {
+      "drug": "fluphenazine",
+      "rating": "low",
+      "source": 1,
+      "class": "antipsychotics"
+    },
+    {
+      "drug": "perphenazine",
+      "rating": "low",
+      "source": 1,
+      "class": "antipsychotics"
+    },
+    {
+      "name": "Prochlorperazine",
+      "rating": "low",
+      "source": 1,
+      "class": "antipsychotics"
+    },
+    {
+      "drug": "olanzapine",
+      "rating": "low",
+      "source": 1,
+      "class": "antipsychotics",
+      "mark": "‡"
+    },
+    {
+      "drug": "paliperidone",
+      "rating": "low",
+      "source": 1,
+      "class": "antipsychotics"
+    },
+    {
+      "drug": "risperidone",
+      "rating": "low",
+      "source": 1,
+      "class": "antipsychotics"
+    },
+    {
+      "drug": "sulpiride",
+      "rating": "low",
+      "source": 1,
+      "class": "antipsychotics"
+    },
+    {
+      "drug": "zuclopenthixol",
+      "rating": "low",
+      "source": 1,
+      "class": "antipsychotics"
+    },
+    {
+      "drug": "brexpiprazole",
+      "rating": "none",
+      "source": 1,
+      "class": "antipsychotics"
+    },
+    {
+      "drug": "cariprazine",
+      "rating": "none",
+      "source": 1,
+      "class": "antipsychotics"
+    },
+    {
+      "drug": "lurasidone",
+      "rating": "none",
+      "source": 1,
+      "class": "antipsychotics"
+    },
+    {
+      "drug": "lumateperone",
+      "rating": "none",
+      "source": 1,
+      "class": "antipsychotics",
+      "mark": "*"
+    },
+    {
+      "drug": "loxapine",
+      "rating": "unknown",
+      "source": 1,
+      "class": "antipsychotics"
+    },
+    {
+      "name": "Pipotiazine",
+      "rating": "unknown",
+      "source": 1,
+      "class": "antipsychotics"
+    },
+    {
+      "drug": "trifluoperazine",
+      "rating": "unknown",
+      "source": 1,
+      "class": "antipsychotics"
+    },
+    {
+      "drug": "citalopram",
+      "rating": "moderate",
+      "source": 2,
+      "class": "antidepressants"
+    },
+    {
+      "drug": "escitalopram",
+      "rating": "moderate",
+      "source": 2,
+      "class": "antidepressants"
+    },
+    {
+      "name": "Clomipramine",
+      "rating": "moderate",
+      "source": 2,
+      "class": "antidepressants"
+    },
+    {
+      "name": "Trimipramine",
+      "rating": "moderate",
+      "source": 2,
+      "class": "antidepressants"
+    },
+    {
+      "name": "Nortriptyline",
+      "rating": "moderate",
+      "source": 2,
+      "class": "antidepressants"
+    },
+    {
+      "name": "Imipramine",
+      "rating": "moderate",
+      "source": 2,
+      "class": "antidepressants"
+    },
+    {
+      "drug": "fluoxetine",
+      "rating": "low",
+      "source": 2,
+      "class": "antidepressants",
+      "mark": "¶"
+    },
+    {
+      "drug": "venlafaxine",
+      "rating": "low",
+      "source": 2,
+      "class": "antidepressants"
+    },
+    {
+      "drug": "bupropion",
+      "rating": "low",
+      "source": 2,
+      "class": "antidepressants"
+    },
+    {
+      "drug": "duloxetine",
+      "rating": "low",
+      "source": 2,
+      "class": "antidepressants"
+    },
+    {
+      "drug": "mirtazapine",
+      "rating": "low",
+      "source": 2,
+      "class": "antidepressants"
+    },
+    {
+      "name": "Amitriptyline",
+      "rating": "low",
+      "source": 2,
+      "class": "antidepressants"
+    },
+    {
+      "drug": "trazodone",
+      "rating": "low",
+      "source": 2,
+      "class": "antidepressants"
+    },
+    {
+      "drug": "paroxetine",
+      "rating": "none",
+      "source": 2,
+      "class": "antidepressants",
+      "mark": "¶"
+    },
+    {
+      "drug": "fluvoxamine",
+      "rating": "none",
+      "source": 2,
+      "class": "antidepressants",
+      "mark": "¶"
+    },
+    {
+      "drug": "sertraline",
+      "rating": "none",
+      "source": 2,
+      "class": "antidepressants",
+      "mark": "¶"
+    },
+    {
+      "name": "Methadone (especially >100 mg/day)",
+      "rating": "moderate",
+      "source": 2,
+      "class": "others"
+    },
+    {
+      "name": "Buprenorphine",
+      "rating": "low",
+      "source": 2,
+      "class": "others"
+    },
+    {
+      "name": "Lithium",
+      "rating": "low",
+      "source": 2,
+      "class": "others"
+    },
+    {
+      "name": "Promethazine",
+      "rating": "low",
+      "source": 2,
+      "class": "others"
+    },
+    {
+      "drug": "memantine",
+      "rating": "low",
+      "source": 2,
+      "class": "others"
+    },
+    {
+      "drug": "galantamine",
+      "rating": "low",
+      "source": 2,
+      "class": "others"
+    },
+    {
+      "drug": "carbamazepine",
+      "rating": "none",
+      "source": 2,
+      "class": "others"
+    },
+    {
+      "name": "Valproate",
+      "rating": "none",
+      "source": 2,
+      "class": "others"
+    },
+    {
+      "name": "Lamotrigine",
+      "rating": "none",
+      "source": 2,
+      "class": "others"
+    },
+    {
+      "name": "Benzodiazepines",
+      "rating": "none",
+      "source": 2,
+      "class": "others"
+    },
+    {
+      "name": "Gabapentin",
+      "rating": "none",
+      "source": 2,
+      "class": "others"
+    },
+    {
+      "name": "Pregabalin",
+      "rating": "none",
+      "source": 2,
+      "class": "others"
+    }
+  ],
+  "selfTest": {
+    "question": "A woman taking citalopram is started on haloperidol. A week later her ECG shows a QTc of 512 ms. She has no symptoms. What should you do?",
+    "options": [
+      {
+        "text": "Continue both and repeat the ECG in 6 months",
+        "correct": false
+      },
+      {
+        "text": "Repeat the ECG, stop the suspected drug(s), switch to a lower-effect drug and refer to cardiology now",
+        "correct": true
+      },
+      {
+        "text": "Reduce the citalopram dose and repeat the ECG in 1–2 weeks",
+        "correct": false
+      },
+      {
+        "text": "Continue both; she has no symptoms",
+        "correct": false
+      }
+    ],
+    "explanation": "A QTc above 500 ms needs a repeat ECG, stopping the suspected drug(s), a switch to a lower-effect drug and immediate cardiology referral [1,2]. Citalopram and haloperidol both have a moderate QTc effect, and combining QTc-prolonging drugs is likely additive [1,2]."
+  },
+  "references": [
+    "Taylor DM, Barnes TRE, Young AH. The Maudsley Prescribing Guidelines in Psychiatry. 15th ed. Wiley-Blackwell; 2025.",
+    "Taylor DM, Gaughran F, Pillinger T. The Maudsley Practice Guidelines for Physical Health Conditions in Psychiatry. Wiley-Blackwell; 2020.",
+    "Boland R, Verduin ML, eds. Kaplan & Sadock's Comprehensive Textbook of Psychiatry. 11th ed. Wolters Kluwer; 2024."
+  ]
+}
