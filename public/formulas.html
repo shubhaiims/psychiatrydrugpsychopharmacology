@@ -47,7 +47,7 @@
             </button>
           </div>
           <div class="dashboard-nav-subgroup" id="formulaSubgroup">
-            <a href="/formulas#alcoholDoseCalculator" class="is-active">Alcohol dose calculator</a>
+            <a href="/alcohol-withdrawal">Alcohol dose calculator</a>
             <a href="/benzodiazepine-equivalents">Benzodiazepine equivalents</a>
             <a href="/qtc.html">QTc calculator</a>
           </div>
@@ -84,37 +84,20 @@
         <p class="dashboard-lede">Clinical calculation tools for Psychiatry Made Easy.</p>
       </section>
 
-      <section class="dashboard-card dashboard-formula-card" id="alcoholDoseCalculator" aria-labelledby="alcoholDoseCalculatorHead">
-        <header class="dashboard-card__head">
-          <h2 id="alcoholDoseCalculatorHead">Alcohol Withdrawal Benzodiazepine Dose Calculator</h2>
-        </header>
-        <form class="dashboard-dose-calculator" id="benzodiazepineCalculator">
-          <div class="dashboard-calculator-fields">
-            <label>
-              <span>Alcohol volume V (mL)</span>
-              <input id="alcoholVolume" type="number" inputmode="decimal" min="0" step="any" placeholder="Enter mL per day" />
-            </label>
-            <label>
-              <span>Alcohol percentage P (%)</span>
-              <input id="alcoholPercentage" type="number" inputmode="decimal" min="0" max="100" step="any" placeholder="Enter percentage" />
-            </label>
-          </div>
-          <div class="dashboard-calculator-results" aria-live="polite">
-            <div class="dashboard-calculator-result" id="chlordiazepoxideDose">
-              <span>Chlordiazepoxide single dose QID</span>
-              <strong>-- mg</strong>
-            </div>
-            <div class="dashboard-calculator-result" id="diazepamDose">
-              <span>Diazepam single dose QID</span>
-              <strong>-- mg</strong>
-            </div>
-            <div class="dashboard-calculator-result" id="lorazepamDose">
-              <span>Lorazepam single dose QID</span>
-              <strong>-- mg</strong>
-            </div>
-          </div>
-        </form>
-      </section>
+      <nav class="dashboard-formula-list" aria-label="Calculators">
+        <a class="dashboard-card dashboard-formula-link" href="/alcohol-withdrawal">
+          <h2>Alcohol Withdrawal Benzodiazepine Dose Calculator</h2>
+          <p>Chlordiazepoxide, diazepam and lorazepam doses from daily alcohol intake.</p>
+        </a>
+        <a class="dashboard-card dashboard-formula-link" href="/benzodiazepine-equivalents">
+          <h2>Benzodiazepine Equivalent Dose Calculator</h2>
+          <p>Convert a dose of one benzodiazepine to the equivalent dose of another.</p>
+        </a>
+        <a class="dashboard-card dashboard-formula-link" href="/qtc">
+          <h2>Corrected QT Interval (QTc)</h2>
+          <p>QTc by Bazett, Fridericia, Framingham, Hodges or Rautaharju.</p>
+        </a>
+      </nav>
     </main>
 
     <footer class="dashboard-footer">
