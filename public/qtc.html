@@ -78,7 +78,7 @@
       </div>
     </header>
 
-    <main class="qtc-tool" id="main">
+    <main class="dashboard-main qtc-tool" id="main">
       <div class="qtc-tool__wrap">
         <header class="qtc-tool__head">
           <div>
@@ -110,49 +110,51 @@
           </div>
         </div>
 
-        <form id="qtcForm" class="qtc-tool__form" novalidate>
-          <div class="qtc-row">
-            <span class="qtc-row__label">Formula</span>
-            <div class="qtc-listbox" role="radiogroup" aria-label="Formula">
-              <label class="qtc-listbox__opt is-selected"><input type="radio" name="formula" value="bazett" checked />Bazett</label>
-              <label class="qtc-listbox__opt"><input type="radio" name="formula" value="fridericia" />Fridericia</label>
-              <label class="qtc-listbox__opt"><input type="radio" name="formula" value="framingham" />Framingham</label>
-              <label class="qtc-listbox__opt"><input type="radio" name="formula" value="hodges" />Hodges</label>
-              <label class="qtc-listbox__opt"><input type="radio" name="formula" value="rautaharju" />Rautaharju</label>
-            </div>
-          </div>
-
-          <div class="qtc-row">
-            <label class="qtc-row__label" for="hrInput">Heart rate/pulse</label>
-            <div>
-              <div class="qtc-field">
-                <input id="hrInput" type="number" inputmode="numeric" placeholder="Norm: 60 - 100" />
-                <span class="qtc-field__unit">beats/min</span>
+        <section class="dashboard-card" aria-label="Calculator">
+          <form id="qtcForm" class="qtc-tool__form" novalidate>
+            <div class="qtc-row">
+              <span class="qtc-row__label">Formula</span>
+              <div class="qtc-listbox" role="radiogroup" aria-label="Formula">
+                <label class="qtc-listbox__opt is-selected"><input type="radio" name="formula" value="bazett" checked />Bazett</label>
+                <label class="qtc-listbox__opt"><input type="radio" name="formula" value="fridericia" />Fridericia</label>
+                <label class="qtc-listbox__opt"><input type="radio" name="formula" value="framingham" />Framingham</label>
+                <label class="qtc-listbox__opt"><input type="radio" name="formula" value="hodges" />Hodges</label>
+                <label class="qtc-listbox__opt"><input type="radio" name="formula" value="rautaharju" />Rautaharju</label>
               </div>
-              <p class="qtc-error" id="hrError" role="alert" hidden></p>
             </div>
-          </div>
 
-          <div class="qtc-row">
-            <span class="qtc-row__label">Paper speed, mm/sec</span>
-            <div class="qtc-seg" role="radiogroup" aria-label="Paper speed">
-              <label class="qtc-seg__opt is-selected"><input type="radio" name="paperSpeed" value="25" checked />25</label>
-              <label class="qtc-seg__opt"><input type="radio" name="paperSpeed" value="50" />50</label>
-            </div>
-          </div>
-
-          <div class="qtc-row">
-            <label class="qtc-row__label" for="qtInput">QT interval</label>
-            <div>
-              <div class="qtc-field">
-                <input id="qtInput" type="number" inputmode="decimal" step="any" />
-                <button type="button" class="qtc-field__toggle" id="qtUnitToggle">msec ⇄</button>
+            <div class="qtc-row">
+              <label class="qtc-row__label" for="hrInput">Heart rate/pulse</label>
+              <div>
+                <div class="qtc-field">
+                  <input id="hrInput" type="number" inputmode="numeric" placeholder="Norm: 60 - 100" />
+                  <span class="qtc-field__unit">beats/min</span>
+                </div>
+                <p class="qtc-error" id="hrError" role="alert" hidden></p>
               </div>
-              <p class="qtc-help">Toggle unit to use msec or small boxes; 1 small box = 40 msec (see below for example where QT interval = 4 small boxes)</p>
-              <p class="qtc-error" id="qtError" role="alert" hidden></p>
             </div>
-          </div>
-        </form>
+
+            <div class="qtc-row">
+              <span class="qtc-row__label">Paper speed, mm/sec</span>
+              <div class="qtc-seg" role="radiogroup" aria-label="Paper speed">
+                <label class="qtc-seg__opt is-selected"><input type="radio" name="paperSpeed" value="25" checked />25</label>
+                <label class="qtc-seg__opt"><input type="radio" name="paperSpeed" value="50" />50</label>
+              </div>
+            </div>
+
+            <div class="qtc-row">
+              <label class="qtc-row__label" for="qtInput">QT interval</label>
+              <div>
+                <div class="qtc-field">
+                  <input id="qtInput" type="number" inputmode="decimal" step="any" />
+                  <button type="button" class="qtc-field__toggle" id="qtUnitToggle">msec ⇄</button>
+                </div>
+                <p class="qtc-help">Toggle unit to use msec or small boxes; 1 small box = 40 msec (see below for example where QT interval = 4 small boxes)</p>
+                <p class="qtc-error" id="qtError" role="alert" hidden></p>
+              </div>
+            </div>
+          </form>
+        </section>
 
         <figure class="qtc-ecg" aria-label="ECG paper reference: large box and small box durations">
           <img
