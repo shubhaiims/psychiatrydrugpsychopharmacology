@@ -312,7 +312,6 @@
   },
   "ecgScreening": {
     "source": 2,
-    "originNote": "Box 3.4 summarises NICE guidance. Per site rules, show the criteria without naming the country-specific body.",
     "before": "Offer a screening ECG before starting an antipsychotic known to prolong QTc if:",
     "criteria": [
       "Specified in the drug's product information",
@@ -379,8 +378,8 @@
     ]
   },
   "sourceConflicts": [
-    "Loxapine: unknown [1] vs low [2].",
-    "Zuclopenthixol: low [1] vs unknown [2].",
+    "Loxapine: unknown [1] vs low [2]. Resolved: use [1].",
+    "Zuclopenthixol: low [1] vs unknown [2]. Resolved: use [1].",
     "Lumateperone (no effect) and pimavanserin (moderate) appear only in [1].",
     "[2] adds 'any intravenous antipsychotic' and 'any drug or combination above the maximum dose' as high effect."
   ],
@@ -446,5 +445,10 @@
       "QTc >500 ms carries a substantially higher TdP risk and needs prompt action, but TdP is not inevitable: risk also depends on the drug, electrolytes, heart disease and bradycardia."
     ],
     "authorNote": "User's instruction: do not present the 1.052^x formula as a validated risk calculator for psychotropics, and do not present 400 ms as a universal baseline."
-  }
+  },
+  "decisions": [
+    "Antipsychotic QTc ratings: use Maudsley Prescribing Guidelines 15th ed. 2025 [1] (user, 2026-10-07). This settles loxapine (unknown) and zuclopenthixol (low). Keep [2]'s extra high-effect rows: any intravenous antipsychotic; any drug or combination above the maximum dose.",
+    "Antidepressant and other psychotropic QTc ratings: [2].",
+    "Screening ECG criteria: show without naming NICE (user, 2026-10-07)."
+  ]
 }
