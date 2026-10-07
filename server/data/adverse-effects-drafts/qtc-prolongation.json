@@ -2,7 +2,7 @@
   "id": "qtc-prolongation",
   "title": "QTc prolongation",
   "status": "draft",
-  "draftNote": "Content collected from the user, not yet written up. Kept outside server/data/adverse-effects/ so it is not published. Source [1]: Maudsley Prescribing Guidelines 15th ed., Tables 1.35-1.38. Source [2]: Maudsley Practice Guidelines for Physical Health Conditions, Table 3.1, Boxes 3.4-3.5 and the QT chapter text.",
+  "draftNote": "Content collected from the user, not yet written up. Kept outside server/data/adverse-effects/ so it is not published. Source [1]: Maudsley Prescribing Guidelines 15th ed., Tables 1.35-1.38. Source [2]: Maudsley Practice Guidelines for Physical Health Conditions, Table 3.1, Boxes 3.4-3.5 and the QT chapter text. Source [3]: Kaplan & Sadock's CTP 11th ed. (definition, mechanism, torsades de pointes, QTc-risk relationship).",
   "drugRatings": {
     "source": 1,
     "scale": [
@@ -180,7 +180,8 @@
   },
   "references": [
     "Taylor DM, Barnes TRE, Young AH. The Maudsley Prescribing Guidelines in Psychiatry. 15th ed. Wiley-Blackwell; 2025.",
-    "Taylor DM, Gaughran F, Pillinger T. The Maudsley Practice Guidelines for Physical Health Conditions in Psychiatry. Wiley-Blackwell; 2020."
+    "Taylor DM, Gaughran F, Pillinger T. The Maudsley Practice Guidelines for Physical Health Conditions in Psychiatry. Wiley-Blackwell; 2020.",
+    "Boland R, Verduin ML, eds. Kaplan & Sadock's Comprehensive Textbook of Psychiatry. 11th ed. Wolters Kluwer; 2024."
   ],
   "psychotropicEffects": {
     "source": 2,
@@ -369,5 +370,68 @@
     "Zuclopenthixol: low [1] vs unknown [2].",
     "Lumateperone (no effect) and pimavanserin (moderate) appear only in [1].",
     "[2] adds 'any intravenous antipsychotic' and 'any drug or combination above the maximum dose' as high effect."
-  ]
+  ],
+  "definition": {
+    "source": 3,
+    "qt": "From the start of the QRS complex to the end of the T wave.",
+    "represents": "Total duration of ventricular depolarisation and repolarisation.",
+    "actionPotential": [
+      {
+        "phase": "0",
+        "event": "Rapid depolarisation, mainly sodium influx"
+      },
+      {
+        "phase": "1",
+        "event": "Initial repolarisation"
+      },
+      {
+        "phase": "2",
+        "event": "Plateau: inward calcium balanced by outward potassium"
+      },
+      {
+        "phase": "3",
+        "event": "Final repolarisation, mainly potassium efflux"
+      }
+    ],
+    "note": "The QT broadly spans phases 0-3. Depolarisation happens in phase 0 only; phases 1-2 are not depolarisation."
+  },
+  "mechanism": {
+    "source": 3,
+    "channel": "Most drugs that cause acquired QT prolongation block the rapid delayed rectifier potassium current (IKr), carried by channels encoded by KCNH2 (hERG).",
+    "chain": [
+      "IKr (hERG) channel blockade",
+      "Less outward potassium current",
+      "Delayed ventricular repolarisation",
+      "Longer action potential",
+      "Longer QT interval"
+    ],
+    "note": "A cardiac ion-channel effect, not a synaptic one."
+  },
+  "torsades": {
+    "source": 3,
+    "chain": [
+      "Longer action potentials allow early after-depolarisations (EADs) in phase 2 or 3",
+      "EADs cause premature ventricular beats: the trigger",
+      "Uneven repolarisation across the ventricles (dispersion of repolarisation): the substrate",
+      "Trigger plus substrate: torsades de pointes (TdP)"
+    ],
+    "what": "Polymorphic ventricular tachycardia linked to prolonged repolarisation; QRS complexes appear to twist around the isoelectric line.",
+    "symptoms": [
+      "Palpitations",
+      "Dizziness",
+      "Presyncope or syncope",
+      "Cardiac arrest"
+    ],
+    "course": "May stop on its own, recur, or progress to ventricular fibrillation and sudden cardiac death."
+  },
+  "riskRelationship": {
+    "source": 3,
+    "points": [
+      "QTc prolongation is an imperfect surrogate for TdP.",
+      "The same QTc increase does not carry the same TdP risk across drugs or patients.",
+      "In congenital long QT, TdP risk rises by about 5-7% (relative) for each extra 10 ms of QTc.",
+      "QTc >500 ms carries a substantially higher TdP risk and needs prompt action, but TdP is not inevitable: risk also depends on the drug, electrolytes, heart disease and bradycardia."
+    ],
+    "authorNote": "User's instruction: do not present the 1.052^x formula as a validated risk calculator for psychotropics, and do not present 400 ms as a universal baseline."
+  }
 }
