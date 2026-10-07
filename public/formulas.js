@@ -15,9 +15,33 @@
     alcoholPercentage: document.querySelector("#alcoholPercentage"),
     chlordiazepoxideDose: document.querySelector("#chlordiazepoxideDose strong"),
     diazepamDose: document.querySelector("#diazepamDose strong"),
-    lorazepamDose: document.querySelector("#lorazepamDose strong")
+    lorazepamDose: document.querySelector("#lorazepamDose strong"),
+    equivForm: document.querySelector("#benzodiazepineEquivalentForm"),
+    equivFromDrug: document.querySelector("#equivFromDrug"),
+    equivFromDose: document.querySelector("#equivFromDose"),
+    equivToDrug: document.querySelector("#equivToDrug"),
+    equivToDose: document.querySelector("#equivToDose")
   };
 
+  // Approximate therapeutic equivalent doses in mg: Kaplan & Sadock's Comprehensive Textbook of Psychiatry, 11th ed.
+  const EQUIVALENT_DOSES = [
+    ["alprazolam", "Alprazolam", 1, 1],
+    ["chlordiazepoxide", "Chlordiazepoxide", 25, 25],
+    ["clonazepam", "Clonazepam", 0.5, 1],
+    ["clorazepate", "Clorazepate", 15, 15],
+    ["diazepam", "Diazepam", 10, 10],
+    ["estazolam", "Estazolam", 1, 1],
+    ["flurazepam", "Flurazepam", 30, 30],
+    ["lorazepam", "Lorazepam", 2, 2],
+    ["oxazepam", "Oxazepam", 30, 30],
+    ["temazepam", "Temazepam", 20, 20],
+    ["triazolam", "Triazolam", 0.25, 0.25],
+    ["quazepam", "Quazepam", 15, 15],
+    ["zolpidem", "Zolpidem", 10, 10],
+    ["zaleplon", "Zaleplon", 10, 10]
+  ].map(([id, name, min, max]) => ({ id, name, min, max }));
+
+  populateEquivalentDrugs();
   bindEvents();
   initializeAuthUi();
 
@@ -34,6 +58,9 @@
     els.formulaToggle?.addEventListener("click", () => toggleSubgroup(els.formulaToggle, els.formulaSubgroup));
     els.calculator?.addEventListener("input", updateBenzodiazepineDoses);
     els.calculator?.addEventListener("submit", (event) => event.preventDefault());
+    els.equivForm?.addEventListener("input", updateEquivalentDose);
+    els.equivForm?.addEventListener("change", updateEquivalentDose);
+    els.equivForm?.addEventListener("submit", (event) => event.preventDefault());
   }
 
   function setSidebarOpen(isOpen) {
@@ -61,6 +88,43 @@
     els.chlordiazepoxideDose.textContent = formatDose(baseDose);
     els.diazepamDose.textContent = formatDose(0.4 * baseDose);
     els.lorazepamDose.textContent = formatDose(0.08 * baseDose);
+  }
+
+  function populateEquivalentDrugs() {
+    if (!els.equivFromDrug || !els.equivToDrug) return;
+    for (const select of [els.equivFromDrug, els.equivToDrug]) {
+      for (const drug of EQUIVALENT_DOSES) {
+        select.add(new Option(`${drug.name} (${formatRange(drug.min, drug.max)} mg)`, drug.id));
+      }
+    }
+    els.equivFromDrug.value = "lorazepam";
+    els.equivToDrug.value = "diazepam";
+  }
+
+  function updateEquivalentDose() {
+    if (!els.equivFromDrug || !els.equivFromDose || !els.equivToDrug || !els.equivToDose) return;
+
+    const from = EQUIVALENT_DOSES.find((drug) => drug.id === els.equivFromDrug.value);
+    const to = EQUIVALENT_DOSES.find((drug) => drug.id === els.equivToDrug.value);
+    const dose = Number.parseFloat(els.equivFromDose.value);
+
+    if (!from || !to || !Number.isFinite(dose) || dose < 0) {
+      els.equivToDose.textContent = "-- mg";
+      return;
+    }
+
+    // A range on either side widens the result: lowest = dose x target low / source high, and vice versa.
+    els.equivToDose.textContent = `${formatRange((dose * to.min) / from.max, (dose * to.max) / from.min)} mg`;
+  }
+
+  function formatRange(low, high) {
+    const lowText = formatNumber(low);
+    const highText = formatNumber(high);
+    return lowText === highText ? lowText : `${lowText}-${highText}`;
+  }
+
+  function formatNumber(value) {
+    return value.toFixed(2).replace(/\.?0+$/, "");
   }
 
   function formatDose(value) {
