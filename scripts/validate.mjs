@@ -171,7 +171,7 @@ if (!/href=["']\/browse["']/i.test(homepage)) {
   throw new Error("The public homepage must link to the drug-library browse page.");
 }
 
-for (const file of ["public/index.html", "public/browse.html", "public/formulas.html", "public/qtc.html"]) {
+for (const file of ["public/index.html", "public/browse.html", "public/formulas.html", "public/qtc.html", "public/benzodiazepine-equivalents.html"]) {
   const page = await readFile(file, "utf8");
   if (/recentUpdatesCard|bookmarksCard|>\s*(?:Dashboard|Updates|Bookmarks)\s*</i.test(page)) {
     throw new Error(`${file} must not expose removed dashboard navigation.`);

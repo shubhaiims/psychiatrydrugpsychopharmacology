@@ -1,6 +1,7 @@
 export const pages = [
   ["/", "Psychiatry Made Easy"], ["/browse", "Drug library"],
   ["/formulas", "Alcohol withdrawal calculator"], ["/qtc", "QTc calculator"],
+  ["/benzodiazepine-equivalents", "Benzodiazepine equivalent dose calculator"],
   ["/subscribe", "Membership plans"], ["/contact", "Contact"],
   ["/terms", "Terms"], ["/privacy", "Privacy"], ["/refunds", "Refunds"]
 ];

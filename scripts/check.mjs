@@ -12,6 +12,7 @@ const files = [
   "public/home.js",
   "public/formulas.js",
   "public/qtc.js",
+  "public/benzodiazepine-equivalents.js",
   "public/research.js",
   "scripts/fetch-research.mjs",
   "tests/research.test.mjs",

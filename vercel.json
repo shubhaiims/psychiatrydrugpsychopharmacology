@@ -32,6 +32,8 @@
     { "source": "/research/", "destination": "/research.html" },
     { "source": "/qtc", "destination": "/qtc.html" },
     { "source": "/qtc/", "destination": "/qtc.html" },
+    { "source": "/benzodiazepine-equivalents", "destination": "/benzodiazepine-equivalents.html" },
+    { "source": "/benzodiazepine-equivalents/", "destination": "/benzodiazepine-equivalents.html" },
     { "source": "/admin", "destination": "/api/admin/page" },
     { "source": "/admin/", "destination": "/api/admin/page" },
     { "source": "/admin/index.html", "destination": "/api/admin/page" },
