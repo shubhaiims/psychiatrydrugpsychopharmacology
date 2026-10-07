@@ -66,7 +66,20 @@
       "aripiprazole": "One case of torsades de pointes (TdP) and two of QT prolongation reported, and an association with TdP in database studies. Healthy-volunteer data suggest QTc prolongation of about 8 ms. May increase QT dispersion. Low-dose aripiprazole added to another antipsychotic has no effect on QT.",
       "olanzapine": "Isolated cases of QTc prolongation; acts on the cardiac IKr channel. Other data suggest no effect on QTc.",
       "amisulpride": "TdP common in overdose; strong association with TdP at clinical doses."
-    }
+    },
+    "definitions": {
+      "basis": "Ratings come from reported effects on QTc, mostly using Bazett's correction.",
+      "none": "QTc prolongation not reported at therapeutic doses or in overdose.",
+      "low": "Severe QTc prolongation reported only after overdose, or only small average increases (<10 ms) at clinical doses.",
+      "moderate": "Average QTc prolongation >10 ms at normal clinical doses, or ECG monitoring officially recommended in some circumstances.",
+      "high": "Extensive average QTc prolongation (usually >20 ms at normal clinical doses)."
+    },
+    "caveats": [
+      "Effect on QTc does not necessarily equal risk of TdP or sudden death, although this is often assumed.",
+      "Example: ziprasidone has a moderate effect on QTc but minimal evidence of cardiac toxicity.",
+      "Ratings are approximate because QTc measurement is imprecise.",
+      "Differences between antipsychotics' effects on QT rarely reach statistical significance, even in meta-analyses."
+    ]
   },
   "riskFactors": {
     "source": 1,
