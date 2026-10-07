@@ -1,7 +1,15 @@
 {
-  "updated": "2026-10-04T06:16:20.521Z",
+  "updated": "2026-10-07T10:18:13.061Z",
   "source": "PubMed",
   "items": [
+    {
+      "id": "42833240",
+      "title": "From discovery to proof: a Translation Evidence Map for precision psychiatry",
+      "journal": "The Lancet Psychiatry",
+      "date": "2026-10-05",
+      "authors": "Baune BT",
+      "url": "https://doi.org/10.1016/S2215-0366(26)00267-1"
+    },
     {
       "id": "42817231",
       "title": "'It's a Balancing Act': A Qualitative Analysis of the Experiences of Caffeine Use in Individuals With Bipolar Disorder",
@@ -2441,14 +2449,6 @@
       "date": "2026-04-07",
       "authors": "Junkes L et al.",
       "url": "https://doi.org/10.1177/02698811261436582"
-    },
-    {
-      "id": "41943478",
-      "title": "The impact of antidepressant use on MDMA fatalities: A matched case-control study using a post-mortem database",
-      "journal": "Journal of Psychopharmacology",
-      "date": "2026-04-06",
-      "authors": "Rock KL et al.",
-      "url": "https://doi.org/10.1177/02698811261436573"
     }
   ]
 }
