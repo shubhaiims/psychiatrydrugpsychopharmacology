@@ -1,0 +1,279 @@
+/*
+  One type scale for every page. Loaded last, after each page's own stylesheet,
+  so the same kind of text is the same size everywhere.
+
+  Base 16px body text, headings stepping up by about 1.25x, line-height ~1.6
+  for reading text and ~1.2 for headings. Nothing smaller than 13px.
+*/
+
+:root {
+  --fs-display: clamp(2.5rem, 1.6rem + 3.6vw, 4rem); /* 40-64px, home page hero only */
+  --fs-h1: clamp(1.875rem, 1.5rem + 1.2vw, 2.25rem); /* 30-36px, page titles */
+  --fs-h2: clamp(1.5rem, 1.3rem + 0.6vw, 1.75rem); /* 24-28px, section headings */
+  --fs-h3: 1.25rem; /* 20px, card and item titles */
+  --fs-lead: 1.125rem; /* 18px, page intros */
+  --fs-body: 1rem; /* 16px, reading text, inputs, buttons */
+  --fs-sm: 0.875rem; /* 14px, navigation, notes, meta, footers */
+  --fs-xs: 0.8125rem; /* 13px, uppercase labels and eyebrows only */
+  --lh-heading: 1.2;
+  --lh-body: 1.6;
+}
+
+/* Body text */
+body,
+body.lp,
+body.dashboard-page,
+body.library-page,
+body.ae,
+body.search-page {
+  font-size: var(--fs-body);
+}
+
+/* Home page hero */
+.lp-hero__title {
+  font-size: var(--fs-display);
+}
+
+/* Page titles */
+h1.lp-h2,
+.dashboard-page-head h1,
+.qtc-tool__head h1,
+.library-browse h1,
+body.dashboard-page .library-browse h1,
+.research-hero h1,
+.ae-title,
+.detail-title,
+body.library-page .detail-title,
+.auth-form-shell h1,
+.form-header h1,
+body.search-page main h1 {
+  font-size: var(--fs-h1);
+  line-height: 1.15;
+}
+
+/* Section headings */
+.lp-h2,
+.lp-legal__heading,
+.lp-monograph__name,
+body.dashboard-page .ae-browse h2,
+body.dashboard-page .dashboard-about h2,
+.ae-system__head h2,
+.ae-section > h2,
+.info-section h2,
+body.library-page .info-section h2,
+.notebook-search-header h2,
+body.library-page .notebook-search-header h2,
+.auth-card h2,
+.dashboard-calculator-result strong {
+  font-size: var(--fs-h2);
+  line-height: var(--lh-heading);
+}
+
+/* Card and item titles */
+.lp-card__title,
+.lp-class-list__name,
+.lp-monograph__doses dd,
+.dashboard-card__head h2,
+.dashboard-formula-link h2,
+.research-item h3,
+.ae-topic__name,
+.ae-h3,
+.ae-class h3,
+.ae-gate strong,
+.ae-flow__drugs,
+.ae-diagram figcaption,
+.update-card h3,
+.qtc-result__label,
+body.search-page li a {
+  font-size: var(--fs-h3);
+  line-height: 1.3;
+}
+
+/* Page intros */
+.lp-hero__lede,
+.lp-legal__intro,
+.lp-card__meta,
+.lp-faq summary,
+.dashboard-lede,
+.qtc-tool__sub,
+.library-browse p,
+body.dashboard-page .library-browse > p:not(.home-eyebrow),
+body.dashboard-page .ae-browse > p,
+.research-lede,
+.ae-lead,
+.ae-empty,
+.ae-keypoints li,
+body.library-page .empty-state,
+.dashboard-equiv-output,
+.qtc-result__value strong {
+  font-size: var(--fs-lead);
+  line-height: 1.5;
+}
+
+/* Reading text, inputs and buttons */
+.lp-checks li,
+.lp-toc li,
+.lp-button,
+.lp-search input,
+.dashboard-calculator-fields input,
+.dashboard-calculator-fields select,
+.dashboard-search input,
+body.dashboard-page .dashboard-search input,
+body.library-page textarea,
+.info-section li,
+body.library-page .info-section li,
+.dose-strip dd,
+body.library-page .dose-strip dd,
+.section-subheading,
+body.library-page .section-subheading,
+.qtc-result__value,
+.ae-search input,
+.ae-notice,
+.ae-facts div,
+.ae-table,
+.ae-drug,
+.ae-callout,
+.ae-quiz button,
+.ae-quiz-exp,
+.ae-steps h3,
+.dashboard-equiv-ref-head,
+.qtc-panel h3,
+body.library-page select,
+body.search-page #status,
+body.search-page #notice {
+  font-size: var(--fs-body);
+}
+
+/* Navigation, notes, meta and footers */
+.lp-link,
+.lp-nav a,
+.lp-button--small,
+.lp-class-list__count,
+.lp-motion-toggle,
+.lp-footer,
+.lp-sub__mode,
+.lp-sub__fine,
+.lp-sub__status,
+.lp-account__status,
+.lp-field__label,
+.lp-legal__details dt,
+.dashboard-nav-item,
+.dashboard-nav-item--muted,
+body.dashboard-page .dashboard-nav-item,
+.dashboard-nav-subgroup a,
+body.dashboard-page .dashboard-nav-subgroup a,
+.dashboard-search__results a,
+.dashboard-result-empty,
+.dashboard-btn,
+body.dashboard-page .dashboard-btn,
+.dashboard-topbar__title,
+.dashboard-chip,
+body.dashboard-page .dashboard-chip,
+.dashboard-disclaimer,
+body.dashboard-page .dashboard-disclaimer,
+.dashboard-footer,
+.dashboard-equiv-note,
+.dashboard-equiv-refs,
+.dashboard-formula-link p,
+.qtc-help,
+.qtc-error,
+.qtc-result__note,
+.qtc-disclaimer,
+.research-status,
+.research-updated,
+.research-authors,
+.brand-subtitle,
+.session-identity,
+body.library-page .session-identity,
+body.library-page .topbar-nav a,
+.auth-links a,
+.auth-status,
+.detail-subtitle,
+.site-footer,
+body.library-page .site-footer,
+body.library-page .secondary-button,
+body.library-page .primary-button,
+.ae-nav a,
+.ae-foot,
+.ae-search label,
+.ae-stats,
+.ae-jump a,
+.ae-system__head p,
+.ae-topic__sum,
+.ae-topic__go,
+.ae-crumbs,
+.ae-meta,
+.ae-mode button,
+.ae-rail a,
+.ae-section > .ae-sub,
+.ae-note,
+.ae-tier__label,
+.ae-flow__if,
+.ae-flow__act,
+.ae-gate p,
+.ae-btn,
+.ae-node,
+.ae-refs,
+body.search-page li small,
+body.search-page .search-header nav {
+  font-size: var(--fs-sm);
+}
+
+/* Uppercase labels and eyebrows */
+.lp-monograph__tag,
+.lp-monograph__label,
+.lp-monograph__doses dt,
+.home-eyebrow,
+body.dashboard-page .home-eyebrow,
+body.auth-page label span,
+body.library-page label span,
+.eyebrow,
+body.library-page .eyebrow,
+.dashboard-brand-name em,
+.dashboard-result-class,
+.dashboard-calculator-fields label span,
+.dashboard-calculator-result span,
+.qtc-row__label,
+.select-block span,
+body.library-page .select-block span,
+.dose-strip dt,
+body.library-page .dose-strip dt,
+.dose-grid strong,
+body.library-page .dose-grid strong,
+.tag,
+.update-meta,
+.notebook-result span,
+.members-table th,
+.research-eyebrow,
+.research-meta,
+.ae-eyebrow,
+.ae-jump a span,
+.ae-topic__soon,
+.ae-mode__hint,
+.ae-rail h2,
+.ae-h4,
+.ae-keypoints h2,
+.ae-facts span,
+.ae-table th,
+.ae-flow__risk,
+.ae-flow__if span,
+.ae-divider,
+.ae-diagram .ae-dnote,
+.ae-diagram .ae-dctx {
+  font-size: var(--fs-xs);
+}
+
+/* Brand name in every header */
+.lp-brand__name,
+.brand-name,
+.dashboard-brand-name,
+body.dashboard-page .dashboard-brand-name,
+body.library-page .brand-name,
+.ae-brand,
+body.search-page .brand {
+  font-size: 1.125rem;
+}
+
+body.search-page .brand em {
+  font-size: 1em;
+}
