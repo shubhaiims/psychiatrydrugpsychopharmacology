@@ -9,7 +9,13 @@
     librarySubgroup: document.querySelector("#librarySubgroup"),
     formulaToggle: document.querySelector("#formulaToggle"),
     formulaSubgroup: document.querySelector("#formulaSubgroup"),
-    authArea: document.querySelector("#authArea")
+    authArea: document.querySelector("#authArea"),
+    calculator: document.querySelector("#benzodiazepineCalculator"),
+    alcoholVolume: document.querySelector("#alcoholVolume"),
+    alcoholPercentage: document.querySelector("#alcoholPercentage"),
+    chlordiazepoxideDose: document.querySelector("#chlordiazepoxideDose strong"),
+    diazepamDose: document.querySelector("#diazepamDose strong"),
+    lorazepamDose: document.querySelector("#lorazepamDose strong")
   };
 
   bindEvents();
@@ -26,6 +32,8 @@
 
     els.libraryToggle?.addEventListener("click", () => toggleSubgroup(els.libraryToggle, els.librarySubgroup));
     els.formulaToggle?.addEventListener("click", () => toggleSubgroup(els.formulaToggle, els.formulaSubgroup));
+    els.calculator?.addEventListener("input", updateBenzodiazepineDoses);
+    els.calculator?.addEventListener("submit", (event) => event.preventDefault());
   }
 
   function setSidebarOpen(isOpen) {
@@ -40,6 +48,24 @@
     const isOpen = toggle.getAttribute("aria-expanded") === "true";
     toggle.setAttribute("aria-expanded", String(!isOpen));
     subgroup.hidden = isOpen;
+  }
+
+  function updateBenzodiazepineDoses() {
+    if (!els.alcoholVolume || !els.alcoholPercentage || !els.chlordiazepoxideDose || !els.diazepamDose || !els.lorazepamDose) return;
+
+    const volume = Number.parseFloat(els.alcoholVolume.value);
+    const percentage = Number.parseFloat(els.alcoholPercentage.value);
+    const hasValidInputs = Number.isFinite(volume) && Number.isFinite(percentage) && volume >= 0 && percentage >= 0 && percentage <= 100;
+    const baseDose = hasValidInputs ? (volume * percentage) / 1000 : Number.NaN;
+
+    els.chlordiazepoxideDose.textContent = formatDose(baseDose);
+    els.diazepamDose.textContent = formatDose(0.4 * baseDose);
+    els.lorazepamDose.textContent = formatDose(0.08 * baseDose);
+  }
+
+  function formatDose(value) {
+    if (!Number.isFinite(value)) return "-- mg";
+    return `${value.toFixed(2).replace(/\.?0+$/, "")} mg`;
   }
 
   async function initializeAuthUi() {

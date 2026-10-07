@@ -234,3 +234,33 @@ textarea {
 .dashboard-equiv-refs {
   padding-left: 1.4em;
 }
+
+/* Formulas page: list of calculators */
+.dashboard-formula-list {
+  display: grid;
+  gap: 12px;
+  margin-top: 14px;
+}
+
+.dashboard-formula-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.dashboard-formula-link:hover,
+.dashboard-formula-link:focus-visible {
+  border-color: var(--dashboard-accent);
+}
+
+.dashboard-formula-link h2 {
+  margin: 0 0 6px;
+  font-family: var(--theme-serif);
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.dashboard-formula-link p {
+  margin: 0;
+  color: var(--dashboard-muted);
+}
