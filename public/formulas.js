@@ -23,7 +23,7 @@
     equivToDose: document.querySelector("#equivToDose")
   };
 
-  // Approximate therapeutic equivalent doses in mg: Kaplan & Sadock's Comprehensive Textbook of Psychiatry.
+  // Approximate therapeutic equivalent doses in mg: Kaplan & Sadock's Comprehensive Textbook of Psychiatry, 11th ed.
   const EQUIVALENT_DOSES = [
     ["alprazolam", "Alprazolam", 1, 1],
     ["chlordiazepoxide", "Chlordiazepoxide", 25, 25],
