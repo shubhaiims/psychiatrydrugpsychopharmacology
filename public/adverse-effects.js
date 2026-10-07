@@ -22,11 +22,11 @@
     return String(value ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
   }
 
-  // Inline markup used in content files: **bold**, site links [text](/path) and numbered citations [1] or [1,2].
+  // Inline markup used in content files: **bold**, site links [text](/path) or [text](#section) and numbered citations [1] or [1,2].
   function md(value) {
     return esc(value)
       .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
-      .replace(/\[([^\]]+)\]\((\/[^)\s]*)\)/g, '<a href="$2">$1</a>')
+      .replace(/\[([^\]]+)\]\((\/[^)\s]*|#[\w-]+)\)/g, '<a href="$2">$1</a>')
       .replace(/\[(\d+(?:,\d+)*)\]/g, (match, nums) =>
         '<sup class="cite">[' + nums.split(",").map((n) => `<a href="#ref-${n}" aria-label="Reference ${n}">${n}</a>`).join(",") + "]</sup>");
   }
@@ -400,7 +400,12 @@
       if (learn.contains(initialTarget)) openLearn();
       window.requestAnimationFrame(() => initialTarget.scrollIntoView({ block: "start" }));
     }
-    buttons.forEach((b) => b.addEventListener("click", () => setMode(b.dataset.mode, true)));
+    // Clicking Clinic or Learn also jumps to the start of that part of the page.
+    buttons.forEach((b) => b.addEventListener("click", () => {
+      setMode(b.dataset.mode, true);
+      const target = b.dataset.mode === "learn" ? document.getElementById(firstLearnId || "mechanism") : document.getElementById("keypoints");
+      target?.scrollIntoView({ block: "start", behavior: "smooth" });
+    }));
     document.getElementById("aeGateOpen").addEventListener("click", () => {
       openLearn();
       document.getElementById(firstLearnId || "mechanism")?.scrollIntoView({ block: "start" });

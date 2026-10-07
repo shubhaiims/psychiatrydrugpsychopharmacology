@@ -7,9 +7,9 @@
   "reviewer": "Dr. Shubham Chauhan",
   "keyPoints": [
     "Most QT-prolonging drugs block the cardiac **IKr (hERG) potassium channel**. The danger is **torsades de pointes**, which can cause syncope or sudden death [3].",
-    "**QTc >500 ms**, or a **rise of >60 ms** since starting the drug, needs action now: repeat the ECG, stop or switch the suspected drug, and refer to cardiology [1,2].",
+    "**QTc >500 ms**: repeat the ECG, stop the suspected drug(s), switch to a lower-effect drug and refer to cardiology immediately [1]. A **rise of >60 ms** since starting the drug also needs immediate referral [2].",
     "Highest effect: **pimozide, sertindole**, any **intravenous** antipsychotic, and doses above the maximum. **Citalopram, escitalopram**, several tricyclics and **methadone** have a moderate effect [1,2].",
-    "**Prevent it:** avoid combining QTc-prolonging drugs, use the lowest effective dose, and correct potassium, magnesium and calcium [1,2].",
+    "**Prevent it:** avoid combining QTc-prolonging drugs, use the lowest effective dose, and replace electrolytes [2].",
     "QTc is an **imperfect guide** to risk: the same QTc change carries different risk with different drugs and patients [1,3]."
   ],
   "sections": [
@@ -18,29 +18,7 @@
       "title": "Clinical features",
       "blocks": [
         {
-          "p": "The QT interval runs from the start of the QRS complex to the end of the T wave: the total time for ventricular depolarisation and repolarisation [3]. Correct it for heart rate with the [QTc calculator](/qtc)."
-        },
-        {
-          "table": {
-            "head": [
-              "QTc",
-              "Meaning"
-            ],
-            "rows": [
-              [
-                "<440 ms (men) or <470 ms (women)",
-                "Normal [1]"
-              ],
-              [
-                ">440 ms (men) or >470 ms (women)",
-                "Prolonged [1]"
-              ],
-              [
-                ">500 ms",
-                "Substantially higher risk of torsades de pointes; act promptly [1,3]"
-              ]
-            ]
-          }
+          "p": "The QT interval runs from the start of the QRS complex to the end of the T wave: the total time for ventricular depolarisation and repolarisation [3]. Correct it for heart rate with the [QTc calculator](/qtc), then use [Action by QTc](#action) for what to do at each level [1]."
         },
         {
           "h3": "Torsades de pointes (TdP)"
@@ -115,19 +93,19 @@
             "rows": [
               [
                 "High",
-                "Large average QTc rise, usually **>20 ms** at normal doses [1,2]"
+                "Large average QTc rise, usually **>20 ms** at normal doses [1]"
               ],
               [
                 "Moderate",
-                "Average rise **>10 ms** at normal doses, or ECG monitoring officially recommended in some situations [1,2]"
+                "Average rise **>10 ms** at normal doses, or ECG monitoring officially recommended in some situations [1]"
               ],
               [
                 "Low",
-                "Severe prolongation only in overdose, or small average rises **<10 ms** [1,2]"
+                "Severe prolongation only in overdose, or small average rises **<10 ms** [1]"
               ],
               [
                 "No effect",
-                "No prolongation reported at normal doses or in overdose [1,2]"
+                "No prolongation reported at normal doses or in overdose [1]"
               ]
             ]
           }
@@ -209,9 +187,6 @@
               ]
             ]
           }
-        },
-        {
-          "note": "Check potassium, magnesium and calcium alongside the ECG [1,2]."
         }
       ]
     },
@@ -242,7 +217,7 @@
             {
               "step": "Act on the QTc",
               "items": [
-                "Use the table below [1,2]."
+                "Use the table below [1]."
               ]
             },
             {
@@ -255,42 +230,45 @@
           ]
         },
         {
-          "h3": "Action by QTc",
+          "h3": "Action by QTc [1]",
           "id": "action"
+        },
+        {
+          "note": "In patients taking antipsychotics."
         },
         {
           "table": {
             "head": [
               "QTc",
               "Action",
-              "Cardiology"
+              "Refer to cardiologist"
             ],
             "rows": [
               [
                 "<440 ms (men) or <470 ms (women)",
-                "None, unless T-wave shape is abnormal [1]",
-                "If in doubt [1]"
+                "None unless abnormal T-wave morphology",
+                "Consider if in doubt"
               ],
               [
-                ">440 ms (men) or >470 ms (women), but <500 ms",
-                "Consider a lower dose or a lower-effect drug; repeat ECG [1]",
-                "Consider [1]"
+                ">440 ms (men) or >470 ms (women) but <500 ms",
+                "Consider reducing dose or switching to a drug of lower effect; repeat ECG",
+                "Consider"
               ],
               [
-                ">500 ms, or a rise of >60 ms since starting the drug",
-                "Repeat ECG; stop the suspected drug(s) and switch to a lower-effect drug [1,2]",
-                "**Immediately** [1,2]"
+                ">500 ms",
+                "Repeat ECG. Stop suspected causative drug(s) and switch to a drug of lower effect",
+                "**Immediately**"
               ],
               [
-                "Abnormal T-wave shape",
-                "Review treatment; consider a lower dose or a lower-effect drug [1]",
-                "**Immediately** [1]"
+                "Abnormal T-wave morphology",
+                "Review treatment. Consider reducing dose or switching to a drug of lower effect",
+                "**Immediately**"
               ]
             ]
           }
         },
         {
-          "callout": "Also refer to cardiology if there are new unexplained cardiac symptoms with QTc >440 ms (men) or >470 ms (women), a history suggesting arrhythmia, a previous cardiac event, or the drug cannot be stopped or reduced [2]."
+          "callout": "Also refer to cardiology immediately if QTc rises by >60 ms since starting the drug, there are new unexplained cardiac symptoms with QTc >440 ms (men) or >470 ms (women), or there is a history suggesting arrhythmia. Refer, too, after a previous cardiac event or if the drug cannot be stopped or reduced [2]."
         }
       ]
     },
@@ -797,11 +775,11 @@
         "correct": false
       }
     ],
-    "explanation": "A QTc above 500 ms needs a repeat ECG, stopping the suspected drug(s), a switch to a lower-effect drug and immediate cardiology referral [1,2]. Citalopram and haloperidol both have a moderate QTc effect, and combining QTc-prolonging drugs is likely additive [1,2]."
+    "explanation": "A QTc above 500 ms needs a repeat ECG, stopping the suspected drug(s), a switch to a drug of lower effect and immediate cardiology referral [1]. Citalopram and haloperidol both have a moderate QTc effect, and combining QTc-prolonging drugs is likely additive [1,2]."
   },
   "references": [
     "Taylor DM, Barnes TRE, Young AH. The Maudsley Prescribing Guidelines in Psychiatry. 15th ed. Wiley-Blackwell; 2025.",
-    "Taylor DM, Gaughran F, Pillinger T. The Maudsley Practice Guidelines for Physical Health Conditions in Psychiatry. Wiley-Blackwell; 2020.",
+    "Taylor DM, Gaughran F, Pillinger T, eds. The Maudsley Practice Guidelines for Physical Health Conditions in Psychiatry. Hoboken, NJ: Wiley-Blackwell; 2020.",
     "Boland R, Verduin ML, eds. Kaplan & Sadock's Comprehensive Textbook of Psychiatry. 11th ed. Wolters Kluwer; 2024."
   ]
 }
