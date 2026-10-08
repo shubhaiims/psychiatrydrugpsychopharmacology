@@ -25,17 +25,17 @@
 }
 
 :root {
-  --night: #181512;
-  --night-deep: #110f0d;
-  --parchment: #eee6da;
-  --parchment-soft: #d3c9bb;
-  --ash: #a69b8c;
-  --amber: #e49b5a;
-  --amber-hi: #efb27c;
+  --night: #131314;
+  --night-deep: #0f0f10;
+  --parchment: #ebe8e3;
+  --parchment-soft: #c9c6c1;
+  --ash: #9d9a95;
+  --amber: #d9a46c;
+  --amber-hi: #e6b886;
   --brass: #c4a16c;
   --slate: #8d9fb7;
-  --line: rgba(238, 230, 218, 0.13);
-  --line-strong: rgba(238, 230, 218, 0.24);
+  --line: rgba(235, 232, 227, 0.13);
+  --line-strong: rgba(235, 232, 227, 0.24);
   --serif: "Newsreader", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
   --sans: "Atkinson Hyperlegible Next", "Segoe UI", system-ui, -apple-system, sans-serif;
   --gutter: clamp(20px, 5vw, 64px);
@@ -93,7 +93,7 @@ p {
 }
 
 ::selection {
-  background: rgba(228, 155, 90, 0.35);
+  background: rgba(217, 164, 108, 0.35);
 }
 
 .lp-container {
@@ -138,7 +138,7 @@ p {
 }
 
 .lp-header.is-solid {
-  background: rgba(24, 21, 18, 0.84);
+  background: rgba(19, 19, 20, 0.84);
   border-bottom-color: var(--line);
   -webkit-backdrop-filter: blur(14px);
   backdrop-filter: blur(14px);
@@ -230,8 +230,8 @@ p {
 }
 
 .lp-button--ghost:hover {
-  background: rgba(238, 230, 218, 0.06);
-  border-color: rgba(238, 230, 218, 0.42);
+  background: rgba(235, 232, 227, 0.06);
+  border-color: rgba(235, 232, 227, 0.42);
 }
 
 .lp-button--small {
@@ -294,8 +294,8 @@ p {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(24, 21, 18, 0.8) 0%, rgba(24, 21, 18, 0.56) 36%, rgba(24, 21, 18, 0.1) 66%, rgba(24, 21, 18, 0) 82%),
-    linear-gradient(180deg, rgba(24, 21, 18, 0.6) 0%, rgba(24, 21, 18, 0) 22%, rgba(24, 21, 18, 0) 60%, var(--night) 100%);
+    linear-gradient(90deg, rgba(19, 19, 20, 0.8) 0%, rgba(19, 19, 20, 0.56) 36%, rgba(19, 19, 20, 0.1) 66%, rgba(19, 19, 20, 0) 82%),
+    linear-gradient(180deg, rgba(19, 19, 20, 0.6) 0%, rgba(19, 19, 20, 0) 22%, rgba(19, 19, 20, 0) 60%, var(--night) 100%);
 }
 
 .lp-search {
@@ -437,7 +437,7 @@ p {
   padding: clamp(28px, 4vw, 48px);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: linear-gradient(180deg, rgba(238, 230, 218, 0.04), rgba(238, 230, 218, 0.012));
+  background: linear-gradient(180deg, rgba(235, 232, 227, 0.04), rgba(235, 232, 227, 0.012));
 }
 
 .lp-monograph__tag,
@@ -539,12 +539,12 @@ p {
   padding: 32px 30px 30px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: rgba(238, 230, 218, 0.02);
+  background: rgba(235, 232, 227, 0.02);
 }
 
 .lp-card--featured {
   border-color: rgba(196, 161, 108, 0.45);
-  background: linear-gradient(180deg, rgba(228, 155, 90, 0.08), rgba(228, 155, 90, 0.015));
+  background: linear-gradient(180deg, rgba(217, 164, 108, 0.08), rgba(217, 164, 108, 0.015));
 }
 
 .lp-card__title {
@@ -627,7 +627,7 @@ p {
 
 .lp-class-list a:hover {
   padding-left: 16px;
-  background: rgba(238, 230, 218, 0.03);
+  background: rgba(235, 232, 227, 0.03);
 }
 
 .lp-class-list__name {
@@ -672,8 +672,8 @@ p {
   inset: 0;
   border: 1px solid rgba(196, 161, 108, 0.6);
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(228, 155, 90, 0.26) 0%, rgba(228, 155, 90, 0.09) 46%, transparent 70%);
-  box-shadow: 0 0 70px rgba(228, 155, 90, 0.16);
+  background: radial-gradient(circle, rgba(217, 164, 108, 0.26) 0%, rgba(217, 164, 108, 0.09) 46%, transparent 70%);
+  box-shadow: 0 0 70px rgba(217, 164, 108, 0.16);
   transform: scale(0.66);
   animation: lp-breathe var(--breath) ease-in-out infinite;
 }
@@ -725,7 +725,7 @@ p {
 }
 
 .lp-motion-toggle:hover {
-  border-color: rgba(238, 230, 218, 0.42);
+  border-color: rgba(235, 232, 227, 0.42);
   color: var(--parchment);
 }
 
@@ -1111,7 +1111,7 @@ p {
   }
 
   .lp-hero__veil {
-    background: linear-gradient(180deg, rgba(24, 21, 18, 0.62) 0%, rgba(24, 21, 18, 0.3) 28%, rgba(24, 21, 18, 0.78) 62%, var(--night) 100%);
+    background: linear-gradient(180deg, rgba(19, 19, 20, 0.62) 0%, rgba(19, 19, 20, 0.3) 28%, rgba(19, 19, 20, 0.78) 62%, var(--night) 100%);
   }
 
   .lp-hero__content {
@@ -1302,7 +1302,7 @@ button.lp-button:disabled {
   padding: 0 16px;
   border: 1px solid var(--line-strong);
   border-radius: 12px;
-  background: rgba(238, 230, 218, 0.04);
+  background: rgba(235, 232, 227, 0.04);
   color: var(--parchment);
   font: inherit;
 }
@@ -1379,7 +1379,7 @@ button.lp-button:disabled {
 .lp-fill {
   padding: 0 0.3em;
   border-radius: 4px;
-  background: rgba(228, 155, 90, 0.16);
+  background: rgba(217, 164, 108, 0.16);
   color: var(--amber-hi);
 }
 

@@ -2190,31 +2190,6 @@ button,
   font-size: 14.5px;
 }
 
-.dashboard-chip-grid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.dashboard-chip {
-  padding: 8px 14px;
-  border: 1px solid var(--dashboard-border);
-  border-radius: 999px;
-  color: var(--dashboard-text);
-  font-size: 13.5px;
-  transition: border-color 0.15s ease, background 0.15s ease;
-}
-
-.dashboard-chip:hover {
-  border-color: var(--dashboard-accent);
-  background: var(--dashboard-accent-soft);
-}
-
-.dashboard-chip--all {
-  border-color: var(--dashboard-accent);
-  color: var(--dashboard-accent);
-}
-
 .dashboard-formula-card {
   margin-top: 14px;
   scroll-margin-top: calc(var(--dashboard-topbar-height) + 18px);

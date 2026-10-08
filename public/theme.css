@@ -25,34 +25,34 @@
 }
 
 :root {
-  --bg: #181512;
-  --surface: #1d1a16;
-  --surface-soft: #231f1b;
-  --surface-lift: #2a2520;
-  --ink: #eee6da;
-  --muted: #a69b8c;
-  --line: rgba(238, 230, 218, 0.13);
-  --line-strong: rgba(238, 230, 218, 0.24);
-  --accent: #e49b5a;
-  --accent-dark: #c9844a;
+  --bg: #131314;
+  --surface: #1b1b1d;
+  --surface-soft: #232326;
+  --surface-lift: #2c2c30;
+  --ink: #ebe8e3;
+  --muted: #9d9a95;
+  --line: rgba(235, 232, 227, 0.13);
+  --line-strong: rgba(235, 232, 227, 0.24);
+  --accent: #d9a46c;
+  --accent-dark: #c08c56;
   --teal: #c4a16c;
-  --silver: #d3c9bb;
+  --silver: #c9c6c1;
   --red: #e8806f;
-  --focus: 0 0 0 3px rgba(228, 155, 90, 0.35);
+  --focus: 0 0 0 3px rgba(217, 164, 108, 0.35);
   --theme-serif: "Newsreader", "Iowan Old Style", "Palatino Linotype", Georgia, serif;
   --theme-sans: "Atkinson Hyperlegible Next", "Segoe UI", system-ui, -apple-system, sans-serif;
 }
 
 .dashboard-page {
-  --dashboard-bg: #181512;
-  --dashboard-surface: #1f1b17;
-  --dashboard-surface-2: #262119;
-  --dashboard-border: rgba(238, 230, 218, 0.12);
-  --dashboard-text: #eee6da;
-  --dashboard-muted: #a69b8c;
-  --dashboard-accent: #e49b5a;
-  --dashboard-accent-hover: #efb27c;
-  --dashboard-accent-soft: rgba(228, 155, 90, 0.12);
+  --dashboard-bg: #131314;
+  --dashboard-surface: #1b1b1d;
+  --dashboard-surface-2: #232326;
+  --dashboard-border: rgba(235, 232, 227, 0.12);
+  --dashboard-text: #ebe8e3;
+  --dashboard-muted: #9d9a95;
+  --dashboard-accent: #d9a46c;
+  --dashboard-accent-hover: #e6b886;
+  --dashboard-accent-soft: rgba(217, 164, 108, 0.12);
   --dashboard-teal: #c4a16c;
 }
 
@@ -96,7 +96,7 @@ body {
 
 /* Hard-coded colors in styles.css that tokens don't reach */
 .auth-links a {
-  color: #efb27c;
+  color: #e6b886;
 }
 
 .tag {
@@ -119,13 +119,13 @@ body {
 
 .primary-button:hover,
 .topbar-link:hover {
-  background: #efb27c;
-  border-color: #efb27c;
+  background: #e6b886;
+  border-color: #e6b886;
 }
 
 /* Navy and teal panels from the old palette */
 .dashboard-topbar {
-  background: rgba(24, 21, 18, 0.88);
+  background: rgba(19, 19, 20, 0.88);
 }
 
 .side-menu-toggle,
@@ -136,37 +136,37 @@ body {
 .editor-sidebar,
 .editor-form,
 .members-panel {
-  background: rgba(31, 27, 23, 0.96);
+  background: rgba(27, 27, 29, 0.96);
 }
 
 .auth-card {
   background:
     radial-gradient(circle at top right, rgba(196, 161, 108, 0.12), transparent 34%),
-    radial-gradient(circle at bottom left, rgba(228, 155, 90, 0.1), transparent 38%),
-    rgba(31, 27, 23, 0.96);
+    radial-gradient(circle at bottom left, rgba(217, 164, 108, 0.1), transparent 38%),
+    rgba(27, 27, 29, 0.96);
 }
 
 .toolbar {
   background:
-    linear-gradient(180deg, rgba(196, 161, 108, 0.08), rgba(31, 27, 23, 0)),
-    radial-gradient(circle at top left, rgba(228, 155, 90, 0.1), transparent 42%);
+    linear-gradient(180deg, rgba(196, 161, 108, 0.08), rgba(27, 27, 29, 0)),
+    radial-gradient(circle at top left, rgba(217, 164, 108, 0.1), transparent 42%);
 }
 
 .notebook-search-panel {
   border-color: rgba(196, 161, 108, 0.3);
   background:
     radial-gradient(circle at top right, rgba(196, 161, 108, 0.1), transparent 32%),
-    rgba(31, 27, 23, 0.96);
+    rgba(27, 27, 29, 0.96);
 }
 
 .topbar {
-  background: rgba(24, 21, 18, 0.92);
+  background: rgba(19, 19, 20, 0.92);
 }
 
 input,
 select,
 textarea {
-  background: #13110f;
+  background: #0f0f10;
 }
 
 /* Teal borders become brass */
@@ -182,7 +182,7 @@ textarea {
 
 .detail-hero {
   background:
-    radial-gradient(circle at top right, rgba(228, 155, 90, 0.12), transparent 34%),
+    radial-gradient(circle at top right, rgba(217, 164, 108, 0.12), transparent 34%),
     linear-gradient(135deg, rgba(196, 161, 108, 0.07), transparent 42%),
     var(--surface);
 }
@@ -263,4 +263,69 @@ textarea {
 .dashboard-formula-link p {
   margin: 0;
   color: var(--dashboard-muted);
+}
+
+/* Calm surfaces: separate areas by tone, not outlines.
+   Sidebar, top bar, cards and search sit on slightly lighter greys; hover lifts one step. */
+.dashboard-page {
+  --dashboard-surface-3: #2c2c30;
+}
+
+.dashboard-sidebar,
+.dashboard-topbar,
+.dashboard-sidebar__brand,
+.dashboard-sidebar__footer,
+.dashboard-footer {
+  border-color: transparent;
+}
+
+.dashboard-search input {
+  border-color: transparent;
+  background: var(--dashboard-surface-2);
+}
+
+.dashboard-search input:focus {
+  border-color: transparent;
+  box-shadow: var(--focus);
+}
+
+.dashboard-search__results {
+  border-color: transparent;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+}
+
+.dashboard-card,
+.dashboard-about,
+.dashboard-card__head,
+.dashboard-formula-link {
+  border-color: transparent;
+  background: var(--dashboard-surface);
+}
+
+.dashboard-formula-link {
+  transition: background 0.15s;
+}
+
+.dashboard-formula-link:hover,
+.dashboard-formula-link:focus-visible {
+  border-color: transparent;
+  background: var(--dashboard-surface-2);
+}
+
+.dashboard-formula-link:hover h2 {
+  color: var(--dashboard-accent);
+}
+
+.dashboard-disclaimer {
+  border-color: transparent;
+}
+
+.dashboard-btn--ghost {
+  border-color: transparent;
+  background: var(--dashboard-surface-2);
+}
+
+.dashboard-btn--ghost:hover {
+  border-color: transparent;
+  background: var(--dashboard-surface-3);
 }

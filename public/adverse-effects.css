@@ -24,21 +24,21 @@
 }
 
 :root {
-  --bg: #15120f;
-  --bg-raise: #1b1814;
-  --bg-sunk: #110e0c;
-  --ink: #eee6da;
-  --ink-soft: #cfc5b7;
-  --muted: #9a8f80;
-  --faint: #6e665b;
-  --rule: rgba(238, 230, 218, 0.1);
-  --rule-strong: rgba(238, 230, 218, 0.2);
-  --accent: #e49b5a;
+  --bg: #131314;
+  --bg-raise: #1b1b1d;
+  --bg-sunk: #0f0f10;
+  --ink: #ebe8e3;
+  --ink-soft: #c9c6c1;
+  --muted: #9d9a95;
+  --faint: #85827d;
+  --rule: rgba(235, 232, 227, 0.1);
+  --rule-strong: rgba(235, 232, 227, 0.2);
+  --accent: #d9a46c;
   --accent-ink: #1a120a;
-  --accent-wash: rgba(228, 155, 90, 0.09);
-  --link: #efb27c;
+  --accent-wash: rgba(217, 164, 108, 0.09);
+  --link: #e6b886;
   --risk-high: #e07a63;
-  --risk-moderate: #e49b5a;
+  --risk-moderate: #d9a46c;
   --risk-low: #c9b58a;
   --risk-minimal: #8ea79c;
   --risk-loss: #86b1cf;
@@ -73,7 +73,7 @@ strong { font-weight: 700; color: var(--ink); }
 .ae-skip:focus { left: 12px; }
 
 /* Top bar */
-.ae-bar { position: sticky; top: 0; z-index: 30; background: rgba(21, 18, 15, 0.88); backdrop-filter: saturate(140%) blur(10px); border-bottom: 1px solid var(--rule); }
+.ae-bar { position: sticky; top: 0; z-index: 30; background: rgba(19, 19, 20, 0.88); backdrop-filter: saturate(140%) blur(10px); border-bottom: 1px solid var(--rule); }
 .ae-bar__inner { max-width: 1280px; margin: 0 auto; height: var(--bar-h); padding: 0 var(--gutter); display: flex; align-items: center; justify-content: space-between; gap: 24px; }
 .ae-brand { display: inline-flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; font: 500 18px/1 var(--serif); letter-spacing: -0.005em; white-space: nowrap; }
 .ae-brand em { font-style: italic; color: var(--accent); }
@@ -289,7 +289,7 @@ a.ae-drug:hover { color: var(--link); border-bottom-color: var(--link); }
   .ae-rail {
     position: sticky; top: var(--bar-h); z-index: 20; display: flex; gap: 0;
     margin: 0 calc(-1 * var(--gutter)) 32px; padding: 0 var(--gutter);
-    background: rgba(21, 18, 15, 0.94); backdrop-filter: blur(8px); border-bottom: 1px solid var(--rule);
+    background: rgba(19, 19, 20, 0.94); backdrop-filter: blur(8px); border-bottom: 1px solid var(--rule);
     overflow-x: auto; scrollbar-width: none;
   }
   .ae-rail::-webkit-scrollbar { display: none; }
