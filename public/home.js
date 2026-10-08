@@ -152,10 +152,15 @@
   function renderClassChips(classes) {
     if (!els.classChips) return;
     const items = (classes.length ? classes : fallbackClasses).slice().sort((a, b) => a.localeCompare(b));
-    els.classChips.innerHTML = [
-      ...items.map((className) => `<a class="dashboard-chip" href="${classUrl(className)}">${escapeHtml(shortClassName(className))}</a>`),
-      `<a class="dashboard-chip dashboard-chip--all" href="${libraryUrl}">All drugs</a>`
-    ].join("");
+    els.classChips.innerHTML = items.map((className) => {
+      const members = drugs
+        .filter((drug) => drug.medicationGroup === className)
+        .map((drug) => drug.name)
+        .sort((first, second) => first.localeCompare(second));
+      const count = members.length ? `<span class="browse-card__count">${members.length} ${members.length === 1 ? "drug" : "drugs"}</span>` : "";
+      const examples = members.length ? `<span class="browse-card__sub">${escapeHtml(members.slice(0, 3).join(", "))}${members.length > 3 ? " and more" : ""}</span>` : "";
+      return `<a class="browse-card" href="${classUrl(className)}"><span class="browse-card__title">${escapeHtml(shortClassName(className))}</span>${examples}${count}</a>`;
+    }).join("");
   }
 
   function renderSearchResults(query) {

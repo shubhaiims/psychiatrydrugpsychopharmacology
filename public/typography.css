@@ -29,8 +29,10 @@ body.search-page {
   font-size: var(--fs-body);
 }
 
-/* Home page hero */
-.lp-hero__title {
+/* Home page heroes */
+.lp-hero__title,
+.library-browse h1,
+body.dashboard-page .library-browse h1 {
   font-size: var(--fs-display);
 }
 
@@ -38,8 +40,6 @@ body.search-page {
 h1.lp-h2,
 .dashboard-page-head h1,
 .qtc-tool__head h1,
-.library-browse h1,
-body.dashboard-page .library-browse h1,
 .research-hero h1,
 .ae-title,
 .detail-title,
@@ -55,7 +55,7 @@ body.search-page main h1 {
 .lp-h2,
 .lp-legal__heading,
 .lp-monograph__name,
-body.dashboard-page .ae-browse h2,
+body.browse-page .browse-section__head h2,
 body.dashboard-page .dashboard-about h2,
 .ae-system__head h2,
 .ae-section > h2,
@@ -71,6 +71,7 @@ body.library-page .notebook-search-header h2,
 
 /* Card and item titles */
 .lp-card__title,
+body.browse-page .browse-card__title,
 .lp-class-list__name,
 .lp-monograph__doses dd,
 .dashboard-card__head h2,
@@ -98,7 +99,7 @@ body.search-page li a {
 .qtc-tool__sub,
 .library-browse p,
 body.dashboard-page .library-browse > p:not(.home-eyebrow),
-body.dashboard-page .ae-browse > p,
+body.browse-page .browse-search input[type="search"],
 .research-lede,
 .ae-lead,
 .ae-empty,
@@ -167,8 +168,9 @@ body.dashboard-page .dashboard-nav-subgroup a,
 .dashboard-btn,
 body.dashboard-page .dashboard-btn,
 .dashboard-topbar__title,
-.dashboard-chip,
-body.dashboard-page .dashboard-chip,
+body.browse-page .browse-card__sub,
+body.browse-page .browse-section__head p,
+body.browse-page .browse-all,
 .dashboard-disclaimer,
 body.dashboard-page .dashboard-disclaimer,
 .dashboard-footer,
@@ -225,6 +227,7 @@ body.search-page .search-header nav {
 .lp-monograph__doses dt,
 .home-eyebrow,
 body.dashboard-page .home-eyebrow,
+body.browse-page .browse-card__count,
 body.auth-page label span,
 body.library-page label span,
 .eyebrow,

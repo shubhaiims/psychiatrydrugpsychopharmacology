@@ -163,7 +163,7 @@ for (const [file, page] of [["public/index.html", homepage], ["public/browse.htm
   }
 }
 
-if (!/<h1[^>]*>Browse the drug library<\/h1>/i.test(browsePage) || !/id=["']classChips["']/i.test(browsePage)) {
+if (!/id=["']drugSearch["']/i.test(browsePage) || !/id=["']classChips["']/i.test(browsePage)) {
   throw new Error("The browse page must retain the drug-library browse experience.");
 }
 

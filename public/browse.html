@@ -61,7 +61,7 @@
 
       <div class="dashboard-sidebar__footer">
         <a href="/account" class="dashboard-nav-item" data-requires-auth hidden>Account</a>
-        <a href="#disclaimerBanner" class="dashboard-nav-item dashboard-nav-item--muted">Disclaimer</a>
+        <a href="#disclaimer" class="dashboard-nav-item dashboard-nav-item--muted">Disclaimer</a>
       </div>
     </aside>
 
@@ -70,11 +70,6 @@
         <img src="/assets/psychiatry-made-easy-logo.png" alt="" class="dashboard-brand-mark" />
       </a>
 
-      <div class="dashboard-search" role="search">
-        <span class="dashboard-search__icon" aria-hidden="true"></span>
-        <input id="drugSearch" type="search" placeholder="Search drug monographs..." autocomplete="off" aria-label="Search drugs" aria-expanded="false" aria-controls="searchResults" />
-        <div class="dashboard-search__results" id="searchResults" role="listbox" hidden></div>
-      </div>
 
       <div class="dashboard-topbar__auth" id="authArea">
         <a href="/login" class="dashboard-btn dashboard-btn--ghost">Log in</a>
@@ -85,33 +80,92 @@
     <main class="dashboard-main" id="main">
       <section class="library-browse" aria-labelledby="browseHead">
         <p class="home-eyebrow">Psychopharmacology reference</p>
-        <h1 id="browseHead">Browse the drug library</h1>
-        <p>Search by drug name above, or choose a medication class.</p>
-        <div class="dashboard-chip-grid" id="classChips">
-          <a class="dashboard-chip dashboard-chip--all" href="/library">All drugs</a>
+        <h1 id="browseHead">Find a drug, check an adverse effect.</h1>
+        <p>Concise drug monographs and adverse-effect guides, organised the way you prescribe.</p>
+        <div class="dashboard-search browse-search" role="search">
+          <span class="dashboard-search__icon" aria-hidden="true"></span>
+          <input id="drugSearch" type="search" placeholder="Search drugs by name or class" autocomplete="off" aria-label="Search drugs" aria-expanded="false" aria-controls="searchResults" />
+          <div class="dashboard-search__results" id="searchResults" role="listbox" hidden></div>
         </div>
       </section>
 
-      <section class="ae-browse" aria-labelledby="aeBrowseHead">
-        <h2 id="aeBrowseHead">Browse adverse effects</h2>
-        <p>Organised by body system, from recognition to management.</p>
-        <div class="dashboard-chip-grid">
-          <a class="dashboard-chip" href="/adverse-effects#sys-metabolic-endocrine">Metabolic and endocrine</a>
-          <a class="dashboard-chip" href="/adverse-effects#sys-cardiovascular">Cardiovascular</a>
-          <a class="dashboard-chip" href="/adverse-effects#sys-neurological-movement">Neurological and movement</a>
-          <a class="dashboard-chip" href="/adverse-effects#sys-psychiatric-behavioral">Psychiatric and behavioural</a>
-          <a class="dashboard-chip" href="/adverse-effects#sys-blood-skin-immune">Blood, skin and immune</a>
-          <a class="dashboard-chip" href="/adverse-effects#sys-gut-liver-anticholinergic">Gut, liver and anticholinergic</a>
-          <a class="dashboard-chip" href="/adverse-effects#sys-breathing-sexual-pregnancy">Breathing, sexual function and pregnancy</a>
-          <a class="dashboard-chip" href="/adverse-effects#sys-class-warning">Class-wide warnings</a>
-          <a class="dashboard-chip dashboard-chip--all" href="/adverse-effects">All adverse effects</a>
+      <section class="browse-section" aria-labelledby="classHead">
+        <div class="browse-section__head">
+          <div>
+            <h2 id="classHead">Drug library</h2>
+            <p>Browse by medication class.</p>
+          </div>
+          <a class="browse-all" href="/library">All drugs <span aria-hidden="true">&rarr;</span></a>
+        </div>
+        <div class="browse-grid browse-grid--3" id="classChips"></div>
+      </section>
+
+      <section class="browse-section" aria-labelledby="aeBrowseHead">
+        <div class="browse-section__head">
+          <div>
+            <h2 id="aeBrowseHead">Adverse effects</h2>
+            <p>By body system, from recognition to management.</p>
+          </div>
+          <a class="browse-all" href="/adverse-effects">All adverse effects <span aria-hidden="true">&rarr;</span></a>
+        </div>
+        <div class="browse-grid browse-grid--4">
+          <a class="browse-card" href="/adverse-effects#sys-metabolic-endocrine">
+            <span class="browse-card__title">Metabolic and endocrine</span>
+            <span class="browse-card__sub">Weight gain, hyperprolactinaemia</span>
+          </a>
+          <a class="browse-card" href="/adverse-effects#sys-cardiovascular">
+            <span class="browse-card__title">Cardiovascular</span>
+            <span class="browse-card__sub">QTc prolongation, orthostatic hypotension</span>
+          </a>
+          <a class="browse-card" href="/adverse-effects#sys-neurological-movement">
+            <span class="browse-card__title">Neurological and movement</span>
+            <span class="browse-card__sub">Akathisia, tardive dyskinesia</span>
+          </a>
+          <a class="browse-card" href="/adverse-effects#sys-psychiatric-behavioral">
+            <span class="browse-card__title">Psychiatric and behavioural</span>
+            <span class="browse-card__sub">Suicidality in young people, discontinuation syndrome</span>
+          </a>
+          <a class="browse-card" href="/adverse-effects#sys-blood-skin-immune">
+            <span class="browse-card__title">Blood, skin and immune</span>
+            <span class="browse-card__sub">Neutropenia, SJS/TEN and DRESS</span>
+          </a>
+          <a class="browse-card" href="/adverse-effects#sys-gut-liver-anticholinergic">
+            <span class="browse-card__title">Gut, liver and anticholinergic</span>
+            <span class="browse-card__sub">Anticholinergic effects, hepatotoxicity</span>
+          </a>
+          <a class="browse-card" href="/adverse-effects#sys-breathing-sexual-pregnancy">
+            <span class="browse-card__title">Breathing, sexual function and pregnancy</span>
+            <span class="browse-card__sub">Sexual dysfunction, teratogenicity</span>
+          </a>
+          <a class="browse-card" href="/adverse-effects#sys-class-warning">
+            <span class="browse-card__title">Class-wide warnings</span>
+            <span class="browse-card__sub">Increased mortality in dementia</span>
+          </a>
         </div>
       </section>
 
-      <aside class="dashboard-disclaimer" id="disclaimerBanner" hidden>
-        <p><strong>Educational reference only.</strong> Verify all drug information against current prescribing information, local protocols, and clinical judgment.</p>
-        <button class="dashboard-icon-btn" id="dismissDisclaimer" type="button" aria-label="Dismiss disclaimer">&times;</button>
-      </aside>
+      <section class="browse-section" aria-labelledby="toolsHead">
+        <div class="browse-section__head">
+          <div>
+            <h2 id="toolsHead">Clinical calculators</h2>
+          </div>
+          <a class="browse-all" href="/formulas">All formulas <span aria-hidden="true">&rarr;</span></a>
+        </div>
+        <div class="browse-grid browse-grid--3">
+          <a class="browse-card browse-card--row" href="/qtc">
+            <span class="browse-card__title">QTc calculator</span>
+            <span class="browse-card__sub">Bazett, Fridericia, Framingham, Hodges or Rautaharju</span>
+          </a>
+          <a class="browse-card browse-card--row" href="/benzodiazepine-equivalents">
+            <span class="browse-card__title">Benzodiazepine equivalents</span>
+            <span class="browse-card__sub">Convert a dose of one benzodiazepine to another</span>
+          </a>
+          <a class="browse-card browse-card--row" href="/alcohol-withdrawal">
+            <span class="browse-card__title">Alcohol withdrawal</span>
+            <span class="browse-card__sub">Benzodiazepine doses from daily alcohol intake</span>
+          </a>
+        </div>
+      </section>
 
       <section class="dashboard-about" id="about" aria-labelledby="aboutHead">
         <h2 id="aboutHead">About</h2>
@@ -119,7 +173,7 @@
       </section>
     </main>
 
-    <footer class="dashboard-footer">
+    <footer class="dashboard-footer" id="disclaimer">
       <p>Educational reference only. Verify all drug information against current prescribing information, local protocols, and clinical judgment.</p>
     </footer>
   </body>

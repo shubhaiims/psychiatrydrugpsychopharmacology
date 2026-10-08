@@ -63,7 +63,7 @@
         name: "Psychiatry Made Easy",
         description: `Membership, ${order.days} days`,
         prefill: order.prefill,
-        theme: { color: "#e49b5a" },
+        theme: { color: "#d9a46c" },
         handler: confirmPayment,
         modal: {
           ondismiss: () => {
