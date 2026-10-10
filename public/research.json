@@ -1,7 +1,47 @@
 {
-  "updated": "2026-10-07T10:18:13.061Z",
+  "updated": "2026-10-10T09:52:40.783Z",
   "source": "PubMed",
   "items": [
+    {
+      "id": "42850948",
+      "title": "Efficacy and safety of psilocybin-assisted therapy for alcohol use disorder: A systematic review and meta-analysis",
+      "journal": "Journal of Psychopharmacology",
+      "date": "2026-10-08",
+      "authors": "Florineth GA et al.",
+      "url": "https://doi.org/10.1177/02698811261490221"
+    },
+    {
+      "id": "42842281",
+      "title": "Attention-Deficit/Hyperactivity Disorder and Late-Life Cognitive Impairment",
+      "journal": "JAMA Psychiatry",
+      "date": "2026-10-07",
+      "authors": "Bauer-Negrini G et al.",
+      "url": "https://doi.org/10.1001/jamapsychiatry.2026.3165"
+    },
+    {
+      "id": "42842276",
+      "title": "Characterizing Artificial Intelligence Psychosis in a Large Medical Setting",
+      "journal": "JAMA Psychiatry",
+      "date": "2026-10-07",
+      "authors": "Bergson Z et al.",
+      "url": "https://doi.org/10.1001/jamapsychiatry.2026.2923"
+    },
+    {
+      "id": "42842277",
+      "title": "Temporal, Geographic, and Polysubstance Patterns in Orphine Analogue Detections",
+      "journal": "JAMA Psychiatry",
+      "date": "2026-10-07",
+      "authors": "Zhu DT et al.",
+      "url": "https://doi.org/10.1001/jamapsychiatry.2026.3129"
+    },
+    {
+      "id": "42842273",
+      "title": "Voice-First Mental Health Care for Older Adults in Africa",
+      "journal": "JAMA Psychiatry",
+      "date": "2026-10-07",
+      "authors": "Adedeji IA et al.",
+      "url": "https://doi.org/10.1001/jamapsychiatry.2026.3198"
+    },
     {
       "id": "42833240",
       "title": "From discovery to proof: a Translation Evidence Map for precision psychiatry",
@@ -2393,62 +2433,6 @@
       "date": "2026-04-12",
       "authors": "Wallace LM et al.",
       "url": "https://doi.org/10.1177/02698811261430518"
-    },
-    {
-      "id": "41969016",
-      "title": "Screening-to-intervention pathway for child anxiety problems alongside usual school practice versus usual school practice only (iCATSi2i): a cluster-randomised, controlled trial in primary schools in England",
-      "journal": "The Lancet Psychiatry",
-      "date": "2026-04-09",
-      "authors": "Reardon T et al.",
-      "url": "https://doi.org/10.1016/S2215-0366(26)00064-7"
-    },
-    {
-      "id": "41949840",
-      "title": "Age at First Attention-Deficit/Hyperactivity Disorder Diagnosis and Educational Outcomes",
-      "journal": "JAMA Psychiatry",
-      "date": "2026-04-08",
-      "authors": "Volotinen L et al.",
-      "url": "https://doi.org/10.1001/jamapsychiatry.2026.0181"
-    },
-    {
-      "id": "41948975",
-      "title": "Cannabidiol for psychotic disorders: A meta-analysis of randomized controlled trials",
-      "journal": "Journal of Psychopharmacology",
-      "date": "2026-04-08",
-      "authors": "Marchi M et al.",
-      "url": "https://doi.org/10.1177/02698811261430501"
-    },
-    {
-      "id": "41949829",
-      "title": "General Anesthesia and Discrete Components of Ketamine Neurophysiology",
-      "journal": "JAMA Psychiatry",
-      "date": "2026-04-08",
-      "authors": "Deverett B et al.",
-      "url": "https://doi.org/10.1001/jamapsychiatry.2026.0190"
-    },
-    {
-      "id": "41949828",
-      "title": "Measurement of Posthospital Recovery Infrastructure",
-      "journal": "JAMA Psychiatry",
-      "date": "2026-04-08",
-      "authors": "Lee YJ et al.",
-      "url": "https://doi.org/10.1001/jamapsychiatry.2026.0440"
-    },
-    {
-      "id": "41962559",
-      "title": "Clozapine rechallenge after neutropenia: a retrospective cohort study in the UK",
-      "journal": "The Lancet Psychiatry",
-      "date": "2026-04-07",
-      "authors": "Oloyede E et al.",
-      "url": "https://doi.org/10.1016/S2215-0366(26)00061-1"
-    },
-    {
-      "id": "41944521",
-      "title": "Nathan S. Kline: From the first treatments of psychosis and depression, a 70-year legacy of a pioneer of psychopharmacology",
-      "journal": "Journal of Psychopharmacology",
-      "date": "2026-04-07",
-      "authors": "Junkes L et al.",
-      "url": "https://doi.org/10.1177/02698811261436582"
     }
   ]
 }
